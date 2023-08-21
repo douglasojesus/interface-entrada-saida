@@ -1,0 +1,107 @@
+|FPGAImplementation
+i_Clock => i_Clock.IN2
+i_Reset => ~NO_FANOUT~
+i_Tx_Data_Valid => ~NO_FANOUT~
+i_Tx_Data[0] => ~NO_FANOUT~
+i_Tx_Data[1] => ~NO_FANOUT~
+i_Tx_Data[2] => ~NO_FANOUT~
+i_Tx_Data[3] => ~NO_FANOUT~
+i_Tx_Data[4] => ~NO_FANOUT~
+i_Tx_Data[5] => ~NO_FANOUT~
+i_Tx_Data[6] => ~NO_FANOUT~
+i_Tx_Data[7] => ~NO_FANOUT~
+o_Rx_Data_Valid <= <GND>
+o_Rx_Data[0] <= <GND>
+o_Rx_Data[1] <= <GND>
+o_Rx_Data[2] <= <GND>
+o_Rx_Data[3] <= <GND>
+o_Rx_Data[4] <= <GND>
+o_Rx_Data[5] <= <GND>
+o_Rx_Data[6] <= <GND>
+o_Rx_Data[7] <= <GND>
+
+
+|FPGAImplementation|uart_tx:uart_tx_inst
+i_Clock => r_Tx_Data[0].CLK
+i_Clock => r_Tx_Data[1].CLK
+i_Clock => r_Tx_Data[2].CLK
+i_Clock => r_Tx_Data[3].CLK
+i_Clock => r_Tx_Data[4].CLK
+i_Clock => r_Tx_Data[5].CLK
+i_Clock => r_Tx_Data[6].CLK
+i_Clock => r_Tx_Data[7].CLK
+i_Clock => r_Tx_Active.CLK
+i_Clock => r_Bit_Index[0].CLK
+i_Clock => r_Bit_Index[1].CLK
+i_Clock => r_Bit_Index[2].CLK
+i_Clock => r_Clock_Count[0].CLK
+i_Clock => r_Clock_Count[1].CLK
+i_Clock => r_Clock_Count[2].CLK
+i_Clock => r_Clock_Count[3].CLK
+i_Clock => r_Clock_Count[4].CLK
+i_Clock => r_Clock_Count[5].CLK
+i_Clock => r_Clock_Count[6].CLK
+i_Clock => r_Clock_Count[7].CLK
+i_Clock => r_Tx_Done.CLK
+i_Clock => o_Tx_Serial~reg0.CLK
+i_Clock => r_SM_Main~1.DATAIN
+i_Tx_DV => r_Tx_Active.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => r_Tx_Data.OUTPUTSELECT
+i_Tx_DV => Selector15.IN3
+i_Tx_DV => Selector14.IN2
+i_Tx_Byte[0] => r_Tx_Data.DATAB
+i_Tx_Byte[1] => r_Tx_Data.DATAB
+i_Tx_Byte[2] => r_Tx_Data.DATAB
+i_Tx_Byte[3] => r_Tx_Data.DATAB
+i_Tx_Byte[4] => r_Tx_Data.DATAB
+i_Tx_Byte[5] => r_Tx_Data.DATAB
+i_Tx_Byte[6] => r_Tx_Data.DATAB
+i_Tx_Byte[7] => r_Tx_Data.DATAB
+o_Tx_Active <= r_Tx_Active.DB_MAX_OUTPUT_PORT_TYPE
+o_Tx_Serial <= o_Tx_Serial~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_Tx_Done <= r_Tx_Done.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FPGAImplementation|uart_rx:uart_rx_inst
+i_Clock => r_Rx_Byte[0].CLK
+i_Clock => r_Rx_Byte[1].CLK
+i_Clock => r_Rx_Byte[2].CLK
+i_Clock => r_Rx_Byte[3].CLK
+i_Clock => r_Rx_Byte[4].CLK
+i_Clock => r_Rx_Byte[5].CLK
+i_Clock => r_Rx_Byte[6].CLK
+i_Clock => r_Rx_Byte[7].CLK
+i_Clock => r_Bit_Index[0].CLK
+i_Clock => r_Bit_Index[1].CLK
+i_Clock => r_Bit_Index[2].CLK
+i_Clock => r_Clock_Count[0].CLK
+i_Clock => r_Clock_Count[1].CLK
+i_Clock => r_Clock_Count[2].CLK
+i_Clock => r_Clock_Count[3].CLK
+i_Clock => r_Clock_Count[4].CLK
+i_Clock => r_Clock_Count[5].CLK
+i_Clock => r_Clock_Count[6].CLK
+i_Clock => r_Clock_Count[7].CLK
+i_Clock => r_Rx_DV.CLK
+i_Clock => r_Rx_Data.CLK
+i_Clock => r_Rx_Data_R.CLK
+i_Clock => r_SM_Main~1.DATAIN
+i_Rx_Serial => r_Rx_Data_R.DATAIN
+o_Rx_DV <= r_Rx_DV.DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[0] <= r_Rx_Byte[0].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[1] <= r_Rx_Byte[1].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[2] <= r_Rx_Byte[2].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[3] <= r_Rx_Byte[3].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[4] <= r_Rx_Byte[4].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[5] <= r_Rx_Byte[5].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[6] <= r_Rx_Byte[6].DB_MAX_OUTPUT_PORT_TYPE
+o_Rx_Byte[7] <= r_Rx_Byte[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
