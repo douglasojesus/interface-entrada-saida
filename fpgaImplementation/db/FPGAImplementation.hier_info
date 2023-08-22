@@ -10,15 +10,15 @@ i_Tx_Data[4] => ~NO_FANOUT~
 i_Tx_Data[5] => ~NO_FANOUT~
 i_Tx_Data[6] => ~NO_FANOUT~
 i_Tx_Data[7] => ~NO_FANOUT~
-o_Rx_Data_Valid <= <GND>
-o_Rx_Data[0] <= <GND>
-o_Rx_Data[1] <= <GND>
-o_Rx_Data[2] <= <GND>
-o_Rx_Data[3] <= <GND>
-o_Rx_Data[4] <= <GND>
-o_Rx_Data[5] <= <GND>
-o_Rx_Data[6] <= <GND>
-o_Rx_Data[7] <= <GND>
+o_Rx_Data_Valid << <GND>
+o_Rx_Data[0] << <GND>
+o_Rx_Data[1] << <GND>
+o_Rx_Data[2] << <GND>
+o_Rx_Data[3] << <GND>
+o_Rx_Data[4] << <GND>
+o_Rx_Data[5] << <GND>
+o_Rx_Data[6] << <GND>
+o_Rx_Data[7] << <GND>
 
 
 |FPGAImplementation|uart_tx:uart_tx_inst

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Mon Aug 21 15:48:23 2023
+Tue Aug 22 15:22:51 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Aug 21 15:48:23 2023          ;
+; Analysis & Synthesis Status        ; Successful - Tue Aug 22 15:22:51 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
@@ -172,15 +172,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                     ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                       ; Library ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------+---------+
-; uart_rx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v            ;         ;
-; uart_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v            ;         ;
-; FPGAImplementation.v             ; yes             ; User Verilog HDL File  ; C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v ;         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                               ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------+---------+
+; uart_rx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v            ;         ;
+; uart_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v            ;         ;
+; FPGAImplementation.v             ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------+
@@ -416,80 +416,80 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Mon Aug 21 15:48:11 2023
+    Info: Processing started: Tue Aug 22 15:22:40 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
-    Info (12023): Found entity 1: uart_rx File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 14
+    Info (12023): Found entity 1: uart_rx File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
-    Info (12023): Found entity 1: uart_tx File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 14
+    Info (12023): Found entity 1: uart_tx File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 14
 Info (12021): Found 1 design units, including 1 entities, in source file fpgaimplementation.v
-    Info (12023): Found entity 1: FPGAImplementation File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(13): created implicit net for "i_Tx_DV" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 13
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(14): created implicit net for "i_Tx_Byte" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 14
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(15): created implicit net for "o_Tx_Active" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 15
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(16): created implicit net for "o_Tx_Serial" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 16
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(17): created implicit net for "o_Tx_Done" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 17
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(22): created implicit net for "i_Rx_Serial" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 22
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(23): created implicit net for "o_Rx_DV" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 23
-Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(24): created implicit net for "o_Rx_Byte" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 24
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(23): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 23
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(24): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 24
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(25): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 25
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(26): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 26
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(27): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 27
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(25): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 25
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(26): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 26
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(27): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 27
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(28): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 28
-Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(29): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 29
+    Info (12023): Found entity 1: FPGAImplementation File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(13): created implicit net for "i_Tx_DV" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 13
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(14): created implicit net for "i_Tx_Byte" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 14
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(15): created implicit net for "o_Tx_Active" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 15
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(16): created implicit net for "o_Tx_Serial" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 16
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(17): created implicit net for "o_Tx_Done" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 17
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(22): created implicit net for "i_Rx_Serial" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 22
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(23): created implicit net for "o_Rx_DV" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 23
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(24): created implicit net for "o_Rx_Byte" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(33): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 33
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(34): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 34
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(35): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 35
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(36): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 36
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(37): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 37
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(25): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 25
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(26): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 26
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(27): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 27
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(28): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 28
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_tx.v(29): Parameter Declaration in module "uart_tx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 29
 Info (12127): Elaborating entity "FPGAImplementation" for the top level hierarchy
-Warning (10034): Output port "o_Rx_Data" at FPGAImplementation.v(8) has no driver File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-Warning (10034): Output port "o_Rx_Data_Valid" at FPGAImplementation.v(6) has no driver File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 6
-Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:uart_tx_inst" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 18
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(68): truncated value with size 32 to match size of target (8) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 68
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(86): truncated value with size 32 to match size of target (8) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 86
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(96): truncated value with size 32 to match size of target (3) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 96
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (8) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_tx.v Line: 116
-Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uart_rx_inst" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 25
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(80): truncated value with size 32 to match size of target (8) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 80
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(91): truncated value with size 32 to match size of target (8) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 91
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(102): truncated value with size 32 to match size of target (3) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 102
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(120): truncated value with size 32 to match size of target (8) File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/uart_rx.v Line: 120
+Warning (10034): Output port "o_Rx_Data" at FPGAImplementation.v(8) has no driver File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+Warning (10034): Output port "o_Rx_Data_Valid" at FPGAImplementation.v(6) has no driver File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 6
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:uart_tx_inst" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 18
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(68): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 68
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(86): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 86
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(96): truncated value with size 32 to match size of target (3) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 96
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 116
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uart_rx_inst" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 25
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(113): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 113
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(126): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 126
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(137): truncated value with size 32 to match size of target (3) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 137
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(157): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 157
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "o_Rx_Data_Valid" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 6
-    Warning (13410): Pin "o_Rx_Data[0]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[1]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[2]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[3]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[4]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[5]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[6]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Data[7]" is stuck at GND File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data_Valid" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 6
+    Warning (13410): Pin "o_Rx_Data[0]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[1]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[2]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[3]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[4]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[5]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[6]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
+    Warning (13410): Pin "o_Rx_Data[7]" is stuck at GND File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
 Info (17049): 38 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 11 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "i_Reset" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 3
-    Warning (15610): No output dependent on input pin "i_Tx_Data_Valid" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Data[0]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[1]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[2]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[3]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[4]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[5]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[6]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Tx_Data[7]" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 5
-    Warning (15610): No output dependent on input pin "i_Clock" File: C:/Users/DOUG/Desktop/misd/fpgaImplementation/FPGAImplementation.v Line: 2
+    Warning (15610): No output dependent on input pin "i_Reset" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 3
+    Warning (15610): No output dependent on input pin "i_Tx_Data_Valid" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
+    Warning (15610): No output dependent on input pin "i_Tx_Data[0]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[1]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[2]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[3]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[4]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[5]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[6]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Tx_Data[7]" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 5
+    Warning (15610): No output dependent on input pin "i_Clock" File: C:/Users/LESS/Desktop/fpga/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 2
 Info (21057): Implemented 20 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
     Info (21059): Implemented 9 output pins
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 52 warnings
-    Info: Peak virtual memory: 4756 megabytes
-    Info: Processing ended: Mon Aug 21 15:48:23 2023
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Peak virtual memory: 4752 megabytes
+    Info: Processing ended: Tue Aug 22 15:22:51 2023
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:16
 
 
