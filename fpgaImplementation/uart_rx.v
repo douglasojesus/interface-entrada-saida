@@ -110,7 +110,7 @@ module uart_rx
               end
             else
               begin
-                r_Clock_Count <= r_Clock_Count + 1;
+                r_Clock_Count <= r_Clock_Count + 1'b1;
                 r_SM_Main     <= s_RX_START_BIT;
               end
           end // case: s_RX_START_BIT
@@ -123,7 +123,7 @@ module uart_rx
           begin
             if (r_Clock_Count < CLKS_PER_BIT-1)
               begin
-                r_Clock_Count <= r_Clock_Count + 1;
+                r_Clock_Count <= r_Clock_Count + 1'b1;
                 r_SM_Main     <= s_RX_DATA_BITS;
               end
             else
@@ -134,7 +134,7 @@ module uart_rx
                 // Check if we have received all bits
                 if (r_Bit_Index < 7)
                   begin
-                    r_Bit_Index <= r_Bit_Index + 1;
+                    r_Bit_Index <= r_Bit_Index + 1'b1;
                     r_SM_Main   <= s_RX_DATA_BITS;
                   end
                 else
@@ -149,7 +149,8 @@ module uart_rx
         /*s_RX_STOP_BIT: Neste estado, o módulo aguarda a conclusão do bit de parada (stop bit), que é logicamente alto. 
 		  *Após a espera, o sinal o_Rx_DV é ativado e a máquina de estados transita para o estado s_CLEANUP.
 		  */
-        s_RX_STOP_BIT :
+
+			 s_RX_STOP_BIT :
           begin
             // Wait CLKS_PER_BIT-1 clock cycles for Stop bit to finish
             if (r_Clock_Count < CLKS_PER_BIT-1)

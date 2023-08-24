@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Thu Aug 24 10:39:12 2023
+Thu Aug 24 18:26:33 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -50,7 +50,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Aug 24 10:39:12 2023          ;
+; Analysis & Synthesis Status        ; Successful - Thu Aug 24 18:26:33 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
@@ -378,7 +378,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Thu Aug 24 10:39:03 2023
+    Info: Processing started: Thu Aug 24 18:26:24 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -394,9 +394,7 @@ Warning (10230): Verilog HDL assignment warning at uart_tx.v(68): truncated valu
 Warning (10230): Verilog HDL assignment warning at uart_tx.v(86): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 86
 Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 116
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uart_rx_inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 31
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(113): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 113
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(126): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 126
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(157): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 157
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(158): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 158
 Warning (12125): Using design file decoder.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: decoder File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 1
 Info (12128): Elaborating entity "decoder" for hierarchy "decoder:inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 36
@@ -436,10 +434,10 @@ Info (21057): Implemented 35 device resources after synthesis - the final resour
     Info (21058): Implemented 11 input pins
     Info (21059): Implemented 19 output pins
     Info (21061): Implemented 5 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 36 warnings
-    Info: Peak virtual memory: 4775 megabytes
-    Info: Processing ended: Thu Aug 24 10:39:12 2023
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 4774 megabytes
+    Info: Processing ended: Thu Aug 24 18:26:33 2023
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Total CPU time (on all processors): 00:00:15
 
 
