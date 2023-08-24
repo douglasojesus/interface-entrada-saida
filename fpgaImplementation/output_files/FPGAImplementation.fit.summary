@@ -1,15 +1,15 @@
-Fitter Status : Successful - Tue Aug 22 15:23:01 2023
+Fitter Status : Successful - Thu Aug 24 10:39:20 2023
 Quartus Prime Version : 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 Revision Name : FPGAImplementation
 Top-level Entity Name : FPGAImplementation
 Family : Cyclone IV E
 Device : EP4CE30F23C7
 Timing Models : Final
-Total logic elements : 0 / 28,848 ( 0 % )
-    Total combinational functions : 0 / 28,848 ( 0 % )
-    Dedicated logic registers : 0 / 28,848 ( 0 % )
-Total registers : 0
-Total pins : 20 / 329 ( 6 % )
+Total logic elements : 5 / 28,848 ( < 1 % )
+    Total combinational functions : 5 / 28,848 ( < 1 % )
+    Dedicated logic registers : 4 / 28,848 ( < 1 % )
+Total registers : 4
+Total pins : 30 / 329 ( 9 % )
 Total virtual pins : 0
 Total memory bits : 0 / 608,256 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )

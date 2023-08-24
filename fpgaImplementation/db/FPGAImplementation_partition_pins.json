@@ -2,7 +2,24 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : []
+			"pins" : [
+				{
+					"name" : "o_Tx_Serial",
+					"strict" : false
+				},
+				{
+					"name" : "o_Tx_Active",
+					"strict" : false
+				},
+				{
+					"name" : "i_Clock",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_DV",
+					"strict" : false
+				}
+			]
 		}
 	]
 }

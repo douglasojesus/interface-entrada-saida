@@ -1,12 +1,18 @@
 module FPGAImplementation(
-	input        i_Clock,
-  input        i_Reset,          // Exemplo de sinal de reset
-  input        i_Tx_Data_Valid,  // Exemplo de sinal de dados válidos para transmitir
-  input [7:0]  i_Tx_Data,        // Exemplo de dados a serem transmitidos
-  output       o_Rx_Data_Valid,  // Exemplo de sinal de dados válidos recebidos
-  output [7:0] o_Rx_Data          // Exemplo de dados recebidos
+	input        i_Clock, //Clock do sistema.
+  input        i_Tx_DV,  //Inicia a transmissão.
+  input [7:0]  i_Tx_Byte,  //Entrada de byte para transmitir para o PC. O código envia bit a bit.
+	output 		o_Tx_Serial, //Bit que é enviado via serial.
+	output      o_Tx_Done,	//Bit de Stop.
+	output 		o_Tx_Active, //Informa que está em transição.
+  output       o_Rx_DV, //Inicia a recepção.
+  output [7:0] o_Rx_Byte, //Byte recebido.        
+	output wire [6:0] display2, //Display usado de exemplo
+	input 		i_Rx_Serial //Bit que é enviado via serial.
 );
-	parameter CLKS_PER_BIT = 87;
+	parameter CLKS_PER_BIT = 5209;
+	wire [6:0] dir;
+
 	
 	uart_tx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_tx_inst (
       .i_Clock(i_Clock),
@@ -22,6 +28,11 @@ module FPGAImplementation(
       .i_Rx_Serial(i_Rx_Serial), 
       .o_Rx_DV(o_Rx_DV),         
       .o_Rx_Byte(o_Rx_Byte)      
+    );
+	
+    decoder inst (
+        .word(o_Rx_Byte),
+        .display(display2)
     );
 
 endmodule

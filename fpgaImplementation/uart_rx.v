@@ -30,11 +30,11 @@ module uart_rx
    );
 	
 	/*Definição dos estados da máquina de estados.*/
-  parameter s_IDLE         = 3'b000; //Estado de espera inicial. Aguardando a detecção de um bit de início.
-  parameter s_RX_START_BIT = 3'b001; //Estado que verifica se o bit de início ainda está baixo. 
-  parameter s_RX_DATA_BITS = 3'b010; //Estado que espera para amostrar os bits de dados durante os próximos CLKS_PER_BIT - 1 ciclos de clock. 
-  parameter s_RX_STOP_BIT  = 3'b011; //Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
-  parameter s_CLEANUP      = 3'b100; //Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
+  localparam s_IDLE         = 3'b000; //Estado de espera inicial. Aguardando a detecção de um bit de início.
+  localparam s_RX_START_BIT = 3'b001; //Estado que verifica se o bit de início ainda está baixo. 
+  localparam s_RX_DATA_BITS = 3'b010; //Estado que espera para amostrar os bits de dados durante os próximos CLKS_PER_BIT - 1 ciclos de clock. 
+  localparam s_RX_STOP_BIT  = 3'b011; //Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
+  localparam s_CLEANUP      = 3'b100; //Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
    
 	/*Dois registros são definidos para armazenar o sinal serial de entrada. 
 	*r_Rx_Data_R armazena o valor atual do sinal serial (registrado na borda de subida do clock), 
