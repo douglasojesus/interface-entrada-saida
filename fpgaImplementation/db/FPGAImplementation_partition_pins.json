@@ -4,75 +4,11 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "bitsEstaoRecebidos",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[0]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[1]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[2]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[3]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[4]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[5]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[6]",
-					"strict" : false
-				},
-				{
-					"name" : "byteCompleto[7]",
-					"strict" : false
-				},
-				{
 					"name" : "indicaTransmissao",
 					"strict" : false
 				},
 				{
-					"name" : "bitsEstaoEnviados",
-					"strict" : false
-				},
-				{
-					"name" : "display[0]",
-					"strict" : false
-				},
-				{
-					"name" : "display[1]",
-					"strict" : false
-				},
-				{
-					"name" : "display[2]",
-					"strict" : false
-				},
-				{
-					"name" : "display[4]",
-					"strict" : false
-				},
-				{
-					"name" : "display[5]",
-					"strict" : false
-				},
-				{
-					"name" : "display[6]",
-					"strict" : false
-				},
-				{
-					"name" : "clock",
+					"name" : "bitSerialAtualTX",
 					"strict" : false
 				},
 				{
@@ -80,35 +16,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "byteASerTransmitido[6]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[5]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[4]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[7]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[2]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[1]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[0]",
-					"strict" : false
-				},
-				{
-					"name" : "byteASerTransmitido[3]",
+					"name" : "clock",
 					"strict" : false
 				}
 			]

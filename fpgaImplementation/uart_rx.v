@@ -5,7 +5,7 @@
 // Fonte: http://www.nandland.com ||| Adaptação feita por Douglas Oliveira de Jesus.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-module uart_rx #(parameter CLOCKS_POR_BIT = 87)
+module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
   (
    input        clock, //Sinal de clock de entrada para sincronização.
    input        bitSerialAtual, //Sinal serial de entrada que carrega os dados a serem recebidos.
