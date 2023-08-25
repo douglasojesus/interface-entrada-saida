@@ -4,11 +4,51 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "o_Tx_Serial",
+					"name" : "o_Rx_DV",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[0]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[1]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[2]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[3]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[4]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[5]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[6]",
+					"strict" : false
+				},
+				{
+					"name" : "o_Rx_Byte[7]",
 					"strict" : false
 				},
 				{
 					"name" : "o_Tx_Active",
+					"strict" : false
+				},
+				{
+					"name" : "o_Tx_Serial",
+					"strict" : false
+				},
+				{
+					"name" : "o_Tx_Done",
 					"strict" : false
 				},
 				{
@@ -17,6 +57,42 @@
 				},
 				{
 					"name" : "i_Tx_DV",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[6]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[5]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[4]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[7]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[2]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[1]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[0]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Tx_Byte[3]",
+					"strict" : false
+				},
+				{
+					"name" : "i_Rx_Serial",
 					"strict" : false
 				}
 			]

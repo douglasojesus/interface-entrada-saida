@@ -1,5 +1,15 @@
 |FPGAImplementation
 i_Clock => i_Clock.IN2
+i_Rx_Serial => i_Rx_Serial.IN1
+o_Rx_DV << uart_rx:comb_3.port2
+o_Rx_Byte[0] << uart_rx:comb_3.port3
+o_Rx_Byte[1] << uart_rx:comb_3.port3
+o_Rx_Byte[2] << uart_rx:comb_3.port3
+o_Rx_Byte[3] << uart_rx:comb_3.port3
+o_Rx_Byte[4] << uart_rx:comb_3.port3
+o_Rx_Byte[5] << uart_rx:comb_3.port3
+o_Rx_Byte[6] << uart_rx:comb_3.port3
+o_Rx_Byte[7] << uart_rx:comb_3.port3
 i_Tx_DV => i_Tx_DV.IN1
 i_Tx_Byte[0] => i_Tx_Byte[0].IN1
 i_Tx_Byte[1] => i_Tx_Byte[1].IN1
@@ -9,29 +19,48 @@ i_Tx_Byte[4] => i_Tx_Byte[4].IN1
 i_Tx_Byte[5] => i_Tx_Byte[5].IN1
 i_Tx_Byte[6] => i_Tx_Byte[6].IN1
 i_Tx_Byte[7] => i_Tx_Byte[7].IN1
-o_Tx_Serial << uart_tx:uart_tx_inst.o_Tx_Serial
-o_Tx_Done << uart_tx:uart_tx_inst.o_Tx_Done
-o_Tx_Active << uart_tx:uart_tx_inst.o_Tx_Active
-o_Rx_DV << uart_rx:uart_rx_inst.o_Rx_DV
-o_Rx_Byte[0] << o_Rx_Byte[0].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[1] << o_Rx_Byte[1].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[2] << o_Rx_Byte[2].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[3] << o_Rx_Byte[3].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[4] << o_Rx_Byte[4].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[5] << o_Rx_Byte[5].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[6] << o_Rx_Byte[6].DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[7] << o_Rx_Byte[7].DB_MAX_OUTPUT_PORT_TYPE
-display2[0] << decoder:inst.display
-display2[1] << decoder:inst.display
-display2[2] << decoder:inst.display
-display2[3] << decoder:inst.display
-display2[4] << decoder:inst.display
-display2[5] << decoder:inst.display
-display2[6] << decoder:inst.display
-i_Rx_Serial => i_Rx_Serial.IN1
+o_Tx_Active << uart_tx:comb_4.port3
+o_Tx_Serial << uart_tx:comb_4.port4
+o_Tx_Done << uart_tx:comb_4.port5
 
 
-|FPGAImplementation|uart_tx:uart_tx_inst
+|FPGAImplementation|uart_rx:comb_3
+clock => armazenaBits[0].CLK
+clock => armazenaBits[1].CLK
+clock => armazenaBits[2].CLK
+clock => armazenaBits[3].CLK
+clock => armazenaBits[4].CLK
+clock => armazenaBits[5].CLK
+clock => armazenaBits[6].CLK
+clock => armazenaBits[7].CLK
+clock => indiceDoBit[0].CLK
+clock => indiceDoBit[1].CLK
+clock => indiceDoBit[2].CLK
+clock => contadorDeClock[0].CLK
+clock => contadorDeClock[1].CLK
+clock => contadorDeClock[2].CLK
+clock => contadorDeClock[3].CLK
+clock => contadorDeClock[4].CLK
+clock => contadorDeClock[5].CLK
+clock => contadorDeClock[6].CLK
+clock => contadorDeClock[7].CLK
+clock => dadosOk.CLK
+clock => serialDeEntrada.CLK
+clock => serialDeEntradaBuffer.CLK
+clock => estadoAtual~1.DATAIN
+bitSerialAtual => serialDeEntradaBuffer.DATAIN
+bitsEstaoRecebidos <= dadosOk.DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[0] <= armazenaBits[0].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[1] <= armazenaBits[1].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[2] <= armazenaBits[2].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[3] <= armazenaBits[3].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[4] <= armazenaBits[4].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[5] <= armazenaBits[5].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[6] <= armazenaBits[6].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[7] <= armazenaBits[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FPGAImplementation|uart_tx:comb_4
 i_Clock => r_Tx_Data[0].CLK
 i_Clock => r_Tx_Data[1].CLK
 i_Clock => r_Tx_Data[2].CLK
@@ -44,6 +73,14 @@ i_Clock => r_Tx_Active.CLK
 i_Clock => r_Bit_Index[0].CLK
 i_Clock => r_Bit_Index[1].CLK
 i_Clock => r_Bit_Index[2].CLK
+i_Clock => r_Clock_Count[0].CLK
+i_Clock => r_Clock_Count[1].CLK
+i_Clock => r_Clock_Count[2].CLK
+i_Clock => r_Clock_Count[3].CLK
+i_Clock => r_Clock_Count[4].CLK
+i_Clock => r_Clock_Count[5].CLK
+i_Clock => r_Clock_Count[6].CLK
+i_Clock => r_Clock_Count[7].CLK
 i_Clock => r_Tx_Done.CLK
 i_Clock => o_Tx_Serial~reg0.CLK
 i_Clock => r_SM_Main~1.DATAIN
@@ -56,8 +93,8 @@ i_Tx_DV => r_Tx_Data.OUTPUTSELECT
 i_Tx_DV => r_Tx_Data.OUTPUTSELECT
 i_Tx_DV => r_Tx_Data.OUTPUTSELECT
 i_Tx_DV => r_Tx_Data.OUTPUTSELECT
-i_Tx_DV => Selector3.IN3
-i_Tx_DV => Selector2.IN2
+i_Tx_DV => Selector15.IN3
+i_Tx_DV => Selector14.IN2
 i_Tx_Byte[0] => r_Tx_Data.DATAB
 i_Tx_Byte[1] => r_Tx_Data.DATAB
 i_Tx_Byte[2] => r_Tx_Data.DATAB
@@ -69,48 +106,5 @@ i_Tx_Byte[7] => r_Tx_Data.DATAB
 o_Tx_Active <= r_Tx_Active.DB_MAX_OUTPUT_PORT_TYPE
 o_Tx_Serial <= o_Tx_Serial~reg0.DB_MAX_OUTPUT_PORT_TYPE
 o_Tx_Done <= r_Tx_Done.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|FPGAImplementation|uart_rx:uart_rx_inst
-i_Clock => r_Rx_DV.CLK
-i_Clock => r_Rx_Data.CLK
-i_Clock => r_Rx_Data_R.CLK
-i_Clock => r_SM_Main~1.DATAIN
-i_Rx_Serial => r_Rx_Data_R.DATAIN
-o_Rx_DV <= r_Rx_DV.DB_MAX_OUTPUT_PORT_TYPE
-o_Rx_Byte[0] <= <GND>
-o_Rx_Byte[1] <= <GND>
-o_Rx_Byte[2] <= <GND>
-o_Rx_Byte[3] <= <GND>
-o_Rx_Byte[4] <= <GND>
-o_Rx_Byte[5] <= <GND>
-o_Rx_Byte[6] <= <GND>
-o_Rx_Byte[7] <= <GND>
-
-
-|FPGAImplementation|decoder:inst
-word[0] => Equal0.IN15
-word[0] => Equal1.IN15
-word[1] => Equal0.IN14
-word[1] => Equal1.IN14
-word[2] => Equal0.IN13
-word[2] => Equal1.IN13
-word[3] => Equal0.IN12
-word[3] => Equal1.IN12
-word[4] => Equal0.IN11
-word[4] => Equal1.IN11
-word[5] => Equal0.IN10
-word[5] => Equal1.IN10
-word[6] => Equal0.IN9
-word[6] => Equal1.IN9
-word[7] => Equal0.IN8
-word[7] => Equal1.IN8
-display[0] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
-display[1] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
-display[2] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
-display[3] <= <GND>
-display[4] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
-display[5] <= WideNor0.DB_MAX_OUTPUT_PORT_TYPE
-display[6] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
 
 

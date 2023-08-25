@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// File Downloaded from http://www.nandland.com
+// File Downloaded from 
 //////////////////////////////////////////////////////////////////////
 // This file contains the UART Transmitter.  This transmitter is able
 // to transmit 8 bits of serial data, one start bit, one stop bit,
@@ -11,8 +11,7 @@
 // Example: 10 MHz Clock, 115200 baud UART
 // (10000000)/(115200) = 87
   
-module uart_tx 
-  #(parameter CLKS_PER_BIT)
+module uart_tx #(parameter CLKS_PER_BIT = 87)
   (
    input       i_Clock,
    input       i_Tx_DV,

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Thu Aug 24 18:26:33 2023
+Thu Aug 24 21:16:53 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -13,14 +13,14 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |FPGAImplementation|uart_rx:uart_rx_inst|r_SM_Main
-  9. State Machine - |FPGAImplementation|uart_tx:uart_tx_inst|r_SM_Main
+  8. State Machine - |FPGAImplementation|uart_tx:comb_4|r_SM_Main
+  9. State Machine - |FPGAImplementation|uart_rx:comb_3|estadoAtual
  10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Parameter Settings for User Entity Instance: Top-level Entity: |FPGAImplementation
- 14. Parameter Settings for User Entity Instance: uart_tx:uart_tx_inst
- 15. Parameter Settings for User Entity Instance: uart_rx:uart_rx_inst
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: uart_rx:comb_3
+ 15. Parameter Settings for User Entity Instance: uart_tx:comb_4
  16. Post-Synthesis Netlist Statistics for Top Partition
  17. Elapsed Time Per Partition
  18. Analysis & Synthesis Messages
@@ -50,16 +50,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Aug 24 18:26:33 2023          ;
+; Analysis & Synthesis Status        ; Successful - Thu Aug 24 21:16:53 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 5                                              ;
-;     Total combinational functions  ; 3                                              ;
-;     Dedicated logic registers      ; 4                                              ;
-; Total registers                    ; 4                                              ;
-; Total pins                         ; 30                                             ;
+; Total logic elements               ; 97                                             ;
+;     Total combinational functions  ; 88                                             ;
+;     Dedicated logic registers      ; 54                                             ;
+; Total registers                    ; 54                                             ;
+; Total pins                         ; 23                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -170,16 +170,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                   ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
-; uart_rx.v                        ; yes             ; User Verilog HDL File        ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v            ;         ;
-; uart_tx.v                        ; yes             ; User Verilog HDL File        ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v            ;         ;
-; FPGAImplementation.v             ; yes             ; User Verilog HDL File        ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v ;         ;
-; decoder.v                        ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v            ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                   ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
+; uart_rx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v            ;         ;
+; uart_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v            ;         ;
+; FPGAImplementation.v             ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------+
@@ -187,61 +186,48 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 5             ;
+; Estimated Total logic elements              ; 97            ;
 ;                                             ;               ;
-; Total combinational functions               ; 3             ;
+; Total combinational functions               ; 88            ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 0             ;
-;     -- 3 input functions                    ; 0             ;
-;     -- <=2 input functions                  ; 3             ;
+;     -- 4 input functions                    ; 46            ;
+;     -- 3 input functions                    ; 21            ;
+;     -- <=2 input functions                  ; 21            ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 3             ;
-;     -- arithmetic mode                      ; 0             ;
+;     -- normal mode                          ; 74            ;
+;     -- arithmetic mode                      ; 14            ;
 ;                                             ;               ;
-; Total registers                             ; 4             ;
-;     -- Dedicated logic registers            ; 4             ;
+; Total registers                             ; 54            ;
+;     -- Dedicated logic registers            ; 54            ;
 ;     -- I/O registers                        ; 0             ;
 ;                                             ;               ;
-; I/O pins                                    ; 30            ;
+; I/O pins                                    ; 23            ;
 ;                                             ;               ;
 ; Embedded Multiplier 9-bit elements          ; 0             ;
 ;                                             ;               ;
 ; Maximum fan-out node                        ; i_Clock~input ;
-; Maximum fan-out                             ; 4             ;
-; Total fan-out                               ; 45            ;
-; Average fan-out                             ; 0.67          ;
+; Maximum fan-out                             ; 54            ;
+; Total fan-out                               ; 469           ;
+; Average fan-out                             ; 2.49          ;
 +---------------------------------------------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                  ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Entity Name        ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------------+--------------+
-; |FPGAImplementation        ; 3 (0)               ; 4 (0)                     ; 0           ; 0            ; 0       ; 0         ; 30   ; 0            ; |FPGAImplementation                      ; FPGAImplementation ; work         ;
-;    |uart_tx:uart_tx_inst|  ; 3 (3)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_tx:uart_tx_inst ; uart_tx            ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                            ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                ; Entity Name        ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------------+--------------+
+; |FPGAImplementation        ; 88 (0)              ; 54 (0)                    ; 0           ; 0            ; 0       ; 0         ; 23   ; 0            ; |FPGAImplementation                ; FPGAImplementation ; work         ;
+;    |uart_rx:comb_3|        ; 52 (52)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_rx:comb_3 ; uart_rx            ; work         ;
+;    |uart_tx:comb_4|        ; 36 (36)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_tx:comb_4 ; uart_tx            ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |FPGAImplementation|uart_rx:uart_rx_inst|r_SM_Main                                                                             ;
-+--------------------------+-------------------------+--------------------------+--------------------------+---------------+---------------------+
-; Name                     ; r_SM_Main.s_RX_STOP_BIT ; r_SM_Main.s_RX_DATA_BITS ; r_SM_Main.s_RX_START_BIT ; r_SM_Main.000 ; r_SM_Main.s_CLEANUP ;
-+--------------------------+-------------------------+--------------------------+--------------------------+---------------+---------------------+
-; r_SM_Main.000            ; 0                       ; 0                        ; 0                        ; 0             ; 0                   ;
-; r_SM_Main.s_RX_START_BIT ; 0                       ; 0                        ; 1                        ; 1             ; 0                   ;
-; r_SM_Main.s_RX_DATA_BITS ; 0                       ; 1                        ; 0                        ; 1             ; 0                   ;
-; r_SM_Main.s_RX_STOP_BIT  ; 1                       ; 0                        ; 0                        ; 1             ; 0                   ;
-; r_SM_Main.s_CLEANUP      ; 0                       ; 0                        ; 0                        ; 1             ; 1                   ;
-+--------------------------+-------------------------+--------------------------+--------------------------+---------------+---------------------+
-
-
-Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |FPGAImplementation|uart_tx:uart_tx_inst|r_SM_Main                                                                             ;
+; State Machine - |FPGAImplementation|uart_tx:comb_4|r_SM_Main                                                                                   ;
 +--------------------------+-------------------------+--------------------------+--------------------------+---------------+---------------------+
 ; Name                     ; r_SM_Main.s_TX_STOP_BIT ; r_SM_Main.s_TX_DATA_BITS ; r_SM_Main.s_TX_START_BIT ; r_SM_Main.000 ; r_SM_Main.s_CLEANUP ;
 +--------------------------+-------------------------+--------------------------+--------------------------+---------------+---------------------+
@@ -253,49 +239,31 @@ Encoding Type:  One-Hot
 +--------------------------+-------------------------+--------------------------+--------------------------+---------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                        ;
-+-----------------------------------------------+-----------------------------------------------------------+
-; Register name                                 ; Reason for Removal                                        ;
-+-----------------------------------------------+-----------------------------------------------------------+
-; uart_rx:uart_rx_inst|r_Rx_DV                  ; Stuck at GND due to stuck port data_in                    ;
-; uart_tx:uart_tx_inst|r_Bit_Index[0..2]        ; Stuck at GND due to stuck port data_in                    ;
-; uart_tx:uart_tx_inst|r_Tx_Data[1..7]          ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main~2              ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main~3              ; Lost fanout                                               ;
-; uart_tx:uart_tx_inst|r_SM_Main~2              ; Lost fanout                                               ;
-; uart_tx:uart_tx_inst|r_SM_Main~3              ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main.s_CLEANUP      ; Stuck at GND due to stuck port data_in                    ;
-; uart_tx:uart_tx_inst|r_SM_Main.s_CLEANUP      ; Stuck at GND due to stuck port data_in                    ;
-; uart_rx:uart_rx_inst|r_Rx_Data                ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_Rx_Data_R              ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main.000            ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main.s_RX_START_BIT ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main.s_RX_DATA_BITS ; Lost fanout                                               ;
-; uart_rx:uart_rx_inst|r_SM_Main.s_RX_STOP_BIT  ; Lost fanout                                               ;
-; uart_tx:uart_tx_inst|r_SM_Main.s_TX_STOP_BIT  ; Merged with uart_tx:uart_tx_inst|r_SM_Main.s_TX_DATA_BITS ;
-; uart_tx:uart_tx_inst|r_Tx_Done                ; Stuck at GND due to stuck port data_in                    ;
-; uart_tx:uart_tx_inst|r_SM_Main.s_TX_DATA_BITS ; Stuck at GND due to stuck port data_in                    ;
-; Total Number of Removed Registers = 26        ;                                                           ;
-+-----------------------------------------------+-----------------------------------------------------------+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |FPGAImplementation|uart_rx:comb_3|estadoAtual                                                                                                                         ;
++-------------------------------------+---------------------------+--------------------------------+-------------------------------------+-----------------+-----------------------------+
+; Name                                ; estadoAtual.estadoStopBit ; estadoAtual.estadoDeEsperaBits ; estadoAtual.estadoVerificaBitInicio ; estadoAtual.000 ; estadoAtual.estadoDeLimpeza ;
++-------------------------------------+---------------------------+--------------------------------+-------------------------------------+-----------------+-----------------------------+
+; estadoAtual.000                     ; 0                         ; 0                              ; 0                                   ; 0               ; 0                           ;
+; estadoAtual.estadoVerificaBitInicio ; 0                         ; 0                              ; 1                                   ; 1               ; 0                           ;
+; estadoAtual.estadoDeEsperaBits      ; 0                         ; 1                              ; 0                                   ; 1               ; 0                           ;
+; estadoAtual.estadoStopBit           ; 1                         ; 0                              ; 0                                   ; 1               ; 0                           ;
+; estadoAtual.estadoDeLimpeza         ; 0                         ; 0                              ; 0                                   ; 1               ; 1                           ;
++-------------------------------------+---------------------------+--------------------------------+-------------------------------------+-----------------+-----------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                               ;
-+------------------------------------------+---------------------------+------------------------------------------------------------------------------------+
-; Register name                            ; Reason for Removal        ; Registers Removed due to This Register                                             ;
-+------------------------------------------+---------------------------+------------------------------------------------------------------------------------+
-; uart_tx:uart_tx_inst|r_Bit_Index[0]      ; Stuck at GND              ; uart_tx:uart_tx_inst|r_Tx_Data[6], uart_tx:uart_tx_inst|r_Tx_Data[5],              ;
-;                                          ; due to stuck port data_in ; uart_tx:uart_tx_inst|r_Tx_Data[4], uart_tx:uart_tx_inst|r_Tx_Data[3],              ;
-;                                          ;                           ; uart_tx:uart_tx_inst|r_Tx_Data[2], uart_tx:uart_tx_inst|r_Tx_Data[7]               ;
-; uart_rx:uart_rx_inst|r_SM_Main~2         ; Lost Fanouts              ; uart_rx:uart_rx_inst|r_SM_Main.000, uart_rx:uart_rx_inst|r_SM_Main.s_RX_START_BIT, ;
-;                                          ;                           ; uart_rx:uart_rx_inst|r_SM_Main.s_RX_STOP_BIT                                       ;
-; uart_rx:uart_rx_inst|r_Rx_DV             ; Stuck at GND              ; uart_rx:uart_rx_inst|r_Rx_Data, uart_rx:uart_rx_inst|r_Rx_Data_R                   ;
-;                                          ; due to stuck port data_in ;                                                                                    ;
-; uart_rx:uart_rx_inst|r_SM_Main~3         ; Lost Fanouts              ; uart_rx:uart_rx_inst|r_SM_Main.s_RX_DATA_BITS                                      ;
-; uart_tx:uart_tx_inst|r_SM_Main.s_CLEANUP ; Stuck at GND              ; uart_tx:uart_tx_inst|r_Tx_Done                                                     ;
-;                                          ; due to stuck port data_in ;                                                                                    ;
-+------------------------------------------+---------------------------+------------------------------------------------------------------------------------+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; uart_tx:comb_4|r_SM_Main~2            ; Lost fanout        ;
+; uart_tx:comb_4|r_SM_Main~3            ; Lost fanout        ;
+; uart_rx:comb_3|estadoAtual~2          ; Lost fanout        ;
+; uart_rx:comb_3|estadoAtual~3          ; Lost fanout        ;
+; Total Number of Removed Registers = 4 ;                    ;
++---------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -303,43 +271,56 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 4     ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 54    ;
+; Number of registers using Synchronous Clear  ; 16    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 2     ;
+; Number of registers using Clock Enable       ; 24    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Top-level Entity: |FPGAImplementation ;
-+----------------+-------+-----------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                      ;
-+----------------+-------+-----------------------------------------------------------+
-; CLKS_PER_BIT   ; 5209  ; Signed Integer                                            ;
-+----------------+-------+-----------------------------------------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; uart_rx:comb_3|serialDeEntrada         ; 12      ;
+; uart_rx:comb_3|serialDeEntradaBuffer   ; 1       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |FPGAImplementation|uart_tx:comb_4|r_Clock_Count[2]   ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[1] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_tx:comb_4|r_Bit_Index        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_rx:comb_3|indiceDoBit        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_rx:comb_3 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; CLKS_PER_BIT   ; 87    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: uart_tx:uart_tx_inst ;
-+----------------+-------+------------------------------------------+
-; Parameter Name ; Value ; Type                                     ;
-+----------------+-------+------------------------------------------+
-; CLKS_PER_BIT   ; 5209  ; Signed Integer                           ;
-+----------------+-------+------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: uart_rx:uart_rx_inst ;
-+----------------+-------+------------------------------------------+
-; Parameter Name ; Value ; Type                                     ;
-+----------------+-------+------------------------------------------+
-; CLKS_PER_BIT   ; 5209  ; Signed Integer                           ;
-+----------------+-------+------------------------------------------+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_tx:comb_4 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; CLKS_PER_BIT   ; 87    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -348,18 +329,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 30                          ;
-; cycloneiii_ff         ; 4                           ;
-;     ENA               ; 2                           ;
-;     plain             ; 2                           ;
-; cycloneiii_lcell_comb ; 4                           ;
-;     normal            ; 4                           ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 2                           ;
+; boundary_port         ; 23                          ;
+; cycloneiii_ff         ; 54                          ;
+;     ENA               ; 8                           ;
+;     ENA SCLR          ; 16                          ;
+;     plain             ; 30                          ;
+; cycloneiii_lcell_comb ; 88                          ;
+;     arith             ; 14                          ;
+;         2 data inputs ; 14                          ;
+;     normal            ; 74                          ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 21                          ;
+;         4 data inputs ; 46                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 0.60                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.53                        ;
 +-----------------------+-----------------------------+
 
 
@@ -378,65 +363,37 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Thu Aug 24 18:26:24 2023
+    Info: Processing started: Thu Aug 24 21:16:44 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
-    Info (12023): Found entity 1: uart_rx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 23
+    Info (12023): Found entity 1: uart_rx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
     Info (12023): Found entity 1: uart_tx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 14
 Info (12021): Found 1 design units, including 1 entities, in source file fpgaimplementation.v
     Info (12023): Found entity 1: FPGAImplementation File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(13): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 13
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(14): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 14
 Info (12127): Elaborating entity "FPGAImplementation" for the top level hierarchy
-Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:uart_tx_inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(68): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 68
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(86): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 86
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 116
-Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uart_rx_inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 31
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(158): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 158
-Warning (12125): Using design file decoder.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: decoder File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 1
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 36
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "o_Tx_Done" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 6
-    Warning (13410): Pin "o_Rx_DV" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 8
-    Warning (13410): Pin "o_Rx_Byte[0]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[1]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[2]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[3]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[4]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[5]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[6]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "o_Rx_Byte[7]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 9
-    Warning (13410): Pin "display2[0]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
-    Warning (13410): Pin "display2[1]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
-    Warning (13410): Pin "display2[2]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
-    Warning (13410): Pin "display2[3]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
-    Warning (13410): Pin "display2[4]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
-    Warning (13410): Pin "display2[5]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
-    Warning (13410): Pin "display2[6]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 10
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 13
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(138): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 138
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_4" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 14
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(67): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 67
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(85): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 85
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(95): truncated value with size 32 to match size of target (3) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 95
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(115): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 115
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 17 registers lost all their fanouts during netlist optimizations.
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 9 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[1]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[2]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[3]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[4]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[5]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[6]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[7]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-    Warning (15610): No output dependent on input pin "i_Rx_Serial" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 12
-    Warning (15610): No output dependent on input pin "i_Tx_Byte[0]" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 4
-Info (21057): Implemented 35 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 122 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
-    Info (21059): Implemented 19 output pins
-    Info (21061): Implemented 5 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info (21059): Implemented 12 output pins
+    Info (21061): Implemented 99 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
     Info: Peak virtual memory: 4774 megabytes
-    Info: Processing ended: Thu Aug 24 18:26:33 2023
+    Info: Processing ended: Thu Aug 24 21:16:53 2023
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:15
 
