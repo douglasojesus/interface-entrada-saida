@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Fri Aug 25 16:56:37 2023
+Fri Aug 25 17:05:05 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -50,7 +50,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Aug 25 16:56:37 2023          ;
+; Analysis & Synthesis Status        ; Successful - Fri Aug 25 17:05:05 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
@@ -366,30 +366,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Fri Aug 25 16:56:27 2023
+    Info: Processing started: Fri Aug 25 17:04:55 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
-    Info (12023): Found entity 1: uart_rx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 11
+    Info (12023): Found entity 1: uart_rx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
     Info (12023): Found entity 1: uart_tx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file fpgaimplementation.v
     Info (12023): Found entity 1: FPGAImplementation File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file decoder.v
     Info (12023): Found entity 1: decoder File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(14): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 14
 Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(15): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 15
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(16): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 16
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(18): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 18
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(17): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 17
 Info (12127): Elaborating entity "FPGAImplementation" for the top level hierarchy
-Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 15
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(142): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 142
-Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_4" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 16
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(57): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 57
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(74): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 74
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(83): truncated value with size 32 to match size of target (3) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 83
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(101): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 101
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_5" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 18
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 14
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(139): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 139
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_4" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 15
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(77): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 77
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(98): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 98
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(107): truncated value with size 32 to match size of target (3) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 107
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(128): truncated value with size 32 to match size of target (8) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 128
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_5" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 17
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "display[3]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 12
 Info (286030): Timing-Driven Synthesis is running
@@ -402,8 +402,8 @@ Info (21057): Implemented 134 device resources after synthesis - the final resou
     Info (21061): Implemented 104 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
     Info: Peak virtual memory: 4774 megabytes
-    Info: Processing ended: Fri Aug 25 16:56:37 2023
+    Info: Processing ended: Fri Aug 25 17:05:05 2023
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Total CPU time (on all processors): 00:00:15
 
 

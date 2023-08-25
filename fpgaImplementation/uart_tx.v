@@ -15,12 +15,20 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
    output      bitsEstaoEnviados //Sinal de saída que indica que os dados foram enviados.
    );
   
+/*
+*Estados da MEF. Esses estados são utilizados para controlar o processo de transmissão.
+*/
+
 	localparam	estadoDeEspera			= 3'b000,
 					estadoEnviaBitInicio = 3'b001,
 					estadoEnviaBits		= 3'b010,
 					estadoEnviaBitFinal  = 3'b011,
 					estadoDeLimpeza      = 3'b100;
    
+/*
+*Diversos registradores são definidos para armazenar informações importantes durante a transmissão.
+*/	
+	
 	reg [2:0]   estadoAtual					= 0;
 	reg [7:0]   contadorDeClock			= 0;
 	reg [2:0]   indiceDoBitTransmitido  = 0;
@@ -28,9 +36,18 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
 	reg         transmissaoConcluida    = 0;
 	reg         transmissaoEmAndamento  = 0;
      
+/*
+*Implementação da Máquina de Estados.
+*/
+	  
 	always @(posedge clock)
 		begin
 			case (estadoAtual)
+			
+/*
+*O transmissor fica ocioso, com o bit serial em nível alto. Se houver dados para transmitir, ele passa para o estado estadoEnviaBitInicio.
+*/
+
 				estadoDeEspera :
 					begin
 						bitSerialAtual   <= 1'b1;         // Drive Line High for Idle
@@ -47,7 +64,10 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
 						estadoAtual <= estadoDeEspera;
 					end // case: estadoDeEspera
 		
-        // Send out Start Bit. Start bit = 0
+/*
+*Envia o bit de início da transmissão (0) e aguarda um número de ciclos de clock determinado.
+*/
+		
 				estadoEnviaBitInicio :
 					begin
 						bitSerialAtual <= 1'b0;
@@ -64,7 +84,11 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
 							end
 					end // case: estadoEnviaBitInicio
 		
-        // Wait CLOKS_POR_BIT-1 clock cycles for data bits to finish         
+/*
+*Envia os bits de dados um por um e avança para o próximo bit até que todos os 8 bits sejam transmitidos.
+*Aguarda CLOCK-POR-BIT - 1 ciclos de clock para finalizar.
+*/
+      
 				estadoEnviaBits :
 					begin
 						bitSerialAtual <= dadosASeremTransmitidos[indiceDoBitTransmitido];
@@ -91,7 +115,10 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
 							end
 					end // case: estadoEnviaBits
 
-        // Send out Stop bit.  Stop bit = 1
+/*
+*Envia o bit de parada da transmissão (1) e aguarda um número de ciclos de clock.
+*/
+
 				estadoEnviaBitFinal :
 					begin
 						bitSerialAtual <= 1'b1;
@@ -110,7 +137,10 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
 							end
 					end // case: estadoEnviaBitFinal
 
-        // Stay here 1 clock
+/*
+*É um estado intermediário de finalização da transmissão.
+*/
+					
 				estadoDeLimpeza :
 					begin
 						transmissaoConcluida <= 1'b1;
@@ -122,6 +152,10 @@ module uart_tx #(parameter CLOKS_POR_BIT = 87)
          
 			endcase
 		end
+ 
+/*
+*Os sinais de saída indicaTransmissao e bitsEstaoEnviados são atribuídos aos valores dos registradores correspondentes para indicar o estado da transmissão.
+*/
  
 	assign indicaTransmissao = transmissaoEmAndamento;
 	assign bitsEstaoEnviados   = transmissaoConcluida;

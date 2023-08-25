@@ -1,15 +1,15 @@
 |FPGAImplementation
 clock => clock.IN2
 bitSerialAtual => bitSerialAtual.IN1
-bitsEstaoRecebidos << uart_rx:comb_3.port2
-byteCompleto[0] << byteCompleto[0].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[1] << byteCompleto[1].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[2] << byteCompleto[2].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[3] << byteCompleto[3].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[4] << byteCompleto[4].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[5] << byteCompleto[5].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[6] << byteCompleto[6].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[7] << byteCompleto[7].DB_MAX_OUTPUT_PORT_TYPE
+bitsEstaoRecebidos <= uart_rx:comb_3.port2
+byteCompleto[0] <= byteCompleto[0].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[1] <= byteCompleto[1].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[2] <= byteCompleto[2].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[3] <= byteCompleto[3].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[4] <= byteCompleto[4].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[5] <= byteCompleto[5].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[6] <= byteCompleto[6].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[7] <= byteCompleto[7].DB_MAX_OUTPUT_PORT_TYPE
 i_Tx_DV => i_Tx_DV.IN1
 i_Tx_Byte[0] => i_Tx_Byte[0].IN1
 i_Tx_Byte[1] => i_Tx_Byte[1].IN1
@@ -19,16 +19,16 @@ i_Tx_Byte[4] => i_Tx_Byte[4].IN1
 i_Tx_Byte[5] => i_Tx_Byte[5].IN1
 i_Tx_Byte[6] => i_Tx_Byte[6].IN1
 i_Tx_Byte[7] => i_Tx_Byte[7].IN1
-o_Tx_Active << uart_tx:comb_4.port3
-o_Tx_Serial << uart_tx:comb_4.port4
-o_Tx_Done << uart_tx:comb_4.port5
-display[0] << decoder:comb_5.port1
-display[1] << decoder:comb_5.port1
-display[2] << decoder:comb_5.port1
-display[3] << decoder:comb_5.port1
-display[4] << decoder:comb_5.port1
-display[5] << decoder:comb_5.port1
-display[6] << decoder:comb_5.port1
+o_Tx_Active <= uart_tx:comb_4.port3
+o_Tx_Serial <= uart_tx:comb_4.port4
+o_Tx_Done <= uart_tx:comb_4.port5
+display[0] <= decoder:comb_5.port1
+display[1] <= decoder:comb_5.port1
+display[2] <= decoder:comb_5.port1
+display[3] <= decoder:comb_5.port1
+display[4] <= decoder:comb_5.port1
+display[5] <= decoder:comb_5.port1
+display[6] <= decoder:comb_5.port1
 
 
 |FPGAImplementation|uart_rx:comb_3
