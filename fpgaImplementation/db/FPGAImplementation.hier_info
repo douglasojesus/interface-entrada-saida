@@ -1,15 +1,15 @@
 |FPGAImplementation
-i_Clock => i_Clock.IN2
-i_Rx_Serial => i_Rx_Serial.IN1
-o_Rx_DV << uart_rx:comb_3.port2
-o_Rx_Byte[0] << uart_rx:comb_3.port3
-o_Rx_Byte[1] << uart_rx:comb_3.port3
-o_Rx_Byte[2] << uart_rx:comb_3.port3
-o_Rx_Byte[3] << uart_rx:comb_3.port3
-o_Rx_Byte[4] << uart_rx:comb_3.port3
-o_Rx_Byte[5] << uart_rx:comb_3.port3
-o_Rx_Byte[6] << uart_rx:comb_3.port3
-o_Rx_Byte[7] << uart_rx:comb_3.port3
+clock => clock.IN2
+bitSerialAtual => bitSerialAtual.IN1
+bitsEstaoRecebidos <= uart_rx:comb_3.port2
+byteCompleto[0] <= byteCompleto[0].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[1] <= byteCompleto[1].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[2] <= byteCompleto[2].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[3] <= byteCompleto[3].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[4] <= byteCompleto[4].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[5] <= byteCompleto[5].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[6] <= byteCompleto[6].DB_MAX_OUTPUT_PORT_TYPE
+byteCompleto[7] <= byteCompleto[7].DB_MAX_OUTPUT_PORT_TYPE
 i_Tx_DV => i_Tx_DV.IN1
 i_Tx_Byte[0] => i_Tx_Byte[0].IN1
 i_Tx_Byte[1] => i_Tx_Byte[1].IN1
@@ -19,9 +19,16 @@ i_Tx_Byte[4] => i_Tx_Byte[4].IN1
 i_Tx_Byte[5] => i_Tx_Byte[5].IN1
 i_Tx_Byte[6] => i_Tx_Byte[6].IN1
 i_Tx_Byte[7] => i_Tx_Byte[7].IN1
-o_Tx_Active << uart_tx:comb_4.port3
-o_Tx_Serial << uart_tx:comb_4.port4
-o_Tx_Done << uart_tx:comb_4.port5
+o_Tx_Active <= uart_tx:comb_4.port3
+o_Tx_Serial <= uart_tx:comb_4.port4
+o_Tx_Done <= uart_tx:comb_4.port5
+display[0] <= decoder:comb_5.port1
+display[1] <= decoder:comb_5.port1
+display[2] <= decoder:comb_5.port1
+display[3] <= decoder:comb_5.port1
+display[4] <= decoder:comb_5.port1
+display[5] <= decoder:comb_5.port1
+display[6] <= decoder:comb_5.port1
 
 
 |FPGAImplementation|uart_rx:comb_3
@@ -106,5 +113,31 @@ i_Tx_Byte[7] => r_Tx_Data.DATAB
 o_Tx_Active <= r_Tx_Active.DB_MAX_OUTPUT_PORT_TYPE
 o_Tx_Serial <= o_Tx_Serial~reg0.DB_MAX_OUTPUT_PORT_TYPE
 o_Tx_Done <= r_Tx_Done.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FPGAImplementation|decoder:comb_5
+word[0] => Equal0.IN15
+word[0] => Equal1.IN15
+word[1] => Equal0.IN14
+word[1] => Equal1.IN14
+word[2] => Equal0.IN13
+word[2] => Equal1.IN13
+word[3] => Equal0.IN12
+word[3] => Equal1.IN12
+word[4] => Equal0.IN11
+word[4] => Equal1.IN11
+word[5] => Equal0.IN10
+word[5] => Equal1.IN10
+word[6] => Equal0.IN9
+word[6] => Equal1.IN9
+word[7] => Equal0.IN8
+word[7] => Equal1.IN8
+display[0] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+display[1] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+display[2] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+display[3] <= <GND>
+display[4] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+display[5] <= WideNor0.DB_MAX_OUTPUT_PORT_TYPE
+display[6] <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
 
 
