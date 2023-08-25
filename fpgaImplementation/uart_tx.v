@@ -8,7 +8,7 @@
 module uart_tx #(parameter CLOKS_POR_BIT = 5209)
   (
    input       clock, //Sinal de clock de entrada para sincronização.
-   input       haDadosParaTransmitir, //Um sinal de dados válido que indica quando há dados para serem transmitidos.
+   input       haDadosParaTransmitir, //Um sinal de dados válido que indica quando há dados para serem transmitidos. Os dados que são avaliados são do DHT11.
    output      indicaTransmissao, //Indica se a transmissão está ativa.
    output reg  bitSerialAtual, //O sinal serial que é transmitido.
    output      bitsEstaoEnviados //Sinal de saída que indica que os dados foram enviados.
