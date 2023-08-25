@@ -1,18 +1,19 @@
-module FPGAImplementation(clock, bitSerialAtual, bitsEstaoRecebidos, byteCompleto, i_Tx_DV, i_Tx_Byte, o_Tx_Active, o_Tx_Serial, o_Tx_Done, display);
+module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, byteCompleto, haDadosParaTransmitir, 
+									byteASerTransmitido, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados, display);
 
-	input 			clock;
-	input 			bitSerialAtual;
-	output 			bitsEstaoRecebidos;
-	output [7:0] 	byteCompleto;
-	input 			i_Tx_DV;
-	input [7:0] 	i_Tx_Byte; 
-	output 			o_Tx_Active;
-	output 			o_Tx_Serial;
-	output 			o_Tx_Done;
-	output [6:0]	display;
+	input 				clock;
+	input 				bitSerialAtualRX;
+	output 				bitsEstaoRecebidos;
+	output	[7:0] 	byteCompleto;
+	input 				haDadosParaTransmitir;
+	input		[7:0] 	byteASerTransmitido; 
+	output 				indicaTransmissao;
+	output 				bitSerialAtualTX;
+	output 				bitsEstaoEnviados;
+	output	[6:0]		display;
 	
 	uart_rx (clock, bitSerialAtual, bitsEstaoRecebidos, byteCompleto);
-	uart_tx (clock, i_Tx_DV, i_Tx_Byte, o_Tx_Active, o_Tx_Serial, o_Tx_Done);
+	uart_tx (clock, haDadosParaTransmitir, byteASerTransmitido, indicaTransmissao, bitSerialAtual, bitsEstaoEnviados);
 	
 	decoder (byteCompleto, display);
 
