@@ -1,5 +1,5 @@
 Timing Analyzer report for FPGAImplementation
-Thu Aug 24 21:40:05 2023
+Fri Aug 25 16:56:50 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -104,8 +104,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.8%      ;
-;     Processors 3-4         ;   0.4%      ;
+;     Processor 2            ;   2.3%      ;
+;     Processors 3-4         ;   0.6%      ;
 +----------------------------+-------------+
 
 
@@ -273,11 +273,11 @@ No paths to report.
 ; -1.691 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[1]             ; clock        ; clock       ; 1.000        ; 0.336      ; 3.025      ;
 ; -1.679 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|armazenaBits[4]                ; clock        ; clock       ; 1.000        ; 0.338      ; 3.015      ;
 ; -1.677 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|armazenaBits[6]                ; clock        ; clock       ; 1.000        ; 0.338      ; 3.013      ;
-; -1.670 ; uart_tx:comb_4|r_Bit_Index[1]                      ; uart_tx:comb_4|o_Tx_Serial                    ; clock        ; clock       ; 1.000        ; -0.089     ; 2.579      ;
-; -1.670 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[5]               ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
-; -1.670 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[7]               ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
-; -1.670 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[0]               ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
-; -1.670 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[2]               ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
+; -1.670 ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; uart_tx:comb_4|bitSerialAtual                 ; clock        ; clock       ; 1.000        ; -0.089     ; 2.579      ;
+; -1.670 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[5]             ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
+; -1.670 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[7]             ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
+; -1.670 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[0]             ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
+; -1.670 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[2]             ; clock        ; clock       ; 1.000        ; -0.072     ; 2.596      ;
 +--------+----------------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -296,54 +296,54 @@ No paths to report.
 ; 0.393 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|armazenaBits[0]                     ; clock        ; clock       ; 0.000        ; 0.090      ; 0.669      ;
 ; 0.393 ; uart_rx:comb_3|indiceDoBit[2]                      ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.090      ; 0.669      ;
 ; 0.393 ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; clock        ; clock       ; 0.000        ; 0.090      ; 0.669      ;
-; 0.394 ; uart_tx:comb_4|o_Tx_Serial                         ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
-; 0.394 ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
-; 0.394 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
-; 0.394 ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
-; 0.394 ; uart_tx:comb_4|r_Bit_Index[1]                      ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
+; 0.394 ; uart_tx:comb_4|bitSerialAtual                      ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
+; 0.394 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
+; 0.394 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
+; 0.394 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
+; 0.394 ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.089      ; 0.669      ;
 ; 0.410 ; uart_rx:comb_3|dadosOk                             ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.073      ; 0.669      ;
 ; 0.410 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.073      ; 0.669      ;
 ; 0.410 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.073      ; 0.669      ;
 ; 0.410 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; clock        ; clock       ; 0.000        ; 0.073      ; 0.669      ;
 ; 0.410 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.073      ; 0.669      ;
 ; 0.410 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.073      ; 0.669      ;
-; 0.411 ; uart_tx:comb_4|r_Tx_Active                         ; uart_tx:comb_4|r_Tx_Active                         ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
-; 0.411 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_Bit_Index[2]                      ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
-; 0.411 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_Bit_Index[0]                      ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
-; 0.411 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_SM_Main.000                       ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
+; 0.411 ; uart_tx:comb_4|transmissaoEmAndamento              ; uart_tx:comb_4|transmissaoEmAndamento              ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
+; 0.411 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
+; 0.411 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
+; 0.411 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.072      ; 0.669      ;
 ; 0.444 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.130      ;
 ; 0.469 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[0]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.155      ;
 ; 0.472 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.158      ;
 ; 0.473 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[3]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.159      ;
 ; 0.474 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.160      ;
 ; 0.475 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[2]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.161      ;
-; 0.492 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; clock        ; clock       ; 0.000        ; 0.496      ; 1.174      ;
+; 0.492 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; clock        ; clock       ; 0.000        ; 0.496      ; 1.174      ;
 ; 0.644 ; uart_rx:comb_3|contadorDeClock[1]                  ; uart_rx:comb_3|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.090      ; 0.920      ;
-; 0.649 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[3]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.907      ;
-; 0.651 ; uart_tx:comb_4|r_Clock_Count[1]                    ; uart_tx:comb_4|r_Clock_Count[1]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.909      ;
-; 0.653 ; uart_tx:comb_4|r_Clock_Count[6]                    ; uart_tx:comb_4|r_Clock_Count[6]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.911      ;
+; 0.649 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.907      ;
+; 0.651 ; uart_tx:comb_4|contadorDeClock[1]                  ; uart_tx:comb_4|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.909      ;
+; 0.653 ; uart_tx:comb_4|contadorDeClock[6]                  ; uart_tx:comb_4|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.911      ;
 ; 0.653 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.339      ;
-; 0.654 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.912      ;
+; 0.654 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.912      ;
 ; 0.654 ; uart_rx:comb_3|contadorDeClock[0]                  ; uart_rx:comb_3|contadorDeClock[0]                  ; clock        ; clock       ; 0.000        ; 0.090      ; 0.930      ;
-; 0.656 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.914      ;
+; 0.656 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.914      ;
 ; 0.663 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 0.922      ;
 ; 0.664 ; uart_rx:comb_3|contadorDeClock[2]                  ; uart_rx:comb_3|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 0.923      ;
 ; 0.665 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 0.924      ;
-; 0.669 ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.089      ; 0.944      ;
-; 0.670 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[0]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.928      ;
-; 0.680 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_Tx_Done                           ; clock        ; clock       ; 0.000        ; 0.498      ; 1.364      ;
-; 0.680 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_SM_Main.s_CLEANUP                 ; clock        ; clock       ; 0.000        ; 0.498      ; 1.364      ;
-; 0.692 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.496      ; 1.374      ;
-; 0.693 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.089      ; 0.968      ;
-; 0.694 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_Clock_Count[7]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 0.952      ;
-; 0.694 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.496      ; 1.376      ;
+; 0.669 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.089      ; 0.944      ;
+; 0.670 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[0]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.928      ;
+; 0.680 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|transmissaoConcluida                ; clock        ; clock       ; 0.000        ; 0.498      ; 1.364      ;
+; 0.680 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|estadoAtual.estadoDeLimpeza         ; clock        ; clock       ; 0.000        ; 0.498      ; 1.364      ;
+; 0.692 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.496      ; 1.374      ;
+; 0.693 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.089      ; 0.968      ;
+; 0.694 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 0.952      ;
+; 0.694 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.496      ; 1.376      ;
 ; 0.694 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 0.953      ;
-; 0.701 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.496      ; 1.383      ;
+; 0.701 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.496      ; 1.383      ;
 ; 0.717 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.501      ; 1.404      ;
 ; 0.717 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.501      ; 1.404      ;
 ; 0.718 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.073      ; 0.977      ;
-; 0.720 ; uart_tx:comb_4|r_SM_Main.s_CLEANUP                 ; uart_tx:comb_4|r_Tx_Done                           ; clock        ; clock       ; 0.000        ; 0.089      ; 0.995      ;
-; 0.725 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Tx_Active                         ; clock        ; clock       ; 0.000        ; 0.072      ; 0.983      ;
+; 0.720 ; uart_tx:comb_4|estadoAtual.estadoDeLimpeza         ; uart_tx:comb_4|transmissaoConcluida                ; clock        ; clock       ; 0.000        ; 0.089      ; 0.995      ;
+; 0.725 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|transmissaoEmAndamento              ; clock        ; clock       ; 0.000        ; 0.072      ; 0.983      ;
 ; 0.725 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.073      ; 0.984      ;
 ; 0.726 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.073      ; 0.985      ;
 ; 0.749 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.073      ; 1.008      ;
@@ -353,38 +353,38 @@ No paths to report.
 ; 0.793 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[2]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.479      ;
 ; 0.798 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.484      ;
 ; 0.798 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[3]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.484      ;
-; 0.801 ; uart_tx:comb_4|r_Tx_Data[6]                        ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.496      ; 1.483      ;
+; 0.801 ; uart_tx:comb_4|dadosASeremTransmitidos[6]          ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.496      ; 1.483      ;
 ; 0.805 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.500      ; 1.491      ;
 ; 0.806 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.073      ; 1.065      ;
 ; 0.813 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; clock        ; clock       ; 0.000        ; 0.500      ; 1.499      ;
-; 0.816 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.496      ; 1.498      ;
-; 0.820 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.089      ; 1.095      ;
+; 0.816 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.496      ; 1.498      ;
+; 0.820 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.089      ; 1.095      ;
 ; 0.826 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.500      ; 1.512      ;
 ; 0.828 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 1.087      ;
-; 0.835 ; uart_tx:comb_4|r_Clock_Count[5]                    ; uart_tx:comb_4|r_Clock_Count[5]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.093      ;
+; 0.835 ; uart_tx:comb_4|contadorDeClock[5]                  ; uart_tx:comb_4|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.093      ;
 ; 0.835 ; uart_rx:comb_3|contadorDeClock[3]                  ; uart_rx:comb_3|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 1.094      ;
-; 0.847 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.496      ; 1.529      ;
-; 0.854 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.496      ; 1.536      ;
+; 0.847 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.496      ; 1.529      ;
+; 0.854 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.496      ; 1.536      ;
 ; 0.864 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.073      ; 1.123      ;
-; 0.889 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Bit_Index[0]                      ; clock        ; clock       ; 0.000        ; 0.072      ; 1.147      ;
+; 0.889 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; clock        ; clock       ; 0.000        ; 0.072      ; 1.147      ;
 ; 0.903 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.501      ; 1.590      ;
 ; 0.906 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.501      ; 1.593      ;
 ; 0.914 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|estadoAtual.estadoDeLimpeza         ; clock        ; clock       ; 0.000        ; 0.073      ; 1.173      ;
 ; 0.918 ; uart_rx:comb_3|estadoAtual.estadoDeLimpeza         ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.073      ; 1.177      ;
 ; 0.927 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.500      ; 1.613      ;
-; 0.951 ; uart_tx:comb_4|r_Tx_Data[3]                        ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.496      ; 1.633      ;
+; 0.951 ; uart_tx:comb_4|dadosASeremTransmitidos[3]          ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.496      ; 1.633      ;
 ; 0.962 ; uart_rx:comb_3|contadorDeClock[0]                  ; uart_rx:comb_3|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.090      ; 1.238      ;
-; 0.967 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.225      ;
-; 0.968 ; uart_tx:comb_4|r_Clock_Count[1]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.226      ;
-; 0.974 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[1]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.232      ;
-; 0.979 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.237      ;
-; 0.980 ; uart_tx:comb_4|r_Clock_Count[6]                    ; uart_tx:comb_4|r_Clock_Count[7]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.238      ;
-; 0.981 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[3]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.239      ;
-; 0.983 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[5]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.241      ;
+; 0.967 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.225      ;
+; 0.968 ; uart_tx:comb_4|contadorDeClock[1]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.226      ;
+; 0.974 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.232      ;
+; 0.979 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.237      ;
+; 0.980 ; uart_tx:comb_4|contadorDeClock[6]                  ; uart_tx:comb_4|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.238      ;
+; 0.981 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.239      ;
+; 0.983 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.241      ;
 ; 0.983 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 1.242      ;
-; 0.984 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.496      ; 1.666      ;
-; 0.986 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.244      ;
-; 0.988 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[6]                    ; clock        ; clock       ; 0.000        ; 0.072      ; 1.246      ;
+; 0.984 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.496      ; 1.666      ;
+; 0.986 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.244      ;
+; 0.988 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.072      ; 1.246      ;
 ; 0.990 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 1.249      ;
 +-------+----------------------------------------------------+----------------------------------------------------+--------------+-------------+--------------+------------+------------+
 
@@ -559,11 +559,11 @@ No paths to report.
 ; Slack ; From Node                                          ; To Node                                            ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+----------------------------------------------------+----------------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; 0.344 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.082      ; 0.597      ;
-; 0.345 ; uart_tx:comb_4|o_Tx_Serial                         ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
-; 0.345 ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
-; 0.345 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
-; 0.345 ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
-; 0.345 ; uart_tx:comb_4|r_Bit_Index[1]                      ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
+; 0.345 ; uart_tx:comb_4|bitSerialAtual                      ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
+; 0.345 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
+; 0.345 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
+; 0.345 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
+; 0.345 ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
 ; 0.345 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
 ; 0.345 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
 ; 0.345 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.081      ; 0.597      ;
@@ -579,47 +579,47 @@ No paths to report.
 ; 0.360 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; clock        ; clock       ; 0.000        ; 0.066      ; 0.597      ;
 ; 0.360 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.597      ;
 ; 0.360 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.597      ;
-; 0.361 ; uart_tx:comb_4|r_Tx_Active                         ; uart_tx:comb_4|r_Tx_Active                         ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
-; 0.361 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_Bit_Index[2]                      ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
-; 0.361 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_Bit_Index[0]                      ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
-; 0.361 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_SM_Main.000                       ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
+; 0.361 ; uart_tx:comb_4|transmissaoEmAndamento              ; uart_tx:comb_4|transmissaoEmAndamento              ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
+; 0.361 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
+; 0.361 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
+; 0.361 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.065      ; 0.597      ;
 ; 0.415 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.043      ;
 ; 0.436 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[0]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.064      ;
 ; 0.439 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.067      ;
 ; 0.440 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[3]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.068      ;
-; 0.441 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; clock        ; clock       ; 0.000        ; 0.460      ; 1.072      ;
+; 0.441 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; clock        ; clock       ; 0.000        ; 0.460      ; 1.072      ;
 ; 0.441 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.069      ;
 ; 0.442 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[2]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.070      ;
 ; 0.581 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.209      ;
 ; 0.589 ; uart_rx:comb_3|contadorDeClock[1]                  ; uart_rx:comb_3|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.081      ; 0.841      ;
-; 0.593 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[3]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.829      ;
-; 0.595 ; uart_tx:comb_4|r_Clock_Count[1]                    ; uart_tx:comb_4|r_Clock_Count[1]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.831      ;
-; 0.596 ; uart_tx:comb_4|r_Clock_Count[6]                    ; uart_tx:comb_4|r_Clock_Count[6]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.832      ;
-; 0.597 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.833      ;
-; 0.598 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.834      ;
+; 0.593 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.829      ;
+; 0.595 ; uart_tx:comb_4|contadorDeClock[1]                  ; uart_tx:comb_4|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.831      ;
+; 0.596 ; uart_tx:comb_4|contadorDeClock[6]                  ; uart_tx:comb_4|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.832      ;
+; 0.597 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.833      ;
+; 0.598 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.834      ;
 ; 0.598 ; uart_rx:comb_3|contadorDeClock[0]                  ; uart_rx:comb_3|contadorDeClock[0]                  ; clock        ; clock       ; 0.000        ; 0.081      ; 0.850      ;
 ; 0.605 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.841      ;
 ; 0.606 ; uart_rx:comb_3|contadorDeClock[2]                  ; uart_rx:comb_3|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.842      ;
 ; 0.610 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.846      ;
-; 0.612 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[0]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.848      ;
-; 0.613 ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.081      ; 0.865      ;
-; 0.619 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_Tx_Done                           ; clock        ; clock       ; 0.000        ; 0.460      ; 1.250      ;
-; 0.619 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_SM_Main.s_CLEANUP                 ; clock        ; clock       ; 0.000        ; 0.460      ; 1.250      ;
-; 0.633 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_Clock_Count[7]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 0.869      ;
+; 0.612 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[0]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.848      ;
+; 0.613 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.081      ; 0.865      ;
+; 0.619 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|transmissaoConcluida                ; clock        ; clock       ; 0.000        ; 0.460      ; 1.250      ;
+; 0.619 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|estadoAtual.estadoDeLimpeza         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.250      ;
+; 0.633 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.869      ;
 ; 0.633 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 0.869      ;
-; 0.635 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.460      ; 1.266      ;
-; 0.636 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.081      ; 0.888      ;
-; 0.641 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.272      ;
+; 0.635 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.266      ;
+; 0.636 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.081      ; 0.888      ;
+; 0.641 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.460      ; 1.272      ;
 ; 0.645 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.458      ; 1.274      ;
 ; 0.645 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.458      ; 1.274      ;
-; 0.649 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.460      ; 1.280      ;
-; 0.655 ; uart_tx:comb_4|r_SM_Main.s_CLEANUP                 ; uart_tx:comb_4|r_Tx_Done                           ; clock        ; clock       ; 0.000        ; 0.081      ; 0.907      ;
+; 0.649 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.460      ; 1.280      ;
+; 0.655 ; uart_tx:comb_4|estadoAtual.estadoDeLimpeza         ; uart_tx:comb_4|transmissaoConcluida                ; clock        ; clock       ; 0.000        ; 0.081      ; 0.907      ;
 ; 0.658 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.895      ;
-; 0.660 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Tx_Active                         ; clock        ; clock       ; 0.000        ; 0.065      ; 0.896      ;
+; 0.660 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|transmissaoEmAndamento              ; clock        ; clock       ; 0.000        ; 0.065      ; 0.896      ;
 ; 0.662 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.066      ; 0.899      ;
 ; 0.664 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.901      ;
 ; 0.664 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.901      ;
-; 0.693 ; uart_tx:comb_4|r_Tx_Data[6]                        ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.324      ;
+; 0.693 ; uart_tx:comb_4|dadosASeremTransmitidos[6]          ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.460      ; 1.324      ;
 ; 0.693 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.930      ;
 ; 0.707 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.335      ;
 ; 0.722 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.350      ;
@@ -629,34 +629,34 @@ No paths to report.
 ; 0.732 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[0]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.360      ;
 ; 0.732 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.066      ; 0.969      ;
 ; 0.737 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[2]                     ; clock        ; clock       ; 0.000        ; 0.457      ; 1.365      ;
-; 0.739 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.370      ;
+; 0.739 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.460      ; 1.370      ;
 ; 0.756 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.457      ; 1.384      ;
-; 0.758 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.081      ; 1.010      ;
+; 0.758 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.081      ; 1.010      ;
 ; 0.766 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.002      ;
-; 0.775 ; uart_tx:comb_4|r_Clock_Count[5]                    ; uart_tx:comb_4|r_Clock_Count[5]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.011      ;
-; 0.776 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.460      ; 1.407      ;
+; 0.775 ; uart_tx:comb_4|contadorDeClock[5]                  ; uart_tx:comb_4|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.011      ;
+; 0.776 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.407      ;
 ; 0.776 ; uart_rx:comb_3|contadorDeClock[3]                  ; uart_rx:comb_3|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.012      ;
-; 0.790 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.460      ; 1.421      ;
+; 0.790 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.460      ; 1.421      ;
 ; 0.794 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.066      ; 1.031      ;
 ; 0.815 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.458      ; 1.444      ;
-; 0.825 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Bit_Index[0]                      ; clock        ; clock       ; 0.000        ; 0.065      ; 1.061      ;
-; 0.831 ; uart_tx:comb_4|r_Tx_Data[3]                        ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.460      ; 1.462      ;
+; 0.825 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; clock        ; clock       ; 0.000        ; 0.065      ; 1.061      ;
+; 0.831 ; uart_tx:comb_4|dadosASeremTransmitidos[3]          ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.460      ; 1.462      ;
 ; 0.831 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.458      ; 1.460      ;
 ; 0.844 ; uart_rx:comb_3|estadoAtual.estadoDeLimpeza         ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.066      ; 1.081      ;
 ; 0.847 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|estadoAtual.estadoDeLimpeza         ; clock        ; clock       ; 0.000        ; 0.066      ; 1.084      ;
 ; 0.847 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.457      ; 1.475      ;
-; 0.858 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.460      ; 1.489      ;
+; 0.858 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.460      ; 1.489      ;
 ; 0.867 ; uart_rx:comb_3|contadorDeClock[0]                  ; uart_rx:comb_3|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.081      ; 1.119      ;
-; 0.879 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.115      ;
-; 0.879 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[1]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.115      ;
-; 0.882 ; uart_tx:comb_4|r_Clock_Count[1]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.118      ;
-; 0.884 ; uart_tx:comb_4|r_Clock_Count[6]                    ; uart_tx:comb_4|r_Clock_Count[7]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.120      ;
-; 0.885 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[3]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.121      ;
-; 0.886 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[5]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.122      ;
-; 0.890 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.126      ;
+; 0.879 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.115      ;
+; 0.879 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.115      ;
+; 0.882 ; uart_tx:comb_4|contadorDeClock[1]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.118      ;
+; 0.884 ; uart_tx:comb_4|contadorDeClock[6]                  ; uart_tx:comb_4|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.120      ;
+; 0.885 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.121      ;
+; 0.886 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.122      ;
+; 0.890 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.126      ;
 ; 0.893 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.129      ;
 ; 0.894 ; uart_rx:comb_3|contadorDeClock[2]                  ; uart_rx:comb_3|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.130      ;
-; 0.896 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.065      ; 1.132      ;
+; 0.896 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.132      ;
 ; 0.896 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.065      ; 1.132      ;
 +-------+----------------------------------------------------+----------------------------------------------------+--------------+-------------+--------------+------------+------------+
 
@@ -805,7 +805,7 @@ No paths to report.
 ; -0.305 ; uart_rx:comb_3|contadorDeClock[1]                  ; uart_rx:comb_3|contadorDeClock[0]             ; clock        ; clock       ; 1.000        ; -0.046     ; 1.246      ;
 ; -0.305 ; uart_rx:comb_3|contadorDeClock[1]                  ; uart_rx:comb_3|contadorDeClock[1]             ; clock        ; clock       ; 1.000        ; -0.046     ; 1.246      ;
 ; -0.304 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|armazenaBits[5]                ; clock        ; clock       ; 1.000        ; 0.155      ; 1.446      ;
-; -0.302 ; uart_tx:comb_4|r_Bit_Index[1]                      ; uart_tx:comb_4|o_Tx_Serial                    ; clock        ; clock       ; 1.000        ; -0.046     ; 1.243      ;
+; -0.302 ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; uart_tx:comb_4|bitSerialAtual                 ; clock        ; clock       ; 1.000        ; -0.046     ; 1.243      ;
 ; -0.302 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|armazenaBits[2]                ; clock        ; clock       ; 1.000        ; 0.155      ; 1.444      ;
 ; -0.301 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|armazenaBits[3]                ; clock        ; clock       ; 1.000        ; 0.155      ; 1.443      ;
 ; -0.299 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|armazenaBits[0]                ; clock        ; clock       ; 1.000        ; 0.155      ; 1.441      ;
@@ -820,11 +820,11 @@ No paths to report.
 +-------+----------------------------------------------------+----------------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                          ; To Node                                            ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+----------------------------------------------------+----------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.177 ; uart_tx:comb_4|o_Tx_Serial                         ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
-; 0.177 ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
-; 0.177 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
-; 0.177 ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
-; 0.177 ; uart_tx:comb_4|r_Bit_Index[1]                      ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
+; 0.177 ; uart_tx:comb_4|bitSerialAtual                      ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
+; 0.177 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
+; 0.177 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
+; 0.177 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
+; 0.177 ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
 ; 0.177 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
 ; 0.177 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
 ; 0.177 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|armazenaBits[3]                     ; clock        ; clock       ; 0.000        ; 0.046      ; 0.307      ;
@@ -835,10 +835,10 @@ No paths to report.
 ; 0.178 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.045      ; 0.307      ;
 ; 0.178 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.045      ; 0.307      ;
 ; 0.178 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.045      ; 0.307      ;
-; 0.186 ; uart_tx:comb_4|r_Tx_Active                         ; uart_tx:comb_4|r_Tx_Active                         ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
-; 0.186 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_Bit_Index[2]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
-; 0.186 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_Bit_Index[0]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
-; 0.186 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_SM_Main.000                       ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:comb_4|transmissaoEmAndamento              ; uart_tx:comb_4|transmissaoEmAndamento              ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
 ; 0.186 ; uart_rx:comb_3|dadosOk                             ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
 ; 0.186 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
 ; 0.186 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.307      ;
@@ -851,33 +851,33 @@ No paths to report.
 ; 0.211 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[3]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.533      ;
 ; 0.212 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[5]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.534      ;
 ; 0.213 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[2]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.535      ;
-; 0.216 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; clock        ; clock       ; 0.000        ; 0.238      ; 0.538      ;
-; 0.293 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.238      ; 0.615      ;
+; 0.216 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; clock        ; clock       ; 0.000        ; 0.238      ; 0.538      ;
+; 0.293 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.615      ;
 ; 0.294 ; uart_rx:comb_3|contadorDeClock[1]                  ; uart_rx:comb_3|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.046      ; 0.424      ;
-; 0.297 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[3]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.418      ;
-; 0.297 ; uart_tx:comb_4|r_Clock_Count[1]                    ; uart_tx:comb_4|r_Clock_Count[1]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.418      ;
-; 0.298 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.238      ; 0.620      ;
+; 0.297 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.418      ;
+; 0.297 ; uart_tx:comb_4|contadorDeClock[1]                  ; uart_tx:comb_4|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.418      ;
+; 0.298 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.620      ;
 ; 0.298 ; uart_rx:comb_3|contadorDeClock[0]                  ; uart_rx:comb_3|contadorDeClock[0]                  ; clock        ; clock       ; 0.000        ; 0.046      ; 0.428      ;
-; 0.299 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.420      ;
-; 0.299 ; uart_tx:comb_4|r_Clock_Count[6]                    ; uart_tx:comb_4|r_Clock_Count[6]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.420      ;
-; 0.300 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.421      ;
-; 0.303 ; uart_tx:comb_4|r_SM_Main.s_TX_START_BIT            ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.046      ; 0.433      ;
-; 0.303 ; uart_tx:comb_4|r_Bit_Index[2]                      ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.238      ; 0.625      ;
+; 0.299 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.420      ;
+; 0.299 ; uart_tx:comb_4|contadorDeClock[6]                  ; uart_tx:comb_4|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.420      ;
+; 0.300 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.421      ;
+; 0.303 ; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio    ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.046      ; 0.433      ;
+; 0.303 ; uart_tx:comb_4|indiceDoBitTransmitido[2]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.238      ; 0.625      ;
 ; 0.303 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.425      ;
 ; 0.303 ; uart_rx:comb_3|contadorDeClock[2]                  ; uart_rx:comb_3|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.425      ;
-; 0.305 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_Tx_Done                           ; clock        ; clock       ; 0.000        ; 0.237      ; 0.626      ;
-; 0.305 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[0]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.426      ;
+; 0.305 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|transmissaoConcluida                ; clock        ; clock       ; 0.000        ; 0.237      ; 0.626      ;
+; 0.305 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[0]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.426      ;
 ; 0.307 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.429      ;
-; 0.308 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_SM_Main.s_CLEANUP                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.629      ;
+; 0.308 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|estadoAtual.estadoDeLimpeza         ; clock        ; clock       ; 0.000        ; 0.237      ; 0.629      ;
 ; 0.308 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.237      ; 0.629      ;
 ; 0.309 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.631      ;
 ; 0.310 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.632      ;
-; 0.318 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.046      ; 0.448      ;
+; 0.318 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.046      ; 0.448      ;
 ; 0.319 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.441      ;
-; 0.320 ; uart_tx:comb_4|r_Clock_Count[7]                    ; uart_tx:comb_4|r_Clock_Count[7]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.441      ;
+; 0.320 ; uart_tx:comb_4|contadorDeClock[7]                  ; uart_tx:comb_4|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.441      ;
 ; 0.331 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.452      ;
-; 0.332 ; uart_tx:comb_4|r_SM_Main.s_CLEANUP                 ; uart_tx:comb_4|r_Tx_Done                           ; clock        ; clock       ; 0.000        ; 0.045      ; 0.461      ;
-; 0.333 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Tx_Active                         ; clock        ; clock       ; 0.000        ; 0.037      ; 0.454      ;
+; 0.332 ; uart_tx:comb_4|estadoAtual.estadoDeLimpeza         ; uart_tx:comb_4|transmissaoConcluida                ; clock        ; clock       ; 0.000        ; 0.045      ; 0.461      ;
+; 0.333 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|transmissaoEmAndamento              ; clock        ; clock       ; 0.000        ; 0.037      ; 0.454      ;
 ; 0.336 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.037      ; 0.457      ;
 ; 0.336 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.457      ;
 ; 0.338 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.459      ;
@@ -887,39 +887,39 @@ No paths to report.
 ; 0.349 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; clock        ; clock       ; 0.000        ; 0.238      ; 0.671      ;
 ; 0.350 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.672      ;
 ; 0.350 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.471      ;
-; 0.358 ; uart_tx:comb_4|r_Tx_Data[6]                        ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.238      ; 0.680      ;
+; 0.358 ; uart_tx:comb_4|dadosASeremTransmitidos[6]          ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.680      ;
 ; 0.359 ; uart_rx:comb_3|estadoAtual.000                     ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.681      ;
 ; 0.360 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[0]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.682      ;
 ; 0.366 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[2]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.688      ;
-; 0.368 ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.046      ; 0.498      ;
-; 0.371 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_SM_Main.s_TX_STOP_BIT             ; clock        ; clock       ; 0.000        ; 0.238      ; 0.693      ;
+; 0.368 ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.046      ; 0.498      ;
+; 0.371 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.693      ;
 ; 0.371 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.493      ;
-; 0.374 ; uart_tx:comb_4|r_Clock_Count[5]                    ; uart_tx:comb_4|r_Clock_Count[5]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.495      ;
-; 0.374 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.238      ; 0.696      ;
-; 0.376 ; uart_tx:comb_4|r_Bit_Index[0]                      ; uart_tx:comb_4|r_SM_Main.s_TX_DATA_BITS            ; clock        ; clock       ; 0.000        ; 0.238      ; 0.698      ;
+; 0.374 ; uart_tx:comb_4|contadorDeClock[5]                  ; uart_tx:comb_4|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.495      ;
+; 0.374 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.696      ;
+; 0.376 ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; uart_tx:comb_4|estadoAtual.estadoEnviaBits         ; clock        ; clock       ; 0.000        ; 0.238      ; 0.698      ;
 ; 0.376 ; uart_rx:comb_3|contadorDeClock[3]                  ; uart_rx:comb_3|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.498      ;
 ; 0.379 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.500      ;
 ; 0.389 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.037      ; 0.510      ;
 ; 0.400 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.722      ;
-; 0.402 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Bit_Index[0]                      ; clock        ; clock       ; 0.000        ; 0.037      ; 0.523      ;
+; 0.402 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|indiceDoBitTransmitido[0]           ; clock        ; clock       ; 0.000        ; 0.037      ; 0.523      ;
 ; 0.403 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.725      ;
 ; 0.412 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|estadoAtual.estadoDeLimpeza         ; clock        ; clock       ; 0.000        ; 0.038      ; 0.534      ;
 ; 0.413 ; uart_rx:comb_3|estadoAtual.estadoDeLimpeza         ; uart_rx:comb_3|estadoAtual.000                     ; clock        ; clock       ; 0.000        ; 0.037      ; 0.534      ;
 ; 0.414 ; uart_rx:comb_3|indiceDoBit[1]                      ; uart_rx:comb_3|armazenaBits[4]                     ; clock        ; clock       ; 0.000        ; 0.238      ; 0.736      ;
-; 0.420 ; uart_tx:comb_4|r_Tx_Data[3]                        ; uart_tx:comb_4|o_Tx_Serial                         ; clock        ; clock       ; 0.000        ; 0.238      ; 0.742      ;
-; 0.427 ; uart_tx:comb_4|r_SM_Main.000                       ; uart_tx:comb_4|r_Bit_Index[1]                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.749      ;
-; 0.446 ; uart_tx:comb_4|r_Clock_Count[1]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.567      ;
-; 0.446 ; uart_tx:comb_4|r_Clock_Count[3]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.567      ;
+; 0.420 ; uart_tx:comb_4|dadosASeremTransmitidos[3]          ; uart_tx:comb_4|bitSerialAtual                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.742      ;
+; 0.427 ; uart_tx:comb_4|estadoAtual.000                     ; uart_tx:comb_4|indiceDoBitTransmitido[1]           ; clock        ; clock       ; 0.000        ; 0.238      ; 0.749      ;
+; 0.446 ; uart_tx:comb_4|contadorDeClock[1]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.567      ;
+; 0.446 ; uart_tx:comb_4|contadorDeClock[3]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.567      ;
 ; 0.447 ; uart_rx:comb_3|contadorDeClock[0]                  ; uart_rx:comb_3|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.046      ; 0.577      ;
 ; 0.451 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|indiceDoBit[2]                      ; clock        ; clock       ; 0.000        ; 0.238      ; 0.773      ;
-; 0.452 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[1]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.573      ;
-; 0.455 ; uart_tx:comb_4|r_Clock_Count[0]                    ; uart_tx:comb_4|r_Clock_Count[2]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.576      ;
+; 0.452 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[1]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.573      ;
+; 0.455 ; uart_tx:comb_4|contadorDeClock[0]                  ; uart_tx:comb_4|contadorDeClock[2]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.576      ;
 ; 0.456 ; uart_rx:comb_3|contadorDeClock[5]                  ; uart_rx:comb_3|contadorDeClock[6]                  ; clock        ; clock       ; 0.000        ; 0.038      ; 0.578      ;
-; 0.457 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[3]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.578      ;
-; 0.457 ; uart_tx:comb_4|r_Clock_Count[6]                    ; uart_tx:comb_4|r_Clock_Count[7]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.578      ;
-; 0.458 ; uart_tx:comb_4|r_Clock_Count[4]                    ; uart_tx:comb_4|r_Clock_Count[5]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.579      ;
+; 0.457 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[3]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.578      ;
+; 0.457 ; uart_tx:comb_4|contadorDeClock[6]                  ; uart_tx:comb_4|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.578      ;
+; 0.458 ; uart_tx:comb_4|contadorDeClock[4]                  ; uart_tx:comb_4|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.579      ;
 ; 0.458 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|armazenaBits[1]                     ; clock        ; clock       ; 0.000        ; 0.237      ; 0.779      ;
-; 0.460 ; uart_tx:comb_4|r_Clock_Count[2]                    ; uart_tx:comb_4|r_Clock_Count[4]                    ; clock        ; clock       ; 0.000        ; 0.037      ; 0.581      ;
+; 0.460 ; uart_tx:comb_4|contadorDeClock[2]                  ; uart_tx:comb_4|contadorDeClock[4]                  ; clock        ; clock       ; 0.000        ; 0.037      ; 0.581      ;
 +-------+----------------------------------------------------+----------------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -1229,7 +1229,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Thu Aug 24 21:40:03 2023
+    Info: Processing started: Fri Aug 25 16:56:48 2023
 Info: Command: quartus_sta FPGAImplementation -c FPGAImplementation
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1308,7 +1308,7 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4800 megabytes
-    Info: Processing ended: Thu Aug 24 21:40:05 2023
+    Info: Processing ended: Fri Aug 25 16:56:50 2023
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 

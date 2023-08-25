@@ -11,7 +11,6 @@ module FPGAImplementation(clock, bitSerialAtual, bitsEstaoRecebidos, byteComplet
 	output 			o_Tx_Done;
 	output [6:0]	display;
 	
-
 	uart_rx (clock, bitSerialAtual, bitsEstaoRecebidos, byteCompleto);
 	uart_tx (clock, i_Tx_DV, i_Tx_Byte, o_Tx_Active, o_Tx_Serial, o_Tx_Done);
 	

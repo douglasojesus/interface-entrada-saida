@@ -1,5 +1,5 @@
 Fitter report for FPGAImplementation
-Thu Aug 24 21:39:59 2023
+Fri Aug 25 16:56:45 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -66,7 +66,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Thu Aug 24 21:39:59 2023          ;
+; Fitter Status                      ; Successful - Fri Aug 25 16:56:45 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
@@ -1022,45 +1022,45 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+----------+---------------+---------------+-----------------------+-----+------+
 
 
-+-----------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                              ;
-+-----------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                           ; Pad To Core Index ; Setting ;
-+-----------------------------------------------+-------------------+---------+
-; clock                                         ;                   ;         ;
-; i_Tx_DV                                       ;                   ;         ;
-; i_Tx_Byte[6]                                  ;                   ;         ;
-; i_Tx_Byte[5]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[5]~feeder     ; 1                 ; 6       ;
-; i_Tx_Byte[4]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[4]            ; 0                 ; 6       ;
-; i_Tx_Byte[7]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[7]~feeder     ; 1                 ; 6       ;
-; i_Tx_Byte[2]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[2]~feeder     ; 1                 ; 6       ;
-; i_Tx_Byte[1]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[1]~feeder     ; 1                 ; 6       ;
-; i_Tx_Byte[0]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[0]            ; 0                 ; 6       ;
-; i_Tx_Byte[3]                                  ;                   ;         ;
-;      - uart_tx:comb_4|r_Tx_Data[3]            ; 0                 ; 6       ;
-; bitSerialAtual                                ;                   ;         ;
-;      - uart_rx:comb_3|serialDeEntradaBuffer~0 ; 0                 ; 6       ;
-+-----------------------------------------------+-------------------+---------+
++---------------------------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                                        ;
++---------------------------------------------------------+-------------------+---------+
+; Source Pin / Fanout                                     ; Pad To Core Index ; Setting ;
++---------------------------------------------------------+-------------------+---------+
+; clock                                                   ;                   ;         ;
+; i_Tx_DV                                                 ;                   ;         ;
+; i_Tx_Byte[6]                                            ;                   ;         ;
+; i_Tx_Byte[5]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[5]~feeder ; 1                 ; 6       ;
+; i_Tx_Byte[4]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[4]        ; 0                 ; 6       ;
+; i_Tx_Byte[7]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[7]~feeder ; 1                 ; 6       ;
+; i_Tx_Byte[2]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[2]~feeder ; 1                 ; 6       ;
+; i_Tx_Byte[1]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[1]~feeder ; 1                 ; 6       ;
+; i_Tx_Byte[0]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[0]        ; 0                 ; 6       ;
+; i_Tx_Byte[3]                                            ;                   ;         ;
+;      - uart_tx:comb_4|dadosASeremTransmitidos[3]        ; 0                 ; 6       ;
+; bitSerialAtual                                          ;                   ;         ;
+;      - uart_rx:comb_3|serialDeEntradaBuffer~0           ; 0                 ; 6       ;
++---------------------------------------------------------+-------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                   ;
-+--------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; Name                                 ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; clock                                ; PIN_G1             ; 54      ; Clock        ; yes    ; Global Clock         ; GCLK2            ; --                        ;
-; uart_rx:comb_3|contadorDeClock[1]~25 ; LCCOMB_X9_Y17_N4   ; 8       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; uart_rx:comb_3|contadorDeClock[1]~27 ; LCCOMB_X9_Y17_N6   ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; uart_tx:comb_4|Selector15~2          ; LCCOMB_X63_Y16_N4  ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; uart_tx:comb_4|r_Clock_Count[2]~12   ; LCCOMB_X62_Y16_N18 ; 8       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; uart_tx:comb_4|r_SM_Main.s_CLEANUP   ; FF_X62_Y16_N17     ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-+--------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                         ;
++--------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name                                       ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++--------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; clock                                      ; PIN_G1             ; 54      ; Clock        ; yes    ; Global Clock         ; GCLK2            ; --                        ;
+; uart_rx:comb_3|contadorDeClock[1]~25       ; LCCOMB_X9_Y17_N4   ; 8       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; uart_rx:comb_3|contadorDeClock[1]~27       ; LCCOMB_X9_Y17_N6   ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; uart_tx:comb_4|Selector15~2                ; LCCOMB_X63_Y16_N4  ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; uart_tx:comb_4|contadorDeClock[2]~12       ; LCCOMB_X62_Y16_N18 ; 8       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; uart_tx:comb_4|estadoAtual.estadoDeLimpeza ; FF_X62_Y16_N17     ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
++--------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------+
@@ -1408,13 +1408,13 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Info (144001): Generated suppressed messages file C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 5557 megabytes
-    Info: Processing ended: Thu Aug 24 21:40:00 2023
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Peak virtual memory: 5554 megabytes
+    Info: Processing ended: Fri Aug 25 16:56:45 2023
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 
 +----------------------------+

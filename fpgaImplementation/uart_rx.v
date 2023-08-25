@@ -18,11 +18,11 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 87)
 	
 /*Definição dos estados da máquina de estados.*/
 
-	localparam	estadoDeEspera         = 3'b000, //Estado de espera inicial. Aguardando a detecção de um bit de início.
+	localparam	estadoDeEspera				= 3'b000, //Estado de espera inicial. Aguardando a detecção de um bit de início.
 					estadoVerificaBitInicio = 3'b001, //Estado que verifica se o bit de início ainda está baixo. 
-					estadoDeEsperaBits = 3'b010, //Estado que espera para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
-					estadoStopBit  = 3'b011, //Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
-					estadoDeLimpeza      = 3'b100; //Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
+					estadoDeEsperaBits		= 3'b010, //Estado que espera para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
+					estadoStopBit				= 3'b011, //Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
+					estadoDeLimpeza			= 3'b100; //Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
    
 /*
 *Dois registros são definidos para armazenar o sinal serial de entrada. 
@@ -31,13 +31,13 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 87)
 *Isso ajuda a lidar com problemas de metastabilidade.
 */
 
-	reg         serialDeEntradaBuffer = 1'b1;
-	reg         serialDeEntrada   = 1'b1;
-	reg [7:0]   contadorDeClock = 0; //Contador de ciclos de clock usado para sincronização e temporização.
-	reg [2:0]   indiceDoBit   = 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
-	reg [7:0]   armazenaBits     = 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
-	reg         dadosOk       = 0; //Sinal que indica quando os dados foram recebidos e estão disponíveis para leitura.
-	reg [2:0]   estadoAtual     = 0; //Registrador que mantém o estado atual da máquina de estados.
+	reg         serialDeEntradaBuffer	= 1'b1;
+	reg         serialDeEntrada			= 1'b1;
+	reg [7:0]   contadorDeClock			= 0; //Contador de ciclos de clock usado para sincronização e temporização.
+	reg [2:0]   indiceDoBit					= 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
+	reg [7:0]   armazenaBits				= 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
+	reg         dadosOk						= 0; //Sinal que indica quando os dados foram recebidos e estão disponíveis para leitura.
+	reg [2:0]   estadoAtual					= 0; //Registrador que mantém o estado atual da máquina de estados.
    
 /*
 *Atualização dos registros serialDeEntradaBuffer e serialDeEntrada com o valor atual do sinal serial na borda de subida do clock. 

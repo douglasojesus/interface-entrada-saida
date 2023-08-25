@@ -1,11 +1,11 @@
 
-State Machine - |FPGAImplementation|uart_tx:comb_4|r_SM_Main
-Name r_SM_Main.s_TX_STOP_BIT r_SM_Main.s_TX_DATA_BITS r_SM_Main.s_TX_START_BIT r_SM_Main.000 r_SM_Main.s_CLEANUP 
-r_SM_Main.000 0 0 0 0 0 
-r_SM_Main.s_TX_START_BIT 0 0 1 1 0 
-r_SM_Main.s_TX_DATA_BITS 0 1 0 1 0 
-r_SM_Main.s_TX_STOP_BIT 1 0 0 1 0 
-r_SM_Main.s_CLEANUP 0 0 0 1 1 
+State Machine - |FPGAImplementation|uart_tx:comb_4|estadoAtual
+Name estadoAtual.estadoEnviaBitFinal estadoAtual.estadoEnviaBits estadoAtual.estadoEnviaBitInicio estadoAtual.000 estadoAtual.estadoDeLimpeza 
+estadoAtual.000 0 0 0 0 0 
+estadoAtual.estadoEnviaBitInicio 0 0 1 1 0 
+estadoAtual.estadoEnviaBits 0 1 0 1 0 
+estadoAtual.estadoEnviaBitFinal 1 0 0 1 0 
+estadoAtual.estadoDeLimpeza 0 0 0 1 1 
 
 State Machine - |FPGAImplementation|uart_rx:comb_3|estadoAtual
 Name estadoAtual.estadoStopBit estadoAtual.estadoDeEsperaBits estadoAtual.estadoVerificaBitInicio estadoAtual.000 estadoAtual.estadoDeLimpeza 

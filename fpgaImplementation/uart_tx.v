@@ -1,145 +1,129 @@
-//////////////////////////////////////////////////////////////////////
-// File Downloaded from 
-//////////////////////////////////////////////////////////////////////
-// This file contains the UART Transmitter.  This transmitter is able
-// to transmit 8 bits of serial data, one start bit, one stop bit,
-// and no parity bit.  When transmit is complete o_Tx_done will be
-// driven high for one clock cycle.
-//
-// Set Parameter CLKS_PER_BIT as follows:
-// CLKS_PER_BIT = (Frequency of i_Clock)/(Frequency of UART)
-// Example: 10 MHz Clock, 115200 baud UART
-// (10000000)/(115200) = 87
-  
-module uart_tx #(parameter CLKS_PER_BIT = 87)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Este arquivo contém a implementação de um transmissor UART. 
+// Está configurado para transmitir 8 bits de dados seriais, um bit de start e um bit de stop. 
+// Quando a transmissão estiver completa, o sinal bitsEstaoEnviados será colocado em nível alto por um ciclo de clock.
+// Fonte: http://www.nandland.com ||| Adaptação feita por Douglas Oliveira de Jesus.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+module uart_tx #(parameter CLOKS_POR_BIT = 87)
   (
-   input       i_Clock,
-   input       i_Tx_DV,
-   input [7:0] i_Tx_Byte, 
-   output      o_Tx_Active,
-   output reg  o_Tx_Serial,
-   output      o_Tx_Done
+   input       clock, //Sinal de clock de entrada para sincronização.
+   input       haDadosParaTransmitir, //Um sinal de dados válido que indica quando há dados para serem transmitidos.
+   input [7:0] byteASerTransmitido, //Entrada de 8 bits que contém os dados totais recebidos.
+   output      indicaTransmissao, //Indica se a transmissão está ativa.
+   output reg  bitSerialAtual, //O sinal serial que é transmitido.
+   output      bitsEstaoEnviados //Sinal de saída que indica que os dados foram enviados.
    );
   
-  localparam s_IDLE         = 3'b000;
-  localparam s_TX_START_BIT = 3'b001;
-  localparam s_TX_DATA_BITS = 3'b010;
-  localparam s_TX_STOP_BIT  = 3'b011;
-  localparam s_CLEANUP      = 3'b100;
+	localparam	estadoDeEspera			= 3'b000,
+					estadoEnviaBitInicio = 3'b001,
+					estadoEnviaBits		= 3'b010,
+					estadoEnviaBitFinal  = 3'b011,
+					estadoDeLimpeza      = 3'b100;
    
-  reg [2:0]    r_SM_Main     = 0;
-  reg [7:0]    r_Clock_Count = 0;
-  reg [2:0]    r_Bit_Index   = 0;
-  reg [7:0]    r_Tx_Data     = 0;
-  reg          r_Tx_Done     = 0;
-  reg          r_Tx_Active   = 0;
+	reg [2:0]   estadoAtual					= 0;
+	reg [7:0]   contadorDeClock			= 0;
+	reg [2:0]   indiceDoBitTransmitido  = 0;
+	reg [7:0]   dadosASeremTransmitidos = 0;
+	reg         transmissaoConcluida    = 0;
+	reg         transmissaoEmAndamento  = 0;
      
-  always @(posedge i_Clock)
-    begin
-       
-      case (r_SM_Main)
-        s_IDLE :
-          begin
-            o_Tx_Serial   <= 1'b1;         // Drive Line High for Idle
-            r_Tx_Done     <= 1'b0;
-            r_Clock_Count <= 0;
-            r_Bit_Index   <= 0;
-             
-            if (i_Tx_DV == 1'b1)
-              begin
-                r_Tx_Active <= 1'b1;
-                r_Tx_Data   <= i_Tx_Byte;
-                r_SM_Main   <= s_TX_START_BIT;
-              end
-            else
-              r_SM_Main <= s_IDLE;
-          end // case: s_IDLE
-         
-         
+	always @(posedge clock)
+		begin
+			case (estadoAtual)
+				estadoDeEspera :
+					begin
+						bitSerialAtual   <= 1'b1;         // Drive Line High for Idle
+						transmissaoConcluida     <= 1'b0;
+						contadorDeClock <= 0;
+						indiceDoBitTransmitido   <= 0;
+						if (haDadosParaTransmitir == 1'b1)
+							begin
+								transmissaoEmAndamento <= 1'b1;
+								dadosASeremTransmitidos   <= byteASerTransmitido;
+								estadoAtual   <= estadoEnviaBitInicio;
+							end
+						else
+						estadoAtual <= estadoDeEspera;
+					end // case: estadoDeEspera
+		
         // Send out Start Bit. Start bit = 0
-        s_TX_START_BIT :
-          begin
-            o_Tx_Serial <= 1'b0;
-             
-            // Wait CLKS_PER_BIT-1 clock cycles for start bit to finish
-            if (r_Clock_Count < CLKS_PER_BIT-1)
-              begin
-                r_Clock_Count <= r_Clock_Count + 1;
-                r_SM_Main     <= s_TX_START_BIT;
-              end
-            else
-              begin
-                r_Clock_Count <= 0;
-                r_SM_Main     <= s_TX_DATA_BITS;
-              end
-          end // case: s_TX_START_BIT
-         
-         
-        // Wait CLKS_PER_BIT-1 clock cycles for data bits to finish         
-        s_TX_DATA_BITS :
-          begin
-            o_Tx_Serial <= r_Tx_Data[r_Bit_Index];
-             
-            if (r_Clock_Count < CLKS_PER_BIT-1)
-              begin
-                r_Clock_Count <= r_Clock_Count + 1;
-                r_SM_Main     <= s_TX_DATA_BITS;
-              end
-            else
-              begin
-                r_Clock_Count <= 0;
-                 
-                // Check if we have sent out all bits
-                if (r_Bit_Index < 7)
-                  begin
-                    r_Bit_Index <= r_Bit_Index + 1;
-                    r_SM_Main   <= s_TX_DATA_BITS;
-                  end
-                else
-                  begin
-                    r_Bit_Index <= 0;
-                    r_SM_Main   <= s_TX_STOP_BIT;
-                  end
-              end
-          end // case: s_TX_DATA_BITS
-         
-         
+				estadoEnviaBitInicio :
+					begin
+						bitSerialAtual <= 1'b0;
+						// Wait CLOKS_POR_BIT-1 clock cycles for start bit to finish
+						if (contadorDeClock < CLOKS_POR_BIT-1)
+							begin
+								contadorDeClock <= contadorDeClock + 1;
+								estadoAtual     <= estadoEnviaBitInicio;
+							end
+						else
+							begin
+								contadorDeClock <= 0;
+								estadoAtual     <= estadoEnviaBits;
+							end
+					end // case: estadoEnviaBitInicio
+		
+        // Wait CLOKS_POR_BIT-1 clock cycles for data bits to finish         
+				estadoEnviaBits :
+					begin
+						bitSerialAtual <= dadosASeremTransmitidos[indiceDoBitTransmitido];
+
+						if (contadorDeClock < CLOKS_POR_BIT-1)
+							begin
+								contadorDeClock <= contadorDeClock + 1;
+								estadoAtual     <= estadoEnviaBits;
+							end
+						else
+							begin
+								contadorDeClock <= 0;
+								// Check if we have sent out all bits
+								if (indiceDoBitTransmitido < 7)
+									begin
+										indiceDoBitTransmitido <= indiceDoBitTransmitido + 1;
+										estadoAtual   <= estadoEnviaBits;
+									end
+								else
+									begin
+										indiceDoBitTransmitido <= 0;
+										estadoAtual   <= estadoEnviaBitFinal;
+									end
+							end
+					end // case: estadoEnviaBits
+
         // Send out Stop bit.  Stop bit = 1
-        s_TX_STOP_BIT :
-          begin
-            o_Tx_Serial <= 1'b1;
-             
-            // Wait CLKS_PER_BIT-1 clock cycles for Stop bit to finish
-            if (r_Clock_Count < CLKS_PER_BIT-1)
-              begin
-                r_Clock_Count <= r_Clock_Count + 1;
-                r_SM_Main     <= s_TX_STOP_BIT;
-              end
-            else
-              begin
-                r_Tx_Done     <= 1'b1;
-                r_Clock_Count <= 0;
-                r_SM_Main     <= s_CLEANUP;
-                r_Tx_Active   <= 1'b0;
-              end
-          end // case: s_Tx_STOP_BIT
-         
-         
+				estadoEnviaBitFinal :
+					begin
+						bitSerialAtual <= 1'b1;
+						// Wait CLOKS_POR_BIT-1 clock cycles for Stop bit to finish
+						if (contadorDeClock < CLOKS_POR_BIT-1)
+							begin
+								contadorDeClock <= contadorDeClock + 1;
+								estadoAtual     <= estadoEnviaBitFinal;
+							end
+						else
+							begin
+								transmissaoConcluida     <= 1'b1;
+								contadorDeClock <= 0;
+								estadoAtual     <= estadoDeLimpeza;
+								transmissaoEmAndamento   <= 1'b0;
+							end
+					end // case: estadoEnviaBitFinal
+
         // Stay here 1 clock
-        s_CLEANUP :
-          begin
-            r_Tx_Done <= 1'b1;
-            r_SM_Main <= s_IDLE;
-          end
+				estadoDeLimpeza :
+					begin
+						transmissaoConcluida <= 1'b1;
+						estadoAtual <= estadoDeEspera;
+					end
+
+				default :
+					estadoAtual <= estadoDeEspera;
          
-         
-        default :
-          r_SM_Main <= s_IDLE;
-         
-      endcase
-    end
+			endcase
+		end
  
-  assign o_Tx_Active = r_Tx_Active;
-  assign o_Tx_Done   = r_Tx_Done;
+	assign indicaTransmissao = transmissaoEmAndamento;
+	assign bitsEstaoEnviados   = transmissaoConcluida;
    
 endmodule
