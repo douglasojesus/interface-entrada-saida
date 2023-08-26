@@ -30,7 +30,7 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 
 	reg         serialDeEntradaBuffer	= 1'b1;
 	reg         serialDeEntrada			= 1'b1;
-	reg [7:0]   contadorDeClock			= 0; //Contador de ciclos de clock usado para sincronização e temporização.
+	reg [12:0]  contadorDeClock			= 0; //Contador de ciclos de clock usado para sincronização e temporização.
 	reg [2:0]   indiceDoBit					= 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
 	reg [7:0]   armazenaBits				= 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
 	reg         dadosOk						= 0; //Sinal que indica quando os dados foram recebidos e estão disponíveis para leitura.

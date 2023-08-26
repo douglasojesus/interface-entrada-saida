@@ -31,7 +31,7 @@ module uart_tx #(parameter CLOKS_POR_BIT = 5209)
 */	
 	
 	reg [2:0]   estadoAtual					= 0;
-	reg [7:0]   contadorDeClock			= 0;
+	reg [12:0]  contadorDeClock			= 0;
 	reg [2:0]   indiceDoBitTransmitido  = 0;
 	reg [7:0]   dadosASeremTransmitidos = 0;
 	reg         transmissaoConcluida    = 0;
