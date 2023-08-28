@@ -112,7 +112,7 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 								armazenaBits[indiceDoBit] <= serialDeEntrada;
 
 								// Verifica se recebemos todos os bits
-								if (indiceDoBit < 7)
+								if (indiceDoBit != 7)
 									begin
 										indiceDoBit <= indiceDoBit + 1'b1;
 										estadoAtual   <= estadoDeEsperaBits;

@@ -103,7 +103,7 @@ module uart_tx #(parameter CLOKS_POR_BIT = 5209)
 							begin
 								contadorDeClock <= 0;
 								// Check if we have sent out all bits
-								if (indiceDoBitTransmitido < 7)
+								if (indiceDoBitTransmitido != 7)
 									begin
 										indiceDoBitTransmitido <= indiceDoBitTransmitido + 1;
 										estadoAtual   <= estadoEnviaBits;

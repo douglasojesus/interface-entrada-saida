@@ -14,19 +14,19 @@
 */
 
 
-module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, byteCompleto, haDadosParaTransmitir, 
+module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, haDadosParaTransmitir, 
 									indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados, display);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
 	output 				bitsEstaoRecebidos;
-	output	[7:0] 	byteCompleto;
 	input 				haDadosParaTransmitir;
 	output 				indicaTransmissao;
 	output 				bitSerialAtualTX;
 	output 				bitsEstaoEnviados;
 	output	[6:0]		display;
-	
+
+	wire [7:0] 	byteCompleto;	
 	
 	//Implementação da comunicação entre o PC e a FPGA
 	uart_rx (clock, bitSerialAtualRX, bitsEstaoRecebidos, byteCompleto);

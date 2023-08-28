@@ -2,14 +2,6 @@
 clock => clock.IN2
 bitSerialAtualRX => bitSerialAtualRX.IN1
 bitsEstaoRecebidos << uart_rx:comb_3.port2
-byteCompleto[0] << byteCompleto[0].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[1] << byteCompleto[1].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[2] << byteCompleto[2].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[3] << byteCompleto[3].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[4] << byteCompleto[4].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[5] << byteCompleto[5].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[6] << byteCompleto[6].DB_MAX_OUTPUT_PORT_TYPE
-byteCompleto[7] << byteCompleto[7].DB_MAX_OUTPUT_PORT_TYPE
 haDadosParaTransmitir => haDadosParaTransmitir.IN1
 indicaTransmissao << uart_tx:comb_4.port2
 bitSerialAtualTX << uart_tx:comb_4.port3
