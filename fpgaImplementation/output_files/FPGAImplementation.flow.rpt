@@ -1,6 +1,6 @@
 Flow report for FPGAImplementation
-Mon Aug 28 10:09:06 2023
-Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Tue Aug 29 12:54:45 2023
+Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
 ---------------------
@@ -21,7 +21,7 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2020  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -38,26 +38,26 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+----------------------------------------------------------------------------------+
-; Flow Summary                                                                     ;
-+------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Aug 28 10:09:05 2023       ;
-; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
-; Revision Name                      ; FPGAImplementation                          ;
-; Top-level Entity Name              ; FPGAImplementation                          ;
-; Family                             ; Cyclone IV E                                ;
-; Device                             ; EP4CE30F23C7                                ;
-; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 98 / 28,848 ( < 1 % )                       ;
-;     Total combinational functions  ; 98 / 28,848 ( < 1 % )                       ;
-;     Dedicated logic registers      ; 56 / 28,848 ( < 1 % )                       ;
-; Total registers                    ; 56                                          ;
-; Total pins                         ; 14 / 329 ( 4 % )                            ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0 / 608,256 ( 0 % )                         ;
-; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                             ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
-+------------------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Flow Summary                                                                        ;
++------------------------------------+------------------------------------------------+
+; Flow Status                        ; Successful - Tue Aug 29 12:54:42 2023          ;
+; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
+; Revision Name                      ; FPGAImplementation                             ;
+; Top-level Entity Name              ; FPGAImplementation                             ;
+; Family                             ; Cyclone IV E                                   ;
+; Device                             ; EP4CE30F23C7                                   ;
+; Timing Models                      ; Final                                          ;
+; Total logic elements               ; 109 / 28,848 ( < 1 % )                         ;
+;     Total combinational functions  ; 105 / 28,848 ( < 1 % )                         ;
+;     Dedicated logic registers      ; 64 / 28,848 ( < 1 % )                          ;
+; Total registers                    ; 64                                             ;
+; Total pins                         ; 14 / 329 ( 4 % )                               ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0 / 608,256 ( 0 % )                            ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                                ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
++------------------------------------+------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/28/2023 10:08:52 ;
+; Start date & time ; 08/29/2023 12:54:23 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; FPGAImplementation  ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 159209604678851.169322813215586        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 110073156818472.169332446309816        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -96,24 +96,24 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 427 MB              ; 00:00:12                           ;
-; Fitter               ; 00:00:05     ; 1.0                     ; 1137 MB             ; 00:00:07                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 353 MB              ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 493 MB              ; 00:00:01                           ;
-; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:21                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4774 MB             ; 00:00:15                           ;
+; Fitter               ; 00:00:06     ; 1.0                     ; 5558 MB             ; 00:00:06                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4715 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4800 MB             ; 00:00:01                           ;
+; Total                ; 00:00:18     ; --                      ; --                  ; 00:00:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+----------------------+------------------+----------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
-+----------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; LEDS-45049       ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
-; Fitter               ; LEDS-45049       ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
-; Assembler            ; LEDS-45049       ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
-; Timing Analyzer      ; LEDS-45049       ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
-+----------------------+------------------+----------------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------

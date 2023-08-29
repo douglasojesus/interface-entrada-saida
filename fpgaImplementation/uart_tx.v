@@ -9,12 +9,11 @@ module uart_tx #(parameter CLOKS_POR_BIT = 5209)
   (
    input       clock, //Sinal de clock de entrada para sincronização.
    input       haDadosParaTransmitir, //Um sinal de dados válido que indica quando há dados para serem transmitidos. Os dados que são avaliados são do DHT11.
+	input [7:0]	byteASerTransmitido, ////Entrada de 8 bits que contém os dados totais recebidos a serem enviados por TX.
    output      indicaTransmissao, //Indica se a transmissão está ativa.
    output reg  bitSerialAtual, //O sinal serial que é transmitido.
    output      bitsEstaoEnviados //Sinal de saída que indica que os dados foram enviados.
    );
-  
-	wire [7:0] byteASerTransmitido; //Fios de 8 bits que contém os dados totais recebidos.
   
 /*
 *Estados da MEF. Esses estados são utilizados para controlar o processo de transmissão.

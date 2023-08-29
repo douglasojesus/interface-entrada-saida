@@ -26,11 +26,16 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, haDadosP
 	output 				bitsEstaoEnviados;
 	output	[6:0]		display;
 
-	wire [7:0] 	byteCompleto;	
+	wire [7:0] 	byteCompleto;	//Byte a ser recebido do PC através do RX
+	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
 	
 	//Implementação da comunicação entre o PC e a FPGA
 	uart_rx (clock, bitSerialAtualRX, bitsEstaoRecebidos, byteCompleto);
-	uart_tx (clock, haDadosParaTransmitir, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
+	
+	//Para fins de testes:
+	assign byteASerTransmitido = byteCompleto;
+	
+	uart_tx (clock, haDadosParaTransmitir, byteASerTransmitido, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
 	
 	decoder (byteCompleto, display);
 
