@@ -24,3 +24,20 @@ Ferramentas:
 - 🔧 Kit de desenvolvimento Mercúrio IV
 - 🔧 Visual Studio Code
 
+
+
+
+
+
+Para clonar este repositório:
+1. $ git clone https://github.com/douglasojesus/interface-entrada-saida;
+
+2. Abra com o Quartus \interface-entrada-saida\fpgaImplementation\FPGAImplementation.qpf e compile o código;
+
+3. Programe o código na placa FPGA Cyclone IV E EP4CE30F23C7;
+
+4. Conecte a porta serial do cmoputador com a porta serial da FPGA;
+
+5. Compile o código \interface-entrada-saida\uartSerialCommunication.c e o execute;
+
+6. Interaja com o terminal e aproveite o sistema!
