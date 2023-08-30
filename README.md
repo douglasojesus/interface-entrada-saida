@@ -50,9 +50,9 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
 Para clonar este repositório:
-```
-1. $ git clone https://github.com/douglasojesus/interface-entrada-saida;
-```
+
+1. ```$ git clone https://github.com/douglasojesus/interface-entrada-saida;```
+
 2. Abra com o Quartus \interface-entrada-saida\fpgaImplementation\FPGAImplementation.qpf e compile o código;
 
 3. Programe o código na placa FPGA Cyclone IV E EP4CE30F23C7;
