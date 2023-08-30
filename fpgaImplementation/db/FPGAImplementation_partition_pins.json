@@ -48,10 +48,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "haDadosParaTransmitir",
-					"strict" : false
-				},
-				{
 					"name" : "bitSerialAtualRX",
 					"strict" : false
 				}

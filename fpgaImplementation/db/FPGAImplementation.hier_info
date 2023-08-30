@@ -1,18 +1,17 @@
 |FPGAImplementation
 clock => clock.IN2
 bitSerialAtualRX => bitSerialAtualRX.IN1
-bitsEstaoRecebidos <= uart_rx:comb_3.port2
-haDadosParaTransmitir => haDadosParaTransmitir.IN1
-indicaTransmissao <= uart_tx:comb_12.port3
-bitSerialAtualTX <= uart_tx:comb_12.port4
-bitsEstaoEnviados <= uart_tx:comb_12.port5
-display[0] <= decoder:comb_13.port1
-display[1] <= decoder:comb_13.port1
-display[2] <= decoder:comb_13.port1
-display[3] <= decoder:comb_13.port1
-display[4] <= decoder:comb_13.port1
-display[5] <= decoder:comb_13.port1
-display[6] <= decoder:comb_13.port1
+bitsEstaoRecebidos <= haDadosParaTransmitir.DB_MAX_OUTPUT_PORT_TYPE
+indicaTransmissao <= uart_tx:comb_13.port3
+bitSerialAtualTX <= uart_tx:comb_13.port4
+bitsEstaoEnviados <= uart_tx:comb_13.port5
+display[0] <= decoder:comb_14.port1
+display[1] <= decoder:comb_14.port1
+display[2] <= decoder:comb_14.port1
+display[3] <= decoder:comb_14.port1
+display[4] <= decoder:comb_14.port1
+display[5] <= decoder:comb_14.port1
+display[6] <= decoder:comb_14.port1
 
 
 |FPGAImplementation|uart_rx:comb_3
@@ -56,7 +55,7 @@ byteCompleto[6] <= armazenaBits[6].DB_MAX_OUTPUT_PORT_TYPE
 byteCompleto[7] <= armazenaBits[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|uart_tx:comb_12
+|FPGAImplementation|uart_tx:comb_13
 clock => dadosASeremTransmitidos[0].CLK
 clock => dadosASeremTransmitidos[1].CLK
 clock => dadosASeremTransmitidos[2].CLK
@@ -109,7 +108,7 @@ bitSerialAtual <= bitSerialAtual~reg0.DB_MAX_OUTPUT_PORT_TYPE
 bitsEstaoEnviados <= transmissaoConcluida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|decoder:comb_13
+|FPGAImplementation|decoder:comb_14
 word[0] => Equal0.IN15
 word[0] => Equal1.IN15
 word[1] => Equal0.IN14
