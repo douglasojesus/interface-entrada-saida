@@ -16,7 +16,7 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 
 • <a href="#recursos">Recursos utilizados</a> 
 
-• <a href="#script-de-compilacao">Script de compilação</a> 
+• <a href="#script-de-compilacao">Como executar</a> 
 
 • <a href="#metodologia-e-tecnicas-aplicadas">Metodologia e técnicas aplicadas no projeto</a> 
 
@@ -41,15 +41,13 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 - 📝 Os comandos devem ser compostos por palavras de 8 bits;
 - 📝 As requisições e respostas devem ser compostas de 2 bytes (Comando + Endereço do sensor).
 
-Ferramentas:
+<h1 id="recursos" align="center">Recursos utilizados</h1> 
+
 - 🔧 Quartus Prime 22.1
 - 🔧 Kit de desenvolvimento Mercúrio IV
 - 🔧 Visual Studio Code
 
-
-
-
-
+<h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
 Para clonar este repositório:
 ```
