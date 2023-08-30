@@ -1,5 +1,5 @@
 
-State Machine - |FPGAImplementation|uart_tx:comb_13|estadoAtual
+State Machine - |FPGAImplementation|uart_tx:comb_22|estadoAtual
 Name estadoAtual.estadoEnviaBitFinal estadoAtual.estadoEnviaBits estadoAtual.estadoEnviaBitInicio estadoAtual.000 estadoAtual.estadoDeLimpeza 
 estadoAtual.000 0 0 0 0 0 
 estadoAtual.estadoEnviaBitInicio 0 0 1 1 0 

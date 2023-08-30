@@ -31,13 +31,13 @@ int main() {
 	tcsetattr(arquivoSerial, TCSANOW, &options); //Aplique agora, neste instante
 
 	/* Escrevendo na porta serial */
-	strcpy(bufferRxTx, "OK");
+	strcpy(bufferRxTx, "1P");
 	tam = strlen(bufferRxTx);
 	tam = write(arquivoSerial, bufferRxTx, tam);
 	printf("Wrote %d bytes over UART\n", tam);
 
-	printf("You have 5s to send me some input data...\n");
-	sleep(5);
+	printf("Enviando 2 bytes para o PC...\n");
+	sleep(2);
 
 	/* Lendo da porta serial */
 	memset(bufferRxTx, 0, 255);

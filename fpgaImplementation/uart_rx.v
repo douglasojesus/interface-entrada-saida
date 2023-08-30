@@ -10,7 +10,7 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
    input        clock, //Sinal de clock de entrada para sincronização.
    input        bitSerialAtual, //Sinal serial de entrada que carrega os dados a serem recebidos.
    output       bitsEstaoRecebidos, //Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
-   output [7:0] byteCompleto //Saída de 8 bits que contém os dados recebidos.
+   output [15:0] byteCompleto //Saída de 8 bits que contém os dados recebidos.
    );
 	
 /*Definição dos estados da máquina de estados.*/
@@ -31,8 +31,8 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 	reg         serialDeEntradaBuffer	= 1'b1;
 	reg         serialDeEntrada			= 1'b1;
 	reg [12:0]  contadorDeClock			= 0; //Contador de ciclos de clock usado para sincronização e temporização.
-	reg [2:0]   indiceDoBit					= 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
-	reg [7:0]   armazenaBits				= 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
+	reg [3:0]   indiceDoBit					= 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
+	reg [15:0]   armazenaBits				= 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
 	reg         dadosOk						= 0; //Sinal que indica quando os dados foram recebidos e estão disponíveis para leitura.
 	reg [2:0]   estadoAtual					= 0; //Registrador que mantém o estado atual da máquina de estados.
    
@@ -112,7 +112,7 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 								armazenaBits[indiceDoBit] <= serialDeEntrada;
 
 								// Verifica se recebemos todos os bits
-								if (indiceDoBit != 7)
+								if (indiceDoBit != 15)
 									begin
 										indiceDoBit <= indiceDoBit + 1'b1;
 										estadoAtual   <= estadoDeEsperaBits;
