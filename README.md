@@ -17,3 +17,7 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 - 📝 Os comandos devem ser compostos por palavras de 8 bits;
 - 📝 As requisições e respostas devem ser compostas de 2 bytes (Comando + Endereço do sensor).
 
+Ferramentas:
+- 🔧 Quartus Prime 22.1
+- 🔧 Kit de desenvolvimento Mercúrio IV
+- 🔧 Visual Studio Code
