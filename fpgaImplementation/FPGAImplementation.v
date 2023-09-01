@@ -23,8 +23,8 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos,
 	output 				bitsEstaoEnviados;
 	output	[6:0]		display;
 
-	wire [7:0] 	primeiroByteCompleto;	//Byte a ser recebido do PC através do RX
-	wire [7:0] 	segundoByteCompleto;
+	wire [7:0] 	primeiroByteCompleto, primeiroByteASerTransmitido;	//Byte a ser recebido do PC através do RX
+	wire [7:0] 	segundoByteCompleto, segundoByteASerTransmitido;
 	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
 	wire 			haDadosParaTransmitir;
 	
@@ -35,13 +35,15 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos,
 	//Implementação da comunicação entre o PC e a FPGA
 	uart_rx (clock, bitSerialAtualRX, bitsEstaoRecebidos, primeiroByteCompleto, segundoByteCompleto);
 	
-	//assign byteASerTransmitido = byteCompleto; //Faz o que está entrando na FPGA voltar para o PC
-	//assign haDadosParaTransmitir = bitsEstaoRecebidos; //Faz o que está entrando na FPGA voltar para o PC
-	
 	//haDadosParaTransmitir: bit que informa que os dados do byteASerTransmitido devem ser enviados.
 	//byteASerTransmitido: byte que serve de entrada para enviar bit a bit.
 	
-	//uart_tx (clock, haDadosParaTransmitir, byteASerTransmitido, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
+	assign primeiroByteASerTransmitido = primeiroByteCompleto; //Faz o que está entrando na FPGA voltar para o PC
+	assign segundoByteASerTransmitido = segundoByteCompleto; //Faz o que está entrando na FPGA voltar para o PC
+	assign haDadosParaTransmitir = bitsEstaoRecebidos;
+	
+	uart_tx (clock, haDadosParaTransmitir, primeiroByteASerTransmitido, segundoByteASerTransmitido, 
+	indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
 	
 	decoder (segundoByteCompleto, display);
 

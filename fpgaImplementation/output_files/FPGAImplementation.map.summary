@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Thu Aug 31 23:01:56 2023
+Analysis & Synthesis Status : Successful - Thu Aug 31 23:16:01 2023
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : FPGAImplementation
 Top-level Entity Name : FPGAImplementation
 Family : Cyclone IV E
-Total logic elements : 74
-    Total combinational functions : 65
-    Dedicated logic registers : 41
-Total registers : 41
+Total logic elements : 133
+    Total combinational functions : 116
+    Dedicated logic registers : 82
+Total registers : 82
 Total pins : 13
 Total virtual pins : 0
 Total memory bits : 0

@@ -1,17 +1,17 @@
 |FPGAImplementation
-clock => clock.IN1
+clock => clock.IN2
 bitSerialAtualRX => bitSerialAtualRX.IN1
-bitsEstaoRecebidos << uart_rx:comb_3.port2
-indicaTransmissao << <GND>
-bitSerialAtualTX << <GND>
-bitsEstaoEnviados << <GND>
-display[0] << decoder:comb_4.port1
-display[1] << decoder:comb_4.port1
-display[2] << decoder:comb_4.port1
-display[3] << decoder:comb_4.port1
-display[4] << decoder:comb_4.port1
-display[5] << decoder:comb_4.port1
-display[6] << decoder:comb_4.port1
+bitsEstaoRecebidos <= haDadosParaTransmitir.DB_MAX_OUTPUT_PORT_TYPE
+indicaTransmissao <= uart_tx:comb_21.port4
+bitSerialAtualTX <= uart_tx:comb_21.port5
+bitsEstaoEnviados <= uart_tx:comb_21.port6
+display[0] <= decoder:comb_22.port1
+display[1] <= decoder:comb_22.port1
+display[2] <= decoder:comb_22.port1
+display[3] <= decoder:comb_22.port1
+display[4] <= decoder:comb_22.port1
+display[5] <= decoder:comb_22.port1
+display[6] <= decoder:comb_22.port1
 
 
 |FPGAImplementation|uart_rx:comb_3
@@ -80,7 +80,70 @@ segundoByteCompleto[6] <= bufferSegundoByte[6].DB_MAX_OUTPUT_PORT_TYPE
 segundoByteCompleto[7] <= bufferSegundoByte[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|decoder:comb_4
+|FPGAImplementation|uart_tx:comb_21
+clock => jaFoiOPrimeiro.CLK
+clock => dadosASeremTransmitidos[0].CLK
+clock => dadosASeremTransmitidos[1].CLK
+clock => dadosASeremTransmitidos[2].CLK
+clock => dadosASeremTransmitidos[3].CLK
+clock => dadosASeremTransmitidos[4].CLK
+clock => dadosASeremTransmitidos[5].CLK
+clock => dadosASeremTransmitidos[6].CLK
+clock => dadosASeremTransmitidos[7].CLK
+clock => transmissaoEmAndamento.CLK
+clock => indiceDoBitTransmitido[0].CLK
+clock => indiceDoBitTransmitido[1].CLK
+clock => indiceDoBitTransmitido[2].CLK
+clock => contadorDeClock[0].CLK
+clock => contadorDeClock[1].CLK
+clock => contadorDeClock[2].CLK
+clock => contadorDeClock[3].CLK
+clock => contadorDeClock[4].CLK
+clock => contadorDeClock[5].CLK
+clock => contadorDeClock[6].CLK
+clock => contadorDeClock[7].CLK
+clock => contadorDeClock[8].CLK
+clock => contadorDeClock[9].CLK
+clock => contadorDeClock[10].CLK
+clock => contadorDeClock[11].CLK
+clock => contadorDeClock[12].CLK
+clock => transmissaoConcluida.CLK
+clock => bitSerialAtual~reg0.CLK
+clock => estadoAtual~1.DATAIN
+haDadosParaTransmitir => transmissaoEmAndamento.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => dadosASeremTransmitidos.OUTPUTSELECT
+haDadosParaTransmitir => jaFoiOPrimeiro.OUTPUTSELECT
+haDadosParaTransmitir => Selector20.IN3
+haDadosParaTransmitir => Selector19.IN2
+primeiroByteASerTransmitido[0] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[1] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[2] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[3] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[4] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[5] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[6] => dadosASeremTransmitidos.DATAA
+primeiroByteASerTransmitido[7] => dadosASeremTransmitidos.DATAA
+segundoByteASerTransmitido[0] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[1] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[2] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[3] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[4] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[5] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[6] => dadosASeremTransmitidos.DATAB
+segundoByteASerTransmitido[7] => dadosASeremTransmitidos.DATAB
+indicaTransmissao <= transmissaoEmAndamento.DB_MAX_OUTPUT_PORT_TYPE
+bitSerialAtual <= bitSerialAtual~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bitsEstaoEnviados <= transmissaoConcluida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FPGAImplementation|decoder:comb_22
 word[0] => Equal0.IN15
 word[0] => Equal1.IN15
 word[1] => Equal0.IN14
