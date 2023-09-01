@@ -10,7 +10,8 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
    input        clock, //Sinal de clock de entrada para sincronização.
    input        bitSerialAtual, //Sinal serial de entrada que carrega os dados a serem recebidos.
    output       bitsEstaoRecebidos, //Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
-   output [7:0] byteCompleto //Saída de 8 bits que contém os dados recebidos.
+   output [7:0] primeiroByteCompleto, //Saída de 8 bits que contém os dados recebidos.
+	output [7:0] segundoByteCompleto
    );
 	
 /*Definição dos estados da máquina de estados.*/
@@ -33,9 +34,12 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 	reg [12:0]  contadorDeClock			= 0; //Contador de ciclos de clock usado para sincronização e temporização.
 	reg [2:0]   indiceDoBit					= 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
 	reg [7:0]   armazenaBits				= 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
+	reg 			jaFoiOPrimeiro				= 0; 
 	reg         dadosOk						= 0; //Sinal que indica quando os dados foram recebidos e estão disponíveis para leitura.
 	reg [2:0]   estadoAtual					= 0; //Registrador que mantém o estado atual da máquina de estados.
-   
+   reg [7:0] 	buffer1 						= 0;
+	reg [7:0] 	buffer2 						= 0;
+	
 /*
 *Atualização dos registros serialDeEntradaBuffer e serialDeEntrada com o valor atual do sinal serial na borda de subida do clock. 
 *Isso ajuda a remover problemas de metastabilidade.
@@ -143,6 +147,16 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 							begin
 								dadosOk       <= 1'b1;
 								contadorDeClock <= 0;
+								if (jaFoiOPrimeiro == 1'b1)
+									begin
+										buffer2 = armazenaBits;
+										jaFoiOPrimeiro <= 0;
+									end
+								else 
+									begin
+										buffer1 = armazenaBits;
+										jaFoiOPrimeiro <= 1;
+									end
 								estadoAtual     <= estadoDeLimpeza;
 							end
 					end // case: estadoStopBit
@@ -166,6 +180,7 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 		end   
    
 	assign bitsEstaoRecebidos   = dadosOk;
-	assign byteCompleto = armazenaBits;
+	assign primeiroByteCompleto = buffer1;
+	assign segundoByteCompleto = buffer2;
    
 endmodule
