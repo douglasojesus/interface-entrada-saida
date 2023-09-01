@@ -10,8 +10,8 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
    input        clock, //Sinal de clock de entrada para sincronização.
    input        bitSerialAtual, //Sinal serial de entrada que carrega os dados a serem recebidos.
    output       bitsEstaoRecebidos, //Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
-   output [7:0] primeiroByteCompleto, //Saída de 8 bits que contém os dados recebidos.
-	output [7:0] segundoByteCompleto
+   output [7:0] primeiroByteCompleto, //Saída de 8 bits que contém os dados do primeiro byte (de comando) recebido.
+	output [7:0] segundoByteCompleto //Saída de 8 bits que contém os dados do segundo byte (de endereço) recebido.
    );
 	
 /*Definição dos estados da máquina de estados.*/
@@ -34,11 +34,11 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 	reg [12:0]  contadorDeClock			= 0; //Contador de ciclos de clock usado para sincronização e temporização.
 	reg [2:0]   indiceDoBit					= 0; //Índice que rastreia a posição do bit atual dentro do byte recebido. 2³ possibilita a contagem até 8. 
 	reg [7:0]   armazenaBits				= 0; //Registrador que armazena os bits de dados recebidos, formando um byte completo.
-	reg 			jaFoiOPrimeiro				= 0; 
+	reg 			jaFoiOPrimeiro				= 0; //Sinal que verifica se o primeiro byte já foi preenchido.
 	reg         dadosOk						= 0; //Sinal que indica quando os dados foram recebidos e estão disponíveis para leitura.
 	reg [2:0]   estadoAtual					= 0; //Registrador que mantém o estado atual da máquina de estados.
-   reg [7:0] 	buffer1 						= 0;
-	reg [7:0] 	buffer2 						= 0;
+   reg [7:0] 	bufferPrimeiroByte 		= 0;
+	reg [7:0] 	bufferSegundoByte 		= 0;
 	
 /*
 *Atualização dos registros serialDeEntradaBuffer e serialDeEntrada com o valor atual do sinal serial na borda de subida do clock. 
@@ -147,14 +147,14 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 							begin
 								dadosOk       <= 1'b1;
 								contadorDeClock <= 0;
-								if (jaFoiOPrimeiro == 1'b1)
+								if (jaFoiOPrimeiro == 1'b1) //Avalia se o primeiro byte já foi preenchido.
 									begin
-										buffer2 = armazenaBits;
+										bufferSegundoByte = armazenaBits; //Se sim, o segundo byte recebe os bits armazenados nesse instante.
 										jaFoiOPrimeiro <= 0;
 									end
 								else 
 									begin
-										buffer1 = armazenaBits;
+										bufferPrimeiroByte = armazenaBits; //Se não, o primeiro byte recebe os bits armazenados nesse instante.
 										jaFoiOPrimeiro <= 1;
 									end
 								estadoAtual     <= estadoDeLimpeza;
@@ -179,8 +179,8 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 			endcase
 		end   
    
-	assign bitsEstaoRecebidos   = dadosOk;
-	assign primeiroByteCompleto = buffer1;
-	assign segundoByteCompleto = buffer2;
+	assign bitsEstaoRecebidos   	= dadosOk;
+	assign primeiroByteCompleto 	= bufferPrimeiroByte;
+	assign segundoByteCompleto 	= bufferSegundoByte;
    
 endmodule

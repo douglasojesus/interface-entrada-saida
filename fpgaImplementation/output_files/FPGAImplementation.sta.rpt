@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for FPGAImplementation
-Thu Aug 31 22:51:05 2023
+Thu Aug 31 23:02:15 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -351,10 +351,10 @@ No paths to report.
 ; 0.736 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.499      ; 1.421      ;
 ; 0.752 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.089      ; 1.027      ;
 ; 0.763 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.474      ; 1.423      ;
-; 0.768 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|buffer2[6]                          ; clock        ; clock       ; 0.000        ; 0.114      ; 1.068      ;
-; 0.768 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|buffer2[7]                          ; clock        ; clock       ; 0.000        ; 0.114      ; 1.068      ;
-; 0.781 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|buffer2[1]                          ; clock        ; clock       ; 0.000        ; 0.099      ; 1.066      ;
-; 0.782 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|buffer2[4]                          ; clock        ; clock       ; 0.000        ; 0.099      ; 1.067      ;
+; 0.768 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|bufferSegundoByte[6]                ; clock        ; clock       ; 0.000        ; 0.114      ; 1.068      ;
+; 0.768 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|bufferSegundoByte[7]                ; clock        ; clock       ; 0.000        ; 0.114      ; 1.068      ;
+; 0.781 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|bufferSegundoByte[1]                ; clock        ; clock       ; 0.000        ; 0.099      ; 1.066      ;
+; 0.782 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|bufferSegundoByte[4]                ; clock        ; clock       ; 0.000        ; 0.099      ; 1.067      ;
 ; 0.804 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.499      ; 1.489      ;
 ; 0.809 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.499      ; 1.494      ;
 ; 0.818 ; uart_rx:comb_3|contadorDeClock[11]                 ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.089      ; 1.093      ;
@@ -371,9 +371,9 @@ No paths to report.
 ; 0.954 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.089      ; 1.229      ;
 ; 0.958 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.499      ; 1.643      ;
 ; 0.960 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; clock        ; clock       ; 0.000        ; 0.089      ; 1.235      ;
-; 0.963 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|buffer2[3]                          ; clock        ; clock       ; 0.000        ; 0.090      ; 1.239      ;
-; 0.965 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|buffer2[5]                          ; clock        ; clock       ; 0.000        ; 0.090      ; 1.241      ;
-; 0.966 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|buffer2[0]                          ; clock        ; clock       ; 0.000        ; 0.114      ; 1.266      ;
+; 0.963 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|bufferSegundoByte[3]                ; clock        ; clock       ; 0.000        ; 0.090      ; 1.239      ;
+; 0.965 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|bufferSegundoByte[5]                ; clock        ; clock       ; 0.000        ; 0.090      ; 1.241      ;
+; 0.966 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|bufferSegundoByte[0]                ; clock        ; clock       ; 0.000        ; 0.114      ; 1.266      ;
 ; 0.982 ; uart_rx:comb_3|contadorDeClock[9]                  ; uart_rx:comb_3|contadorDeClock[10]                 ; clock        ; clock       ; 0.000        ; 0.073      ; 1.241      ;
 ; 0.983 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[8]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 1.242      ;
 ; 0.996 ; uart_rx:comb_3|contadorDeClock[8]                  ; uart_rx:comb_3|contadorDeClock[9]                  ; clock        ; clock       ; 0.000        ; 0.073      ; 1.255      ;
@@ -421,14 +421,14 @@ No paths to report.
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[6]                     ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[7]                     ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[1]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[4]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[6]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[7]                          ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[1]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[4]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[6]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[7]                ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[0]                  ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[10]                 ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[11]                 ;
@@ -459,17 +459,17 @@ No paths to report.
 ; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[3]                     ;
 ; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[4]                     ;
 ; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
-; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[1]                          ;
-; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[4]                          ;
+; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[1]                ;
+; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[4]                ;
 ; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|dadosOk                             ;
 ; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|estadoAtual.000                     ;
 ; 0.256  ; 0.444        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|serialDeEntradaBuffer               ;
-; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
-; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[6]                          ;
-; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[7]                          ;
+; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
+; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[6]                ;
+; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[7]                ;
 ; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[0]                  ;
 ; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[11]                 ;
 ; 0.257  ; 0.445        ; 0.188          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[12]                 ;
@@ -511,7 +511,7 @@ No paths to report.
 ; 0.334  ; 0.554        ; 0.220          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[3]                     ;
 ; 0.334  ; 0.554        ; 0.220          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[4]                     ;
 ; 0.334  ; 0.554        ; 0.220          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
-; 0.334  ; 0.554        ; 0.220          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
+; 0.334  ; 0.554        ; 0.220          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
 +--------+--------------+----------------+------------------+-------+------------+----------------------------------------------------+
 
 
@@ -826,12 +826,12 @@ No paths to report.
 ; 0.681 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.430      ; 1.282      ;
 ; 0.684 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.456      ; 1.311      ;
 ; 0.684 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.080      ; 0.935      ;
-; 0.713 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|buffer2[6]                          ; clock        ; clock       ; 0.000        ; 0.106      ; 0.990      ;
-; 0.714 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|buffer2[7]                          ; clock        ; clock       ; 0.000        ; 0.106      ; 0.991      ;
+; 0.713 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|bufferSegundoByte[6]                ; clock        ; clock       ; 0.000        ; 0.106      ; 0.990      ;
+; 0.714 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|bufferSegundoByte[7]                ; clock        ; clock       ; 0.000        ; 0.106      ; 0.991      ;
 ; 0.715 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.456      ; 1.342      ;
 ; 0.726 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.456      ; 1.353      ;
-; 0.729 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|buffer2[1]                          ; clock        ; clock       ; 0.000        ; 0.090      ; 0.990      ;
-; 0.729 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|buffer2[4]                          ; clock        ; clock       ; 0.000        ; 0.090      ; 0.990      ;
+; 0.729 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|bufferSegundoByte[1]                ; clock        ; clock       ; 0.000        ; 0.090      ; 0.990      ;
+; 0.729 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|bufferSegundoByte[4]                ; clock        ; clock       ; 0.000        ; 0.090      ; 0.990      ;
 ; 0.736 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.456      ; 1.363      ;
 ; 0.747 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.456      ; 1.374      ;
 ; 0.759 ; uart_rx:comb_3|contadorDeClock[11]                 ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.081      ; 1.011      ;
@@ -846,12 +846,12 @@ No paths to report.
 ; 0.861 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.080      ; 1.112      ;
 ; 0.864 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.080      ; 1.115      ;
 ; 0.881 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; clock        ; clock       ; 0.000        ; 0.080      ; 1.132      ;
-; 0.890 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|buffer2[0]                          ; clock        ; clock       ; 0.000        ; 0.106      ; 1.167      ;
-; 0.891 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|buffer2[5]                          ; clock        ; clock       ; 0.000        ; 0.082      ; 1.144      ;
+; 0.890 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|bufferSegundoByte[0]                ; clock        ; clock       ; 0.000        ; 0.106      ; 1.167      ;
+; 0.891 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|bufferSegundoByte[5]                ; clock        ; clock       ; 0.000        ; 0.082      ; 1.144      ;
 ; 0.892 ; uart_rx:comb_3|contadorDeClock[9]                  ; uart_rx:comb_3|contadorDeClock[10]                 ; clock        ; clock       ; 0.000        ; 0.066      ; 1.129      ;
 ; 0.896 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[8]                  ; clock        ; clock       ; 0.000        ; 0.066      ; 1.133      ;
 ; 0.899 ; uart_rx:comb_3|contadorDeClock[8]                  ; uart_rx:comb_3|contadorDeClock[9]                  ; clock        ; clock       ; 0.000        ; 0.066      ; 1.136      ;
-; 0.900 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|buffer2[3]                          ; clock        ; clock       ; 0.000        ; 0.082      ; 1.153      ;
+; 0.900 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|bufferSegundoByte[3]                ; clock        ; clock       ; 0.000        ; 0.082      ; 1.153      ;
 ; 0.903 ; uart_rx:comb_3|contadorDeClock[4]                  ; uart_rx:comb_3|contadorDeClock[5]                  ; clock        ; clock       ; 0.000        ; 0.066      ; 1.140      ;
 ; 0.906 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[7]                  ; clock        ; clock       ; 0.000        ; 0.066      ; 1.143      ;
 ; 0.910 ; uart_rx:comb_3|contadorDeClock[8]                  ; uart_rx:comb_3|contadorDeClock[10]                 ; clock        ; clock       ; 0.000        ; 0.066      ; 1.147      ;
@@ -896,14 +896,14 @@ No paths to report.
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[6]                     ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[7]                     ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[1]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[4]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[6]                          ;
-; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|buffer2[7]                          ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[1]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[4]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[6]                ;
+; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[7]                ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[0]                  ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[10]                 ;
 ; -1.285 ; 1.000        ; 2.285          ; Min Period       ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[11]                 ;
@@ -947,8 +947,8 @@ No paths to report.
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[3]                     ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[4]                     ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
-; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[1]                          ;
-; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[4]                          ;
+; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[1]                ;
+; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[4]                ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[0]                  ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[11]                 ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[12]                 ;
@@ -956,12 +956,12 @@ No paths to report.
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|dadosOk                             ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|estadoAtual.000                     ;
 ; 0.291  ; 0.477        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|serialDeEntradaBuffer               ;
-; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
-; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[6]                          ;
-; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|buffer2[7]                          ;
+; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
+; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[6]                ;
+; 0.292  ; 0.478        ; 0.186          ; Low Pulse Width  ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[7]                ;
 ; 0.296  ; 0.514        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[0]                     ;
 ; 0.296  ; 0.514        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[6]                     ;
 ; 0.296  ; 0.514        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[7]                     ;
@@ -983,10 +983,10 @@ No paths to report.
 ; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[3]                     ;
 ; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[4]                     ;
 ; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
-; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
+; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; 0.302  ; 0.520        ; 0.218          ; High Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
 +--------+--------------+----------------+------------------+-------+------------+----------------------------------------------------+
 
 
@@ -1286,12 +1286,12 @@ No paths to report.
 ; 0.319 ; uart_rx:comb_3|contadorDeClock[9]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.640      ;
 ; 0.320 ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ; uart_rx:comb_3|dadosOk                             ; clock        ; clock       ; 0.000        ; 0.238      ; 0.642      ;
 ; 0.322 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.228      ; 0.634      ;
-; 0.330 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|buffer2[7]                          ; clock        ; clock       ; 0.000        ; 0.055      ; 0.469      ;
+; 0.330 ; uart_rx:comb_3|armazenaBits[7]                     ; uart_rx:comb_3|bufferSegundoByte[7]                ; clock        ; clock       ; 0.000        ; 0.055      ; 0.469      ;
 ; 0.330 ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; uart_rx:comb_3|indiceDoBit[0]                      ; clock        ; clock       ; 0.000        ; 0.045      ; 0.459      ;
-; 0.331 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|buffer2[6]                          ; clock        ; clock       ; 0.000        ; 0.055      ; 0.470      ;
+; 0.331 ; uart_rx:comb_3|armazenaBits[6]                     ; uart_rx:comb_3|bufferSegundoByte[6]                ; clock        ; clock       ; 0.000        ; 0.055      ; 0.470      ;
 ; 0.331 ; uart_rx:comb_3|contadorDeClock[8]                  ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.652      ;
-; 0.333 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|buffer2[1]                          ; clock        ; clock       ; 0.000        ; 0.051      ; 0.468      ;
-; 0.333 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|buffer2[4]                          ; clock        ; clock       ; 0.000        ; 0.051      ; 0.468      ;
+; 0.333 ; uart_rx:comb_3|armazenaBits[1]                     ; uart_rx:comb_3|bufferSegundoByte[1]                ; clock        ; clock       ; 0.000        ; 0.051      ; 0.468      ;
+; 0.333 ; uart_rx:comb_3|armazenaBits[4]                     ; uart_rx:comb_3|bufferSegundoByte[4]                ; clock        ; clock       ; 0.000        ; 0.051      ; 0.468      ;
 ; 0.334 ; uart_rx:comb_3|contadorDeClock[8]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.655      ;
 ; 0.335 ; uart_rx:comb_3|serialDeEntrada                     ; uart_rx:comb_3|estadoAtual.estadoDeEsperaBits      ; clock        ; clock       ; 0.000        ; 0.228      ; 0.647      ;
 ; 0.351 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|indiceDoBit[1]                      ; clock        ; clock       ; 0.000        ; 0.045      ; 0.480      ;
@@ -1303,9 +1303,9 @@ No paths to report.
 ; 0.386 ; uart_rx:comb_3|contadorDeClock[7]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.707      ;
 ; 0.401 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[11]                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.722      ;
 ; 0.404 ; uart_rx:comb_3|contadorDeClock[6]                  ; uart_rx:comb_3|contadorDeClock[12]                 ; clock        ; clock       ; 0.000        ; 0.237      ; 0.725      ;
-; 0.419 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|buffer2[0]                          ; clock        ; clock       ; 0.000        ; 0.055      ; 0.558      ;
-; 0.422 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|buffer2[5]                          ; clock        ; clock       ; 0.000        ; 0.046      ; 0.552      ;
-; 0.422 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|buffer2[3]                          ; clock        ; clock       ; 0.000        ; 0.046      ; 0.552      ;
+; 0.419 ; uart_rx:comb_3|armazenaBits[0]                     ; uart_rx:comb_3|bufferSegundoByte[0]                ; clock        ; clock       ; 0.000        ; 0.055      ; 0.558      ;
+; 0.422 ; uart_rx:comb_3|armazenaBits[5]                     ; uart_rx:comb_3|bufferSegundoByte[5]                ; clock        ; clock       ; 0.000        ; 0.046      ; 0.552      ;
+; 0.422 ; uart_rx:comb_3|armazenaBits[3]                     ; uart_rx:comb_3|bufferSegundoByte[3]                ; clock        ; clock       ; 0.000        ; 0.046      ; 0.552      ;
 ; 0.433 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[7]                     ; clock        ; clock       ; 0.000        ; 0.045      ; 0.562      ;
 ; 0.437 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|estadoAtual.estadoStopBit           ; clock        ; clock       ; 0.000        ; 0.045      ; 0.566      ;
 ; 0.442 ; uart_rx:comb_3|indiceDoBit[0]                      ; uart_rx:comb_3|armazenaBits[6]                     ; clock        ; clock       ; 0.000        ; 0.045      ; 0.571      ;
@@ -1361,14 +1361,14 @@ No paths to report.
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[6]                     ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[7]                     ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[1]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[4]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[6]                          ;
-; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|buffer2[7]                          ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[1]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[4]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[6]                ;
+; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[7]                ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[0]                  ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[10]                 ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[11]                 ;
@@ -1394,19 +1394,19 @@ No paths to report.
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|jaFoiOPrimeiro                      ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|serialDeEntrada                     ;
 ; -1.000 ; 1.000        ; 2.000          ; Min Period      ; clock ; Rise       ; uart_rx:comb_3|serialDeEntradaBuffer               ;
-; -0.078 ; 0.106        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[1]                          ;
-; -0.078 ; 0.106        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[4]                          ;
+; -0.078 ; 0.106        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[1]                ;
+; -0.078 ; 0.106        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[4]                ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[1]                     ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[2]                     ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[3]                     ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[4]                     ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|armazenaBits[5]                     ;
-; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[0]                          ;
-; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[2]                          ;
-; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[3]                          ;
-; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[5]                          ;
-; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[6]                          ;
-; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|buffer2[7]                          ;
+; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[0]                ;
+; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[2]                ;
+; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[3]                ;
+; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[5]                ;
+; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[6]                ;
+; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|bufferSegundoByte[7]                ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[0]                  ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[11]                 ;
 ; -0.077 ; 0.107        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|contadorDeClock[12]                 ;
@@ -1435,19 +1435,19 @@ No paths to report.
 ; -0.053 ; 0.131        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|estadoAtual.estadoVerificaBitInicio ;
 ; -0.053 ; 0.131        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|jaFoiOPrimeiro                      ;
 ; -0.053 ; 0.131        ; 0.184          ; Low Pulse Width ; clock ; Rise       ; uart_rx:comb_3|serialDeEntrada                     ;
-; 0.102  ; 0.102        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[1]|clk                              ;
-; 0.102  ; 0.102        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[4]|clk                              ;
+; 0.102  ; 0.102        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[1]|clk                    ;
+; 0.102  ; 0.102        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[4]|clk                    ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|armazenaBits[1]|clk                         ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|armazenaBits[2]|clk                         ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|armazenaBits[3]|clk                         ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|armazenaBits[4]|clk                         ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|armazenaBits[5]|clk                         ;
-; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[0]|clk                              ;
-; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[2]|clk                              ;
-; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[3]|clk                              ;
-; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[5]|clk                              ;
-; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[6]|clk                              ;
-; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|buffer2[7]|clk                              ;
+; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[0]|clk                    ;
+; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[2]|clk                    ;
+; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[3]|clk                    ;
+; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[5]|clk                    ;
+; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[6]|clk                    ;
+; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|bufferSegundoByte[7]|clk                    ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|contadorDeClock[0]|clk                      ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|contadorDeClock[11]|clk                     ;
 ; 0.103  ; 0.103        ; 0.000          ; Low Pulse Width ; clock ; Rise       ; comb_3|contadorDeClock[12]|clk                     ;
@@ -1773,7 +1773,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Aug 31 22:51:01 2023
+    Info: Processing started: Thu Aug 31 23:02:12 2023
 Info: Command: quartus_sta FPGAImplementation -c FPGAImplementation
 Info: qsta_default_script.tcl version: #1
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
@@ -1857,8 +1857,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4683 megabytes
-    Info: Processing ended: Thu Aug 31 22:51:05 2023
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Thu Aug 31 23:02:15 2023
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
 
 
