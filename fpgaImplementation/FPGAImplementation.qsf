@@ -70,7 +70,8 @@ set_location_assignment PIN_Y1 -to display[5]
 set_location_assignment PIN_W2 -to display[6]
 set_location_assignment PIN_C3 -to bitSerialAtualRX
 set_location_assignment PIN_C4 -to bitSerialAtualTX
-set_location_assignment PIN_V21 -to haDadosParaTransmitir
 set_global_assignment -name VERILOG_FILE SensorDecoder.v
 set_global_assignment -name VERILOG_FILE TriState.v
+set_global_assignment -name VERILOG_FILE DHT11_teste.v
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

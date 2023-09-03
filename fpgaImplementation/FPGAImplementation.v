@@ -50,11 +50,11 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos,
 	//haDadosParaTransmitir: bit que informa que os dados do byteASerTransmitido devem ser enviados.
 	//byteASerTransmitido: byte que serve de entrada para enviar bit a bit.
 	
-	SensorDecoder (clock, enable, reset, transmission_line, hum_int, hum_float, temp_int, temp_float, hold, error, dadosPodemSerEnviados);
+	DHT11Communication (clock, enable, reset, transmission_line, hum_int, hum_float, temp_int, temp_float, hold, error, dadosPodemSerEnviados);
 	
 	wire teste;
 	
-	or(teste, hum_int[7], hum_int[6], hum_int[5], hum_int[4], hum_int[3], hum_int[2], hum_int[1], hum_int[0]);
+	//or(teste, hum_int[7], hum_int[6], hum_int[5], hum_int[4], hum_int[3], hum_int[2], hum_int[1], hum_int[0]);
 	
 	decoder (segundoByteCompleto, display, teste);
 	

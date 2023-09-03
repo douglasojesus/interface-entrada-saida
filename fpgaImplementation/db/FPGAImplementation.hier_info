@@ -1,20 +1,20 @@
 |FPGAImplementation
 clock => clock.IN3
 bitSerialAtualRX => bitSerialAtualRX.IN1
-bitsEstaoRecebidos <= uart_rx:comb_3.port2
-indicaTransmissao <= uart_tx:comb_24.port4
-bitSerialAtualTX <= uart_tx:comb_24.port5
-bitsEstaoEnviados <= uart_tx:comb_24.port6
-display[0] <= decoder:comb_6.port1
-display[1] <= decoder:comb_6.port1
-display[2] <= decoder:comb_6.port1
-display[3] <= decoder:comb_6.port1
-display[4] <= decoder:comb_6.port1
-display[5] <= decoder:comb_6.port1
-display[6] <= decoder:comb_6.port1
-transmission_line <> SensorDecoder:comb_4.port3
-hold <= SensorDecoder:comb_4.port8
-error <= SensorDecoder:comb_4.port9
+bitsEstaoRecebidos << uart_rx:comb_3.port2
+indicaTransmissao << uart_tx:comb_23.port4
+bitSerialAtualTX << uart_tx:comb_23.port5
+bitsEstaoEnviados << uart_tx:comb_23.port6
+display[0] << decoder:comb_5.port1
+display[1] << decoder:comb_5.port1
+display[2] << decoder:comb_5.port1
+display[3] << decoder:comb_5.port1
+display[4] << decoder:comb_5.port1
+display[5] << decoder:comb_5.port1
+display[6] << decoder:comb_5.port1
+transmission_line <> DHT11Communication:comb_4.port3
+hold << DHT11Communication:comb_4.port8
+error << DHT11Communication:comb_4.port9
 
 
 |FPGAImplementation|uart_rx:comb_3
@@ -83,7 +83,7 @@ segundoByteCompleto[6] <= bufferSegundoByte[6].DB_MAX_OUTPUT_PORT_TYPE
 segundoByteCompleto[7] <= bufferSegundoByte[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|SensorDecoder:comb_4
+|FPGAImplementation|DHT11Communication:comb_4
 clock => index[0].CLK
 clock => index[1].CLK
 clock => index[2].CLK
@@ -149,94 +149,12 @@ clock => counter[22].CLK
 clock => counter[23].CLK
 clock => counter[24].CLK
 clock => counter[25].CLK
-clock => counter[26].CLK
 clock => sensor_out.CLK
 clock => direction.CLK
 clock => error~reg0.CLK
 clock => hold~reg0.CLK
 clock => current_state~13.DATAIN
-enable => direction.OUTPUTSELECT
-enable => sensor_out.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => current_state.OUTPUTSELECT
-enable => dadosPodemSerEnviados~reg0.ENA
-enable => index[5].ENA
-enable => index[4].ENA
-enable => index[3].ENA
-enable => index[2].ENA
-enable => index[1].ENA
-enable => index[0].ENA
-enable => sensor_data[0].ENA
-enable => sensor_data[1].ENA
-enable => sensor_data[2].ENA
-enable => sensor_data[3].ENA
-enable => sensor_data[4].ENA
-enable => sensor_data[5].ENA
-enable => sensor_data[6].ENA
-enable => sensor_data[7].ENA
-enable => sensor_data[8].ENA
-enable => sensor_data[9].ENA
-enable => sensor_data[10].ENA
-enable => sensor_data[11].ENA
-enable => sensor_data[12].ENA
-enable => sensor_data[13].ENA
-enable => sensor_data[14].ENA
-enable => sensor_data[15].ENA
-enable => sensor_data[16].ENA
-enable => sensor_data[17].ENA
-enable => sensor_data[18].ENA
-enable => sensor_data[19].ENA
-enable => sensor_data[20].ENA
-enable => sensor_data[21].ENA
-enable => sensor_data[22].ENA
-enable => sensor_data[23].ENA
-enable => sensor_data[24].ENA
-enable => sensor_data[25].ENA
-enable => sensor_data[26].ENA
-enable => sensor_data[27].ENA
-enable => sensor_data[28].ENA
-enable => sensor_data[29].ENA
-enable => sensor_data[30].ENA
-enable => sensor_data[31].ENA
-enable => counter[0].ENA
-enable => counter[1].ENA
-enable => counter[2].ENA
-enable => counter[3].ENA
-enable => counter[4].ENA
-enable => counter[5].ENA
-enable => counter[6].ENA
-enable => counter[7].ENA
-enable => counter[8].ENA
-enable => counter[9].ENA
-enable => counter[10].ENA
-enable => counter[11].ENA
-enable => counter[12].ENA
-enable => counter[13].ENA
-enable => counter[14].ENA
-enable => counter[15].ENA
-enable => counter[16].ENA
-enable => counter[17].ENA
-enable => counter[18].ENA
-enable => counter[19].ENA
-enable => counter[20].ENA
-enable => counter[21].ENA
-enable => counter[22].ENA
-enable => counter[23].ENA
-enable => counter[24].ENA
-enable => counter[25].ENA
-enable => counter[26].ENA
-enable => error~reg0.ENA
-enable => hold~reg0.ENA
+enable => ~NO_FANOUT~
 reset => hold.OUTPUTSELECT
 reset => error.OUTPUTSELECT
 reset => direction.OUTPUTSELECT
@@ -267,7 +185,6 @@ reset => counter.OUTPUTSELECT
 reset => counter.OUTPUTSELECT
 reset => counter.OUTPUTSELECT
 reset => counter.OUTPUTSELECT
-reset => counter.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
@@ -312,14 +229,14 @@ reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
-reset => dadosPodemSerEnviados.OUTPUTSELECT
-reset => index.OUTPUTSELECT
-reset => index.OUTPUTSELECT
-reset => index.OUTPUTSELECT
-reset => index.OUTPUTSELECT
-reset => index.OUTPUTSELECT
-reset => index.OUTPUTSELECT
-transmission_line <> TriState:TS0.port
+reset => dadosPodemSerEnviados~reg0.ENA
+reset => index[5].ENA
+reset => index[4].ENA
+reset => index[3].ENA
+reset => index[2].ENA
+reset => index[1].ENA
+reset => index[0].ENA
+transmission_line <> TriState:TS0.port0
 hum_int[0] <= sensor_data[0].DB_MAX_OUTPUT_PORT_TYPE
 hum_int[1] <= sensor_data[1].DB_MAX_OUTPUT_PORT_TYPE
 hum_int[2] <= sensor_data[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -357,7 +274,7 @@ error <= error~reg0.DB_MAX_OUTPUT_PORT_TYPE
 dadosPodemSerEnviados <= dadosPodemSerEnviados~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|SensorDecoder:comb_4|TriState:TS0
+|FPGAImplementation|DHT11Communication:comb_4|TriState:TS0
 port <> port
 dir => port.OE
 dir => read.OE
@@ -365,7 +282,7 @@ send => port.DATAIN
 read <= read.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|decoder:comb_6
+|FPGAImplementation|decoder:comb_5
 word[0] => Equal0.IN15
 word[0] => Equal1.IN15
 word[1] => Equal0.IN14
@@ -397,7 +314,7 @@ teste => display[5]$latch.LATCH_ENABLE
 teste => display[6]$latch.LATCH_ENABLE
 
 
-|FPGAImplementation|uart_tx:comb_24
+|FPGAImplementation|uart_tx:comb_23
 clock => segundaVez.CLK
 clock => jaFoiOPrimeiro.CLK
 clock => dadosASeremTransmitidos[0].CLK
