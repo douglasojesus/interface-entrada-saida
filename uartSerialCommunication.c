@@ -36,8 +36,8 @@ int main() {
 	tam = write(arquivoSerial, bufferRxTx, tam);
 	printf("Wrote %d bytes over UART\n", tam);
 
-	printf("You have 5s to send me some input data...\n");
-	sleep(5);
+	printf("You have 2s to send me some input data...\n");
+	sleep(2);
 
 	/* Lendo da porta serial */
 	memset(bufferRxTx, 0, 255);
