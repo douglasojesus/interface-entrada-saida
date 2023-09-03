@@ -10,7 +10,7 @@
 
 int main() {
 	int arquivoSerial, tam;
-	char bufferRxTx[255]; 
+	unsigned char bufferRxTx[255]; 
 	struct termios options; /* Configuração das portas seriais */
 
 	arquivoSerial = open("/dev/ttyS0", O_RDWR | O_NDELAY | O_NOCTTY); //O endereço é por convenção a primeira porta serial disponível
@@ -31,20 +31,19 @@ int main() {
 	tcsetattr(arquivoSerial, TCSANOW, &options); //Aplique agora, neste instante
 
 	/* Escrevendo na porta serial */
-	strcpy(bufferRxTx, "OK");
+	strcpy(bufferRxTx, "1P");
 	tam = strlen(bufferRxTx);
 	tam = write(arquivoSerial, bufferRxTx, tam);
 	printf("Wrote %d bytes over UART\n", tam);
 
-	printf("You have 5s to send me some input data...\n");
-	sleep(5);
+	printf("You have 2s to send me some input data...\n");
+	sleep(2);
 
 	/* Lendo da porta serial */
 	memset(bufferRxTx, 0, 255);
-	tam = read(arquivoSerial, bufferRxTx, 255);
+	tam = read(arquivoSerial, bufferRxTx, 255); 
 	printf("Received %d bytes\n", tam);
 	printf("Received string: %s\n", bufferRxTx);
-
 
 	close(arquivoSerial);
 	return 0;
