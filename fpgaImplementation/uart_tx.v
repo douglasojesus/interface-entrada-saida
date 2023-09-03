@@ -36,6 +36,7 @@ module uart_tx #(parameter CLOKS_POR_BIT = 5209)
 	reg [2:0]   indiceDoBitTransmitido  = 0;
 	reg [7:0]   dadosASeremTransmitidos = 0;
 	reg 			jaFoiOPrimeiro				= 0;
+	reg 			segundaVez					= 0;
 	reg         transmissaoConcluida    = 0;
 	reg         transmissaoEmAndamento  = 0;
      
@@ -50,14 +51,13 @@ module uart_tx #(parameter CLOKS_POR_BIT = 5209)
 /*
 *O transmissor fica ocioso, com o bit serial em nível alto. Se houver dados para transmitir, ele passa para o estado estadoEnviaBitInicio.
 */
-
 				estadoDeEspera :
 					begin
 						bitSerialAtual   <= 1'b1;         // Drive Line High for Idle
 						transmissaoConcluida     <= 1'b0;
 						contadorDeClock <= 0;
 						indiceDoBitTransmitido   <= 0;
-						if (haDadosParaTransmitir == 1'b1)
+						if (haDadosParaTransmitir == 1'b1 || segundaVez == 1'b1)
 							begin
 								transmissaoEmAndamento <= 1'b1;
 /*Na hora de enviar, precisa verificar se o primeiro byte já foi enviado. 
@@ -67,12 +67,15 @@ module uart_tx #(parameter CLOKS_POR_BIT = 5209)
 									begin
 										dadosASeremTransmitidos <= segundoByteASerTransmitido;
 										jaFoiOPrimeiro <= 0;
+										segundaVez <= 1'b0; //O if acontece na segunda rodada, por isso o segundaVez eh setado como 1.
 									end
 								else
 									begin
 										dadosASeremTransmitidos <= primeiroByteASerTransmitido;
 										jaFoiOPrimeiro <= 1;
+										segundaVez <= 1'b1;
 									end
+								
 								estadoAtual   <= estadoEnviaBitInicio;
 							end
 						else

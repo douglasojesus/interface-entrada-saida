@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Thu Aug 31 23:16:01 2023
+Sat Sep 02 21:37:26 2023
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -13,17 +13,18 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |FPGAImplementation|uart_tx:comb_21|estadoAtual
+  8. State Machine - |FPGAImplementation|uart_tx:comb_4|estadoAtual
   9. State Machine - |FPGAImplementation|uart_rx:comb_3|estadoAtual
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: uart_rx:comb_3
- 15. Parameter Settings for User Entity Instance: uart_tx:comb_21
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
- 18. Analysis & Synthesis Suppressed Messages
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: uart_rx:comb_3
+ 16. Parameter Settings for User Entity Instance: uart_tx:comb_4
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+ 19. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -49,15 +50,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Aug 31 23:16:01 2023      ;
+; Analysis & Synthesis Status        ; Successful - Sat Sep 02 21:37:26 2023      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; FPGAImplementation                         ;
 ; Top-level Entity Name              ; FPGAImplementation                         ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 133                                        ;
-;     Total combinational functions  ; 116                                        ;
-;     Dedicated logic registers      ; 82                                         ;
-; Total registers                    ; 82                                         ;
+; Total logic elements               ; 74                                         ;
+;     Total combinational functions  ; 65                                         ;
+;     Dedicated logic registers      ; 41                                         ;
+; Total registers                    ; 41                                         ;
 ; Total pins                         ; 13                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
@@ -187,47 +188,46 @@ applicable agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 133         ;
+; Estimated Total logic elements              ; 74          ;
 ;                                             ;             ;
-; Total combinational functions               ; 116         ;
+; Total combinational functions               ; 65          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 57          ;
-;     -- 3 input functions                    ; 26          ;
-;     -- <=2 input functions                  ; 33          ;
+;     -- 4 input functions                    ; 35          ;
+;     -- 3 input functions                    ; 12          ;
+;     -- <=2 input functions                  ; 18          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 92          ;
-;     -- arithmetic mode                      ; 24          ;
+;     -- normal mode                          ; 53          ;
+;     -- arithmetic mode                      ; 12          ;
 ;                                             ;             ;
-; Total registers                             ; 82          ;
-;     -- Dedicated logic registers            ; 82          ;
+; Total registers                             ; 41          ;
+;     -- Dedicated logic registers            ; 41          ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
 ; I/O pins                                    ; 13          ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 82          ;
-; Total fan-out                               ; 632         ;
-; Average fan-out                             ; 2.82        ;
+; Maximum fan-out                             ; 41          ;
+; Total fan-out                               ; 346         ;
+; Average fan-out                             ; 2.62        ;
 +---------------------------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                 ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
-; |FPGAImplementation        ; 116 (0)           ; 82 (0)       ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |FPGAImplementation                 ; work         ;
-;    |decoder:comb_22|       ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|decoder:comb_22 ; work         ;
-;    |uart_rx:comb_3|        ; 61 (61)           ; 49 (49)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_rx:comb_3  ; work         ;
-;    |uart_tx:comb_21|       ; 50 (50)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_tx:comb_21 ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                        ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
+; |FPGAImplementation        ; 65 (0)            ; 41 (0)       ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |FPGAImplementation                ; work         ;
+;    |decoder:comb_5|        ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|decoder:comb_5 ; work         ;
+;    |uart_rx:comb_3|        ; 60 (60)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_rx:comb_3 ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |FPGAImplementation|uart_tx:comb_21|estadoAtual                                                                                                                     ;
+; State Machine - |FPGAImplementation|uart_tx:comb_4|estadoAtual                                                                                                                      ;
 +----------------------------------+---------------------------------+-----------------------------+----------------------------------+-----------------+-----------------------------+
 ; Name                             ; estadoAtual.estadoEnviaBitFinal ; estadoAtual.estadoEnviaBits ; estadoAtual.estadoEnviaBitInicio ; estadoAtual.000 ; estadoAtual.estadoDeLimpeza ;
 +----------------------------------+---------------------------------+-----------------------------+----------------------------------+-----------------+-----------------------------+
@@ -253,17 +253,56 @@ Encoding Type:  One-Hot
 +-------------------------------------+---------------------------+--------------------------------+-------------------------------------+-----------------+-----------------------------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; uart_tx:comb_21|estadoAtual~2         ; Lost fanout        ;
-; uart_tx:comb_21|estadoAtual~3         ; Lost fanout        ;
-; uart_rx:comb_3|estadoAtual~2          ; Lost fanout        ;
-; uart_rx:comb_3|estadoAtual~3          ; Lost fanout        ;
-; Total Number of Removed Registers = 4 ;                    ;
-+---------------------------------------+--------------------+
++-----------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                            ;
++-------------------------------------------------+---------------------------------------------+
+; Register name                                   ; Reason for Removal                          ;
++-------------------------------------------------+---------------------------------------------+
+; uart_tx:comb_4|segundaVez                       ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|jaFoiOPrimeiro                   ; Stuck at GND due to stuck port clock_enable ;
+; uart_tx:comb_4|dadosASeremTransmitidos[0..7]    ; Stuck at GND due to stuck port clock_enable ;
+; uart_tx:comb_4|transmissaoEmAndamento           ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|estadoAtual~2                    ; Lost fanout                                 ;
+; uart_tx:comb_4|estadoAtual~3                    ; Lost fanout                                 ;
+; uart_rx:comb_3|estadoAtual~2                    ; Lost fanout                                 ;
+; uart_rx:comb_3|estadoAtual~3                    ; Lost fanout                                 ;
+; uart_tx:comb_4|estadoAtual.estadoEnviaBitInicio ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|estadoAtual.estadoEnviaBits      ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|estadoAtual.estadoEnviaBitFinal  ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|indiceDoBitTransmitido[0..2]     ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|estadoAtual.estadoDeLimpeza      ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|bitSerialAtual                   ; Stuck at VCC due to stuck port data_in      ;
+; uart_tx:comb_4|transmissaoConcluida             ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|estadoAtual.000                  ; Stuck at GND due to stuck port data_in      ;
+; uart_tx:comb_4|contadorDeClock[0..12]           ; Stuck at GND due to stuck port data_in      ;
+; Total Number of Removed Registers = 38          ;                                             ;
++-------------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                ;
++--------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; Register name                              ; Reason for Removal        ; Registers Removed due to This Register                                            ;
++--------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; uart_tx:comb_4|segundaVez                  ; Stuck at GND              ; uart_tx:comb_4|jaFoiOPrimeiro, uart_tx:comb_4|dadosASeremTransmitidos[0],         ;
+;                                            ; due to stuck port data_in ; uart_tx:comb_4|dadosASeremTransmitidos[1],                                        ;
+;                                            ;                           ; uart_tx:comb_4|dadosASeremTransmitidos[2],                                        ;
+;                                            ;                           ; uart_tx:comb_4|dadosASeremTransmitidos[3],                                        ;
+;                                            ;                           ; uart_tx:comb_4|dadosASeremTransmitidos[4],                                        ;
+;                                            ;                           ; uart_tx:comb_4|dadosASeremTransmitidos[5],                                        ;
+;                                            ;                           ; uart_tx:comb_4|dadosASeremTransmitidos[6],                                        ;
+;                                            ;                           ; uart_tx:comb_4|dadosASeremTransmitidos[7], uart_tx:comb_4|transmissaoEmAndamento, ;
+;                                            ;                           ; uart_tx:comb_4|bitSerialAtual, uart_tx:comb_4|transmissaoConcluida,               ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[12], uart_tx:comb_4|contadorDeClock[11],           ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[10], uart_tx:comb_4|contadorDeClock[9],            ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[8], uart_tx:comb_4|contadorDeClock[7],             ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[6], uart_tx:comb_4|contadorDeClock[5],             ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[3], uart_tx:comb_4|contadorDeClock[4],             ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[2], uart_tx:comb_4|contadorDeClock[1],             ;
+;                                            ;                           ; uart_tx:comb_4|contadorDeClock[0]                                                 ;
+; uart_tx:comb_4|estadoAtual.estadoDeLimpeza ; Stuck at GND              ; uart_tx:comb_4|estadoAtual.000                                                    ;
+;                                            ; due to stuck port data_in ;                                                                                   ;
++--------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -271,12 +310,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 82    ;
-; Number of registers using Synchronous Clear  ; 26    ;
+; Total registers                              ; 41    ;
+; Number of registers using Synchronous Clear  ; 13    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 51    ;
+; Number of registers using Clock Enable       ; 21    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -292,16 +331,16 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGAImplementation|uart_tx:comb_21|contadorDeClock[12]    ;
-; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[12]     ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_tx:comb_21|indiceDoBitTransmitido ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_rx:comb_3|indiceDoBit             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGAImplementation|uart_tx:comb_4|contadorDeClock[8]     ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[6]     ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_tx:comb_4|indiceDoBitTransmitido ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_rx:comb_3|indiceDoBit            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
 
 
 +-------------------------------------------------------------+
@@ -314,13 +353,13 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: uart_tx:comb_21 ;
-+----------------+-------+-------------------------------------+
-; Parameter Name ; Value ; Type                                ;
-+----------------+-------+-------------------------------------+
-; CLOKS_POR_BIT  ; 5209  ; Signed Integer                      ;
-+----------------+-------+-------------------------------------+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_tx:comb_4 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; CLOKS_POR_BIT  ; 5209  ; Signed Integer                     ;
++----------------+-------+------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -329,7 +368,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -339,7 +378,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Aug 31 23:15:59 2023
+    Info: Processing started: Sat Sep 02 21:37:13 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
@@ -351,33 +390,36 @@ Info (12021): Found 1 design units, including 1 entities, in source file fpgaimp
 Info (12021): Found 1 design units, including 1 entities, in source file decoder.v
     Info (12023): Found entity 1: decoder
 Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(36): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(46): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(48): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(41): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(43): instance has no name
 Info (12127): Elaborating entity "FPGAImplementation" for the top level hierarchy
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3"
 Warning (10230): Verilog HDL assignment warning at uart_rx.v(143): truncated value with size 32 to match size of target (13)
-Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_21"
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(92): truncated value with size 32 to match size of target (13)
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(113): truncated value with size 32 to match size of target (13)
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(122): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(143): truncated value with size 32 to match size of target (13)
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_22"
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_4"
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(95): truncated value with size 32 to match size of target (13)
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (13)
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(125): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(146): truncated value with size 32 to match size of target (13)
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_5"
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "indicaTransmissao" is stuck at GND
+    Warning (13410): Pin "bitSerialAtualTX" is stuck at VCC
+    Warning (13410): Pin "bitsEstaoEnviados" is stuck at GND
     Warning (13410): Pin "display[3]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 148 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 88 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 11 output pins
-    Info (21061): Implemented 135 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info (21061): Implemented 75 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 13 warnings
     Info: Peak virtual memory: 4642 megabytes
-    Info: Processing ended: Thu Aug 31 23:16:01 2023
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Sat Sep 02 21:37:26 2023
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:02
 
 
 +------------------------------------------+
