@@ -1,6 +1,6 @@
 Analysis & Synthesis report for FPGAImplementation
-Sat Sep 02 23:29:35 2023
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Mon Sep  4 13:53:17 2023
+Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
 ---------------------
@@ -13,147 +13,150 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |FPGAImplementation|uart_tx:comb_23|estadoAtual
-  9. State Machine - |FPGAImplementation|DHT11Communication:comb_4|current_state
+  8. State Machine - |FPGAImplementation|uart_tx:comb_8|estadoAtual
+  9. State Machine - |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|current_state
  10. State Machine - |FPGAImplementation|uart_rx:comb_3|estadoAtual
  11. Registers Removed During Synthesis
  12. General Register Statistics
  13. Inverted Register Statistics
  14. Multiplexer Restructuring Statistics (Restructuring Performed)
  15. Parameter Settings for User Entity Instance: uart_rx:comb_3
- 16. Parameter Settings for User Entity Instance: uart_tx:comb_23
- 17. Port Connectivity Checks: "DHT11Communication:comb_4"
- 18. Port Connectivity Checks: "uart_rx:comb_3"
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
- 21. Analysis & Synthesis Suppressed Messages
+ 16. Parameter Settings for User Entity Instance: uart_tx:comb_8
+ 17. Port Connectivity Checks: "uart_tx:comb_8"
+ 18. Port Connectivity Checks: "conexaoSensor:inst|DHT11Communication:comb_3"
+ 19. Port Connectivity Checks: "conexaoSensor:inst"
+ 20. Port Connectivity Checks: "uart_rx:comb_3"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2013 Altera Corporation
-Your use of Altera Corporation's design tools, logic functions 
-and other software and tools, and its AMPP partner logic 
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, Altera MegaCore Function License 
-Agreement, or other applicable license agreement, including, 
-without limitation, that your use is for the sole purpose of 
-programming logic devices manufactured by Altera and sold by 
-Altera or its authorized distributors.  Please refer to the 
-applicable agreement for further details.
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Sep 02 23:29:35 2023      ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
-; Revision Name                      ; FPGAImplementation                         ;
-; Top-level Entity Name              ; FPGAImplementation                         ;
-; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 252                                        ;
-;     Total combinational functions  ; 250                                        ;
-;     Dedicated logic registers      ; 122                                        ;
-; Total registers                    ; 122                                        ;
-; Total pins                         ; 16                                         ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
-+------------------------------------+--------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Sep  4 13:53:17 2023          ;
+; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
+; Revision Name                      ; FPGAImplementation                             ;
+; Top-level Entity Name              ; FPGAImplementation                             ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 233                                            ;
+;     Total combinational functions  ; 231                                            ;
+;     Dedicated logic registers      ; 100                                            ;
+; Total registers                    ; 100                                            ;
+; Total pins                         ; 15                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                        ;
-+----------------------------------------------------------------------------+--------------------+--------------------+
-; Option                                                                     ; Setting            ; Default Value      ;
-+----------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                     ; EP4CE30F23C7       ;                    ;
-; Top-level entity name                                                      ; FPGAImplementation ; FPGAImplementation ;
-; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
-; Use smart compilation                                                      ; Off                ; Off                ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
-; Enable compact report table                                                ; Off                ; Off                ;
-; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
-; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
-; Preserve fewer node names                                                  ; On                 ; On                 ;
-; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
-; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
-; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
-; State Machine Processing                                                   ; Auto               ; Auto               ;
-; Safe State Machine                                                         ; Off                ; Off                ;
-; Extract Verilog State Machines                                             ; On                 ; On                 ;
-; Extract VHDL State Machines                                                ; On                 ; On                 ;
-; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
-; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
-; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
-; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
-; Parallel Synthesis                                                         ; On                 ; On                 ;
-; DSP Block Balancing                                                        ; Auto               ; Auto               ;
-; NOT Gate Push-Back                                                         ; On                 ; On                 ;
-; Power-Up Don't Care                                                        ; On                 ; On                 ;
-; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
-; Remove Duplicate Registers                                                 ; On                 ; On                 ;
-; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
-; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
-; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
-; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
-; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
-; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
-; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
-; Optimization Technique                                                     ; Balanced           ; Balanced           ;
-; Carry Chain Length                                                         ; 70                 ; 70                 ;
-; Auto Carry Chains                                                          ; On                 ; On                 ;
-; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
-; Auto ROM Replacement                                                       ; On                 ; On                 ;
-; Auto RAM Replacement                                                       ; On                 ; On                 ;
-; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
-; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
-; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
-; Strict RAM Replacement                                                     ; Off                ; Off                ;
-; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
-; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
-; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
-; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
-; Auto Resource Sharing                                                      ; Off                ; Off                ;
-; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
-; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
-; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
-; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
-; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
-; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
-; Report Parameter Settings                                                  ; On                 ; On                 ;
-; Report Source Assignments                                                  ; On                 ; On                 ;
-; Report Connectivity Checks                                                 ; On                 ; On                 ;
-; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
-; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
-; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
-; HDL message level                                                          ; Level2             ; Level2             ;
-; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
-; Clock MUX Protection                                                       ; On                 ; On                 ;
-; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
-; Block Design Naming                                                        ; Auto               ; Auto               ;
-; SDC constraint protection                                                  ; Off                ; Off                ;
-; Synthesis Effort                                                           ; Auto               ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
-; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
-; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
-; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
-; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
-; Synthesis Seed                                                             ; 1                  ; 1                  ;
-+----------------------------------------------------------------------------+--------------------+--------------------+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE30F23C7       ;                    ;
+; Top-level entity name                                            ; FPGAImplementation ; FPGAImplementation ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
 
 
 +------------------------------------------+
@@ -165,26 +168,27 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                           ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                             ; Library ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------+---------+
-; uart_rx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/uart_rx.v            ;         ;
-; uart_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/uart_tx.v            ;         ;
-; FPGAImplementation.v             ; yes             ; User Verilog HDL File  ; C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v ;         ;
-; decoder.v                        ; yes             ; User Verilog HDL File  ; C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/decoder.v            ;         ;
-; SensorDecoder.v                  ; yes             ; User Verilog HDL File  ; C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/SensorDecoder.v      ;         ;
-; TriState.v                       ; yes             ; User Verilog HDL File  ; C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/TriState.v           ;         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                   ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
+; DHT11Communication.v             ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v ;         ;
+; uart_rx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v            ;         ;
+; uart_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v            ;         ;
+; FPGAImplementation.v             ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v ;         ;
+; decoder.v                        ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v            ;         ;
+; TriState.v                       ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/TriState.v           ;         ;
+; conexaoSensor.v                  ; yes             ; User Verilog HDL File  ; C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v      ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -192,48 +196,51 @@ applicable agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 252         ;
+; Estimated Total logic elements              ; 233         ;
 ;                                             ;             ;
-; Total combinational functions               ; 250         ;
+; Total combinational functions               ; 231         ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 144         ;
-;     -- 3 input functions                    ; 34          ;
-;     -- <=2 input functions                  ; 72          ;
+;     -- 4 input functions                    ; 125         ;
+;     -- 3 input functions                    ; 33          ;
+;     -- <=2 input functions                  ; 73          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 196         ;
+;     -- normal mode                          ; 177         ;
 ;     -- arithmetic mode                      ; 54          ;
 ;                                             ;             ;
-; Total registers                             ; 122         ;
-;     -- Dedicated logic registers            ; 122         ;
+; Total registers                             ; 100         ;
+;     -- Dedicated logic registers            ; 100         ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
-; I/O pins                                    ; 16          ;
+; I/O pins                                    ; 15          ;
+;                                             ;             ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
 ; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 122         ;
-; Total fan-out                               ; 1241        ;
-; Average fan-out                             ; 3.06        ;
+; Maximum fan-out                             ; 100         ;
+; Total fan-out                               ; 1091        ;
+; Average fan-out                             ; 3.01        ;
 +---------------------------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                    ;
-+--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                        ; Library Name ;
-+--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
-; |FPGAImplementation            ; 250 (0)           ; 122 (0)      ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |FPGAImplementation                                        ; work         ;
-;    |DHT11Communication:comb_4| ; 160 (159)         ; 65 (65)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|DHT11Communication:comb_4              ; work         ;
-;       |TriState:TS0|           ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|DHT11Communication:comb_4|TriState:TS0 ; work         ;
-;    |uart_rx:comb_3|            ; 40 (40)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_rx:comb_3                         ; work         ;
-;    |uart_tx:comb_23|           ; 50 (50)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_tx:comb_23                        ; work         ;
-+--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                              ;
++-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                           ; Entity Name        ; Library Name ;
++-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------------+--------------+
+; |FPGAImplementation               ; 231 (0)             ; 100 (0)                   ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |FPGAImplementation                                                           ; FPGAImplementation ; work         ;
+;    |conexaoSensor:inst|           ; 149 (0)             ; 50 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst                                        ; conexaoSensor      ; work         ;
+;       |DHT11Communication:comb_3| ; 149 (148)           ; 50 (50)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3              ; DHT11Communication ; work         ;
+;          |TriState:TS0|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0 ; TriState           ; work         ;
+;    |uart_rx:comb_3|               ; 42 (42)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_rx:comb_3                                            ; uart_rx            ; work         ;
+;    |uart_tx:comb_8|               ; 40 (40)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_tx:comb_8                                            ; uart_tx            ; work         ;
++-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |FPGAImplementation|uart_tx:comb_23|estadoAtual                                                                                                                     ;
+; State Machine - |FPGAImplementation|uart_tx:comb_8|estadoAtual                                                                                                                      ;
 +----------------------------------+---------------------------------+-----------------------------+----------------------------------+-----------------+-----------------------------+
 ; Name                             ; estadoAtual.estadoEnviaBitFinal ; estadoAtual.estadoEnviaBits ; estadoAtual.estadoEnviaBitInicio ; estadoAtual.000 ; estadoAtual.estadoDeLimpeza ;
 +----------------------------------+---------------------------------+-----------------------------+----------------------------------+-----------------+-----------------------------+
@@ -247,23 +254,23 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |FPGAImplementation|DHT11Communication:comb_4|current_state                                                                                                                                                                                  ;
-+---------------------+--------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+---------------------+
-; Name                ; current_state.STOP ; current_state.S9 ; current_state.S8 ; current_state.S7 ; current_state.S6 ; current_state.S5 ; current_state.S4 ; current_state.S3 ; current_state.S2 ; current_state.S1 ; current_state.S0 ; current_state.START ;
-+---------------------+--------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+---------------------+
-; current_state.START ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                   ;
-; current_state.S0    ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 1                   ;
-; current_state.S1    ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 1                   ;
-; current_state.S2    ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 1                   ;
-; current_state.S3    ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.S4    ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.S5    ; 0                  ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.S6    ; 0                  ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.S7    ; 0                  ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.S8    ; 0                  ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.S9    ; 0                  ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-; current_state.STOP  ; 1                  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                   ;
-+---------------------+--------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+---------------------+
+; State Machine - |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|current_state                                                                                                                                                               ;
++---------------------+---------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------------------+
+; Name                ; current_state.START ; current_state.S9 ; current_state.S8 ; current_state.S7 ; current_state.S6 ; current_state.S5 ; current_state.S4 ; current_state.S3 ; current_state.S2 ; current_state.S1 ; current_state.S0 ; current_state.STOP ;
++---------------------+---------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------------------+
+; current_state.STOP  ; 0                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                  ;
+; current_state.S0    ; 0                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 1                  ;
+; current_state.S1    ; 0                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 1                  ;
+; current_state.S2    ; 0                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 1                  ;
+; current_state.S3    ; 0                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.S4    ; 0                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.S5    ; 0                   ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.S6    ; 0                   ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.S7    ; 0                   ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.S8    ; 0                   ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.S9    ; 0                   ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
+; current_state.START ; 1                   ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                  ;
++---------------------+---------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------------------+
 
 
 Encoding Type:  One-Hot
@@ -280,25 +287,26 @@ Encoding Type:  One-Hot
 +-------------------------------------+---------------------------+--------------------------------+-------------------------------------+-----------------+-----------------------------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                      ;
-+--------------------------------------------+--------------------------------------------+
-; Register name                              ; Reason for Removal                         ;
-+--------------------------------------------+--------------------------------------------+
-; uart_rx:comb_3|jaFoiOPrimeiro              ; Lost fanout                                ;
-; uart_rx:comb_3|bufferSegundoByte[0..7]     ; Lost fanout                                ;
-; uart_rx:comb_3|armazenaBits[0..7]          ; Lost fanout                                ;
-; uart_tx:comb_23|segundaVez                 ; Merged with uart_tx:comb_23|jaFoiOPrimeiro ;
-; uart_tx:comb_23|estadoAtual~2              ; Lost fanout                                ;
-; uart_tx:comb_23|estadoAtual~3              ; Lost fanout                                ;
-; DHT11Communication:comb_4|current_state~14 ; Lost fanout                                ;
-; DHT11Communication:comb_4|current_state~15 ; Lost fanout                                ;
-; DHT11Communication:comb_4|current_state~16 ; Lost fanout                                ;
-; DHT11Communication:comb_4|current_state~17 ; Lost fanout                                ;
-; uart_rx:comb_3|estadoAtual~2               ; Lost fanout                                ;
-; uart_rx:comb_3|estadoAtual~3               ; Lost fanout                                ;
-; Total Number of Removed Registers = 26     ;                                            ;
-+--------------------------------------------+--------------------------------------------+
++-----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                        ;
++---------------------------------------------------------------+-------------------------------------------+
+; Register name                                                 ; Reason for Removal                        ;
++---------------------------------------------------------------+-------------------------------------------+
+; uart_rx:comb_3|jaFoiOPrimeiro                                 ; Lost fanout                               ;
+; uart_rx:comb_3|bufferSegundoByte[0..7]                        ; Lost fanout                               ;
+; uart_rx:comb_3|armazenaBits[0..7]                             ; Lost fanout                               ;
+; uart_tx:comb_8|dadosASeremTransmitidos[1..7]                  ; Stuck at GND due to stuck port data_in    ;
+; uart_tx:comb_8|segundaVez                                     ; Merged with uart_tx:comb_8|jaFoiOPrimeiro ;
+; uart_tx:comb_8|estadoAtual~2                                  ; Lost fanout                               ;
+; uart_tx:comb_8|estadoAtual~3                                  ; Lost fanout                               ;
+; conexaoSensor:inst|DHT11Communication:comb_3|current_state~14 ; Lost fanout                               ;
+; conexaoSensor:inst|DHT11Communication:comb_3|current_state~15 ; Lost fanout                               ;
+; conexaoSensor:inst|DHT11Communication:comb_3|current_state~16 ; Lost fanout                               ;
+; conexaoSensor:inst|DHT11Communication:comb_3|current_state~17 ; Lost fanout                               ;
+; uart_rx:comb_3|estadoAtual~2                                  ; Lost fanout                               ;
+; uart_rx:comb_3|estadoAtual~3                                  ; Lost fanout                               ;
+; Total Number of Removed Registers = 33                        ;                                           ;
++---------------------------------------------------------------+-------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -306,12 +314,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 122   ;
-; Number of registers using Synchronous Clear  ; 74    ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 100   ;
+; Number of registers using Synchronous Clear  ; 68    ;
+; Number of registers using Synchronous Load   ; 2     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 82    ;
+; Number of registers using Clock Enable       ; 59    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -327,19 +335,19 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGAImplementation|uart_tx:comb_23|contadorDeClock[1]     ;
-; 7:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |FPGAImplementation|DHT11Communication:comb_4|index[2]     ;
-; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[7]      ;
-; 22:1               ; 26 bits   ; 364 LEs       ; 26 LEs               ; 338 LEs                ; Yes        ; |FPGAImplementation|DHT11Communication:comb_4|counter[13]  ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_tx:comb_23|indiceDoBitTransmitido ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_rx:comb_3|indiceDoBit             ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |FPGAImplementation|DHT11Communication:comb_4|Selector7    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGAImplementation|uart_tx:comb_8|contadorDeClock[3]                          ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|index[1]      ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[4]                          ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 26 LEs               ; 364 LEs                ; Yes        ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|counter[1]    ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_tx:comb_8|indiceDoBitTransmitido                      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_rx:comb_3|indiceDoBit                                 ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 8 LEs                ; 6 LEs                  ; No         ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|current_state ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------+
@@ -352,33 +360,86 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: uart_tx:comb_23 ;
-+----------------+-------+-------------------------------------+
-; Parameter Name ; Value ; Type                                ;
-+----------------+-------+-------------------------------------+
-; CLOKS_POR_BIT  ; 5209  ; Signed Integer                      ;
-+----------------+-------+-------------------------------------+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_tx:comb_8 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; CLOKS_POR_BIT  ; 5209  ; Signed Integer                     ;
++----------------+-------+------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_tx:comb_8"                                                                                                                                                                           ;
++-----------------------------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port                        ; Type  ; Severity ; Details                                                                                                                                                             ;
++-----------------------------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; primeiroByteASerTransmitido ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "primeiroByteASerTransmitido[7..1]" will be connected to GND. ;
+; segundoByteASerTransmitido  ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "segundoByteASerTransmitido[7..1]" will be connected to GND.  ;
++-----------------------------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "DHT11Communication:comb_4"                                                                ;
+; Port Connectivity Checks: "conexaoSensor:inst|DHT11Communication:comb_3"                                             ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port       ; Type   ; Severity ; Details                                                                             ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 ; hum_float  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; temp_float ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; hold       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; error      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "uart_rx:comb_3"                                                                                     ;
-+----------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port                 ; Type   ; Severity ; Details                                                                             ;
-+----------------------+--------+----------+-------------------------------------------------------------------------------------+
-; primeiroByteCompleto ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "conexaoSensor:inst"                                                                                                                                                 ;
++------------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port             ; Type   ; Severity ; Details                                                                                                                                                 ;
++------------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; request_command  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "request_command[7..1]" will be connected to GND. ;
+; request_address  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "request_address[7..1]" will be connected to GND. ;
+; request_address  ; Input  ; Info     ; Stuck at VCC                                                                                                                                            ;
+; response_command ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "response_command[7..1]" have no fanouts                     ;
+; response_value   ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "response_value[7..1]" have no fanouts                       ;
++------------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_rx:comb_3"                                                                                           ;
++----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                       ; Type   ; Severity ; Details                                                                             ;
++----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; primeiroByteCompleto[7..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 15                          ;
+; cycloneiii_ff         ; 100                         ;
+;     ENA               ; 1                           ;
+;     ENA SCLR          ; 58                          ;
+;     SCLR              ; 10                          ;
+;     SLD               ; 2                           ;
+;     plain             ; 29                          ;
+; cycloneiii_io_obuf    ; 1                           ;
+; cycloneiii_lcell_comb ; 232                         ;
+;     arith             ; 54                          ;
+;         2 data inputs ; 54                          ;
+;     normal            ; 178                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 14                          ;
+;         3 data inputs ; 33                          ;
+;         4 data inputs ; 125                         ;
+;                       ;                             ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 3.83                        ;
++-----------------------+-----------------------------+
 
 
 +-------------------------------+
@@ -394,85 +455,98 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sat Sep 02 23:29:32 2023
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+    Info: Processing started: Mon Sep  4 13:53:06 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
-Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file dht11communication.v
+    Info (12023): Found entity 1: DHT11Communication File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
-    Info (12023): Found entity 1: uart_rx
+    Info (12023): Found entity 1: uart_rx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
-    Info (12023): Found entity 1: uart_tx
+    Info (12023): Found entity 1: uart_tx File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file fpgaimplementation.v
-    Info (12023): Found entity 1: FPGAImplementation
+    Info (12023): Found entity 1: FPGAImplementation File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 15
 Info (12021): Found 1 design units, including 1 entities, in source file decoder.v
-    Info (12023): Found entity 1: decoder
-Info (12021): Found 1 design units, including 1 entities, in source file sensordecoder.v
-    Info (12023): Found entity 1: DHT11Communication
+    Info (12023): Found entity 1: decoder File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file tristate.v
-    Info (12023): Found entity 1: TriState
+    Info (12023): Found entity 1: TriState File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/TriState.v Line: 17
 Warning (12019): Can't analyze file -- file DHT11_teste.v is missing
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(48): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(53): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(59): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(65): instance has no name
+Info (12021): Found 1 design units, including 1 entities, in source file conexaosensor.v
+    Info (12023): Found entity 1: conexaoSensor File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(46): created implicit net for "request_command" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 46
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(50): created implicit net for "request_address" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 50
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(52): created implicit net for "response_command" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 52
+Warning (10236): Verilog HDL Implicit Net warning at FPGAImplementation.v(52): created implicit net for "response_value" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 52
+Warning (10236): Verilog HDL Implicit Net warning at conexaoSensor.v(14): created implicit net for "hold" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v Line: 14
+Warning (10236): Verilog HDL Implicit Net warning at conexaoSensor.v(14): created implicit net for "error" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v Line: 14
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(39): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 39
+Critical Warning (10846): Verilog HDL Instantiation warning at conexaoSensor.v(14): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v Line: 14
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(54): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 54
+Critical Warning (10846): Verilog HDL Instantiation warning at FPGAImplementation.v(60): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 60
 Info (12127): Elaborating entity "FPGAImplementation" for the top level hierarchy
-Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3"
-Warning (10230): Verilog HDL assignment warning at uart_rx.v(143): truncated value with size 32 to match size of target (13)
-Info (12128): Elaborating entity "DHT11Communication" for hierarchy "DHT11Communication:comb_4"
-Warning (10036): Verilog HDL or VHDL warning at SensorDecoder.v(18): object "debug" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at SensorDecoder.v(22): object "checksum" assigned a value but never read
-Info (12128): Elaborating entity "TriState" for hierarchy "DHT11Communication:comb_4|TriState:TS0"
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_5"
-Warning (10240): Verilog HDL Always Construct warning at decoder.v(10): inferring latch(es) for variable "display", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "display[0]" at decoder.v(10)
-Info (10041): Inferred latch for "display[1]" at decoder.v(10)
-Info (10041): Inferred latch for "display[2]" at decoder.v(10)
-Info (10041): Inferred latch for "display[3]" at decoder.v(10)
-Info (10041): Inferred latch for "display[4]" at decoder.v(10)
-Info (10041): Inferred latch for "display[5]" at decoder.v(10)
-Info (10041): Inferred latch for "display[6]" at decoder.v(10)
-Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_23"
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(95): truncated value with size 32 to match size of target (13)
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (13)
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(125): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at uart_tx.v(146): truncated value with size 32 to match size of target (13)
-Warning (14025): LATCH primitive "decoder:comb_5|display[1]" is permanently disabled
-Warning (14025): LATCH primitive "decoder:comb_5|display[0]" is permanently disabled
-Warning (14025): LATCH primitive "decoder:comb_5|display[4]" is permanently disabled
-Warning (14025): LATCH primitive "decoder:comb_5|display[5]" is permanently disabled
-Warning (14025): LATCH primitive "decoder:comb_5|display[6]" is permanently disabled
-Warning (14025): LATCH primitive "decoder:comb_5|display[2]" is permanently disabled
+Warning (10230): Verilog HDL assignment warning at FPGAImplementation.v(46): truncated value with size 8 to match size of target (1) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 46
+Warning (10230): Verilog HDL assignment warning at FPGAImplementation.v(50): truncated value with size 8 to match size of target (1) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 50
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 39
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(143): truncated value with size 32 to match size of target (13) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 143
+Info (12128): Elaborating entity "conexaoSensor" for hierarchy "conexaoSensor:inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 52
+Info (12128): Elaborating entity "DHT11Communication" for hierarchy "conexaoSensor:inst|DHT11Communication:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v Line: 14
+Warning (10036): Verilog HDL or VHDL warning at DHT11Communication.v(18): object "debug" assigned a value but never read File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 18
+Warning (10036): Verilog HDL or VHDL warning at DHT11Communication.v(22): object "checksum" assigned a value but never read File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 22
+Info (12128): Elaborating entity "TriState" for hierarchy "conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 24
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_6" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 54
+Warning (10240): Verilog HDL Always Construct warning at decoder.v(10): inferring latch(es) for variable "display", which holds its previous value in one or more paths through the always construct File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[0]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[1]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[2]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[3]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[4]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[5]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (10041): Inferred latch for "display[6]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:comb_8" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 60
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(95): truncated value with size 32 to match size of target (13) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 95
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(116): truncated value with size 32 to match size of target (13) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 116
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(125): truncated value with size 32 to match size of target (3) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 125
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(146): truncated value with size 32 to match size of target (13) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_tx.v Line: 146
+Warning (14025): LATCH primitive "decoder:comb_6|display[1]" is permanently disabled File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Warning (14025): LATCH primitive "decoder:comb_6|display[0]" is permanently disabled File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Warning (14025): LATCH primitive "decoder:comb_6|display[4]" is permanently disabled File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Warning (14025): LATCH primitive "decoder:comb_6|display[5]" is permanently disabled File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Warning (14025): LATCH primitive "decoder:comb_6|display[6]" is permanently disabled File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Warning (14025): LATCH primitive "decoder:comb_6|display[2]" is permanently disabled File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13047): Converted the fan-out from the tri-state buffer "DHT11Communication:comb_4|TriState:TS0|read" to the node "DHT11Communication:comb_4|always0" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0|read" to the node "conexaoSensor:inst|DHT11Communication:comb_3|always0" into an OR gate File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/TriState.v Line: 22
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "display[0]" is stuck at GND
-    Warning (13410): Pin "display[1]" is stuck at GND
-    Warning (13410): Pin "display[2]" is stuck at GND
-    Warning (13410): Pin "display[3]" is stuck at GND
-    Warning (13410): Pin "display[4]" is stuck at GND
-    Warning (13410): Pin "display[5]" is stuck at GND
-    Warning (13410): Pin "display[6]" is stuck at GND
+    Warning (13410): Pin "display[0]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+    Warning (13410): Pin "display[1]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+    Warning (13410): Pin "display[2]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+    Warning (13410): Pin "display[3]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+    Warning (13410): Pin "display[4]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+    Warning (13410): Pin "display[5]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
+    Warning (13410): Pin "display[6]" is stuck at GND File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 24
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 25 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 269 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 13 output pins
+Info (21057): Implemented 250 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 11 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 253 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 29 warnings
-    Info: Peak virtual memory: 4643 megabytes
-    Info: Processing ended: Sat Sep 02 23:29:35 2023
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:02
+    Info (21061): Implemented 235 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
+    Info: Peak virtual memory: 4774 megabytes
+    Info: Processing ended: Mon Sep  4 13:53:17 2023
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:18
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/douge/Desktop/UEFS/SEMESTRE_4/Sistemas Digitais/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.map.smsg.
+The suppressed messages can be found in C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.map.smsg.
 
 

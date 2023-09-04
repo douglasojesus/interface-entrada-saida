@@ -2,19 +2,18 @@
 clock => clock.IN3
 bitSerialAtualRX => bitSerialAtualRX.IN1
 bitsEstaoRecebidos << uart_rx:comb_3.port2
-indicaTransmissao << uart_tx:comb_23.port4
-bitSerialAtualTX << uart_tx:comb_23.port5
-bitsEstaoEnviados << uart_tx:comb_23.port6
-display[0] << decoder:comb_5.port1
-display[1] << decoder:comb_5.port1
-display[2] << decoder:comb_5.port1
-display[3] << decoder:comb_5.port1
-display[4] << decoder:comb_5.port1
-display[5] << decoder:comb_5.port1
-display[6] << decoder:comb_5.port1
-transmission_line <> DHT11Communication:comb_4.port3
-hold << DHT11Communication:comb_4.port8
-error << DHT11Communication:comb_4.port9
+indicaTransmissao << uart_tx:comb_8.port4
+bitSerialAtualTX << uart_tx:comb_8.port5
+bitsEstaoEnviados << uart_tx:comb_8.port6
+display[0] << decoder:comb_6.port1
+display[1] << decoder:comb_6.port1
+display[2] << decoder:comb_6.port1
+display[3] << decoder:comb_6.port1
+display[4] << decoder:comb_6.port1
+display[5] << decoder:comb_6.port1
+display[6] << decoder:comb_6.port1
+transmission_line <> conexaoSensor:inst.port4
+reset => reset.IN1
 
 
 |FPGAImplementation|uart_rx:comb_3
@@ -83,7 +82,46 @@ segundoByteCompleto[6] <= bufferSegundoByte[6].DB_MAX_OUTPUT_PORT_TYPE
 segundoByteCompleto[7] <= bufferSegundoByte[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|DHT11Communication:comb_4
+|FPGAImplementation|conexaoSensor:inst
+clock => clock.IN1
+reset => reset.IN1
+request_command[0] => ~NO_FANOUT~
+request_command[1] => ~NO_FANOUT~
+request_command[2] => ~NO_FANOUT~
+request_command[3] => ~NO_FANOUT~
+request_command[4] => ~NO_FANOUT~
+request_command[5] => ~NO_FANOUT~
+request_command[6] => ~NO_FANOUT~
+request_command[7] => ~NO_FANOUT~
+request_address[0] => request_address[0].IN1
+request_address[1] => request_address[1].IN1
+request_address[2] => request_address[2].IN1
+request_address[3] => request_address[3].IN1
+request_address[4] => request_address[4].IN1
+request_address[5] => request_address[5].IN1
+request_address[6] => request_address[6].IN1
+request_address[7] => request_address[7].IN1
+transmission_line <> DHT11Communication:comb_3.port3
+dadosPodemSerEnviados <= DHT11Communication:comb_3.port10
+response_command[0] <= DHT11Communication:comb_3.port4
+response_command[1] <= DHT11Communication:comb_3.port4
+response_command[2] <= DHT11Communication:comb_3.port4
+response_command[3] <= DHT11Communication:comb_3.port4
+response_command[4] <= DHT11Communication:comb_3.port4
+response_command[5] <= DHT11Communication:comb_3.port4
+response_command[6] <= DHT11Communication:comb_3.port4
+response_command[7] <= DHT11Communication:comb_3.port4
+response_value[0] <= DHT11Communication:comb_3.port6
+response_value[1] <= DHT11Communication:comb_3.port6
+response_value[2] <= DHT11Communication:comb_3.port6
+response_value[3] <= DHT11Communication:comb_3.port6
+response_value[4] <= DHT11Communication:comb_3.port6
+response_value[5] <= DHT11Communication:comb_3.port6
+response_value[6] <= DHT11Communication:comb_3.port6
+response_value[7] <= DHT11Communication:comb_3.port6
+
+
+|FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3
 clock => index[0].CLK
 clock => index[1].CLK
 clock => index[2].CLK
@@ -154,7 +192,14 @@ clock => direction.CLK
 clock => error~reg0.CLK
 clock => hold~reg0.CLK
 clock => current_state~13.DATAIN
-enable => ~NO_FANOUT~
+enable[0] => Equal0.IN0
+enable[1] => Equal0.IN7
+enable[2] => Equal0.IN6
+enable[3] => Equal0.IN5
+enable[4] => Equal0.IN4
+enable[5] => Equal0.IN3
+enable[6] => Equal0.IN2
+enable[7] => Equal0.IN1
 reset => hold.OUTPUTSELECT
 reset => error.OUTPUTSELECT
 reset => direction.OUTPUTSELECT
@@ -229,13 +274,13 @@ reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
-reset => dadosPodemSerEnviados~reg0.ENA
-reset => index[5].ENA
-reset => index[4].ENA
-reset => index[3].ENA
-reset => index[2].ENA
-reset => index[1].ENA
-reset => index[0].ENA
+reset => dadosPodemSerEnviados.OUTPUTSELECT
+reset => index.OUTPUTSELECT
+reset => index.OUTPUTSELECT
+reset => index.OUTPUTSELECT
+reset => index.OUTPUTSELECT
+reset => index.OUTPUTSELECT
+reset => index.OUTPUTSELECT
 transmission_line <> TriState:TS0.port0
 hum_int[0] <= sensor_data[0].DB_MAX_OUTPUT_PORT_TYPE
 hum_int[1] <= sensor_data[1].DB_MAX_OUTPUT_PORT_TYPE
@@ -274,7 +319,7 @@ error <= error~reg0.DB_MAX_OUTPUT_PORT_TYPE
 dadosPodemSerEnviados <= dadosPodemSerEnviados~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|DHT11Communication:comb_4|TriState:TS0
+|FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0
 port <> port
 dir => port.OE
 dir => read.OE
@@ -282,7 +327,7 @@ send => port.DATAIN
 read <= read.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|decoder:comb_5
+|FPGAImplementation|decoder:comb_6
 word[0] => Equal0.IN15
 word[0] => Equal1.IN15
 word[1] => Equal0.IN14
@@ -314,7 +359,7 @@ teste => display[5]$latch.LATCH_ENABLE
 teste => display[6]$latch.LATCH_ENABLE
 
 
-|FPGAImplementation|uart_tx:comb_23
+|FPGAImplementation|uart_tx:comb_8
 clock => segundaVez.CLK
 clock => jaFoiOPrimeiro.CLK
 clock => dadosASeremTransmitidos[0].CLK
