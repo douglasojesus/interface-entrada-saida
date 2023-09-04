@@ -7,9 +7,9 @@ module DHT11Communication (
 	output [7:0] hum_float,
 	output [7:0] temp_int,
 	output [7:0] temp_float,
-	output reg hold,  // Sinaliza que a comunicação está acontecendo e aguardando retorno do DHT11.
-	output reg error,  // Sinaliza que houve problema em algum estado.
-	output reg dadosPodemSerEnviados
+	output hold,  // Sinaliza que a comunicação está acontecendo e aguardando retorno do DHT11.
+	output error,  // Sinaliza que houve problema em algum estado.
+	output dadosPodemSerEnviados
 );
 
 	reg [39:0] sensor_data;
@@ -20,6 +20,12 @@ module DHT11Communication (
 	
 	wire sensor_in;
 	wire [7:0] checksum;
+	
+	reg hold_reg, debug_reg, error_reg, dadosPodemSerEnviados_reg;
+	
+	assign hold = hold_reg;
+	assign error = error_reg;
+	assign dadosPodemSerEnviados = dadosPodemSerEnviados_reg;	
 
 	TriState TS0 (transmission_line, direction, sensor_out, sensor_in);
 
@@ -29,10 +35,12 @@ module DHT11Communication (
 	assign temp_float = sensor_data[31:24];
 	assign checksum   = sensor_data[39:32];
 	
-	localparam [3:0] 	S0 = 4'b0001, S1 = 4'b0010, S2 = 4'b0011,
+	/*localparam [3:0] 	S0 = 4'b0001, S1 = 4'b0010, S2 = 4'b0011,
 							S3 = 4'b0100, S4 = 4'b0101, S5 = 4'b0110,
 							S6 = 4'b0111, S7 = 4'b1000, S8 = 4'b1001,
-							S9 = 4'b1010, START = 4'b1011, STOP = 4'b0000;
+							S9 = 4'b1010, START = 4'b1011, STOP = 4'b0000;*/
+	
+	parameter S0=1, S1=2, S2=3, S3=4, S4=5, S5=6, S6=7, S7=8, S8=9, S9=10, STOP=0, START=11;
 
 	reg [3:0] current_state;
 
@@ -42,12 +50,13 @@ module DHT11Communication (
 				begin
 					if (reset == 1'b1) 
 						begin
-							hold <= 1'b0;
-							error <= 1'b0;
+							hold_reg <= 1'b0;
+							error_reg <= 1'b0;
 							direction <= 1'b1;
 							sensor_out <= 1'b1;
 							counter <= 26'b000000000000000000000000000;
 							sensor_data <= 40'b0000000000000000000000000000000000000000;
+							dadosPodemSerEnviados_reg <= 1'b0;
 							current_state <= START;
 						end 
 					else 
@@ -55,16 +64,15 @@ module DHT11Communication (
 							case (current_state)
 								START: 
 									begin
-										hold <= 1'b1;
+										hold_reg <= 1'b1;
 										direction <= 1'b1;
 										sensor_out <= 1'b1;
-										dadosPodemSerEnviados <= 1'b0;
 										current_state <= S0;
 									end
 								S0: 
 									begin
-										hold <= 1'b1;
-										error <= 1'b0;
+										hold_reg <= 1'b1;
+										error_reg <= 1'b0;
 										direction <= 1'b1;
 										sensor_out <= 1'b1;
 										if (counter < 900_000) 
@@ -79,7 +87,7 @@ module DHT11Communication (
 									end
 								S1: 
 									begin
-										hold <= 1'b1;
+										hold_reg <= 1'b1;
 										sensor_out <= 1'b0;
 
 										if (counter < 900_000) 
@@ -107,7 +115,7 @@ module DHT11Communication (
 									end
 								S3: 
 									begin
-										if (sensor_in == 1'b1 && counter < 3_000) 
+										if (sensor_in == 1'b1 && counter < 3_000) //// 60 (88) uS / 0,02uS = 2000 CICLOS DE 50MHZ
 											begin
 												current_state <= S3;
 												counter <= counter + 1'b1;
@@ -117,7 +125,7 @@ module DHT11Communication (
 												if (sensor_in == 1'b1)
 													begin
 														current_state <= STOP;
-														error <= 1'b1;
+														error_reg <= 1'b1;
 														counter <= 26'b000000000000000000000000000;
 													end 
 												else 
@@ -139,7 +147,7 @@ module DHT11Communication (
 												if (sensor_in == 1'b0) 
 													begin
 														current_state <= STOP;
-														error <= 1'b1;
+														error_reg <= 1'b1;
 														counter <= 26'b000000000000000000000000000;
 													end
 												else 
@@ -161,13 +169,13 @@ module DHT11Communication (
 												if (sensor_in == 1'b1) 
 													begin
 														current_state <= STOP;
-														error <= 1'b1;
+														error_reg <= 1'b1;
 														counter <= 26'b000000000000000000000000000;
 													end 
 												else 
 													begin
 														current_state <= S6;
-														error <= 1'b1;
+														error_reg <= 1'b1;
 														index <= 6'b000000;
 														counter <= 26'b000000000000000000000000000;
 													end
@@ -182,7 +190,7 @@ module DHT11Communication (
 										else 
 											begin
 												current_state <= STOP;
-												error <= 1'b1;
+												error_reg <= 1'b1;
 												counter <= 26'b000000000000000000000000000;
 											end
 									end
@@ -203,7 +211,7 @@ module DHT11Communication (
 												else 
 													begin
 														current_state <= STOP;
-														error <= 1'b1;
+														error_reg <= 1'b1;
 														counter <= 26'b000000000000000000000000000;
 													end
 											end
@@ -214,12 +222,12 @@ module DHT11Communication (
 											begin
 												if (counter > 2_500) 
 													begin
-														debug <= 1'b1;
+														debug_reg <= 1'b1;
 														sensor_data[index] <= 1'b1;
 													end 
 												else 
 													begin
-														debug <= 1'b0;
+														debug_reg <= 1'b0;
 														sensor_data[index] <= 1'b0;
 													end
 
@@ -231,7 +239,7 @@ module DHT11Communication (
 												else 
 													begin
 														current_state <= STOP;
-														error <= 1'b0;
+														error_reg <= 1'b0;
 													end
 											end 
 										else 
@@ -240,7 +248,7 @@ module DHT11Communication (
 												if (counter == 1_600_000) 
 													begin
 														current_state <= STOP;
-														error <= 1'b1;
+														error_reg <= 1'b1;
 													end
 											end
 									end
@@ -252,11 +260,11 @@ module DHT11Communication (
 								STOP: 
 									begin
 										current_state <= STOP;
-										if (error == 1'b0) 
+										if (error_reg == 1'b0) 
 											begin
-												hold <= 1'b0;
-												error <= 1'b0;
-												dadosPodemSerEnviados <= 1'b1;
+												hold_reg <= 1'b0;
+												error_reg <= 1'b0;
+												dadosPodemSerEnviados_reg <= 1'b1;
 												direction <= 1'b1;
 												sensor_out <= 1'b1;
 												index <= 6'b000000;
@@ -266,16 +274,16 @@ module DHT11Communication (
 											begin
 												if (counter < 1_600_000) //Por que a escolha do 1600000 ao invés de 3200000? Perguntar a Gerson.
 													begin
-														hold <= 1'b1;
-														error <= 1'b1;
-														dadosPodemSerEnviados <= 1'b0; 
+														hold_reg <= 1'b1;
+														error_reg <= 1'b1;
+														dadosPodemSerEnviados_reg <= 1'b1; 
 														direction <= 1'b0;
 														counter <= counter + 1'b1;
 														sensor_data <= 40'b0000000000000000000000000000000000000000;
 													end 
 												else 
 													begin
-														error <= 1'b0;
+														error_reg <= 1'b0;
 													end
 											end
 									end

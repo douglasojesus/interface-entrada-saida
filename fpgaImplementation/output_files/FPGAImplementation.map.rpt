@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Mon Sep  4 13:53:17 2023
+Mon Sep  4 14:24:03 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -21,15 +21,16 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
  13. Inverted Register Statistics
  14. Multiplexer Restructuring Statistics (Restructuring Performed)
  15. Parameter Settings for User Entity Instance: uart_rx:comb_3
- 16. Parameter Settings for User Entity Instance: uart_tx:comb_8
- 17. Port Connectivity Checks: "uart_tx:comb_8"
- 18. Port Connectivity Checks: "conexaoSensor:inst|DHT11Communication:comb_3"
- 19. Port Connectivity Checks: "conexaoSensor:inst"
- 20. Port Connectivity Checks: "uart_rx:comb_3"
- 21. Post-Synthesis Netlist Statistics for Top Partition
- 22. Elapsed Time Per Partition
- 23. Analysis & Synthesis Messages
- 24. Analysis & Synthesis Suppressed Messages
+ 16. Parameter Settings for User Entity Instance: conexaoSensor:inst|DHT11Communication:comb_3
+ 17. Parameter Settings for User Entity Instance: uart_tx:comb_8
+ 18. Port Connectivity Checks: "uart_tx:comb_8"
+ 19. Port Connectivity Checks: "conexaoSensor:inst|DHT11Communication:comb_3"
+ 20. Port Connectivity Checks: "conexaoSensor:inst"
+ 21. Port Connectivity Checks: "uart_rx:comb_3"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -56,13 +57,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Sep  4 13:53:17 2023          ;
+; Analysis & Synthesis Status        ; Successful - Mon Sep  4 14:24:03 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 233                                            ;
-;     Total combinational functions  ; 231                                            ;
+; Total logic elements               ; 230                                            ;
+;     Total combinational functions  ; 228                                            ;
 ;     Dedicated logic registers      ; 100                                            ;
 ; Total registers                    ; 100                                            ;
 ; Total pins                         ; 15                                             ;
@@ -196,16 +197,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 233         ;
+; Estimated Total logic elements              ; 230         ;
 ;                                             ;             ;
-; Total combinational functions               ; 231         ;
+; Total combinational functions               ; 228         ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 125         ;
-;     -- 3 input functions                    ; 33          ;
-;     -- <=2 input functions                  ; 73          ;
+;     -- 4 input functions                    ; 121         ;
+;     -- 3 input functions                    ; 35          ;
+;     -- <=2 input functions                  ; 72          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 177         ;
+;     -- normal mode                          ; 174         ;
 ;     -- arithmetic mode                      ; 54          ;
 ;                                             ;             ;
 ; Total registers                             ; 100         ;
@@ -218,7 +219,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clock~input ;
 ; Maximum fan-out                             ; 100         ;
-; Total fan-out                               ; 1091        ;
+; Total fan-out                               ; 1079        ;
 ; Average fan-out                             ; 3.01        ;
 +---------------------------------------------+-------------+
 
@@ -228,9 +229,9 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------------+--------------+
 ; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                           ; Entity Name        ; Library Name ;
 +-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------------+--------------+
-; |FPGAImplementation               ; 231 (0)             ; 100 (0)                   ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |FPGAImplementation                                                           ; FPGAImplementation ; work         ;
-;    |conexaoSensor:inst|           ; 149 (0)             ; 50 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst                                        ; conexaoSensor      ; work         ;
-;       |DHT11Communication:comb_3| ; 149 (148)           ; 50 (50)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3              ; DHT11Communication ; work         ;
+; |FPGAImplementation               ; 228 (0)             ; 100 (0)                   ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |FPGAImplementation                                                           ; FPGAImplementation ; work         ;
+;    |conexaoSensor:inst|           ; 146 (0)             ; 50 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst                                        ; conexaoSensor      ; work         ;
+;       |DHT11Communication:comb_3| ; 146 (145)           ; 50 (50)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3              ; DHT11Communication ; work         ;
 ;          |TriState:TS0|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0 ; TriState           ; work         ;
 ;    |uart_rx:comb_3|               ; 42 (42)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_rx:comb_3                                            ; uart_rx            ; work         ;
 ;    |uart_tx:comb_8|               ; 40 (40)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGAImplementation|uart_tx:comb_8                                            ; uart_tx            ; work         ;
@@ -315,11 +316,11 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 100   ;
-; Number of registers using Synchronous Clear  ; 68    ;
+; Number of registers using Synchronous Clear  ; 69    ;
 ; Number of registers using Synchronous Load   ; 2     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 59    ;
+; Number of registers using Clock Enable       ; 58    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -341,9 +342,9 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 ; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGAImplementation|uart_tx:comb_8|contadorDeClock[3]                          ;
-; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|index[1]      ;
-; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[4]                          ;
-; 23:1               ; 26 bits   ; 390 LEs       ; 26 LEs               ; 364 LEs                ; Yes        ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|counter[1]    ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|index[2]      ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |FPGAImplementation|uart_rx:comb_3|contadorDeClock[5]                          ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 26 LEs               ; 364 LEs                ; Yes        ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|counter[0]    ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_tx:comb_8|indiceDoBitTransmitido                      ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGAImplementation|uart_rx:comb_3|indiceDoBit                                 ;
 ; 11:1               ; 2 bits    ; 14 LEs        ; 8 LEs                ; 6 LEs                  ; No         ; |FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|current_state ;
@@ -357,6 +358,27 @@ Encoding Type:  One-Hot
 +----------------+-------+------------------------------------+
 ; CLOCKS_POR_BIT ; 5209  ; Signed Integer                     ;
 +----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: conexaoSensor:inst|DHT11Communication:comb_3 ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                   ;
+; S1             ; 2     ; Signed Integer                                                   ;
+; S2             ; 3     ; Signed Integer                                                   ;
+; S3             ; 4     ; Signed Integer                                                   ;
+; S4             ; 5     ; Signed Integer                                                   ;
+; S5             ; 6     ; Signed Integer                                                   ;
+; S6             ; 7     ; Signed Integer                                                   ;
+; S7             ; 8     ; Signed Integer                                                   ;
+; S8             ; 9     ; Signed Integer                                                   ;
+; S9             ; 10    ; Signed Integer                                                   ;
+; STOP           ; 0     ; Signed Integer                                                   ;
+; START          ; 11    ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -421,24 +443,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 15                          ;
 ; cycloneiii_ff         ; 100                         ;
-;     ENA               ; 1                           ;
 ;     ENA SCLR          ; 58                          ;
-;     SCLR              ; 10                          ;
+;     SCLR              ; 11                          ;
 ;     SLD               ; 2                           ;
 ;     plain             ; 29                          ;
 ; cycloneiii_io_obuf    ; 1                           ;
-; cycloneiii_lcell_comb ; 232                         ;
+; cycloneiii_lcell_comb ; 229                         ;
 ;     arith             ; 54                          ;
 ;         2 data inputs ; 54                          ;
-;     normal            ; 178                         ;
+;     normal            ; 175                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 14                          ;
-;         3 data inputs ; 33                          ;
-;         4 data inputs ; 125                         ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 35                          ;
+;         4 data inputs ; 121                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.00                        ;
-; Average LUT depth     ; 3.83                        ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 3.79                        ;
 +-----------------------+-----------------------------+
 
 
@@ -457,7 +478,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Mon Sep  4 13:53:06 2023
+    Info: Processing started: Mon Sep  4 14:23:54 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -493,9 +514,9 @@ Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:comb_3" File: 
 Warning (10230): Verilog HDL assignment warning at uart_rx.v(143): truncated value with size 32 to match size of target (13) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 143
 Info (12128): Elaborating entity "conexaoSensor" for hierarchy "conexaoSensor:inst" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 52
 Info (12128): Elaborating entity "DHT11Communication" for hierarchy "conexaoSensor:inst|DHT11Communication:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/conexaoSensor.v Line: 14
-Warning (10036): Verilog HDL or VHDL warning at DHT11Communication.v(18): object "debug" assigned a value but never read File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 18
 Warning (10036): Verilog HDL or VHDL warning at DHT11Communication.v(22): object "checksum" assigned a value but never read File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 22
-Info (12128): Elaborating entity "TriState" for hierarchy "conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 24
+Warning (10036): Verilog HDL or VHDL warning at DHT11Communication.v(24): object "debug_reg" assigned a value but never read File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 24
+Info (12128): Elaborating entity "TriState" for hierarchy "conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/DHT11Communication.v Line: 30
 Info (12128): Elaborating entity "decoder" for hierarchy "decoder:comb_6" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.v Line: 54
 Warning (10240): Verilog HDL Always Construct warning at decoder.v(10): inferring latch(es) for variable "display", which holds its previous value in one or more paths through the always construct File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
 Info (10041): Inferred latch for "display[0]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/decoder.v Line: 10
@@ -532,16 +553,16 @@ Info (17049): 25 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/output_files/FPGAImplementation.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 250 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 247 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 11 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 235 logic cells
+    Info (21061): Implemented 232 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
     Info: Peak virtual memory: 4774 megabytes
-    Info: Processing ended: Mon Sep  4 13:53:17 2023
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Processing ended: Mon Sep  4 14:24:03 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:16
 
 
 +------------------------------------------+
