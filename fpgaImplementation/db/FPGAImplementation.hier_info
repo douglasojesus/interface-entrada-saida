@@ -1,17 +1,17 @@
 |FPGAImplementation
 clock => clock.IN3
 bitSerialAtualRX => bitSerialAtualRX.IN1
-bitsEstaoRecebidos <= bitsEstaoRecebidos.DB_MAX_OUTPUT_PORT_TYPE
-indicaTransmissao <= uart_tx:ENVIA_DADOS.port4
-bitSerialAtualTX <= uart_tx:ENVIA_DADOS.port5
-bitsEstaoEnviados <= uart_tx:ENVIA_DADOS.port6
-display[0] <= decoder:EXIBE_DISPLAY.port1
-display[1] <= decoder:EXIBE_DISPLAY.port1
-display[2] <= decoder:EXIBE_DISPLAY.port1
-display[3] <= decoder:EXIBE_DISPLAY.port1
-display[4] <= decoder:EXIBE_DISPLAY.port1
-display[5] <= decoder:EXIBE_DISPLAY.port1
-display[6] <= decoder:EXIBE_DISPLAY.port1
+bitsEstaoRecebidos << bitsEstaoRecebidos.DB_MAX_OUTPUT_PORT_TYPE
+indicaTransmissao << uart_tx:ENVIA_DADOS.port4
+bitSerialAtualTX << uart_tx:ENVIA_DADOS.port5
+bitsEstaoEnviados << uart_tx:ENVIA_DADOS.port6
+display[0] << decoder:EXIBE_DISPLAY.port1
+display[1] << decoder:EXIBE_DISPLAY.port1
+display[2] << decoder:EXIBE_DISPLAY.port1
+display[3] << decoder:EXIBE_DISPLAY.port1
+display[4] << decoder:EXIBE_DISPLAY.port1
+display[5] << decoder:EXIBE_DISPLAY.port1
+display[6] << decoder:EXIBE_DISPLAY.port1
 transmission_line <> conexao_sensor:inst.port4
 
 

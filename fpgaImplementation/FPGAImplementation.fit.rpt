@@ -1,5 +1,5 @@
 Fitter report for FPGAImplementation
-Tue Sep  5 14:55:48 2023
+Tue Sep  5 14:57:52 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -64,7 +64,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +---------------------------------+------------------------------------------------+
-; Fitter Status                   ; Successful - Tue Sep  5 14:55:48 2023          ;
+; Fitter Status                   ; Successful - Tue Sep  5 14:57:52 2023          ;
 ; Quartus Prime Version           ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                   ; FPGAImplementation                             ;
 ; Top-level Entity Name           ; FPGAImplementation                             ;
@@ -160,8 +160,8 @@ https://fpgasoftware.intel.com/eula.
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   1.0%      ;
-;     Processor 3            ;   0.9%      ;
-;     Processor 4            ;   0.9%      ;
+;     Processor 3            ;   1.0%      ;
+;     Processor 4            ;   1.0%      ;
 +----------------------------+-------------+
 
 
@@ -1371,7 +1371,7 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:08
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:09
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:03
@@ -1384,18 +1384,18 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
-Info (11888): Total time spent on timing analysis during the Fitter is 0.96 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.04 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
 Info (144001): Generated suppressed messages file C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 6702 megabytes
-    Info: Processing ended: Tue Sep  5 14:55:49 2023
-    Info: Elapsed time: 00:00:38
-    Info: Total CPU time (on all processors): 00:00:59
+    Info: Peak virtual memory: 6703 megabytes
+    Info: Processing ended: Tue Sep  5 14:57:53 2023
+    Info: Elapsed time: 00:00:41
+    Info: Total CPU time (on all processors): 00:00:57
 
 
 +----------------------------+

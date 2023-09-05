@@ -1,5 +1,5 @@
 Timing Analyzer report for FPGAImplementation
-Tue Sep  5 14:56:04 2023
+Tue Sep  5 14:58:09 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -100,14 +100,14 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.18        ;
+; Average used               ; 1.20        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   6.3%      ;
-;     Processor 3            ;   6.1%      ;
-;     Processor 4            ;   6.0%      ;
+;     Processor 2            ;   6.9%      ;
+;     Processor 3            ;   6.6%      ;
+;     Processor 4            ;   6.5%      ;
 +----------------------------+-------------+
 
 
@@ -592,7 +592,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Tue Sep  5 14:55:57 2023
+    Info: Processing started: Tue Sep  5 14:58:02 2023
 Info: Command: quartus_sta FPGAImplementation -c FPGAImplementation
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -706,9 +706,9 @@ Info (332114): Report Metastability: Found 1 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 5209 megabytes
-    Info: Processing ended: Tue Sep  5 14:56:04 2023
+    Info: Peak virtual memory: 5210 megabytes
+    Info: Processing ended: Tue Sep  5 14:58:09 2023
     Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
 
 

@@ -1,5 +1,5 @@
 Flow report for FPGAImplementation
-Tue Sep  5 14:56:03 2023
+Tue Sep  5 14:58:09 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Tue Sep  5 14:55:56 2023          ;
+; Flow Status                     ; Successful - Tue Sep  5 14:58:01 2023          ;
 ; Quartus Prime Version           ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                   ; FPGAImplementation                             ;
 ; Top-level Entity Name           ; FPGAImplementation                             ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/05/2023 14:55:01 ;
+; Start date & time ; 09/05/2023 14:57:01 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; FPGAImplementation  ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 110073156818472.169393650105268        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 110073156818472.169393662103440        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -95,11 +95,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4842 MB             ; 00:00:15                           ;
-; Fitter               ; 00:00:37     ; 1.0                     ; 6702 MB             ; 00:00:59                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4877 MB             ; 00:00:07                           ;
-; Timing Analyzer      ; 00:00:06     ; 1.2                     ; 5209 MB             ; 00:00:06                           ;
-; Total                ; 00:00:58     ; --                      ; --                  ; 00:01:27                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4853 MB             ; 00:00:16                           ;
+; Fitter               ; 00:00:40     ; 1.0                     ; 6703 MB             ; 00:00:56                           ;
+; Assembler            ; 00:00:07     ; 1.0                     ; 4877 MB             ; 00:00:06                           ;
+; Timing Analyzer      ; 00:00:07     ; 1.2                     ; 5210 MB             ; 00:00:05                           ;
+; Total                ; 00:01:05     ; --                      ; --                  ; 00:01:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
