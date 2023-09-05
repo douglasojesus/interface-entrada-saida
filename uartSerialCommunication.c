@@ -31,7 +31,7 @@ int main() {
 	tcsetattr(arquivoSerial, TCSANOW, &options); //Aplique agora, neste instante
 
 	/* Escrevendo na porta serial */
-	strcpy(bufferRxTx, "OK");
+	strcpy(bufferRxTx, "1P");
 	tam = strlen(bufferRxTx);
 	tam = write(arquivoSerial, bufferRxTx, tam);
 	printf("Wrote %d bytes over UART\n", tam);
@@ -44,7 +44,6 @@ int main() {
 	tam = read(arquivoSerial, bufferRxTx, 255);
 	printf("Received %d bytes\n", tam);
 	printf("Received string: %s\n", bufferRxTx);
-
 
 	close(arquivoSerial);
 	return 0;
