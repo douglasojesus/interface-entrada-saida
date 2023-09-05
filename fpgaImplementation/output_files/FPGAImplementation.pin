@@ -1,22 +1,21 @@
- -- Copyright (C) 2023  Intel Corporation. All rights reserved.
- -- Your use of Intel Corporation's design tools, logic functions 
- -- and other software and tools, and any partner logic 
+ -- Copyright (C) 1991-2013 Altera Corporation
+ -- Your use of Altera Corporation's design tools, logic functions 
+ -- and other software and tools, and its AMPP partner logic 
  -- functions, and any output files from any of the foregoing 
  -- (including device programming or simulation files), and any 
  -- associated documentation or information are expressly subject 
- -- to the terms and conditions of the Intel Program License 
- -- Subscription Agreement, the Intel Quartus Prime License Agreement,
- -- the Intel FPGA IP License Agreement, or other applicable license
- -- agreement, including, without limitation, that your use is for
- -- the sole purpose of programming logic devices manufactured by
- -- Intel and sold by Intel or its authorized distributors.  Please
- -- refer to the applicable agreement for further details, at
- -- https://fpgasoftware.intel.com/eula.
+ -- to the terms and conditions of the Altera Program License 
+ -- Subscription Agreement, Altera MegaCore Function License 
+ -- Agreement, or other applicable license agreement, including, 
+ -- without limitation, that your use is for the sole purpose of 
+ -- programming logic devices manufactured by Altera and sold by 
+ -- Altera or its authorized distributors.  Please refer to the 
+ -- applicable agreement for further details.
  -- 
- -- This is a Quartus Prime output file. It is for reporting purposes only, and is
- -- not intended for use as a Quartus Prime input file. This file cannot be used
- -- to make Quartus Prime pin assignments - for instructions on how to make pin
- -- assignments, please see Quartus Prime help.
+ -- This is a Quartus II output file. It is for reporting purposes only, and is
+ -- not intended for use as a Quartus II input file. This file cannot be used
+ -- to make Quartus II pin assignments - for instructions on how to make pin
+ -- assignments, please see Quartus II help.
  ---------------------------------------------------------------------------------
 
 
@@ -27,30 +26,30 @@
  -- VCCINT        : Dedicated power pin, which MUST be connected to VCC  (1.2V).
  -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
  --                 of its bank.
- --                  Bank 1:       2.5V
- --                  Bank 2:       2.5V
- --                  Bank 3:       2.5V
- --                  Bank 4:       2.5V
- --                  Bank 5:       2.5V
- --                  Bank 6:       2.5V
- --                  Bank 7:       2.5V
- --                  Bank 8:       2.5V
+ --					Bank 1:		2.5V
+ --					Bank 2:		2.5V
+ --					Bank 3:		2.5V
+ --					Bank 4:		2.5V
+ --					Bank 5:		2.5V
+ --					Bank 6:		2.5V
+ --					Bank 7:		2.5V
+ --					Bank 8:		2.5V
  -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
- --                  It can also be used to report unused dedicated pins. The connection
- --                  on the board for unused dedicated pins depends on whether this will
- --                  be used in a future design. One example is device migration. When
- --                  using device migration, refer to the device pin-tables. If it is a
- --                  GND pin in the pin table or if it will not be used in a future design
- --                  for another purpose the it MUST be connected to GND. If it is an unused
- --                  dedicated pin, then it can be connected to a valid signal on the board
- --                  (low, high, or toggling) if that signal is required for a different
- --                  revision of the design.
+ --					It can also be used to report unused dedicated pins. The connection
+ --					on the board for unused dedicated pins depends on whether this will
+ --					be used in a future design. One example is device migration. When
+ --					using device migration, refer to the device pin-tables. If it is a
+ --					GND pin in the pin table or if it will not be used in a future design
+ --					for another purpose the it MUST be connected to GND. If it is an unused
+ --					dedicated pin, then it can be connected to a valid signal on the board
+ --					(low, high, or toggling) if that signal is required for a different
+ --					revision of the design.
  -- GND+          : Unused input pin. It can also be used to report unused dual-purpose pins.
- --                  This pin should be connected to GND. It may also be connected  to a
- --                  valid signal  on the board  (low, high, or toggling)  if that signal
- --                  is required for a different revision of the design.
+ --					This pin should be connected to GND. It may also be connected  to a
+ --					valid signal  on the board  (low, high, or toggling)  if that signal
+ --					is required for a different revision of the design.
  -- GND*          : Unused  I/O  pin. Connect each pin marked GND* directly to GND
- --                  or leave it unconnected.
+ --           	    or leave it unconnected.
  -- RESERVED      : Unused I/O pin, which MUST be left unconnected.
  -- RESERVED_INPUT    : Pin is tri-stated and should be connected to the board.
  -- RESERVED_INPUT_WITH_WEAK_PULLUP    : Pin is tri-stated with internal weak pull-up resistor.
@@ -64,7 +63,7 @@
  -- Pin directions (input, output or bidir) are based on device operating in user mode.
  ---------------------------------------------------------------------------------
 
-Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 CHIP  "FPGAImplementation"  ASSIGNED TO AN: EP4CE30F23C7
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
@@ -72,8 +71,8 @@ Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage 
 GND                          : A1        : gnd    :                   :         :           :                
 VCCIO8                       : A2        : power  :                   : 2.5V    : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A3        :        :                   :         : 8         :                
-bitsEstaoEnviados            : A4        : output : 2.5 V             :         : 8         : N              
-transmission_line            : A5        : bidir  : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : A4        :        :                   :         : 8         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : A5        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A6        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A7        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A8        :        :                   :         : 8         :                
@@ -191,7 +190,7 @@ VCCIO8                       : D9        : power  :                   : 2.5V    
 RESERVED_INPUT_WITH_WEAK_PULLUP : D10       :        :                   :         : 8         :                
 VCCIO8                       : D11       : power  :                   : 2.5V    : 8         :                
 VCCIO7                       : D12       : power  :                   : 2.5V    : 7         :                
-bitsEstaoRecebidos           : D13       : output : 2.5 V             :         : 7         : N              
+bitsEstaoEnviados            : D13       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : D14       : power  :                   : 2.5V    : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D15       :        :                   :         : 7         :                
 VCCIO7                       : D16       : power  :                   : 2.5V    : 7         :                
@@ -232,7 +231,7 @@ VCCD_PLL3                    : F6        : power  :                   : 1.2V    
 RESERVED_INPUT_WITH_WEAK_PULLUP : F7        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F8        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F9        :        :                   :         : 8         :                
-indicaTransmissao            : F10       : output : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F10       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F11       :        :                   :         : 7         :                
 GND                          : F12       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F13       :        :                   :         : 7         :                
@@ -276,7 +275,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : H6        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : H7        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H8        :        :                   :         : 1         :                
 VCCINT                       : H9        : power  :                   : 1.2V    :           :                
-reset                        : H10       : input  : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H10       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H11       :        :                   :         : 8         :                
 GND                          : H12       : gnd    :                   :         :           :                
 GND                          : H13       : gnd    :                   :         :           :                
@@ -306,7 +305,7 @@ VCCINT                       : J14       : power  :                   : 1.2V    
 GND                          : J15       : gnd    :                   :         :           :                
 VCCINT                       : J16       : power  :                   : 1.2V    :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J17       :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : J18       :        :                   :         : 6         :                
+bitsEstaoRecebidos           : J18       : output : 2.5 V             :         : 6         : N              
 GND                          : J19       : gnd    :                   :         :           :                
 VCCIO6                       : J20       : power  :                   : 2.5V    : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J21       :        :                   :         : 6         :                
@@ -353,8 +352,8 @@ MSEL2                        : L17       :        :                   :         
 MSEL1                        : L18       :        :                   :         : 6         :                
 VCCIO6                       : L19       : power  :                   : 2.5V    : 6         :                
 GND                          : L20       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : L21       :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : L22       :        :                   :         : 6         :                
+transmission_line            : L21       : bidir  : 2.5 V             :         : 6         : N              
+reset                        : L22       : input  : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : M1        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M2        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M3        :        :                   :         : 2         :                
@@ -374,7 +373,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : M16       :        :                   :      
 MSEL0                        : M17       :        :                   :         : 6         :                
 CONF_DONE                    : M18       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M19       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : M20       :        :                   :         : 5         :                
+indicaTransmissao            : M20       : output : 2.5 V             :         : 5         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : M21       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M22       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N1        :        :                   :         : 2         :                

@@ -1,22 +1,22 @@
 |FPGAImplementation
 clock => clock.IN3
 bitSerialAtualRX => bitSerialAtualRX.IN1
-bitsEstaoRecebidos << uart_rx:comb_3.port2
-indicaTransmissao << uart_tx:comb_8.port4
-bitSerialAtualTX << uart_tx:comb_8.port5
-bitsEstaoEnviados << uart_tx:comb_8.port6
-display[0] << decoder:comb_6.port1
-display[1] << decoder:comb_6.port1
-display[2] << decoder:comb_6.port1
-display[3] << decoder:comb_6.port1
-display[4] << decoder:comb_6.port1
-display[5] << decoder:comb_6.port1
-display[6] << decoder:comb_6.port1
+bitsEstaoRecebidos << uart_rx:RECEBE_DADOS.port2
+indicaTransmissao << uart_tx:ENVIA_DADOS.port4
+bitSerialAtualTX << uart_tx:ENVIA_DADOS.port5
+bitsEstaoEnviados << uart_tx:ENVIA_DADOS.port6
+display[0] << decoder:EXIBE_DISPLAY.port1
+display[1] << decoder:EXIBE_DISPLAY.port1
+display[2] << decoder:EXIBE_DISPLAY.port1
+display[3] << decoder:EXIBE_DISPLAY.port1
+display[4] << decoder:EXIBE_DISPLAY.port1
+display[5] << decoder:EXIBE_DISPLAY.port1
+display[6] << decoder:EXIBE_DISPLAY.port1
 transmission_line <> conexaoSensor:inst.port4
 reset => reset.IN1
 
 
-|FPGAImplementation|uart_rx:comb_3
+|FPGAImplementation|uart_rx:RECEBE_DADOS
 clock => bufferPrimeiroByte[0].CLK
 clock => bufferPrimeiroByte[1].CLK
 clock => bufferPrimeiroByte[2].CLK
@@ -101,27 +101,27 @@ request_address[4] => request_address[4].IN1
 request_address[5] => request_address[5].IN1
 request_address[6] => request_address[6].IN1
 request_address[7] => request_address[7].IN1
-transmission_line <> DHT11Communication:comb_3.port3
-dadosPodemSerEnviados <= DHT11Communication:comb_3.port10
-response_command[0] <= DHT11Communication:comb_3.port4
-response_command[1] <= DHT11Communication:comb_3.port4
-response_command[2] <= DHT11Communication:comb_3.port4
-response_command[3] <= DHT11Communication:comb_3.port4
-response_command[4] <= DHT11Communication:comb_3.port4
-response_command[5] <= DHT11Communication:comb_3.port4
-response_command[6] <= DHT11Communication:comb_3.port4
-response_command[7] <= DHT11Communication:comb_3.port4
-response_value[0] <= DHT11Communication:comb_3.port6
-response_value[1] <= DHT11Communication:comb_3.port6
-response_value[2] <= DHT11Communication:comb_3.port6
-response_value[3] <= DHT11Communication:comb_3.port6
-response_value[4] <= DHT11Communication:comb_3.port6
-response_value[5] <= DHT11Communication:comb_3.port6
-response_value[6] <= DHT11Communication:comb_3.port6
-response_value[7] <= DHT11Communication:comb_3.port6
+transmission_line <> DHT11Communication:TROCA_DADOS_DHT11.port3
+dadosPodemSerEnviados <= DHT11Communication:TROCA_DADOS_DHT11.port11
+response_command[0] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[1] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[2] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[3] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[4] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[5] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[6] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_command[7] <= DHT11Communication:TROCA_DADOS_DHT11.port4
+response_value[0] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[1] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[2] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[3] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[4] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[5] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[6] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+response_value[7] <= DHT11Communication:TROCA_DADOS_DHT11.port6
 
 
-|FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3
+|FPGAImplementation|conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11
 clock => index[0].CLK
 clock => index[1].CLK
 clock => index[2].CLK
@@ -161,6 +161,14 @@ clock => sensor_data[28].CLK
 clock => sensor_data[29].CLK
 clock => sensor_data[30].CLK
 clock => sensor_data[31].CLK
+clock => sensor_data[32].CLK
+clock => sensor_data[33].CLK
+clock => sensor_data[34].CLK
+clock => sensor_data[35].CLK
+clock => sensor_data[36].CLK
+clock => sensor_data[37].CLK
+clock => sensor_data[38].CLK
+clock => sensor_data[39].CLK
 clock => counter[0].CLK
 clock => counter[1].CLK
 clock => counter[2].CLK
@@ -262,6 +270,14 @@ reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
+reset => sensor_data.OUTPUTSELECT
 reset => dadosPodemSerEnviados_reg.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
@@ -314,12 +330,20 @@ temp_float[4] <= sensor_data[28].DB_MAX_OUTPUT_PORT_TYPE
 temp_float[5] <= sensor_data[29].DB_MAX_OUTPUT_PORT_TYPE
 temp_float[6] <= sensor_data[30].DB_MAX_OUTPUT_PORT_TYPE
 temp_float[7] <= sensor_data[31].DB_MAX_OUTPUT_PORT_TYPE
+checksum[0] <= sensor_data[32].DB_MAX_OUTPUT_PORT_TYPE
+checksum[1] <= sensor_data[33].DB_MAX_OUTPUT_PORT_TYPE
+checksum[2] <= sensor_data[34].DB_MAX_OUTPUT_PORT_TYPE
+checksum[3] <= sensor_data[35].DB_MAX_OUTPUT_PORT_TYPE
+checksum[4] <= sensor_data[36].DB_MAX_OUTPUT_PORT_TYPE
+checksum[5] <= sensor_data[37].DB_MAX_OUTPUT_PORT_TYPE
+checksum[6] <= sensor_data[38].DB_MAX_OUTPUT_PORT_TYPE
+checksum[7] <= sensor_data[39].DB_MAX_OUTPUT_PORT_TYPE
 hold <= hold_reg.DB_MAX_OUTPUT_PORT_TYPE
 error <= error_reg.DB_MAX_OUTPUT_PORT_TYPE
 dadosPodemSerEnviados <= dadosPodemSerEnviados_reg.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|conexaoSensor:inst|DHT11Communication:comb_3|TriState:TS0
+|FPGAImplementation|conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|TriState:TS0
 port <> port
 dir => port.OE
 dir => read.OE
@@ -327,7 +351,7 @@ send => port.DATAIN
 read <= read.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|decoder:comb_6
+|FPGAImplementation|decoder:EXIBE_DISPLAY
 word[0] => Equal0.IN15
 word[0] => Equal1.IN15
 word[1] => Equal0.IN14
@@ -359,7 +383,7 @@ teste => display[5]$latch.LATCH_ENABLE
 teste => display[6]$latch.LATCH_ENABLE
 
 
-|FPGAImplementation|uart_tx:comb_8
+|FPGAImplementation|uart_tx:ENVIA_DADOS
 clock => segundaVez.CLK
 clock => jaFoiOPrimeiro.CLK
 clock => dadosASeremTransmitidos[0].CLK

@@ -1,41 +1,77 @@
 ------------------------------------------------------------
-Timing Analyzer Summary
+TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clock'
-Slack : -4.953
-TNS   : -297.384
+Slack : -4.577
+TNS   : -388.616
+
+Type  : Slow 1200mV 85C Model Setup 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : -2.205
+TNS   : -5.981
 
 Type  : Slow 1200mV 85C Model Hold 'clock'
-Slack : 0.393
+Slack : -0.046
+TNS   : -0.072
+
+Type  : Slow 1200mV 85C Model Hold 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : 0.861
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock'
 Slack : -3.000
-TNS   : -131.500
+TNS   : -180.330
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : 0.405
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clock'
-Slack : -4.437
-TNS   : -263.890
+Slack : -4.123
+TNS   : -344.706
+
+Type  : Slow 1200mV 0C Model Setup 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : -2.060
+TNS   : -5.524
 
 Type  : Slow 1200mV 0C Model Hold 'clock'
-Slack : 0.344
+Slack : 0.027
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : 0.900
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock'
 Slack : -3.000
-TNS   : -131.500
+TNS   : -180.330
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : 0.462
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clock'
-Slack : -1.836
-TNS   : -93.513
+Slack : -1.690
+TNS   : -119.654
+
+Type  : Fast 1200mV 0C Model Setup 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : -0.722
+TNS   : -1.867
 
 Type  : Fast 1200mV 0C Model Hold 'clock'
-Slack : 0.177
+Slack : -0.199
+TNS   : -1.399
+
+Type  : Fast 1200mV 0C Model Hold 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : 0.528
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock'
 Slack : -3.000
-TNS   : -108.314
+TNS   : -149.192
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|dadosPodemSerEnviados_reg'
+Slack : 0.365
+TNS   : 0.000
 
 ------------------------------------------------------------

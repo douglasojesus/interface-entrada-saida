@@ -25,38 +25,30 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos,
 	inout  				transmission_line; //Fio de entrada e saida do DHT11 (Tri-state) 
 	input					reset;
 	
-	wire [7:0] 	primeiroByteCompleto, primeiroByteASerTransmitido;	//Byte a ser recebido do PC através do RX
-	wire [7:0] 	segundoByteCompleto, segundoByteASerTransmitido;
+	wire [7:0] 	segundoByteCompleto;
 	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
 	wire 			haDadosParaTransmitir;
 	wire 			dadosPodemSerEnviados;
+	
+	wire [7:0]	request_command, request_address, response_command, response_value;
 
 	//bitSerialAtualRX: bit a bit que chega do PC por UART.
 	//bitsEstaoRecebidos: bit que confirma todo o recebimento dos bits.
 	//byteCompleto: vetor com todos os bits que chegaram atraves do UART.
 	
 	//Implementação da comunicação entre o PC e a FPGA
-	uart_rx (clock, bitSerialAtualRX, bitsEstaoRecebidos, primeiroByteCompleto, segundoByteCompleto);
+	uart_rx RECEBE_DADOS(clock, bitSerialAtualRX, bitsEstaoRecebidos, request_command, segundoByteCompleto);
 	
 	//haDadosParaTransmitir: bit que informa que os dados do byteASerTransmitido devem ser enviados.
 	//byteASerTransmitido: byte que serve de entrada para enviar bit a bit.
-	
-	wire teste;
-	
-	assign request_command = primeiroByteCompleto;
-	//assign request_address = segundoByteCompleto;
 	
 	//Para teste:
 	assign request_address = 8'b00000001; //Deve ligar o DHT11.
 	
 	conexaoSensor inst(clock, reset, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value);
 	
-	decoder (segundoByteCompleto, display, teste);
+	decoder EXIBE_DISPLAY(segundoByteCompleto, display, dadosPodemSerEnviados);
 	
-	//assign primeiroByteASerTransmitido = response_command; //Faz o que está entrando na FPGA voltar para o PC
-	//assign segundoByteASerTransmitido = responde_value; //Faz o que está entrando na FPGA voltar para o PC
-	assign haDadosParaTransmitir = dadosPodemSerEnviados;
-	
-	uart_tx (clock, haDadosParaTransmitir, response_command, response_value, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
+	uart_tx ENVIA_DADOS(clock, dadosPodemSerEnviados, response_command, response_value, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
 
 endmodule
