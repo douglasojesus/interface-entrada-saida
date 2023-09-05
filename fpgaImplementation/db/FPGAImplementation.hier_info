@@ -1,19 +1,18 @@
 |FPGAImplementation
 clock => clock.IN3
 bitSerialAtualRX => bitSerialAtualRX.IN1
-bitsEstaoRecebidos << uart_rx:RECEBE_DADOS.port2
-indicaTransmissao << uart_tx:ENVIA_DADOS.port4
-bitSerialAtualTX << uart_tx:ENVIA_DADOS.port5
-bitsEstaoEnviados << uart_tx:ENVIA_DADOS.port6
-display[0] << decoder:EXIBE_DISPLAY.port1
-display[1] << decoder:EXIBE_DISPLAY.port1
-display[2] << decoder:EXIBE_DISPLAY.port1
-display[3] << decoder:EXIBE_DISPLAY.port1
-display[4] << decoder:EXIBE_DISPLAY.port1
-display[5] << decoder:EXIBE_DISPLAY.port1
-display[6] << decoder:EXIBE_DISPLAY.port1
-transmission_line <> conexaoSensor:inst.port4
-reset => reset.IN1
+bitsEstaoRecebidos <= bitsEstaoRecebidos.DB_MAX_OUTPUT_PORT_TYPE
+indicaTransmissao <= uart_tx:ENVIA_DADOS.port4
+bitSerialAtualTX <= uart_tx:ENVIA_DADOS.port5
+bitsEstaoEnviados <= uart_tx:ENVIA_DADOS.port6
+display[0] <= decoder:EXIBE_DISPLAY.port1
+display[1] <= decoder:EXIBE_DISPLAY.port1
+display[2] <= decoder:EXIBE_DISPLAY.port1
+display[3] <= decoder:EXIBE_DISPLAY.port1
+display[4] <= decoder:EXIBE_DISPLAY.port1
+display[5] <= decoder:EXIBE_DISPLAY.port1
+display[6] <= decoder:EXIBE_DISPLAY.port1
+transmission_line <> conexao_sensor:inst.port4
 
 
 |FPGAImplementation|uart_rx:RECEBE_DADOS
@@ -82,17 +81,49 @@ segundoByteCompleto[6] <= bufferSegundoByte[6].DB_MAX_OUTPUT_PORT_TYPE
 segundoByteCompleto[7] <= bufferSegundoByte[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|conexaoSensor:inst
+|FPGAImplementation|conexao_sensor:inst
 clock => clock.IN1
-reset => reset.IN1
-request_command[0] => ~NO_FANOUT~
-request_command[1] => ~NO_FANOUT~
-request_command[2] => ~NO_FANOUT~
-request_command[3] => ~NO_FANOUT~
-request_command[4] => ~NO_FANOUT~
-request_command[5] => ~NO_FANOUT~
-request_command[6] => ~NO_FANOUT~
-request_command[7] => ~NO_FANOUT~
+enable => always0.IN1
+request_command[0] => Decoder0.IN7
+request_command[0] => Equal0.IN1
+request_command[0] => Equal1.IN7
+request_command[0] => Equal2.IN1
+request_command[0] => Equal3.IN7
+request_command[1] => Decoder0.IN6
+request_command[1] => Equal0.IN7
+request_command[1] => Equal1.IN1
+request_command[1] => Equal2.IN0
+request_command[1] => Equal3.IN6
+request_command[2] => Decoder0.IN5
+request_command[2] => Equal0.IN0
+request_command[2] => Equal1.IN0
+request_command[2] => Equal2.IN7
+request_command[2] => Equal3.IN0
+request_command[3] => Decoder0.IN4
+request_command[3] => Equal0.IN6
+request_command[3] => Equal1.IN6
+request_command[3] => Equal2.IN6
+request_command[3] => Equal3.IN5
+request_command[4] => Decoder0.IN3
+request_command[4] => Equal0.IN5
+request_command[4] => Equal1.IN5
+request_command[4] => Equal2.IN5
+request_command[4] => Equal3.IN4
+request_command[5] => Decoder0.IN2
+request_command[5] => Equal0.IN4
+request_command[5] => Equal1.IN4
+request_command[5] => Equal2.IN4
+request_command[5] => Equal3.IN3
+request_command[6] => Decoder0.IN1
+request_command[6] => Equal0.IN3
+request_command[6] => Equal1.IN3
+request_command[6] => Equal2.IN3
+request_command[6] => Equal3.IN2
+request_command[7] => Decoder0.IN0
+request_command[7] => Equal0.IN2
+request_command[7] => Equal1.IN2
+request_command[7] => Equal2.IN2
+request_command[7] => Equal3.IN1
 request_address[0] => request_address[0].IN1
 request_address[1] => request_address[1].IN1
 request_address[2] => request_address[2].IN1
@@ -101,27 +132,27 @@ request_address[4] => request_address[4].IN1
 request_address[5] => request_address[5].IN1
 request_address[6] => request_address[6].IN1
 request_address[7] => request_address[7].IN1
-transmission_line <> DHT11Communication:TROCA_DADOS_DHT11.port3
-dadosPodemSerEnviados <= DHT11Communication:TROCA_DADOS_DHT11.port11
-response_command[0] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[1] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[2] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[3] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[4] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[5] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[6] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_command[7] <= DHT11Communication:TROCA_DADOS_DHT11.port4
-response_value[0] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[1] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[2] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[3] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[4] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[5] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[6] <= DHT11Communication:TROCA_DADOS_DHT11.port6
-response_value[7] <= DHT11Communication:TROCA_DADOS_DHT11.port6
+transmission_line <> DHT11_communication:TROCA_DADOS_DHT11.port5
+dadosPodemSerEnviados <= dadosPodemSerEnviados_reg.DB_MAX_OUTPUT_PORT_TYPE
+response_command[0] <= response_command_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+response_command[1] <= response_command_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+response_command[2] <= response_command_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+response_command[3] <= response_command_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+response_command[4] <= response_command_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+response_command[5] <= response_command_reg[5].DB_MAX_OUTPUT_PORT_TYPE
+response_command[6] <= response_command_reg[6].DB_MAX_OUTPUT_PORT_TYPE
+response_command[7] <= response_command_reg[7].DB_MAX_OUTPUT_PORT_TYPE
+response_value[0] <= response_value_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+response_value[1] <= response_value_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+response_value[2] <= response_value_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+response_value[3] <= response_value_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+response_value[4] <= response_value_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+response_value[5] <= response_value_reg[5].DB_MAX_OUTPUT_PORT_TYPE
+response_value[6] <= response_value_reg[6].DB_MAX_OUTPUT_PORT_TYPE
+response_value[7] <= response_value_reg[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11
+|FPGAImplementation|conexao_sensor:inst|DHT11_communication:TROCA_DADOS_DHT11
 clock => index[0].CLK
 clock => index[1].CLK
 clock => index[2].CLK
@@ -162,13 +193,6 @@ clock => sensor_data[29].CLK
 clock => sensor_data[30].CLK
 clock => sensor_data[31].CLK
 clock => sensor_data[32].CLK
-clock => sensor_data[33].CLK
-clock => sensor_data[34].CLK
-clock => sensor_data[35].CLK
-clock => sensor_data[36].CLK
-clock => sensor_data[37].CLK
-clock => sensor_data[38].CLK
-clock => sensor_data[39].CLK
 clock => counter[0].CLK
 clock => counter[1].CLK
 clock => counter[2].CLK
@@ -200,14 +224,23 @@ clock => direction.CLK
 clock => error_reg.CLK
 clock => hold_reg.CLK
 clock => current_state~13.DATAIN
-enable[0] => Equal0.IN0
-enable[1] => Equal0.IN7
-enable[2] => Equal0.IN6
-enable[3] => Equal0.IN5
-enable[4] => Equal0.IN4
-enable[5] => Equal0.IN3
-enable[6] => Equal0.IN2
-enable[7] => Equal0.IN1
+enable_sensor => always0.IN1
+request_address[0] => Equal1.IN7
+request_address[1] => Equal1.IN6
+request_address[2] => Equal1.IN5
+request_address[3] => Equal1.IN4
+request_address[4] => Equal1.IN3
+request_address[5] => Equal1.IN2
+request_address[6] => Equal1.IN1
+request_address[7] => Equal1.IN0
+this_address[0] => Equal1.IN15
+this_address[1] => Equal1.IN14
+this_address[2] => Equal1.IN13
+this_address[3] => Equal1.IN12
+this_address[4] => Equal1.IN11
+this_address[5] => Equal1.IN10
+this_address[6] => Equal1.IN9
+this_address[7] => Equal1.IN8
 reset => hold_reg.OUTPUTSELECT
 reset => error_reg.OUTPUTSELECT
 reset => direction.OUTPUTSELECT
@@ -271,13 +304,6 @@ reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
 reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
-reset => sensor_data.OUTPUTSELECT
 reset => dadosPodemSerEnviados_reg.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
 reset => current_state.OUTPUTSELECT
@@ -297,7 +323,7 @@ reset => index.OUTPUTSELECT
 reset => index.OUTPUTSELECT
 reset => index.OUTPUTSELECT
 reset => index.OUTPUTSELECT
-transmission_line <> TriState:TS0.port0
+transmission_line <> tri_state:TS0.port0
 hum_int[0] <= sensor_data[0].DB_MAX_OUTPUT_PORT_TYPE
 hum_int[1] <= sensor_data[1].DB_MAX_OUTPUT_PORT_TYPE
 hum_int[2] <= sensor_data[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -330,20 +356,13 @@ temp_float[4] <= sensor_data[28].DB_MAX_OUTPUT_PORT_TYPE
 temp_float[5] <= sensor_data[29].DB_MAX_OUTPUT_PORT_TYPE
 temp_float[6] <= sensor_data[30].DB_MAX_OUTPUT_PORT_TYPE
 temp_float[7] <= sensor_data[31].DB_MAX_OUTPUT_PORT_TYPE
-checksum[0] <= sensor_data[32].DB_MAX_OUTPUT_PORT_TYPE
-checksum[1] <= sensor_data[33].DB_MAX_OUTPUT_PORT_TYPE
-checksum[2] <= sensor_data[34].DB_MAX_OUTPUT_PORT_TYPE
-checksum[3] <= sensor_data[35].DB_MAX_OUTPUT_PORT_TYPE
-checksum[4] <= sensor_data[36].DB_MAX_OUTPUT_PORT_TYPE
-checksum[5] <= sensor_data[37].DB_MAX_OUTPUT_PORT_TYPE
-checksum[6] <= sensor_data[38].DB_MAX_OUTPUT_PORT_TYPE
-checksum[7] <= sensor_data[39].DB_MAX_OUTPUT_PORT_TYPE
+errorChecksum <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
 hold <= hold_reg.DB_MAX_OUTPUT_PORT_TYPE
 error <= error_reg.DB_MAX_OUTPUT_PORT_TYPE
 dadosPodemSerEnviados <= dadosPodemSerEnviados_reg.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FPGAImplementation|conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|TriState:TS0
+|FPGAImplementation|conexao_sensor:inst|DHT11_communication:TROCA_DADOS_DHT11|tri_state:TS0
 port <> port
 dir => port.OE
 dir => read.OE

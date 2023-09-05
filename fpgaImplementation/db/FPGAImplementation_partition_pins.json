@@ -20,15 +20,35 @@
 					"strict" : false
 				},
 				{
+					"name" : "display[0]",
+					"strict" : false
+				},
+				{
+					"name" : "display[1]",
+					"strict" : false
+				},
+				{
+					"name" : "display[2]",
+					"strict" : false
+				},
+				{
+					"name" : "display[4]",
+					"strict" : false
+				},
+				{
+					"name" : "display[5]",
+					"strict" : false
+				},
+				{
+					"name" : "display[6]",
+					"strict" : false
+				},
+				{
 					"name" : "transmission_line",
 					"strict" : false
 				},
 				{
 					"name" : "clock",
-					"strict" : false
-				},
-				{
-					"name" : "reset",
 					"strict" : false
 				},
 				{

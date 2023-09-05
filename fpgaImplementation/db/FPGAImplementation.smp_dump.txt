@@ -7,7 +7,15 @@ estadoAtual.estadoEnviaBits 0 1 0 1 0
 estadoAtual.estadoEnviaBitFinal 1 0 0 1 0 
 estadoAtual.estadoDeLimpeza 0 0 0 1 1 
 
-State Machine - |FPGAImplementation|conexaoSensor:inst|DHT11Communication:TROCA_DADOS_DHT11|current_state
+State Machine - |FPGAImplementation|conexao_sensor:inst|current_state
+Name current_state.STOP current_state.ENVIO current_state.LEITURA current_state.ESPERA current_state.LOOP 
+current_state.ESPERA 0 0 0 0 0 
+current_state.LEITURA 0 0 1 1 0 
+current_state.ENVIO 0 1 0 1 0 
+current_state.STOP 1 0 0 1 0 
+current_state.LOOP 0 0 0 1 1 
+
+State Machine - |FPGAImplementation|conexao_sensor:inst|DHT11_communication:TROCA_DADOS_DHT11|current_state
 Name current_state.START current_state.S9 current_state.S8 current_state.S7 current_state.S6 current_state.S5 current_state.S4 current_state.S3 current_state.S2 current_state.S1 current_state.S0 current_state.STOP 
 current_state.STOP 0 0 0 0 0 0 0 0 0 0 0 0 
 current_state.S0 0 0 0 0 0 0 0 0 0 0 1 1 
