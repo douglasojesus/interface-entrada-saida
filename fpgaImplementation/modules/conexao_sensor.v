@@ -9,7 +9,6 @@ module conexao_sensor(
 	output [7:0] response_value
 );
 
-	wire [7:0] hum_int_dht11, hum_float_dht11, temp_int_dht11, temp_float_dht11;
 	wire error, errorChecksum, hold;
 	wire dadosOK;
 	
@@ -18,9 +17,19 @@ module conexao_sensor(
 	reg enable_sensor, reset_sensor, dadosPodemSerEnviados_reg;
 	reg [7:0] response_command_reg, response_value_reg;
 	
+	wire [39:0] sensor_data;
+	wire [7:0] hum_int_dht11, hum_float_dht11, temp_int_dht11, temp_float_dht11, checksum_dht11;
+	
+	assign hum_int_dht11    = sensor_data[7:0];
+	assign hum_float_dht11  = sensor_data[15:8];
+	assign temp_int_dht11   = sensor_data[23:16];
+	assign temp_float_dht11 = sensor_data[31:24];
+	assign checksum_dht11   = sensor_data[39:32];
+	
+	assign errorChecksum = ((hum_int_dht11 + hum_float_dht11 + temp_int_dht11 + temp_float_dht11) != checksum_dht11);
 
 	DHT11_communication TROCA_DADOS_DHT11(clock, enable_sensor, request_address, 8'b00000001, reset_sensor, 
-	transmission_line, hum_int_dht11, hum_float_dht11, temp_int_dht11, temp_float_dht11, errorChecksum, hold, error, dadosOK);
+	transmission_line, sensor_data, hold, error, dadosOK);
 	
 	//Preciso pegar o resultado de um dos módulos e repassar para a saída
 	

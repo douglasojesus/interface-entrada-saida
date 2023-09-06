@@ -1,6 +1,6 @@
 Flow report for FPGAImplementation
-Tue Sep  5 14:58:09 2023
-Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+Tue Sep 05 23:28:31 2023
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -21,46 +21,45 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2023  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and any partner logic 
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
-agreement, including, without limitation, that your use is for
-the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------+
-; Flow Summary                                                                     ;
-+---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Tue Sep  5 14:58:01 2023          ;
-; Quartus Prime Version           ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
-; Revision Name                   ; FPGAImplementation                             ;
-; Top-level Entity Name           ; FPGAImplementation                             ;
-; Family                          ; Cyclone V                                      ;
-; Device                          ; 5CGXFC7C7F23C8                                 ;
-; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 229 / 56,480 ( < 1 % )                         ;
-; Total registers                 ; 218                                            ;
-; Total pins                      ; 14 / 268 ( 5 % )                               ;
-; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 0 / 7,024,640 ( 0 % )                          ;
-; Total DSP Blocks                ; 0 / 156 ( 0 % )                                ;
-; Total HSSI RX PCSs              ; 0 / 6 ( 0 % )                                  ;
-; Total HSSI PMA RX Deserializers ; 0 / 6 ( 0 % )                                  ;
-; Total HSSI TX PCSs              ; 0 / 6 ( 0 % )                                  ;
-; Total HSSI PMA TX Serializers   ; 0 / 6 ( 0 % )                                  ;
-; Total PLLs                      ; 0 / 13 ( 0 % )                                 ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                                  ;
-+---------------------------------+------------------------------------------------+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++---------------------------------+--------------------------------------------+
+; Flow Status                     ; Successful - Tue Sep 05 23:28:18 2023      ;
+; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                   ; FPGAImplementation                         ;
+; Top-level Entity Name           ; FPGAImplementation                         ;
+; Family                          ; Cyclone V                                  ;
+; Device                          ; 5CGXFC7C7F23C8                             ;
+; Timing Models                   ; Final                                      ;
+; Logic utilization (in ALMs)     ; 216 / 56,480 ( < 1 % )                     ;
+; Total registers                 ; 216                                        ;
+; Total pins                      ; 14 / 268 ( 5 % )                           ;
+; Total virtual pins              ; 0                                          ;
+; Total block memory bits         ; 0 / 7,024,640 ( 0 % )                      ;
+; Total DSP Blocks                ; 0 / 156 ( 0 % )                            ;
+; Total HSSI RX PCSs              ; 0 / 6 ( 0 % )                              ;
+; Total HSSI PMA RX Deserializers ; 0 / 6 ( 0 % )                              ;
+; Total HSSI TX PCSs              ; 0 / 6 ( 0 % )                              ;
+; Total HSSI TX Channels          ; 0 / 6 ( 0 % )                              ;
+; Total PLLs                      ; 0 / 13 ( 0 % )                             ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                              ;
++---------------------------------+--------------------------------------------+
 
 
 +-----------------------------------------+
@@ -68,51 +67,51 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/05/2023 14:57:01 ;
+; Start date & time ; 09/05/2023 23:26:52 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; FPGAImplementation  ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                        ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 110073156818472.169393662103440        ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                       ;
++-------------------------------------+---------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+---------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 123598315015815.169396721218324       ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                     ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --         ;
++-------------------------------------+---------------------------------------+---------------+-------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4853 MB             ; 00:00:16                           ;
-; Fitter               ; 00:00:40     ; 1.0                     ; 6703 MB             ; 00:00:56                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4877 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:07     ; 1.2                     ; 5210 MB             ; 00:00:05                           ;
-; Total                ; 00:01:05     ; --                      ; --                  ; 00:01:23                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:05     ; 1.0                     ; 4692 MB             ; 00:00:04                           ;
+; Fitter                    ; 00:00:59     ; 1.8                     ; 6255 MB             ; 00:01:01                           ;
+; Assembler                 ; 00:00:18     ; 1.0                     ; 4771 MB             ; 00:00:15                           ;
+; TimeQuest Timing Analyzer ; 00:00:11     ; 1.0                     ; 5020 MB             ; 00:00:10                           ;
+; Total                     ; 00:01:33     ; --                      ; --                  ; 00:01:30                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-0KTM220  ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; DOUG-NOTEBOOK    ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; DOUG-NOTEBOOK    ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; DOUG-NOTEBOOK    ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; DOUG-NOTEBOOK    ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
 
 
 ------------

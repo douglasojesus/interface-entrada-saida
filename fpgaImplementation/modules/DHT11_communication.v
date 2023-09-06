@@ -5,44 +5,20 @@ module DHT11_communication (
 	input [7:0] this_address,
 	input reset,
 	inout transmission_line,
-	output [7:0] hum_int,
-	output [7:0] hum_float,
-	output [7:0] temp_int,
-	output [7:0] temp_float,
-	output errorChecksum,
+	output [39:0] sensor_data,
 	output hold,  // Sinaliza que a comunicação está acontecendo e aguardando retorno do DHT11.
 	output error,  // Sinaliza que houve problema em algum estado.
 	output dadosPodemSerEnviados
 );
 
-	reg [39:0] sensor_data;
 	reg [25:0] counter;
 	reg [5:0] index;
-	reg debug;
 	reg sensor_out, direction;
-	
 	wire sensor_in;
-	
-	reg hold_reg, debug_reg, error_reg, dadosPodemSerEnviados_reg;
-	
-	assign hold = hold_reg;
-	assign error = error_reg;
-	assign dadosPodemSerEnviados = dadosPodemSerEnviados_reg;	
+	reg [39:0] sensor_data_reg;
+	reg hold_reg, error_reg, dadosPodemSerEnviados_reg;	
 
 	tri_state TS0 (transmission_line, direction, sensor_out, sensor_in);
-
-	assign hum_int    = sensor_data[7:0];
-	assign hum_float  = sensor_data[15:8];
-	assign temp_int   = sensor_data[23:16];
-	assign temp_float = sensor_data[31:24];
-	assign checksum   = sensor_data[39:32];
-	
-	assign errorChecksum = ((hum_int + hum_float + temp_int + temp_float) != checksum);
-	
-	/*localparam [3:0] 	S0 = 4'b0001, S1 = 4'b0010, S2 = 4'b0011,
-							S3 = 4'b0100, S4 = 4'b0101, S5 = 4'b0110,
-							S6 = 4'b0111, S7 = 4'b1000, S8 = 4'b1001,
-							S9 = 4'b1010, START = 4'b1011, STOP = 4'b0000;*/
 	
 	parameter S0=1, S1=2, S2=3, S3=4, S4=5, S5=6, S6=7, S7=8, S8=9, S9=10, STOP=0, START=11;
 
@@ -59,7 +35,7 @@ module DHT11_communication (
 							direction <= 1'b1;
 							sensor_out <= 1'b1;
 							counter <= 26'b000000000000000000000000000;
-							sensor_data <= 40'b0000000000000000000000000000000000000000;
+							sensor_data_reg <= 40'b0000000000000000000000000000000000000000;
 							dadosPodemSerEnviados_reg <= 1'b0;
 							current_state <= START;
 						end 
@@ -107,6 +83,7 @@ module DHT11_communication (
 										if (counter < 900_000) 
 											begin
 											  counter <= counter + 1'b1;
+											  current_state <= S1;
 											end 
 										else 
 											begin
@@ -123,6 +100,7 @@ module DHT11_communication (
 										if (counter < 1_000) 
 											begin
 												counter <= counter + 1'b1;
+												current_state <= S2;
 											end 
 										else
 											begin
@@ -205,8 +183,8 @@ module DHT11_communication (
 												else 
 													begin
 														current_state <= S6;
-														error_reg <= 1'b1;
-														index <= 6'b000000;
+														error_reg <= 1'b0;
+														index <= 6'b000000; //Reseta o indexador
 														counter <= 26'b000000000000000000000000000;
 													end
 											end
@@ -251,7 +229,7 @@ module DHT11_communication (
 											end
 									end
 							/*Neste estado, a máquina de estado lida com a recepção de dados do sensor DHT11. Ela verifica
-							o valor recebido e os armazena no register sensor_data em resposta às condições observadas. 
+							o valor recebido e os armazena no register sensor_data_reg em resposta às condições observadas. 
 							O índice index é atualizado na S9 para rastrear a posição dos bits recebidos. Quando todos os bits são 
 							recebidos, o índice chega em 39 e a máquina avança para stop, com os dados carregados.*/
 								S8: 
@@ -259,15 +237,13 @@ module DHT11_communication (
 										if (sensor_in == 1'b0) 
 											begin
 												//start to transmit 1 bit data
-												if (counter > 2_500) // t(ms)/0,00002(s) = 2500 ciclos -> t = 0,05ms = 50us
+												if (counter > 2_500) // t(ms)/0,00002(s) = 2500 ciclos -> t = 0,05ms = 50us -> nível lógico alto
 													begin
-														debug_reg <= 1'b1;
-														sensor_data[index] <= 1'b1;
+														sensor_data_reg[index] <= 1'b1;
 													end 
 												else 
-													begin
-														debug_reg <= 1'b0;
-														sensor_data[index] <= 1'b0;
+													begin //nível lógico baixo
+														sensor_data_reg[index] <= 1'b0;
 													end
 
 												if (index < 39) 
@@ -283,11 +259,15 @@ module DHT11_communication (
 											end 
 										else 
 											begin
-												counter <= counter + 1'b1;
-												if (counter == 1_600_000) 
+												if (counter >= 1_600_000) 
 													begin
 														current_state <= STOP;
 														error_reg <= 1'b1;
+													end
+												else
+													begin
+														counter <= counter + 1'b1;
+														current_state <= S8;
 													end
 											end
 									end
@@ -325,7 +305,7 @@ module DHT11_communication (
 														dadosPodemSerEnviados_reg <= 1'b1; 
 														direction <= 1'b0;
 														counter <= counter + 1'b1;
-														sensor_data <= 40'b0000000000000000000000000000000000000000;
+														sensor_data_reg <= 40'b0000000000000000000000000000000000000000;
 													end 
 												else 
 													begin
@@ -337,5 +317,10 @@ module DHT11_communication (
 						end
 				end
 		end
+		
+	assign hold = hold_reg;
+	assign error = error_reg;
+	assign dadosPodemSerEnviados = dadosPodemSerEnviados_reg;
+	assign sensor_data = sensor_data_reg;
 
 endmodule

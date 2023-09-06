@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE 5CGXFC7C7F23C8
 set_global_assignment -name TOP_LEVEL_ENTITY FPGAImplementation
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:48:28  SEPTEMBER 05, 2023"
-set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.1 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name VERILOG_FILE modules/uart_tx.v
 set_global_assignment -name VERILOG_FILE modules/uart_rx.v
 set_global_assignment -name VERILOG_FILE modules/tri_state.v

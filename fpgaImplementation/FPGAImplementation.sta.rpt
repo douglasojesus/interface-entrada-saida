@@ -1,13 +1,13 @@
-Timing Analyzer report for FPGAImplementation
-Tue Sep  5 14:58:09 2023
-Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+TimeQuest Timing Analyzer report for FPGAImplementation
+Tue Sep 05 23:28:32 2023
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Timing Analyzer Summary
+  2. TimeQuest Timing Analyzer Summary
   3. Parallel Compilation
   4. Clocks
   5. Slow 1100mV 85C Model Fmax Summary
@@ -17,79 +17,108 @@ Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
   9. Slow 1100mV 85C Model Recovery Summary
  10. Slow 1100mV 85C Model Removal Summary
  11. Slow 1100mV 85C Model Minimum Pulse Width Summary
- 12. Slow 1100mV 85C Model Metastability Summary
- 13. Slow 1100mV 0C Model Fmax Summary
- 14. Slow 1100mV 0C Model Setup Summary
- 15. Slow 1100mV 0C Model Hold Summary
- 16. Slow 1100mV 0C Model Recovery Summary
- 17. Slow 1100mV 0C Model Removal Summary
- 18. Slow 1100mV 0C Model Minimum Pulse Width Summary
- 19. Slow 1100mV 0C Model Metastability Summary
- 20. Fast 1100mV 85C Model Setup Summary
- 21. Fast 1100mV 85C Model Hold Summary
- 22. Fast 1100mV 85C Model Recovery Summary
- 23. Fast 1100mV 85C Model Removal Summary
- 24. Fast 1100mV 85C Model Minimum Pulse Width Summary
- 25. Fast 1100mV 85C Model Metastability Summary
- 26. Fast 1100mV 0C Model Setup Summary
- 27. Fast 1100mV 0C Model Hold Summary
- 28. Fast 1100mV 0C Model Recovery Summary
- 29. Fast 1100mV 0C Model Removal Summary
- 30. Fast 1100mV 0C Model Minimum Pulse Width Summary
- 31. Fast 1100mV 0C Model Metastability Summary
- 32. Multicorner Timing Analysis Summary
- 33. Board Trace Model Assignments
- 34. Input Transition Times
- 35. Signal Integrity Metrics (Slow 1100mv 0c Model)
- 36. Signal Integrity Metrics (Slow 1100mv 85c Model)
- 37. Signal Integrity Metrics (Fast 1100mv 0c Model)
- 38. Signal Integrity Metrics (Fast 1100mv 85c Model)
- 39. Setup Transfers
- 40. Hold Transfers
- 41. Report TCCS
- 42. Report RSKM
- 43. Unconstrained Paths Summary
- 44. Clock Status Summary
- 45. Unconstrained Input Ports
- 46. Unconstrained Output Ports
- 47. Unconstrained Input Ports
- 48. Unconstrained Output Ports
- 49. Timing Analyzer Messages
+ 12. Setup Times
+ 13. Hold Times
+ 14. Clock to Output Times
+ 15. Minimum Clock to Output Times
+ 16. Output Enable Times
+ 17. Minimum Output Enable Times
+ 18. Output Disable Times
+ 19. Minimum Output Disable Times
+ 20. Slow 1100mV 85C Model Metastability Report
+ 21. Slow 1100mV 0C Model Fmax Summary
+ 22. Slow 1100mV 0C Model Setup Summary
+ 23. Slow 1100mV 0C Model Hold Summary
+ 24. Slow 1100mV 0C Model Recovery Summary
+ 25. Slow 1100mV 0C Model Removal Summary
+ 26. Slow 1100mV 0C Model Minimum Pulse Width Summary
+ 27. Setup Times
+ 28. Hold Times
+ 29. Clock to Output Times
+ 30. Minimum Clock to Output Times
+ 31. Output Enable Times
+ 32. Minimum Output Enable Times
+ 33. Output Disable Times
+ 34. Minimum Output Disable Times
+ 35. Slow 1100mV 0C Model Metastability Report
+ 36. Fast 1100mV 85C Model Setup Summary
+ 37. Fast 1100mV 85C Model Hold Summary
+ 38. Fast 1100mV 85C Model Recovery Summary
+ 39. Fast 1100mV 85C Model Removal Summary
+ 40. Fast 1100mV 85C Model Minimum Pulse Width Summary
+ 41. Setup Times
+ 42. Hold Times
+ 43. Clock to Output Times
+ 44. Minimum Clock to Output Times
+ 45. Output Enable Times
+ 46. Minimum Output Enable Times
+ 47. Output Disable Times
+ 48. Minimum Output Disable Times
+ 49. Fast 1100mV 85C Model Metastability Report
+ 50. Fast 1100mV 0C Model Setup Summary
+ 51. Fast 1100mV 0C Model Hold Summary
+ 52. Fast 1100mV 0C Model Recovery Summary
+ 53. Fast 1100mV 0C Model Removal Summary
+ 54. Fast 1100mV 0C Model Minimum Pulse Width Summary
+ 55. Setup Times
+ 56. Hold Times
+ 57. Clock to Output Times
+ 58. Minimum Clock to Output Times
+ 59. Output Enable Times
+ 60. Minimum Output Enable Times
+ 61. Output Disable Times
+ 62. Minimum Output Disable Times
+ 63. Fast 1100mV 0C Model Metastability Report
+ 64. Multicorner Timing Analysis Summary
+ 65. Setup Times
+ 66. Hold Times
+ 67. Clock to Output Times
+ 68. Minimum Clock to Output Times
+ 69. Board Trace Model Assignments
+ 70. Input Transition Times
+ 71. Signal Integrity Metrics (Slow 1100mv 0c Model)
+ 72. Signal Integrity Metrics (Slow 1100mv 85c Model)
+ 73. Signal Integrity Metrics (Fast 1100mv 0c Model)
+ 74. Signal Integrity Metrics (Fast 1100mv 85c Model)
+ 75. Setup Transfers
+ 76. Hold Transfers
+ 77. Report TCCS
+ 78. Report RSKM
+ 79. Unconstrained Paths
+ 80. TimeQuest Timing Analyzer Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2023  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and any partner logic 
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
-agreement, including, without limitation, that your use is for
-the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
 
 
 
-+--------------------------------------------------------------------------------+
-; Timing Analyzer Summary                                                        ;
-+-----------------------+--------------------------------------------------------+
-; Quartus Prime Version ; Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
-; Timing Analyzer       ; Legacy Timing Analyzer                                 ;
-; Revision Name         ; FPGAImplementation                                     ;
-; Device Family         ; Cyclone V                                              ;
-; Device Name           ; 5CGXFC7C7F23C8                                         ;
-; Timing Models         ; Final                                                  ;
-; Delay Model           ; Combined                                               ;
-; Rise/Fall Delays      ; Enabled                                                ;
-+-----------------------+--------------------------------------------------------+
++-------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                       ;
++--------------------+----------------------------------------------------+
+; Quartus II Version ; Version 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name      ; FPGAImplementation                                 ;
+; Device Family      ; Cyclone V                                          ;
+; Device Name        ; 5CGXFC7C7F23C8                                     ;
+; Timing Models      ; Final                                              ;
+; Delay Model        ; Combined                                           ;
+; Rise/Fall Delays   ; Enabled                                            ;
++--------------------+----------------------------------------------------+
 
 
 +------------------------------------------+
@@ -100,14 +129,13 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.20        ;
+; Average used               ; 1.00        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   6.9%      ;
-;     Processor 3            ;   6.6%      ;
-;     Processor 4            ;   6.5%      ;
+;     Processors 2-4         ; < 0.1%      ;
+;     Processors 5-8         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -121,13 +149,13 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------------------------------------------+
 
 
-+-------------------------------------------------+
-; Slow 1100mV 85C Model Fmax Summary              ;
-+-----------+-----------------+------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
-+-----------+-----------------+------------+------+
-; 132.1 MHz ; 132.1 MHz       ; clock      ;      ;
-+-----------+-----------------+------------+------+
++--------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary               ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 124.42 MHz ; 124.42 MHz      ; clock      ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -142,19 +170,19 @@ HTML report is unavailable in plain text report export.
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -6.984 ; -20.189       ;
-; clock                                         ; -6.570 ; -958.718      ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -7.048 ; -19.957       ;
+; clock                                         ; -7.037 ; -1003.239     ;
 +-----------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------+
-; Slow 1100mV 85C Model Hold Summary                                    ;
-+-----------------------------------------------+-------+---------------+
-; Clock                                         ; Slack ; End Point TNS ;
-+-----------------------------------------------+-------+---------------+
-; clock                                         ; 0.490 ; 0.000         ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.743 ; 0.000         ;
-+-----------------------------------------------+-------+---------------+
++------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                     ;
++-----------------------------------------------+--------+---------------+
+; Clock                                         ; Slack  ; End Point TNS ;
++-----------------------------------------------+--------+---------------+
+; clock                                         ; -1.007 ; -8.140        ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.793  ; 0.000         ;
++-----------------------------------------------+--------+---------------+
 
 
 ------------------------------------------
@@ -174,16 +202,111 @@ No paths to report.
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clock                                         ; -0.724 ; -242.785      ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.361  ; 0.000         ;
+; clock                                         ; -0.724 ; -240.707      ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.440  ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
------------------------------------------------
-; Slow 1100mV 85C Model Metastability Summary ;
------------------------------------------------
-Design MTBF is not calculated because the design doesn't meet its timing requirements.
++-------------------------------------------------------------------------------+
+; Setup Times                                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; 1.746 ; 2.354 ; Rise       ; clock           ;
+; transmission_line ; clock      ; 5.459 ; 5.761 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
 
+
++---------------------------------------------------------------------------------+
+; Hold Times                                                                      ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; -0.691 ; -1.114 ; Rise       ; clock           ;
+; transmission_line ; clock      ; -1.189 ; -1.422 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                                             ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise   ; Fall   ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 14.134 ; 15.241 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 10.581 ; 10.813 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 14.559 ; 15.605 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 10.610 ; 10.845 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 14.312 ; 15.406 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.790  ; 10.343 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.868  ; 8.446  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.790  ; 10.343 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.376  ; 9.868  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.693  ; 8.311  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.157  ; 7.359  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.641  ; 8.155  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                                     ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise   ; Fall   ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 11.834 ; 12.796 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 9.927  ; 9.975  ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 12.216 ; 13.088 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 9.949  ; 9.991  ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 11.962 ; 12.887 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.552  ; 6.607  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.189  ; 7.572  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.591  ; 7.952  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.213  ; 7.561  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.925  ; 7.269  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.552  ; 6.607  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.990  ; 7.335  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; Output Enable Times                                                             ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; transmission_line ; clock      ; 12.948 ; 13.010 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------+
+; Minimum Output Enable Times                                                     ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; transmission_line ; clock      ; 12.105 ; 12.165 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Output Disable Times                                                                  ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 13.516    ; 13.454    ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Minimum Output Disable Times                                                          ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 12.504    ; 12.444    ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
+----------------------------------------------
+; Slow 1100mV 85C Model Metastability Report ;
+----------------------------------------------
+No synchronizer chains to report.
 
 
 +--------------------------------------------------+
@@ -191,7 +314,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 128.24 MHz ; 128.24 MHz      ; clock      ;      ;
+; 125.72 MHz ; 125.72 MHz      ; clock      ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -201,19 +324,19 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -7.162 ; -20.602       ;
-; clock                                         ; -6.798 ; -958.754      ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -7.118 ; -20.343       ;
+; clock                                         ; -6.954 ; -1009.241     ;
 +-----------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------+
-; Slow 1100mV 0C Model Hold Summary                                     ;
-+-----------------------------------------------+-------+---------------+
-; Clock                                         ; Slack ; End Point TNS ;
-+-----------------------------------------------+-------+---------------+
-; clock                                         ; 0.149 ; 0.000         ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.743 ; 0.000         ;
-+-----------------------------------------------+-------+---------------+
++------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary                                      ;
++-----------------------------------------------+--------+---------------+
+; Clock                                         ; Slack  ; End Point TNS ;
++-----------------------------------------------+--------+---------------+
+; clock                                         ; -1.193 ; -11.494       ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.854  ; 0.000         ;
++-----------------------------------------------+--------+---------------+
 
 
 -----------------------------------------
@@ -233,16 +356,111 @@ No paths to report.
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clock                                         ; -0.724 ; -242.716      ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.358  ; 0.000         ;
+; clock                                         ; -0.724 ; -242.089      ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.432  ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
-----------------------------------------------
-; Slow 1100mV 0C Model Metastability Summary ;
-----------------------------------------------
-Design MTBF is not calculated because the design doesn't meet its timing requirements.
++-------------------------------------------------------------------------------+
+; Setup Times                                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; 1.556 ; 2.326 ; Rise       ; clock           ;
+; transmission_line ; clock      ; 5.350 ; 5.733 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
 
+
++---------------------------------------------------------------------------------+
+; Hold Times                                                                      ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; -0.442 ; -1.013 ; Rise       ; clock           ;
+; transmission_line ; clock      ; -1.025 ; -1.322 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                                             ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise   ; Fall   ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 14.111 ; 15.369 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 10.440 ; 10.781 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 14.453 ; 15.717 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 10.479 ; 10.813 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 14.244 ; 15.508 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.655  ; 10.303 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.701  ; 8.386  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.655  ; 10.303 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.249  ; 9.813  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.559  ; 8.282  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.916  ; 7.217  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.485  ; 8.092  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                                     ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise   ; Fall   ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 11.826 ; 12.968 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 9.815  ; 9.990  ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 12.129 ; 13.250 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 9.851  ; 10.009 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 11.909 ; 13.036 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.288  ; 6.476  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.945  ; 7.444  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.380  ; 7.841  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.006  ; 7.434  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.719  ; 7.190  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.288  ; 6.476  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 6.758  ; 7.205  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; Output Enable Times                                                             ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; transmission_line ; clock      ; 12.691 ; 12.760 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------+
+; Minimum Output Enable Times                                                     ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; transmission_line ; clock      ; 11.844 ; 11.911 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Output Disable Times                                                                  ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 13.386    ; 13.317    ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Minimum Output Disable Times                                                          ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 12.376    ; 12.309    ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
+---------------------------------------------
+; Slow 1100mV 0C Model Metastability Report ;
+---------------------------------------------
+No synchronizer chains to report.
 
 
 +------------------------------------------------------------------------+
@@ -250,19 +468,19 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -2.546 ; -7.248        ;
-; clock                                         ; -2.104 ; -277.282      ;
+; clock                                         ; -2.722 ; -313.619      ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -2.616 ; -7.219        ;
 +-----------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------+
-; Fast 1100mV 85C Model Hold Summary                                    ;
-+-----------------------------------------------+-------+---------------+
-; Clock                                         ; Slack ; End Point TNS ;
-+-----------------------------------------------+-------+---------------+
-; clock                                         ; 0.177 ; 0.000         ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.307 ; 0.000         ;
-+-----------------------------------------------+-------+---------------+
++------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary                                     ;
++-----------------------------------------------+--------+---------------+
+; Clock                                         ; Slack  ; End Point TNS ;
++-----------------------------------------------+--------+---------------+
+; clock                                         ; -0.255 ; -2.063        ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.295  ; 0.000         ;
++-----------------------------------------------+--------+---------------+
 
 
 ------------------------------------------
@@ -282,16 +500,111 @@ No paths to report.
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clock                                         ; -0.092 ; -19.001       ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.464  ; 0.000         ;
+; clock                                         ; -0.082 ; -16.927       ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.470  ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
------------------------------------------------
-; Fast 1100mV 85C Model Metastability Summary ;
------------------------------------------------
-Design MTBF is not calculated because the design doesn't meet its timing requirements.
++-------------------------------------------------------------------------------+
+; Setup Times                                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; 0.897 ; 1.816 ; Rise       ; clock           ;
+; transmission_line ; clock      ; 2.461 ; 3.076 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
 
+
++---------------------------------------------------------------------------------+
+; Hold Times                                                                      ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; -0.441 ; -1.244 ; Rise       ; clock           ;
+; transmission_line ; clock      ; -0.485 ; -1.137 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                                           ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise  ; Fall  ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 6.703 ; 7.673 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 4.992 ; 5.349 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 6.814 ; 7.806 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 4.996 ; 5.373 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 6.774 ; 7.770 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.616 ; 5.163 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.862 ; 4.451 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.616 ; 5.163 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.425 ; 4.906 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.890 ; 4.537 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.446 ; 3.840 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.755 ; 4.266 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                                   ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise  ; Fall  ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 5.827 ; 6.723 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 4.755 ; 5.028 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 5.922 ; 6.829 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 4.758 ; 5.052 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 5.880 ; 6.786 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.228 ; 3.568 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.577 ; 4.063 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.746 ; 4.203 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.571 ; 3.986 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.576 ; 4.096 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.228 ; 3.568 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.483 ; 3.912 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Output Enable Times                                                           ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; transmission_line ; clock      ; 6.079 ; 6.157 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Minimum Output Enable Times                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; transmission_line ; clock      ; 5.761 ; 5.838 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Output Disable Times                                                                  ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 6.646     ; 6.568     ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Minimum Output Disable Times                                                          ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 6.240     ; 6.163     ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
+----------------------------------------------
+; Fast 1100mV 85C Model Metastability Report ;
+----------------------------------------------
+No synchronizer chains to report.
 
 
 +------------------------------------------------------------------------+
@@ -299,19 +612,19 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -2.413 ; -6.883        ;
-; clock                                         ; -1.765 ; -235.609      ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; -2.462 ; -6.827        ;
+; clock                                         ; -2.446 ; -278.416      ;
 +-----------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------+
-; Fast 1100mV 0C Model Hold Summary                                     ;
-+-----------------------------------------------+-------+---------------+
-; Clock                                         ; Slack ; End Point TNS ;
-+-----------------------------------------------+-------+---------------+
-; clock                                         ; 0.168 ; 0.000         ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.239 ; 0.000         ;
-+-----------------------------------------------+-------+---------------+
++------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary                                      ;
++-----------------------------------------------+--------+---------------+
+; Clock                                         ; Slack  ; End Point TNS ;
++-----------------------------------------------+--------+---------------+
+; clock                                         ; -0.276 ; -2.860        ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.229  ; 0.000         ;
++-----------------------------------------------+--------+---------------+
 
 
 -----------------------------------------
@@ -331,30 +644,185 @@ No paths to report.
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clock                                         ; -0.089 ; -18.731       ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.476  ; 0.000         ;
+; clock                                         ; -0.085 ; -17.394       ;
+; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0.475  ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
-----------------------------------------------
-; Fast 1100mV 0C Model Metastability Summary ;
-----------------------------------------------
-Design MTBF is not calculated because the design doesn't meet its timing requirements.
++-------------------------------------------------------------------------------+
+; Setup Times                                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; 0.772 ; 1.651 ; Rise       ; clock           ;
+; transmission_line ; clock      ; 2.196 ; 2.821 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
 
 
++---------------------------------------------------------------------------------+
+; Hold Times                                                                      ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; -0.336 ; -1.105 ; Rise       ; clock           ;
+; transmission_line ; clock      ; -0.366 ; -0.976 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
 
-+--------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                          ;
-+------------------------------------------------+----------+-------+----------+---------+---------------------+
-; Clock                                          ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+------------------------------------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack                               ; -7.162   ; 0.149 ; N/A      ; N/A     ; -0.724              ;
-;  clock                                         ; -6.798   ; 0.149 ; N/A      ; N/A     ; -0.724              ;
-;  conexao_sensor:inst|dadosPodemSerEnviados_reg ; -7.162   ; 2.239 ; N/A      ; N/A     ; 0.358               ;
-; Design-wide TNS                                ; -979.356 ; 0.0   ; 0.0      ; 0.0     ; -242.785            ;
-;  clock                                         ; -958.754 ; 0.000 ; N/A      ; N/A     ; -242.785            ;
-;  conexao_sensor:inst|dadosPodemSerEnviados_reg ; -20.602  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-+------------------------------------------------+----------+-------+----------+---------+---------------------+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                                           ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise  ; Fall  ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 6.462 ; 7.258 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 4.680 ; 5.006 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 6.537 ; 7.360 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 4.681 ; 5.033 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 6.509 ; 7.329 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.316 ; 4.778 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.525 ; 4.045 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.316 ; 4.778 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 4.105 ; 4.528 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.622 ; 4.195 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.174 ; 3.518 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.426 ; 3.874 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                                   ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise  ; Fall  ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 5.595 ; 6.305 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 4.458 ; 4.715 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 5.659 ; 6.391 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 4.458 ; 4.739 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 5.627 ; 6.352 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.969 ; 3.270 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.259 ; 3.684 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.465 ; 3.831 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.270 ; 3.617 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.312 ; 3.774 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.969 ; 3.270 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.174 ; 3.537 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Output Enable Times                                                           ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; transmission_line ; clock      ; 5.699 ; 5.735 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Minimum Output Enable Times                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; transmission_line ; clock      ; 5.402 ; 5.437 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Output Disable Times                                                                  ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 6.175     ; 6.139     ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Minimum Output Disable Times                                                          ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; Data Port         ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+; transmission_line ; clock      ; 5.785     ; 5.750     ; Rise       ; clock           ;
++-------------------+------------+-----------+-----------+------------+-----------------+
+
+
+---------------------------------------------
+; Fast 1100mV 0C Model Metastability Report ;
+---------------------------------------------
+No synchronizer chains to report.
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                             ;
++------------------------------------------------+-----------+---------+----------+---------+---------------------+
+; Clock                                          ; Setup     ; Hold    ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------------------------------------+-----------+---------+----------+---------+---------------------+
+; Worst-case Slack                               ; -7.118    ; -1.193  ; N/A      ; N/A     ; -0.724              ;
+;  clock                                         ; -7.037    ; -1.193  ; N/A      ; N/A     ; -0.724              ;
+;  conexao_sensor:inst|dadosPodemSerEnviados_reg ; -7.118    ; 2.229   ; N/A      ; N/A     ; 0.432               ;
+; Design-wide TNS                                ; -1029.584 ; -11.494 ; 0.0      ; 0.0     ; -242.089            ;
+;  clock                                         ; -1009.241 ; -11.494 ; N/A      ; N/A     ; -242.089            ;
+;  conexao_sensor:inst|dadosPodemSerEnviados_reg ; -20.343   ; 0.000   ; N/A      ; N/A     ; 0.000               ;
++------------------------------------------------+-----------+---------+----------+---------+---------------------+
+
+
++-------------------------------------------------------------------------------+
+; Setup Times                                                                   ;
++-------------------+------------+-------+-------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------------+------------+-------+-------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; 1.746 ; 2.354 ; Rise       ; clock           ;
+; transmission_line ; clock      ; 5.459 ; 5.761 ; Rise       ; clock           ;
++-------------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------+
+; Hold Times                                                                      ;
++-------------------+------------+--------+--------+------------+-----------------+
+; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------------+------------+--------+--------+------------+-----------------+
+; bitSerialAtualRX  ; clock      ; -0.336 ; -1.013 ; Rise       ; clock           ;
+; transmission_line ; clock      ; -0.366 ; -0.976 ; Rise       ; clock           ;
++-------------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                                             ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise   ; Fall   ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 14.134 ; 15.369 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 10.581 ; 10.813 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 14.559 ; 15.717 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 10.610 ; 10.845 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 14.312 ; 15.508 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.790  ; 10.343 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.868  ; 8.446  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.790  ; 10.343 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 9.376  ; 9.868  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.693  ; 8.311  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.157  ; 7.359  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 7.641  ; 8.155  ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+--------+--------+------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                                   ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; Data Port          ; Clock Port                                    ; Rise  ; Fall  ; Clock Edge ; Clock Reference                               ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
+; bitSerialAtualTX   ; clock                                         ; 5.595 ; 6.305 ; Rise       ; clock                                         ;
+; bitsEstaoEnviados  ; clock                                         ; 4.458 ; 4.715 ; Rise       ; clock                                         ;
+; bitsEstaoRecebidos ; clock                                         ; 5.659 ; 6.391 ; Rise       ; clock                                         ;
+; indicaTransmissao  ; clock                                         ; 4.458 ; 4.739 ; Rise       ; clock                                         ;
+; transmission_line  ; clock                                         ; 5.627 ; 6.352 ; Rise       ; clock                                         ;
+; display[*]         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.969 ; 3.270 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[0]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.259 ; 3.684 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[1]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.465 ; 3.831 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[2]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.270 ; 3.617 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[4]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.312 ; 3.774 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[5]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 2.969 ; 3.270 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
+;  display[6]        ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 3.174 ; 3.537 ; Fall       ; conexao_sensor:inst|dadosPodemSerEnviados_reg ;
++--------------------+-----------------------------------------------+-------+-------+------------+-----------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -393,18 +861,18 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
-; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
-; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
-; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
-; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
-; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
-; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
-; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
+; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
+; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
 ; display[4]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
-; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
-; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
-; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -413,18 +881,18 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
-; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
-; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
-; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
-; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
-; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
-; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
-; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
+; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
+; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
+; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
 ; display[4]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
-; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
-; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
-; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
+; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -433,18 +901,18 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; display[4]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -453,18 +921,18 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
-; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
-; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
-; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
-; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
-; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
+; bitsEstaoRecebidos ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; indicaTransmissao  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; bitSerialAtualTX   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; bitsEstaoEnviados  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; display[0]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; display[1]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; display[2]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; display[3]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; display[4]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; display[5]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
+; display[6]         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; transmission_line  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 +--------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -473,7 +941,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                    ; To Clock                                      ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
-; clock                                         ; clock                                         ; 42259    ; 0        ; 0        ; 0        ;
+; clock                                         ; clock                                         ; 42478    ; 0        ; 0        ; 0        ;
 ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; clock                                         ; 13       ; 13       ; 0        ; 0        ;
 ; clock                                         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0        ; 0        ; 24       ; 0        ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
@@ -485,7 +953,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                    ; To Clock                                      ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
-; clock                                         ; clock                                         ; 42259    ; 0        ; 0        ; 0        ;
+; clock                                         ; clock                                         ; 42478    ; 0        ; 0        ; 0        ;
 ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; clock                                         ; 13       ; 13       ; 0        ; 0        ;
 ; clock                                         ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; 0        ; 0        ; 24       ; 0        ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
@@ -505,210 +973,133 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 
 
 +------------------------------------------------+
-; Unconstrained Paths Summary                    ;
+; Unconstrained Paths                            ;
 +---------------------------------+-------+------+
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 2     ; 2    ;
-; Unconstrained Input Port Paths  ; 77    ; 77   ;
+; Unconstrained Input Port Paths  ; 82    ; 82   ;
 ; Unconstrained Output Ports      ; 11    ; 11   ;
 ; Unconstrained Output Port Paths ; 12    ; 12   ;
 +---------------------------------+-------+------+
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Clock Status Summary                                                                                               ;
-+-----------------------------------------------+-----------------------------------------------+------+-------------+
-; Target                                        ; Clock                                         ; Type ; Status      ;
-+-----------------------------------------------+-----------------------------------------------+------+-------------+
-; clock                                         ; clock                                         ; Base ; Constrained ;
-; conexao_sensor:inst|dadosPodemSerEnviados_reg ; conexao_sensor:inst|dadosPodemSerEnviados_reg ; Base ; Constrained ;
-+-----------------------------------------------+-----------------------------------------------+------+-------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                                ;
-+-------------------+--------------------------------------------------------------------------------------+
-; Input Port        ; Comment                                                                              ;
-+-------------------+--------------------------------------------------------------------------------------+
-; bitSerialAtualRX  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; transmission_line ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+-------------------+--------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------+
-; Unconstrained Output Ports                                                                                 ;
-+--------------------+---------------------------------------------------------------------------------------+
-; Output Port        ; Comment                                                                               ;
-+--------------------+---------------------------------------------------------------------------------------+
-; bitSerialAtualTX   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; bitsEstaoEnviados  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; bitsEstaoRecebidos ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[0]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[1]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[2]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[4]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[5]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[6]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; indicaTransmissao  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; transmission_line  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+--------------------+---------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                                ;
-+-------------------+--------------------------------------------------------------------------------------+
-; Input Port        ; Comment                                                                              ;
-+-------------------+--------------------------------------------------------------------------------------+
-; bitSerialAtualRX  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; transmission_line ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+-------------------+--------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------+
-; Unconstrained Output Ports                                                                                 ;
-+--------------------+---------------------------------------------------------------------------------------+
-; Output Port        ; Comment                                                                               ;
-+--------------------+---------------------------------------------------------------------------------------+
-; bitSerialAtualTX   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; bitsEstaoEnviados  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; bitsEstaoRecebidos ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[0]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[1]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[2]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[4]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[5]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; display[6]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; indicaTransmissao  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; transmission_line  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+--------------------+---------------------------------------------------------------------------------------+
-
-
-+--------------------------+
-; Timing Analyzer Messages ;
-+--------------------------+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Timing Analyzer
-    Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Tue Sep  5 14:58:02 2023
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Tue Sep 05 23:28:20 2023
 Info: Command: quartus_sta FPGAImplementation -c FPGAImplementation
 Info: qsta_default_script.tcl version: #1
-Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): The Timing Analyzer is analyzing 3 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
-Critical Warning (332012): Synopsys Design Constraints File file not found: 'FPGAImplementation.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Warning (335093): TimeQuest Timing Analyzer is analyzing 3 combinational loops as latches.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'FPGAImplementation.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name clock clock
     Info (332105): create_clock -period 1.000 -name conexao_sensor:inst|dadosPodemSerEnviados_reg conexao_sensor:inst|dadosPodemSerEnviados_reg
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
-Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
-    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -6.984
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -7.048
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.984             -20.189 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-    Info (332119):    -6.570            -958.718 clock 
-Info (332146): Worst-case hold slack is 0.490
+    Info (332119):    -7.048             -19.957 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -7.037           -1003.239 clock 
+Info (332146): Worst-case hold slack is -1.007
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.490               0.000 clock 
-    Info (332119):     4.743               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -1.007              -8.140 clock 
+    Info (332119):     4.793               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -0.724
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.724            -242.785 clock 
-    Info (332119):     0.361               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-Info (332114): Report Metastability: Found 1 synchronizer chains.
-    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+    Info (332119):    -0.724            -240.707 clock 
+    Info (332119):     0.440               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -7.162
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -7.118
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -7.162             -20.602 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-    Info (332119):    -6.798            -958.754 clock 
-Info (332146): Worst-case hold slack is 0.149
+    Info (332119):    -7.118             -20.343 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -6.954           -1009.241 clock 
+Info (332146): Worst-case hold slack is -1.193
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.149               0.000 clock 
-    Info (332119):     4.743               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -1.193             -11.494 clock 
+    Info (332119):     4.854               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -0.724
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.724            -242.716 clock 
-    Info (332119):     0.358               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-Info (332114): Report Metastability: Found 1 synchronizer chains.
-    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+    Info (332119):    -0.724            -242.089 clock 
+    Info (332119):     0.432               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.546
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.722
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.546              -7.248 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-    Info (332119):    -2.104            -277.282 clock 
-Info (332146): Worst-case hold slack is 0.177
+    Info (332119):    -2.722            -313.619 clock 
+    Info (332119):    -2.616              -7.219 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+Info (332146): Worst-case hold slack is -0.255
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.177               0.000 clock 
-    Info (332119):     2.307               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -0.255              -2.063 clock 
+    Info (332119):     2.295               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is -0.092
+Info (332146): Worst-case minimum pulse width slack is -0.082
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.092             -19.001 clock 
-    Info (332119):     0.464               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-Info (332114): Report Metastability: Found 1 synchronizer chains.
-    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+    Info (332119):    -0.082             -16.927 clock 
+    Info (332119):     0.470               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info: Analyzing Fast 1100mV 0C Model
-Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.413
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.462
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.413              -6.883 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-    Info (332119):    -1.765            -235.609 clock 
-Info (332146): Worst-case hold slack is 0.168
+    Info (332119):    -2.462              -6.827 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -2.446            -278.416 clock 
+Info (332146): Worst-case hold slack is -0.276
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.168               0.000 clock 
-    Info (332119):     2.239               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
+    Info (332119):    -0.276              -2.860 clock 
+    Info (332119):     2.229               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is -0.089
+Info (332146): Worst-case minimum pulse width slack is -0.085
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.089             -18.731 clock 
-    Info (332119):     0.476               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
-Info (332114): Report Metastability: Found 1 synchronizer chains.
-    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+    Info (332119):    -0.085             -17.394 clock 
+    Info (332119):     0.475               0.000 conexao_sensor:inst|dadosPodemSerEnviados_reg 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 5210 megabytes
-    Info: Processing ended: Tue Sep  5 14:58:09 2023
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:05
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 5020 megabytes
+    Info: Processing ended: Tue Sep 05 23:28:32 2023
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:10
 
 

@@ -1,101 +1,101 @@
 ------------------------------------------------------------
-Timing Analyzer Summary
+TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : -6.984
-TNS   : -20.189
+Slack : -7.048
+TNS   : -19.957
 
 Type  : Slow 1100mV 85C Model Setup 'clock'
-Slack : -6.570
-TNS   : -958.718
+Slack : -7.037
+TNS   : -1003.239
 
 Type  : Slow 1100mV 85C Model Hold 'clock'
-Slack : 0.490
-TNS   : 0.000
+Slack : -1.007
+TNS   : -8.140
 
 Type  : Slow 1100mV 85C Model Hold 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 4.743
+Slack : 4.793
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock'
 Slack : -0.724
-TNS   : -242.785
+TNS   : -240.707
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 0.361
+Slack : 0.440
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : -7.162
-TNS   : -20.602
+Slack : -7.118
+TNS   : -20.343
 
 Type  : Slow 1100mV 0C Model Setup 'clock'
-Slack : -6.798
-TNS   : -958.754
+Slack : -6.954
+TNS   : -1009.241
 
 Type  : Slow 1100mV 0C Model Hold 'clock'
-Slack : 0.149
-TNS   : 0.000
+Slack : -1.193
+TNS   : -11.494
 
 Type  : Slow 1100mV 0C Model Hold 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 4.743
+Slack : 4.854
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock'
 Slack : -0.724
-TNS   : -242.716
+TNS   : -242.089
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 0.358
+Slack : 0.432
 TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Setup 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : -2.546
-TNS   : -7.248
 
 Type  : Fast 1100mV 85C Model Setup 'clock'
-Slack : -2.104
-TNS   : -277.282
+Slack : -2.722
+TNS   : -313.619
+
+Type  : Fast 1100mV 85C Model Setup 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
+Slack : -2.616
+TNS   : -7.219
 
 Type  : Fast 1100mV 85C Model Hold 'clock'
-Slack : 0.177
-TNS   : 0.000
+Slack : -0.255
+TNS   : -2.063
 
 Type  : Fast 1100mV 85C Model Hold 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 2.307
+Slack : 2.295
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock'
-Slack : -0.092
-TNS   : -19.001
+Slack : -0.082
+TNS   : -16.927
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 0.464
+Slack : 0.470
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : -2.413
-TNS   : -6.883
+Slack : -2.462
+TNS   : -6.827
 
 Type  : Fast 1100mV 0C Model Setup 'clock'
-Slack : -1.765
-TNS   : -235.609
+Slack : -2.446
+TNS   : -278.416
 
 Type  : Fast 1100mV 0C Model Hold 'clock'
-Slack : 0.168
-TNS   : 0.000
+Slack : -0.276
+TNS   : -2.860
 
 Type  : Fast 1100mV 0C Model Hold 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 2.239
+Slack : 2.229
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock'
-Slack : -0.089
-TNS   : -18.731
+Slack : -0.085
+TNS   : -17.394
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'conexao_sensor:inst|dadosPodemSerEnviados_reg'
-Slack : 0.476
+Slack : 0.475
 TNS   : 0.000
 
 ------------------------------------------------------------

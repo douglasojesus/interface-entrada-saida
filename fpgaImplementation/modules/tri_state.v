@@ -21,7 +21,7 @@ module tri_state (
     output wire read
 );
 
-  assign port = dir ? send : 1'bZ;
-  assign read = dir ? 1'bZ : port;
+  assign port = dir ? send : 1'bz;
+  assign read = dir ? 1'bz : port;
 
 endmodule
