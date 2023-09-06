@@ -1,3 +1,5 @@
+//https://doc.embedfire.com/fpga/altera/ep4ce10_pro/zh/latest/code/dht11.html
+
 module dht11_ctrl
 (
 input wire sys_clk , //系统时钟，频率50MHz
