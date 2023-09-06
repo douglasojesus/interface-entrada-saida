@@ -44,6 +44,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "error",
+					"strict" : false
+				},
+				{
 					"name" : "transmission_line",
 					"strict" : false
 				},

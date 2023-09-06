@@ -13,6 +13,7 @@ display[4] << decoder:EXIBE_DISPLAY.port1
 display[5] << decoder:EXIBE_DISPLAY.port1
 display[6] << decoder:EXIBE_DISPLAY.port1
 transmission_line <> conexao_sensor:inst.port4
+error << conexao_sensor:inst.port8
 
 
 |FPGAImplementation|uart_rx:RECEBE_DADOS
@@ -150,6 +151,7 @@ response_value[4] <= response_value_reg[4].DB_MAX_OUTPUT_PORT_TYPE
 response_value[5] <= response_value_reg[5].DB_MAX_OUTPUT_PORT_TYPE
 response_value[6] <= response_value_reg[6].DB_MAX_OUTPUT_PORT_TYPE
 response_value[7] <= response_value_reg[7].DB_MAX_OUTPUT_PORT_TYPE
+error <= DHT11_communication:TROCA_DADOS_DHT11.port8
 
 
 |FPGAImplementation|conexao_sensor:inst|DHT11_communication:TROCA_DADOS_DHT11

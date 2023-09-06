@@ -13,7 +13,7 @@
 */
 
 module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTransmissao, 
-									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line);
+									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line, error);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
@@ -23,6 +23,7 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	output 				bitsEstaoEnviados;
 	output	[6:0]		display;
 	inout  				transmission_line; //Fio de entrada e saida do DHT11 (Tri-state) 
+	output 				error;
 	
 	wire [7:0] 	segundoByteCompleto;
 	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
@@ -44,7 +45,7 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	//Para teste:
 	assign request_address = 8'b00000001; //Deve ligar o DHT11.
 	
-	conexao_sensor inst(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value);
+	conexao_sensor inst(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value, error);
 	
 	decoder EXIBE_DISPLAY(segundoByteCompleto, display, dadosPodemSerEnviados);
 	

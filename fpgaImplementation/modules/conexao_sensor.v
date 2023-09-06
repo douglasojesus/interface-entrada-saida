@@ -6,10 +6,11 @@ module conexao_sensor(
 	inout transmission_line,
 	output dadosPodemSerEnviados,
 	output [7:0] response_command,
-	output [7:0] response_value
+	output [7:0] response_value,
+	output error
 );
 
-	wire error, errorChecksum, hold;
+	wire errorChecksum, hold;
 	wire dadosOK;
 	
 	reg [7:0] value_data, command_data;
@@ -29,7 +30,7 @@ module conexao_sensor(
 	assign errorChecksum = ((hum_int_dht11 + hum_float_dht11 + temp_int_dht11 + temp_float_dht11) != checksum_dht11);
 
 	DHT11_communication TROCA_DADOS_DHT11(clock, enable_sensor, request_address, 8'b00000001, reset_sensor, 
-	transmission_line, sensor_data, hold, error, dadosOK);
+	transmission_line, sensor_data, hold, error, dadosOK); 
 	
 	//Preciso pegar o resultado de um dos módulos e repassar para a saída
 	
@@ -47,8 +48,8 @@ module conexao_sensor(
 		begin
 			if (errorChecksum == 1'b1 || error == 1'b1)
 				begin //Sensor com problema
-					value_data <= 8'h1F;
-					command_data <= 8'h1F;
+					value_data <= 8'h45; //E
+					command_data <= 8'h45; //E
 				end
 			else //Se não tiver erro
 				begin
@@ -59,7 +60,7 @@ module conexao_sensor(
 									begin
 										current_state <= ESPERA;
 										enable_sensor <= 1'b1;
-										reset_sensor  <= 1'b0;
+										reset_sensor  <= 1'b1;
 									end
 								else  //Quando o sensor parar de enviar os dados e o enable estiver ativado
 									begin
@@ -131,8 +132,8 @@ module conexao_sensor(
 												end */
 											default:
 												begin
-													value_data <= 8'h0F;
-													command_data <= 8'h0F;
+													value_data <= 8'h45; //E
+													command_data <= 8'h45; //E
 													current_state <= ENVIO;
 												end
 										endcase
