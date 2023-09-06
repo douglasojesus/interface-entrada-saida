@@ -1,5 +1,5 @@
 Timing Analyzer report for FPGAImplementation
-Wed Sep  6 17:35:07 2023
+Wed Sep  6 18:12:27 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -110,8 +110,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.1%      ;
-;     Processors 3-4         ;   0.6%      ;
+;     Processor 2            ;   1.2%      ;
+;     Processors 3-4         ;   0.5%      ;
 +----------------------------+-------------+
 
 
@@ -1382,10 +1382,10 @@ No paths to report.
 ; 0.177 ; uart_rx:RECEBE_DADOS|estadoAtual.estadoStopBit           ; uart_rx:RECEBE_DADOS|estadoAtual.estadoStopBit           ; clock                                         ; clock       ; 0.000        ; 0.046      ; 0.307      ;
 ; 0.177 ; uart_rx:RECEBE_DADOS|indiceDoBit[2]                      ; uart_rx:RECEBE_DADOS|indiceDoBit[2]                      ; clock                                         ; clock       ; 0.000        ; 0.046      ; 0.307      ;
 ; 0.177 ; uart_rx:RECEBE_DADOS|indiceDoBit[1]                      ; uart_rx:RECEBE_DADOS|indiceDoBit[1]                      ; clock                                         ; clock       ; 0.000        ; 0.046      ; 0.307      ;
-; 0.185 ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[0]             ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[0]             ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.307      ;
 ; 0.185 ; uart_rx:RECEBE_DADOS|estadoAtual.estadoVerificaBitInicio ; uart_rx:RECEBE_DADOS|estadoAtual.estadoVerificaBitInicio ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.307      ;
 ; 0.185 ; uart_rx:RECEBE_DADOS|estadoAtual.000                     ; uart_rx:RECEBE_DADOS|estadoAtual.000                     ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.307      ;
 ; 0.185 ; uart_rx:RECEBE_DADOS|indiceDoBit[0]                      ; uart_rx:RECEBE_DADOS|indiceDoBit[0]                      ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.307      ;
+; 0.185 ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[0]             ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[0]             ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.307      ;
 ; 0.244 ; uart_rx:RECEBE_DADOS|serialDeEntradaBuffer               ; uart_rx:RECEBE_DADOS|serialDeEntrada                     ; clock                                         ; clock       ; 0.000        ; 0.046      ; 0.374      ;
 ; 0.252 ; uart_rx:RECEBE_DADOS|contadorDeClock[9]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[10]                 ; clock                                         ; clock       ; 0.000        ; 0.240      ; 0.576      ;
 ; 0.265 ; uart_rx:RECEBE_DADOS|contadorDeClock[8]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[10]                 ; clock                                         ; clock       ; 0.000        ; 0.240      ; 0.589      ;
@@ -1458,8 +1458,8 @@ No paths to report.
 ; 0.528 ; uart_rx:RECEBE_DADOS|contadorDeClock[3]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[10]                 ; clock                                         ; clock       ; 0.000        ; 0.240      ; 0.852      ;
 ; 0.531 ; uart_rx:RECEBE_DADOS|estadoAtual.estadoStopBit           ; uart_rx:RECEBE_DADOS|estadoAtual.estadoDeLimpeza         ; clock                                         ; clock       ; 0.000        ; 0.046      ; 0.661      ;
 ; 0.532 ; uart_rx:RECEBE_DADOS|contadorDeClock[3]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[4]                  ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.654      ;
-; 0.533 ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[4]             ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[0]             ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.655      ;
 ; 0.533 ; uart_rx:RECEBE_DADOS|contadorDeClock[8]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[12]                 ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.655      ;
+; 0.533 ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[4]             ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[0]             ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.655      ;
 ; 0.535 ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[1]             ; conexao_sensor:inst|dht11_ctrl:comb_3|cnt[3]             ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.657      ;
 ; 0.540 ; uart_rx:RECEBE_DADOS|contadorDeClock[4]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[11]                 ; clock                                         ; clock       ; 0.000        ; 0.240      ; 0.864      ;
 ; 0.541 ; uart_rx:RECEBE_DADOS|contadorDeClock[6]                  ; uart_rx:RECEBE_DADOS|contadorDeClock[7]                  ; clock                                         ; clock       ; 0.000        ; 0.038      ; 0.663      ;
@@ -1953,7 +1953,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Wed Sep  6 17:35:05 2023
+    Info: Processing started: Wed Sep  6 18:12:25 2023
 Info: Command: quartus_sta FPGAImplementation -c FPGAImplementation
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -2042,8 +2042,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4796 megabytes
-    Info: Processing ended: Wed Sep  6 17:35:07 2023
+    Info: Processing ended: Wed Sep  6 18:12:27 2023
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 

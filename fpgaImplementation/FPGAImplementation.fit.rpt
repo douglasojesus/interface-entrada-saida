@@ -1,5 +1,5 @@
 Fitter report for FPGAImplementation
-Wed Sep  6 17:35:01 2023
+Wed Sep  6 18:12:21 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -69,7 +69,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Wed Sep  6 17:35:01 2023          ;
+; Fitter Status                      ; Successful - Wed Sep  6 18:12:21 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
@@ -160,7 +160,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.4%      ;
+;     Processor 2            ;   0.4%      ;
+;     Processors 3-4         ;   0.4%      ;
 +----------------------------+-------------+
 
 
@@ -1517,10 +1518,10 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176353): Automatically promoted node clock~input (placed in PIN T21 (CLK6, DIFFCLK_3p)) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/FPGAImplementation.v Line: 18
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G9
-Info (176353): Automatically promoted node conexao_sensor:inst|dht11_ctrl:comb_3|clk_1us  File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 25
+Info (176353): Automatically promoted node conexao_sensor:inst|dht11_ctrl:comb_3|clk_1us  File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 26
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node conexao_sensor:inst|dht11_ctrl:comb_3|clk_1us~0 File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 25
+        Info (176357): Destination node conexao_sensor:inst|dht11_ctrl:comb_3|clk_1us~0 File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 26
 Info (176353): Automatically promoted node reset~input (placed in PIN T22 (CLK7, DIFFCLK_3n)) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/FPGAImplementation.v Line: 27
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G8
 Info (176233): Starting register packing
@@ -1552,7 +1553,7 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.27 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.30 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1561,9 +1562,9 @@ Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/FPGAImplementation.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 5558 megabytes
-    Info: Processing ended: Wed Sep  6 17:35:02 2023
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Processing ended: Wed Sep  6 18:12:21 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:08
 
 
 +----------------------------+

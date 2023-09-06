@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGAImplementation
-Wed Sep  6 17:34:53 2023
+Wed Sep  6 18:12:11 2023
 Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
@@ -56,7 +56,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep  6 17:34:53 2023          ;
+; Analysis & Synthesis Status        ; Successful - Wed Sep  6 18:12:11 2023          ;
 ; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
 ; Revision Name                      ; FPGAImplementation                             ;
 ; Top-level Entity Name              ; FPGAImplementation                             ;
@@ -172,8 +172,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -473,7 +472,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
-    Info: Processing started: Wed Sep  6 17:34:44 2023
+    Info: Processing started: Wed Sep  6 18:12:01 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGAImplementation -c FPGAImplementation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -494,7 +493,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file modules
 Info (12021): Found 1 design units, including 1 entities, in source file modules/dht11_otherimpl.v
     Info (12023): Found entity 1: DHT11_OtherImpl File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/DHT11_OtherImpl.v Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file modules/dht11_ctrl.v
-    Info (12023): Found entity 1: dht11_ctrl File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 1
+    Info (12023): Found entity 1: dht11_ctrl File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 3
 Warning (10236): Verilog HDL Implicit Net warning at conexao_sensor.v(50): created implicit net for "sign" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/conexao_sensor.v Line: 50
 Critical Warning (10846): Verilog HDL Instantiation warning at conexao_sensor.v(50): instance has no name File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/conexao_sensor.v Line: 50
 Info (12127): Elaborating entity "FPGAImplementation" for the top level hierarchy
@@ -507,8 +506,8 @@ Warning (10034): Output port "dados_dht11" at conexao_sensor.v(13) has no driver
 Warning (10034): Output port "dadosPodemSerEnviados" at conexao_sensor.v(7) has no driver File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/conexao_sensor.v Line: 7
 Warning (10034): Output port "error" at conexao_sensor.v(10) has no driver File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/conexao_sensor.v Line: 10
 Info (12128): Elaborating entity "dht11_ctrl" for hierarchy "conexao_sensor:inst|dht11_ctrl:comb_3" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/conexao_sensor.v Line: 50
-Warning (10230): Verilog HDL assignment warning at dht11_ctrl.v(271): truncated value with size 32 to match size of target (20) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 271
-Warning (10230): Verilog HDL assignment warning at dht11_ctrl.v(274): truncated value with size 32 to match size of target (20) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 274
+Warning (10230): Verilog HDL assignment warning at dht11_ctrl.v(276): truncated value with size 32 to match size of target (20) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 276
+Warning (10230): Verilog HDL assignment warning at dht11_ctrl.v(279): truncated value with size 32 to match size of target (20) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/dht11_ctrl.v Line: 279
 Info (12128): Elaborating entity "decoder" for hierarchy "decoder:EXIBE_DISPLAY" File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/FPGAImplementation.v Line: 52
 Warning (10240): Verilog HDL Always Construct warning at decoder.v(10): inferring latch(es) for variable "display", which holds its previous value in one or more paths through the always construct File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/decoder.v Line: 10
 Info (10041): Inferred latch for "display[0]" at decoder.v(10) File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/modules/decoder.v Line: 10
@@ -585,9 +584,9 @@ Info (21057): Implemented 205 device resources after synthesis - the final resou
     Info (21061): Implemented 157 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 66 warnings
     Info: Peak virtual memory: 4778 megabytes
-    Info: Processing ended: Wed Sep  6 17:34:53 2023
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Processing ended: Wed Sep  6 18:12:11 2023
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:18
 
 
 +------------------------------------------+
