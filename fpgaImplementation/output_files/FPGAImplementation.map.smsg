@@ -1,1 +1,0 @@
-Warning (10268): Verilog HDL information at uart_rx.v(58): always construct contains both blocking and non-blocking assignments File: C:/Users/LESS/Documents/GitHub/interface-entrada-saida/fpgaImplementation/uart_rx.v Line: 58
