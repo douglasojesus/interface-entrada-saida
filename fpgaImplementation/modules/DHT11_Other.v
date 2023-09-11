@@ -41,10 +41,8 @@ module DHT11_Other (
 	assign dht11 = direcao_dado ? 1'bz : dados_enviados_sensor;
 	
 	assign dado_do_sensor = dht11;
-
-	assign erro_checksum = (dados_sensor[7:0] == dados_sensor[15:8] + dados_sensor[23:16] + dados_sensor[31:24] + dados_sensor[39:32]) ? 1'b0 : 1'b1;	
 	
-	assign erro = erro_checksum | erro_na_maquina;
+	assign erro = erro_na_maquina;
 	
 	assign done = (estado_atual == ESTADO_FINALIZA_PROCESSO) ? 1'b1:1'b0;
 	
