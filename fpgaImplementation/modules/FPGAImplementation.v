@@ -13,7 +13,7 @@
 */
 
 module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTransmissao, 
-									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line, error, reset, dados_dht11);
+									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line, error, dados_dht11);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
@@ -24,8 +24,7 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	output	[6:0]		display;
 	inout  				transmission_line; //Fio de entrada e saida do DHT11 (Tri-state) 
 	output 				error;
-	input reset;
-	output [31:0] dados_dht11;
+	output 	[31:0] 	dados_dht11;
 	
 	wire [7:0] 	segundoByteCompleto;
 	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
@@ -33,6 +32,8 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	wire 			dadosPodemSerEnviados;
 	
 	wire [7:0]	request_command, request_address, response_command, response_value;
+	
+	wire reset;
 
 	//bitSerialAtualRX: bit a bit que chega do PC por UART.
 	//bitsEstaoRecebidos: bit que confirma todo o recebimento dos bits.
@@ -46,6 +47,8 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	
 	//Para teste:
 	assign request_address = 8'b00000001; //Deve ligar o DHT11.
+	
+	assign reset = ~bitsEstaoRecebidos;
 	
 	conexao_sensor inst(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value, error, reset, dados_dht11);
 	

@@ -2,53 +2,52 @@
 
 module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 
-	input wire sys_clk; //系统时钟，频率50MHz
-	input wire sys_rst_n; //复位信号，低电平有效
-	input wire key_flag; //按键消抖后标志信号
-	inout wire dht11; //控制总线
-	output reg [19:0] data_out; //输出显示的数据
-	output reg sign; //输出符号位，高电平显示负号
+	input wire sys_clk; 
+	input wire sys_rst_n; 
+	input wire key_flag; 
+	inout wire dht11;
+	output reg [19:0] data_out;
+	output reg sign; 
 	
 	////
 	//\* Parameter and Internal Signal \//
 	////
 	//parameter define
-	parameter S_WAIT_1S = 3'd1 , //上电等待1s状态
-	S_LOW_18MS = 3'd2 , //主机拉低18ms，发送开始信号状态
-	S_DLY1 = 3'd3 , //等待20-40us状态
-	S_REPLY = 3'd4 , //DHT11响应80us状态
-	S_DLY2 = 3'd5 , //拉高等待80us状态
-	S_RD_DATA = 3'd6 ; //接收数据状态
-	parameter T_1S_DATA = 999999 ; //1s时间计数值
-	parameter T_18MS_DATA = 17999 ; //18ms时间计数值
+	parameter S_WAIT_1S = 3'd1 , //1s
+	S_LOW_18MS = 3'd2 , //18ms
+	S_DLY1 = 3'd3 , //20-40us
+	S_REPLY = 3'd4 , //DHT11 80us
+	S_DLY2 = 3'd5 , //80us
+	S_RD_DATA = 3'd6 ; 
+	parameter T_1S_DATA = 999999 ; //1s
+	parameter T_18MS_DATA = 17999 ; //18ms
 	
 	//reg define
-	reg clk_1us ; //1us时钟，用于驱动整个模块
-	reg [4:0] cnt ; //时钟分频计数器
-	reg [2:0] state ; //状态机状态
-	reg [20:0] cnt_us ; //us计数器
-	reg dht11_out ; //总线输出数据
-	reg dht11_en ; //总线输出使能信号
-	reg [5:0] bit_cnt ; //字节计数器
-	reg [39:0] data_tmp ; //读出数据寄存器
-	reg data_flag ; //数据切换标志信号
-	reg dht11_d1 ; //总线信号打一拍
-	reg dht11_d2 ; //总线信号打两拍
-	reg [31:0] data ; //除校验位数据
-	reg [6:0] cnt_low ; //低电平计数器
+	reg clk_1us ; //1us
+	reg [4:0] cnt ; 
+	reg [2:0] state ; 
+	reg [20:0] cnt_us ; //us
+	reg dht11_out ; 
+	reg dht11_en ; 
+	reg [5:0] bit_cnt ; 
+	reg [39:0] data_tmp ; 
+	reg data_flag ; 
+	reg dht11_d1 ; 
+	reg dht11_d2 ; 
+	reg [31:0] data ; 
+	reg [6:0] cnt_low ;
 	
 	//wire define
-	wire dht11_fall; //总线下降沿
-	wire dht11_rise; //总线上升沿
+	wire dht11_fall; 
+	wire dht11_rise; 
 	////
 	//\* Main Code \//
 	////
-	//当使能信号为1是总线的值为DATA_out的值，为0时值为高阻态
+	//DATA_out
 	assign dht11 = (dht11_en == 1 ) ? dht11_out : 1'bz;
-	//检测总线信号的上升沿下降沿
 	assign dht11_rise = (~dht11_d2) & (dht11_d1) ;
 	assign dht11_fall = (dht11_d2) & (~dht11_d1) ;
-	//对dht11信号打拍
+	//dht11
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			begin
@@ -61,7 +60,7 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 				dht11_d2 <= dht11_d1 ;
 			end
 			
-	//cnt:分频计数器
+	//cnt
 	always@(posedge sys_clk or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			cnt <= 5'b0;
@@ -70,7 +69,7 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 		else
 			cnt <= cnt + 1'b1;
 			
-	//clk_1us：产生单位时钟为1us的时钟
+	//clk_1us
 	always@(posedge sys_clk or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			clk_1us <= 1'b0;
@@ -79,7 +78,7 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 		else
 			clk_1us <= clk_1us;
 			
-	//bit_cnt：读出数据bit位数计数器
+	//bit_cnt
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			bit_cnt <= 6'b0;
@@ -88,7 +87,7 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 		else if(dht11_fall == 1'b1 && state == S_RD_DATA)
 			bit_cnt <= bit_cnt + 1'b1;
 			
-	//data_flag:数据变换标志信号的产生，按一次键变换一次
+	//data_flag
 	always@(posedge sys_clk or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			data_flag <= 1'b0;
@@ -97,14 +96,14 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 		else
 			data_flag <= data_flag;
 	
-	//状态机状态跳转
+	
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			state <= S_WAIT_1S ;
 		else
 			case(state)
 				S_WAIT_1S:
-					if(cnt_us == T_1S_DATA) //上电1s后跳入起始状态
+					if(cnt_us == T_1S_DATA) //1s
 						state <= S_LOW_18MS ;
 					else
 						state <= S_WAIT_1S ;
@@ -114,24 +113,24 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 					else
 						state <= S_LOW_18MS ;
 				S_DLY1:
-					if(cnt_us == 10) //等待10us后进入下一状态
+					if(cnt_us == 10) //10us
 						state <= S_REPLY ;
 					else
 						state <= S_DLY1 ;
-				S_REPLY: //上升沿到来且低电平保持时间大于70us，则跳转到下一状态
+				S_REPLY: //70us
 					if(dht11_rise == 1'b1 && cnt_low >= 70)
 						state <= S_DLY2 ;
-					//若1ms后，dht11还没响应，则回去继续发送起始信号
+					//1ms dht11
 					else if(cnt_us >= 1000)
 						state <= S_LOW_18MS ;
 					else
 						state <= S_REPLY ;
-				S_DLY2: //下降沿到来且计数器值大于70us，则跳转到下一状态
+				S_DLY2: //70us
 					if(dht11_fall == 1'b1 && cnt_us >= 70)
 						state <= S_RD_DATA ;
 					else
 						state <= S_DLY2 ;
-				S_RD_DATA: //读完数据后，回到起始状态
+				S_RD_DATA:
 					if(bit_cnt == 40 && dht11_rise == 1'b1)
 						state <= S_LOW_18MS ;
 					else
@@ -140,8 +139,7 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 					state <= S_WAIT_1S ;
 			endcase
 
-	//各状态下的计数器赋值
-	//cnt_us:每到一个新的状态就让该计数器重新计数
+	//cnt_us
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			begin
@@ -171,13 +169,13 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 							cnt_low <= 7'd0 ;
 							cnt_us <= 21'd0 ;
 						end
-					//当dht11发送低电平回应时，计算其低电平的持续时间
+					//dht11
 					else if(dht11 == 1'b0)
 						begin
 							cnt_low <= cnt_low + 1'b1 ;
 							cnt_us <= cnt_us + 1'b1 ;
 						end
-					//若1ms后，dht11还没响应，则回去继续发送起始信号
+					//1ms dht11
 					else if(cnt_us >= 1000)
 						begin
 							cnt_low <= 7'd0 ;
@@ -205,7 +203,6 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 					end
 			endcase
 
-	//各状态下的单总线赋值
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			begin
@@ -219,12 +216,12 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 						dht11_out <= 1'b0 ;
 						dht11_en <= 1'b0 ;
 					end
-				S_LOW_18MS: //拉低总线18ms
+				S_LOW_18MS: //18ms
 					begin
 						dht11_out <= 1'b0 ;
 						dht11_en <= 1'b1 ;
 					end
-				//后面状态释放总线即可，由DHT11操控总线
+				//DHT11
 				S_DLY1:
 					begin
 						dht11_out <= 1'b0 ;
@@ -248,7 +245,7 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 				default:;
 			endcase
 
-	//data_tmp:将读出的数据寄存在data_tmp中
+	//data_tmp: data_tmp
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			data_tmp <= 40'b0;
@@ -259,31 +256,29 @@ module dht11_ctrl(sys_clk, sys_rst_n, key_flag, dht11, data_out, sign);
 		else
 			data_tmp <= data_tmp;
 
-	//data_out:输出数据显示，按一次按键切换一次数据
+	//data_out
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			data <= 32'b0;
 		else if(data_tmp[7:0] == data_tmp[39:32] + data_tmp[31:24] + data_tmp[23:16] + data_tmp[15:8])
-			data <= data_tmp[39:8]; //若检验位正确，则数据值有效
+			data <= data_tmp[39:8];
 		else
 			data <= data;
 
-	//data_out:对数码管显示的湿度和温度进行赋值
+	//data_out
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			data_out <= 20'b0;
 		else if(data_flag == 1'b0 )
-			data_out <= data[31:24] * 10; //湿度小数位为0
+			data_out <= data[31:24] * 10; //0
 		else if(data_flag == 1'b1)
-			//温度低四位显示温度小数数据
 			data_out <= data[15:8] * 10 + data[3:0];
 
-	//sign:符号位的显示
+	//sign
 	always@(posedge clk_1us or negedge sys_rst_n)
 		if(sys_rst_n == 1'b0)
 			sign <= 1'b0;
 		else if(data[7] == 1'b1 && data_flag == 1'b1)
-			//当温度低八位最高位为1时，显示负号
 			sign <= 1'b1;
 		else
 			sign <= 1'b0;

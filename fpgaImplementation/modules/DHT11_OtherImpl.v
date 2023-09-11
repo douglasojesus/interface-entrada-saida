@@ -3,197 +3,217 @@
 * Retirado de: https://blog.csdn.net/Ninquelote/article/details/105824323
 */
 
+module DHT11_OtherImpl(clock, reset, dht11, dados_sensor, dadosOk);
 
-module DHT11_OtherImpl(clk, rst_n, dht11, data_valid);
+	// Entradas e Saídas	
+	input clock, reset;            // Sinais de clock e reset.
+	inout dht11;                   // Interface bidirecional para o sensor DHT11.
+	output reg dadosOk;            // Indica se os dados foram lidos com sucesso.
+	output reg [31:0] dados_sensor; // Dados de temperatura e umidade.
+	
+	// Parâmetros para a máquina de estados
+	parameter	POWER_ON_NUM 					= 1_000_000,
+					ESTADO_ESPERA   				= 3'd0,
+					ESTADO_WAIT_PERIODO_20MS	= 3'd1,
+					ESTADO_WAIT_PULSO_13US		= 3'd2,
+					ESTADO_WAIT_PERIODO_83US	= 3'd3,
+					ESTADO_WAIT_PULSO_87US		= 3'd4,
+					ESTADO_RECEBE_DADOS			= 3'd5,
+					ESTADO_DELAY					= 3'd6;
+	
+	// Sinais internos
+	reg [2:0] 	estado_atual; // Estados da máquina de estados
+	reg [20:0] 	contador_1us; // Contador de microssegundos
+	reg [5:0] 	contador_dados; // Contador de bits de dados
+	reg [39:0] 	dados_bruto; // Dados brutos do sensor
+	reg [4:0] 	contador_clock; // Contador para dividir o clock
 
-	input clk, rst_n;
-	inout dht11;
-	output reg [31:0] data_valid;
+	reg clock_1M, sinal_limpa_contador_us, estado, dht_buffer, dht_d0, dht_d1;
 	
-	parameter	POWER_ON_NUM 	= 1_000_000,
-					S_POWER_ON   	= 3'd0,
-					S_LOW_20MS		= 3'd1,
-					S_HIGH_13US		= 3'd2,
-					S_LOW_83US		= 3'd3,
-					S_HIGH_87US		= 3'd4,
-					S_SEND_DATA		= 3'd5,
-					S_DELAY			= 3'd6;
+	wire dht_posedge, dht_negedge; // Detectores de borda de sinal DHT11
 	
-	reg[2:0] cur_state, next_state;
-	reg[20:0] count_1us;
-	reg[5:0] data_count;
-	reg[39:0] data_temp;
-	reg[4:0] clk_cnt;
+	// Atribuições
+	assign dht11 			= dht_buffer;     // Conecta dht11 a dht_buffer
+	assign dht_posedge 	= ~dht_d1 & dht_d0;  // Detecta borda de subida do sinal DHT11
+	assign dht_negedge 	= dht_d1 & (~dht_d0);  // Detecta borda de descida do sinal DHT11
 	
-	reg clk_1M, us_clear, state, dht_buffer, dht_d0, dht_d1;
+	// Contadores
 	
-	wire dht_podge, dht_nedge; //data poedge e negedge
-	
-	/****main codes****/
-	
-	assign dht11 = dht_buffer;
-	assign dht_podge = ~dht_d1 & dht_d0; //catch posedge
-	assign dht_nedge = dht_d1 & (~dht_d0); //catch nededge
-	
-	/****counters****/
-	
-	//clock with 1MHz
-	always @ (posedge clk or negedge rst_n) begin
-		if (!rst_n) begin
-			clk_cnt <= 5'd0;
-			clk_1M <= 1'b0;
-		end
-		else if (clk_cnt < 5'd24)
-			clk_cnt <= clk_cnt + 1'b1;
-		else begin
-			clk_cnt <= 5'd0;
-			clk_1M <= ~clk_1M;
-		end
-	end
-	
-	//counter 1 us
-	always @ (posedge clk_1M or negedge rst_n) begin
-		if (!rst_n)
-			count_1us <= 21'd0;
-		else if (us_clear)
-			count_1us <= 21'd0;
-		else
-			count_1us <= count_1us + 1'b1;
-	end
-	
-	//state machine
-	always @ (posedge clk_1M or negedge rst_n) 
+	// Contador de clock com 1MHz		
+	always @(posedge clock, negedge reset) 
 		begin
-			if (!rst_n)
+			if (!reset)
 				begin
-					next_state <= S_POWER_ON;
+					contador_clock <= 5'd0;
+					clock_1M <= 1'b0;
+				end
+			else if (contador_clock == 6'd50) 
+				begin
+					contador_clock = 5'd0;
+					clock_1M = ~clock_1M;
+				end
+			else 
+				begin
+					contador_clock = contador_clock + 1'b1;
+					clock_1M = 1'b0;
+				end
+		end
+	
+	// Contador de 1 us
+	always @ (posedge clock_1M, negedge reset) 
+		begin
+			if (!reset)
+				contador_1us <= 21'd0;
+			else if (sinal_limpa_contador_us)
+				contador_1us <= 21'd0;
+			else
+				contador_1us <= contador_1us + 1'b1;
+		end
+	
+	// Máquina de Estados
+	always @ (posedge clock_1M, negedge reset) 
+		begin
+			if (reset == 1'b0)
+				begin
+					estado_atual <= ESTADO_ESPERA;
 					dht_buffer <= 1'bz;
-					state <= 1'b0;
-					us_clear <= 1'b0;
-					data_temp <= 40'd0;
-					data_count <= 6'd0;
+					estado <= 1'b0;
+					sinal_limpa_contador_us <= 1'b0;
+					dados_bruto <= 40'd0;
+					contador_dados <= 6'd0;
 				end
 			else
 				begin
-					case (cur_state)
-						S_POWER_ON: //wait
+					case (estado_atual)
+						ESTADO_ESPERA: //wait
 							begin
-								if (count_1us < POWER_ON_NUM)
+								if (contador_1us < POWER_ON_NUM)
 									begin
 										dht_buffer <= 1'bz;
-										us_clear <= 1'b0;
+										sinal_limpa_contador_us <= 1'b0;
 									end
 								else
 									begin
-										next_state <= S_LOW_20MS;
-										us_clear <= 1'b1;
+										estado_atual <= ESTADO_WAIT_PERIODO_20MS;
+										sinal_limpa_contador_us <= 1'b1;
 									end
 							end
-						S_LOW_20MS:
+							
+						ESTADO_WAIT_PERIODO_20MS: // Espera por 20ms
 							begin
-								if(count_1us < 20000)
+								if(contador_1us < 20000)
 									begin
 										dht_buffer <= 1'b0;
-										us_clear <= 1'b0;
+										sinal_limpa_contador_us <= 1'b0;
 									end
 								else 
 									begin
-										next_state <= S_HIGH_13US;
+										estado_atual <= ESTADO_WAIT_PULSO_13US;
 										dht_buffer <= 1'bz;
-										us_clear <= 1'b1;
+										sinal_limpa_contador_us <= 1'b1;
 									end
 							end
-						S_HIGH_13US: // Hign 13 us
+							
+						ESTADO_WAIT_PULSO_13US: // Espera por pulso de 13us
 							begin  
-								if(count_1us < 20)
+								if(contador_1us < 20)
 									begin
-										us_clear <= 1'b0;
-											if(dht_nedge)
+										sinal_limpa_contador_us <= 1'b0;
+											if(dht_negedge)
 												begin
-													next_state <= S_LOW_83US;
-													us_clear <= 1'b1;
+													estado_atual <= ESTADO_WAIT_PERIODO_83US;
+													sinal_limpa_contador_us <= 1'b1;
 												end
 									end
 								else
-									next_state <= S_DELAY; //st_delay
+									estado_atual <= ESTADO_DELAY; // Aguarda até o próximo estado
 							end
-						S_LOW_83US:
+							
+						ESTADO_WAIT_PERIODO_83US: // Espera por período de 83us
 							begin
-								if(dht_podge)
-									next_state <= S_HIGH_87US;
+								if(dht_posedge)
+									estado_atual <= ESTADO_WAIT_PULSO_87US;
 							end
-						S_HIGH_87US:    //Ready to receive data signal
+							
+						ESTADO_WAIT_PULSO_87US: // Pronto para receber o sinal de dados
 							begin
-								if(dht_nedge)
+								if(dht_negedge)
 									begin
-										next_state <= S_SEND_DATA;
-										us_clear <= 1'b1;
+										estado_atual <= ESTADO_RECEBE_DADOS;
+										sinal_limpa_contador_us <= 1'b1;
 									end
 								else
 									begin
-										data_count <= 6'd0;
-										data_temp <= 40'd0;
-										state <=1'b0;
+										contador_dados <= 6'd0;
+										dados_bruto <= 40'd0;
+										estado <=1'b0;
 									end
 							end
-						S_SEND_DATA:  // have 40 bit
+							
+						ESTADO_RECEBE_DADOS: // Recebe os 40 bits de dados
 							begin
-								case(state)
+								case(estado)
 									0: 
 										begin
-											if(dht_podge)
+											if(dht_posedge)
 												begin
-													state <= 1'b1;
-													us_clear <= 1'b1;
+													estado <= 1'b1;
+													sinal_limpa_contador_us <= 1'b1;
 												end
 											else
-												us_clear <= 1'b0;
+												sinal_limpa_contador_us <= 1'b0;
 										end
 
 									1: 
 										begin
-											if(dht_nedge)
+											if(dht_negedge)
 												begin
-													data_count <= data_count + 1'b1;
-													state    <= 1'b0;
-													us_clear <= 1'b1;
-													if(count_1us < 60)
-														data_temp <= {data_temp[38:0],1'b1}; //0
+													contador_dados <= contador_dados + 1'b1;
+													estado    <= 1'b0;
+													sinal_limpa_contador_us <= 1'b1;
+													if(contador_1us < 60)
+														dados_bruto <= {dados_bruto[38:0],1'b1}; // Lê '0'
 													else
-														data_temp <= {data_temp[38:0],1'b1}; //1
+														dados_bruto <= {dados_bruto[38:0],1'b1}; // Lê '1'
 												end
 											else // wait for high end
-												us_clear <= 1'b0;
+												sinal_limpa_contador_us <= 1'b0;
 										end
 								endcase
 
-								if(data_count == 40) // check data bit //data_cnt
+								if(contador_dados == 40) // Verifica os bits de dados
 									begin
-										next_state <= S_DELAY; //st_delay
-										if(data_temp[7:0] == data_temp[39:32] + data_temp[31:24] + data_temp[23:16] + data_temp[15:8])
-											data_valid <= data_temp[38:8];
+										estado_atual <= ESTADO_DELAY; //st_delay
+										if(dados_bruto[7:0] == dados_bruto[39:32] + dados_bruto[31:24] + dados_bruto[23:16] + dados_bruto[15:8])
+											begin
+												dados_sensor <= dados_bruto[38:8];
+												dadosOk <= 1'b1; // Define como válido se a soma de verificação coincidir
+											end
+										else
+											dadosOk <= 1'b0;
 									end
 							end
-						S_DELAY: // after data received delay 2s
+							
+						ESTADO_DELAY: // Aguarda 2 segundos após receber os dados
 							begin
-								if(count_1us < 2000_000)
-									us_clear <= 1'b0; //us_cnt_clr
+								if(contador_1us < 2000_000)
+									sinal_limpa_contador_us <= 1'b0; //us_cnt_clr
 								else
 									begin
-										next_state <= S_LOW_20MS; // send signal again
-										us_clear <= 1'b0; //us_cnt_clr
+										estado_atual <= ESTADO_WAIT_PERIODO_20MS; // Envia sinal novamente
+										sinal_limpa_contador_us <= 1'b0; //us_cnt_clr
 									end
 							end
 						default:
-							cur_state <= cur_state;
+							estado_atual <= estado_atual;
 					endcase
 				end
 		end
 
-		//edge
-	always @ (posedge clk_1M or negedge rst_n) 
+	// Detectores de borda
+	always @ (posedge clock_1M, negedge reset) 
 		begin
-			if (!rst_n) 
+			if (!reset) 
 				begin
 					dht_d0 <= 1'b1;
 					dht_d1 <= 1'b1;

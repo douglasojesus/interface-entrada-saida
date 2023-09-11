@@ -7,13 +7,12 @@ module conexao_sensor(
 	output dadosPodemSerEnviados,
 	output [7:0] response_command,
 	output [7:0] response_value,
-	output error,
+	output dadosOk,
 	input reset,
 	output [31:0] dados_dht11
 );
 
 	wire errorChecksum, hold;
-	wire dadosOK;
 	
 	reg [7:0] value_data, command_data;
 		
@@ -38,16 +37,21 @@ module conexao_sensor(
 	
 	//Falta configurar para verificar se o request_address é igual ao endereço do sensor.
 	
-	/*DHT11_OtherImpl TROCA_DADOS_DHT11_TESTE(clock, reset, transmission_line, dados_dht11);*/
+	//DHT11_OtherImpl TROCA_DADOS_DHT11_TESTE(clock, reset, transmission_line, dados_dht11, dadosOk);
+	
+	wire [39:0] sensor_data;
+	
+	DHT11_Other TROCA_DADOS_DHT11(clock, reset, transmission_line, sensor_data, error, dadosOk);
+
 	
 	/************************************** TESTE DHT11 **************************************/
 	
 	
 	/************************************** TESTE DHT11 **************************************/
-	wire [19:0] data_out;
+	/*wire [19:0] data_out;
 	wire key_flag;
 	
-	dht11_ctrl (clock, reset, key_flag, transmission_line, data_out, sign);
+	dht11_ctrl (clock, reset, key_flag, transmission_line, data_out, sign);*/
 
 
 	/************************************** TESTE DHT11 **************************************/
