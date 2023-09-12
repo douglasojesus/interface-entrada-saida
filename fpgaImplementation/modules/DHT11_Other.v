@@ -74,9 +74,9 @@ module DHT11_Other (
 					estado_atual <= ESTADO_ESPERA;
 					dados_enviados_sensor <= 1'b1;
 					dados_bruto <= 40'd0;
+					dados_sensor <= 40'd0;
 					contador <= 16'd0;
 					contador_dados <= 6'd0;
-					dados_sensor <= 40'd0;
 				end
 			else 
 				begin

@@ -6,9 +6,7 @@ module conexao_sensor(
 	inout transmission_line,
 	output dadosPodemSerEnviados,
 	output [7:0] response_command,
-	output [7:0] response_value,
-	output dadosOK,
-	input reset
+	output [7:0] response_value
 );
 	
 	reg [7:0] value_data, command_data;
@@ -16,49 +14,39 @@ module conexao_sensor(
 	reg reset_sensor, dadosPodemSerEnviados_reg;
 	reg [7:0] response_command_reg, response_value_reg;
 	
-	
-	/************************************** TESTE DHT11 **************************************/
-	
-	wire [39:0] sensor_data;
 	wire [7:0] 	hum_int_dht11, hum_float_dht11, temp_int_dht11, temp_float_dht11, checksum_dht11;
 	wire 			error;
 	wire 			errorChecksum;
 	
-	/*DHT11_communication TROCA_DADOS_DHT11(clock, enable_sensor, request_address, 8'b00000001, reset_sensor, 
-	transmission_line, sensor_data, hold, error, dadosOK); */
+	wire [39:0] sensor_data;
 	
-	//Falta configurar para verificar se o request_address é igual ao endereço do sensor.
+	/*************************************************** SENSORES ***************************************************/
+	/*
+	* PRECISA TESTAR CADA UM COMO TOP LEVEL PARA DEPOIS ADAPTAR A MEF GERAL.
+	* OS FIOS, REGS E OUTROS DADOS NÃO SÃO VÁLIDOS AQUI COMO TESTES.
+	*/
 	
-	//DHT11_OtherImpl TROCA_DADOS_DHT11_TESTE(clock, reset, transmission_line, dados_dht11, dadosOK);
+	/*SENSOR 1*/
+	/*wire dadosOK;
+	wire [31:0] data_valid;
+	dht11_drive teste1(clock, reset_sensor, transmission_line, data_valid);*/
 	
-	DHT11_Other TROCA_DADOS_DHT11(clock, reset_sensor, transmission_line, sensor_data, error, dadosOK);
+	/*SENSOR 2*/
+	/*
+	DHT11_Other teste2(clock, reset_sensor, transmission_line, sensor_data, error, dadosOK);
+	*/
+	
+	/*SENSOR 3*/
+	/*wire dadosOK;
+	dht11_control teste3(clock, reset_sensor, transmission_line, sensor_data);*/
+	
+	/*************************************************** SENSORES ***************************************************/
 	
 	assign hum_int_dht11   	= sensor_data[39:32];
-	//assign hum_float_dht11 	= sensor_data[31:24];
 	assign temp_int_dht11   = sensor_data[23:16];
-	//assign temp_float_dht11 = sensor_data[15:8];
-	//assign checksum_dht11   = sensor_data[7:0];	
 	
 	assign errorChecksum = (sensor_data[7:0] == sensor_data[15:8] + sensor_data[23:16] + sensor_data[31:24] + sensor_data[39:32]) ? 1'b0 : 1'b1;	
-	
-	/************************************** TESTE DHT11 **************************************/
-	/*wire [19:0] data_out;
-	wire key_flag;
-	
-	dht11_ctrl (clock, reset, key_flag, transmission_line, data_out, sign);*/
 
-
-	/************************************** TESTE DHT11 **************************************/
-	
-	
-	//Preciso pegar o resultado de um dos módulos e repassar para a saída
-	
-	//SENSOR 2
-	
-	//SENSOR 3
-	
-	//SENSOR 4
-	
 	localparam [2:0] ESPERA = 3'b000, LEITURA = 3'b001, ENVIO = 3'b010, STOP = 3'b011, LOOP = 3'b100;
 	
 	reg [2:0] current_state = ESPERA;

@@ -32,7 +32,6 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	
 	wire [7:0]	request_command, request_address, response_command, response_value;
 	
-	wire reset;
 
 	//bitSerialAtualRX: bit a bit que chega do PC por UART.
 	//bitsEstaoRecebidos: bit que confirma todo o recebimento dos bits.
@@ -47,9 +46,7 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	//Para teste:
 	assign request_address = 8'b00000001; //Deve ligar o DHT11.
 	
-	assign reset = ~bitsEstaoRecebidos;
-	
-	conexao_sensor SE_CONECTA_COM_SENSORES(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value, error, reset);
+	conexao_sensor SE_CONECTA_COM_SENSORES(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value);
 	
 	decoder EXIBE_DISPLAY(segundoByteCompleto, display, dadosPodemSerEnviados);
 	
