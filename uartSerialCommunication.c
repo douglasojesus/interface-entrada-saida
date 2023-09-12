@@ -55,7 +55,7 @@ void *sensoriamento_Umidade(void *arg) {
     while (!data->parar) {
 		system("clear");
 		ler_Porta_Serial(data->bufferRxTx, data->arquivoSerial, data->tam);
-        printf("umidade: %d\n %%RH", data->umidade);
+        printf("Umidade: %d\n %%RH", data->umidade);
         sleep(1); // Espera 1 segundo antes de incrementar o contador
     }
     return NULL;
