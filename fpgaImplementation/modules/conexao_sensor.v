@@ -90,14 +90,14 @@ module conexao_sensor(
 							begin
 								if(dadosOK == 1'b0)
 									begin
-										current_state <= ESPERA;
+										current_state <= LEITURA;
 									end
 								else 
 									begin
 										case (request_command)
 											8'h00: //Solicita a situação atual do sensor
 												begin
-													if (dadosOK == 1'b1 && errorChecksum == 1'b0)
+													if (dadosOK == 1'b1 && errorChecksum == 1'b0 && error == 1'b0)
 														begin
 															value_data <= 8'h07; //Sensor funcionando normalmente
 															command_data <= 8'h07;
