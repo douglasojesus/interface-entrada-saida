@@ -7,10 +7,18 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <pthread.h>
+#include <stdlib.h>
 
 /*
 *Código que faz a configuração UART e envio dos dados pela porta serial ttyS0.
 */
+
+struct ThreadData {
+    int arquivoSerial;
+    int tam;
+    unsigned char *bufferRxTx;
+    int parar;
+};
 
 //função que mostra as opções disponíveis para o leitor
 void tabela();
@@ -26,13 +34,6 @@ void *sensoriamento_Temp(void *arg);
 
 //Thread para o Sensoriamento Contínuo de umidade
 void *sensoriamento_Umid(void *arg);
-
-struct ThreadData {
-    int arquivoSerial;
-    int tam;
-    unsigned char *bufferRxTx;
-    int parar;
-};
 
 int main() {
 		int arquivoSerial, tam;
@@ -261,8 +262,9 @@ void ler_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
 void *sensoriamento_Temp(void *arg){
   struct ThreadData *data = (struct ThreadData *)arg;
   while (!data->parar) {
+	system("clear");
     ler_Porta_Serial(data->arquivoSerial, data->bufferRxTx, data->tam);
-    printf("Temperatura atual: %d °C", data->bufferRxTx[1]);
+    printf("Temperatura atual: %d °C\n", data->bufferRxTx[1]);
     sleep(1); 
     }
     return NULL;
@@ -271,8 +273,9 @@ void *sensoriamento_Temp(void *arg){
 void *sensoriamento_Umid(void *arg){
   struct ThreadData *data = (struct ThreadData *)arg;
   while (!data->parar) {
+	system("clear");
     ler_Porta_Serial(data->arquivoSerial, data->bufferRxTx, data->tam);
-    printf("Umidade atual: %d %% RH", data->bufferRxTx[1]);
+    printf("Umidade atual: %d %% RH\n", data->bufferRxTx[1]);
     sleep(1); 
     }
     return NULL;
