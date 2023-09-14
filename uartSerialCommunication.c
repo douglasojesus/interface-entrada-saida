@@ -43,7 +43,7 @@ int main() {
 		arquivoSerial = open("/dev/ttyS0", O_RDWR | O_NDELAY | O_NOCTTY); //O endereço é por convenção a primeira porta serial disponível
 		
 		if (arquivoSerial < 0) { //Não conseguiu abrir o arquivo por algum motivo.
-			perror("Error opening serial port");
+			perror("\x1b[31mErro ao abrir porta serial\x1b[0m");
 			return -1;
 		}
 		
@@ -58,15 +58,15 @@ int main() {
 		tcsetattr(arquivoSerial, TCSANOW, &options); //Aplique agora, neste instante
 
 		while(1){
-      //Criando a thread
-      pthread_t thread, thread1;
-      //Criando a struct dos argumentos que vao no thread
-      struct ThreadData data;
-      data.arquivoSerial = arquivoSerial;
-      data.bufferRxTx = bufferRxTx;
-      data.tam = tam;
-      data.parar = 0;
-      
+			//Criando a thread
+			pthread_t thread, thread1;
+			//Criando a struct dos argumentos que vao no thread
+			struct ThreadData data;
+			data.arquivoSerial = arquivoSerial;
+			data.bufferRxTx = bufferRxTx;
+			data.tam = tam;
+			data.parar = 0;
+			
       
 			//Chamando a tabela de requisições
 			tabela();
@@ -77,34 +77,39 @@ int main() {
 			}
 			
 			//juntando e convertendo para string 
-			sprintf(bufferRxTx, "%c%c", 0x41,requisicao);
+			sprintf(bufferRxTx, "%c%c", 0x41, requisicao);
 
 			//Requisições válidas
 			switch (requisicao)
 			{
-			case 0x00:
-				break;
 			case 0x01:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x02:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x03:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x04:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x05:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x06:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+				break;
+			case 0x07:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x10:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
-			
 			default:
 				printf("\x1b[31mRequisição inválida, por favor escolha uma requisição válida da próxima vez.\x1b[0m\n");
 				break;
 			}
-
-			escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 
 			ler_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 
@@ -115,7 +120,7 @@ int main() {
 					printf("\x1b[31mSensor com problema.\x1b[0m");
 					sleep(5);
 					break;
-				case 0x07:
+				case 0xAC:
 					printf("Sensor funcionando normalmente."); 
 					sleep(5);
 					break;
@@ -140,55 +145,55 @@ int main() {
 					sleep(5);
 					break;				
 				case 0x0D:
-          // Cria a thread de sensoriamento de temperatura e passa os dados como argumento
-          if (pthread_create(&thread, NULL, sensoriamento_Temp, &data) != 0) {
-              fprintf(stderr, "Erro ao criar a thread.\n");
-              return 1;
-          }
-      
-          printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
-          getchar(); // Aguarda a entrada do usuário
-      
-          // Define a variável 'parar' como verdadeira para encerrar a thread de sensoriamento de temperatura
-          data.parar = 1;
-      
-          // Aguarda a thread de sensoriamento de temperatura terminar
-          if (pthread_join(thread, NULL) != 0) {
-              fprintf(stderr, "Erro ao esperar pela thread.\n");
-              return 1;
-          }
-      
-          printf("Sensoriamento Contínuo encerrado.");
-      
-          //Envia a requisição para sair do sensoriamento contínuo de temperatura      
-          sprintf(bufferRxTx, "%c%c", 0x41,0x05);
-          escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+					// Cria a thread de sensoriamento de temperatura e passa os dados como argumento
+					if (pthread_create(&thread, NULL, sensoriamento_Temp, &data) != 0) {
+						fprintf(stderr, "Erro ao criar a thread.\n");
+						return 1;
+					}
+				
+					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
+					getchar(); // Aguarda a entrada do usuário
+				
+					// Define a variável 'parar' como verdadeira para encerrar a thread de sensoriamento de temperatura
+					data.parar = 1;
+				
+					// Aguarda a thread de sensoriamento de temperatura terminar
+					if (pthread_join(thread, NULL) != 0) {
+						fprintf(stderr, "Erro ao esperar pela thread.\n");
+						return 1;
+					}
+				
+					printf("Sensoriamento Contínuo encerrado.");
+				
+					//Envia a requisição para sair do sensoriamento contínuo de temperatura      
+					sprintf(bufferRxTx, "%c%c", 0x41,0x05);
+					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(5);
 					break;
 				case 0x0E:
 					// Cria a thread de sensoriamento de umidade e passa os dados como argumento
-          if (pthread_create(&thread1, NULL, sensoriamento_Umid, &data) != 0) {
-              fprintf(stderr, "Erro ao criar a thread.\n");
-              return 1;
-          }
-      
-          printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
-          getchar(); // Aguarda a entrada do usuário
-      
-          // Define a variável 'parar' como verdadeira para encerrar a thread de sensoriamento de umidade
-          data.parar = 1;
-      
-          // Aguarda a thread de sensoriamento de umidade terminar
-          if (pthread_join(thread1, NULL) != 0) {
-              fprintf(stderr, "Erro ao esperar pela thread.\n");
-              return 1;
-          }
-      
-          printf("Sensoriamento Contínuo encerrado.");
-      
-          //Envia a requisição para sair do sensoriamento contínuo de umidade
-          sprintf(bufferRxTx, "%c%c", 0x41,0x06);
-          escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+					if (pthread_create(&thread1, NULL, sensoriamento_Umid, &data) != 0) {
+						fprintf(stderr, "Erro ao criar a thread.\n");
+						return 1;
+					}
+				
+					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
+					getchar(); // Aguarda a entrada do usuário
+				
+					// Define a variável 'parar' como verdadeira para encerrar a thread de sensoriamento de umidade
+					data.parar = 1;
+				
+					// Aguarda a thread de sensoriamento de umidade terminar
+					if (pthread_join(thread1, NULL) != 0) {
+						fprintf(stderr, "Erro ao esperar pela thread.\n");
+						return 1;
+					}
+				
+					printf("Sensoriamento Contínuo encerrado.");
+				
+					//Envia a requisição para sair do sensoriamento contínuo de umidade
+					sprintf(bufferRxTx, "%c%c", 0x41,0x06);
+					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(5);
 					break;
 				case 0x0F:
@@ -225,13 +230,13 @@ void tabela(){
     printf("|                                   Tabela                                   |\n");
     printf("------------------------------------------------------------------------------\n");
     printf("|                                                                            |\n");
-    printf("| 0x00: Situação atual do sensor.                                            |\n");
-    printf("| 0x01: Medida de temperatura atual.                                         |\n");
-    printf("| 0x02: Medida de umidade atual.                                             |\n");
-    printf("| 0x03: Ativa sensoriamento contínuo de temperatura.                         |\n");
-    printf("| 0x04: Ativa sensoriamento contínuo de umidade.                             |\n");
-    printf("| 0x05: Desativa sensoriamento contínuo de temperatura.                      |\n");
-    printf("| 0x06: Desativa sensoriamento contínuo  de umidade.                         |\n");
+    printf("| 0x01: Situação atual do sensor.                                            |\n");
+    printf("| 0x02: Medida de temperatura atual.                                         |\n");
+    printf("| 0x03: Medida de umidade atual.                                             |\n");
+    printf("| 0x04: Ativa sensoriamento contínuo de temperatura.                         |\n");
+    printf("| 0x05: Ativa sensoriamento contínuo de umidade.                             |\n");
+    printf("| 0x06: Desativa sensoriamento contínuo de temperatura.                      |\n");
+    printf("| 0x07: Desativa sensoriamento contínuo  de umidade.                         |\n");
     printf("| 0x10: Envia solicitação para requisição (start).                           |\n");
     printf("------------------------------------------------------------------------------\n");
 
@@ -240,17 +245,17 @@ void tabela(){
 void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   tam = strlen(bufferRxTx);
   tam = write(arquivoSerial, bufferRxTx, tam);
-  printf("Wrote %d bytes over UART\n", tam);
+  printf("Escreveu %d bytes em UART\n", tam);
 
-  printf("You have 2s to send me some input data...\n");
+  printf("Você tem 2s para me enviar alguns dados de entrada...\n");
   sleep(2);
 }
 
 void ler_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   memset(bufferRxTx, 0, 255);
   tam = read(arquivoSerial, bufferRxTx, 255);
-  printf("Received %d bytes\n", tam);
-  printf("Received string: %s\n", bufferRxTx);
+  printf("Recebeu %d bytes\n", tam);
+  printf("Recebeu a string: %s\n", bufferRxTx);
 }
 
 void *sensoriamento_Temp(void *arg){
