@@ -23,6 +23,8 @@ struct ThreadData {
 //função que mostra as opções disponíveis para o leitor
 void tabela();
 
+void limparBufferEntrada();
+
 //função para escrever na porta serial
 void escrever_Porta_Serial(int, unsigned char[], int);
 
@@ -67,8 +69,8 @@ int main() {
 			data.bufferRxTx = bufferRxTx;
 			data.tam = tam;
 			data.parar = 0;
-			
       
+			system("clear");
 			//Chamando a tabela de requisições
 			tabela();
 			//Recebendo a requisição
@@ -77,6 +79,7 @@ int main() {
 				int num = scanf("%x", &requisicao);
 			}
 			
+			limparBufferEntrada();
 			//juntando e convertendo para string 
 			sprintf(bufferRxTx, "%c%c", 0x41, requisicao);
 
@@ -154,7 +157,7 @@ int main() {
 				
 					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
 					getchar(); // Aguarda a entrada do usuário
-				
+
 					// Define a variável 'parar' como verdadeira para encerrar a thread de sensoriamento de temperatura
 					data.parar = 1;
 				
@@ -169,7 +172,7 @@ int main() {
 					//Envia a requisição para sair do sensoriamento contínuo de temperatura      
 					sprintf(bufferRxTx, "%c%c", 0x41,0x05);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-					sleep(5);
+					sleep(1);
 					break;
 				case 0x0E:
 					// Cria a thread de sensoriamento de umidade e passa os dados como argumento
@@ -195,7 +198,7 @@ int main() {
 					//Envia a requisição para sair do sensoriamento contínuo de umidade
 					sprintf(bufferRxTx, "%c%c", 0x41,0x06);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-					sleep(5);
+					sleep(1);
 					break;
 				case 0x0F:
 					printf("\x1b[31mComando inválido.\x1b[0m"); 
@@ -279,4 +282,11 @@ void *sensoriamento_Umid(void *arg){
     sleep(1); 
     }
     return NULL;
+}
+
+void  limparBufferEntrada(){
+  int c;
+  while((c = getchar()) != '\n' && c != EOF){
+  }
+
 }
