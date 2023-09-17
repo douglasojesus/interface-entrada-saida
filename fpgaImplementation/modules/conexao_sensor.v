@@ -20,6 +20,9 @@ module conexao_sensor(
 		
 	reg 			enable_sensor;
 	
+	reg 			in_loop;	
+	reg [15:0] 	contador;
+	
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
 	wire 			error;
 	wire 			errorChecksum;
@@ -74,6 +77,7 @@ module conexao_sensor(
 										enable_sensor  <= 1'b1;
 									end
 								dadosPodemSerEnviados_reg <= 1'b0;
+								contador <= 1'b0;
 							end
 						LEITURA:
 							begin
@@ -151,34 +155,62 @@ module conexao_sensor(
 								current_state <= ESPERA;
 								enable_sensor <= 1'b0;
 							end
+
+/*
+O LOOP vai ter um atraso inicial, antes de enviar os dados. Esse atraso vai ser utilizado a partir da segunda chamada do LOOP.
+Quando passar o delay, o sensor vai ser ativado e o estado vai ficar aguardando os dados serem recebidos corretamente pelo módulo do DHT11.
+Quando os dados forem recebidos, aí os dados serão repassados pela UART_tx sendo liberados pelo dadosPodemSerEnviados.
+Depois disso, o estado atual continua sendo o LOOP, o contador é zerado para o atraso acontecer novamente e o sensor é desativado.
+Depois, esses passos voltam a acontecer novamente até o comando de requisição ser para desativar o sensoriamento contínuo.
+*/
+							
 						LOOP:
 							begin
-								if (request_command == 8'h05 || request_command == 8'h06) //Desativar sensoriamento contínuo
+								contador <= contador + 1'b1;
+								if (contador >= 16'd65500) //Quando passar o tempo de espera do sensor, os dados são solicitados.
 									begin
-										current_state <= STOP;
-									end
-								else 
-									begin //Continua sensoriamente contínuo
-										if (request_command == 8'h03) //Ativa sensoriamento contínuo de temperatura
+										dadosPodemSerEnviados_reg <= 1'b0;
+										enable_sensor  <= 1'b1;
+										if (dadosOK == 1'b0)
 											begin
-												response_value_reg <= temp_int_dht11;
-												response_command_reg <= 8'h09; //Medida de temperatura
+												current_state <= LOOP; //O processo de leitura vai acontecer até todos os dados serem recebidos pelo módulo do DHT11
 											end
 										else 
 											begin
-												if (request_command == 8'h04) //Ativa sensoriamento contínuo de umidade
+												if (request_command == 8'h05 || request_command == 8'h06) //Desativar sensoriamento contínuo
 													begin
-														response_value_reg <= hum_int_dht11;
-														response_command_reg <= 8'h08;//Medida de umidade
+														current_state <= STOP;
+														in_loop <= 1'b0;
+														contador <= 0;
 													end
 												else 
-													begin //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
-														response_value_reg <= 8'hFF;
-														response_command_reg <= 8'hFF;
+													begin //Continua sensoriamente contínuo
+														if (request_command == 8'h03) //Ativa sensoriamento contínuo de temperatura
+															begin
+																response_value_reg <= temp_int_dht11;
+																response_command_reg <= 8'h09; //Medida de temperatura
+																dadosPodemSerEnviados_reg <= 1'b1;
+															end
+														else 
+															begin
+																if (request_command == 8'h04) //Ativa sensoriamento contínuo de umidade
+																	begin
+																		response_value_reg <= hum_int_dht11;
+																		response_command_reg <= 8'h08;//Medida de umidade
+																		dadosPodemSerEnviados_reg <= 1'b1;
+																	end
+																else 
+																	begin //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
+																		response_value_reg <= 8'hFF;
+																		response_command_reg <= 8'hFF;
+																	end
+															end
+														current_state <= LOOP;
+														enable_sensor <= 1'b0;
+														contador <= 0;
 													end
 											end
-										current_state <= LOOP;
-									end
+									end	
 							end
 						default: //Algum erro na máquina de estados
 							begin
