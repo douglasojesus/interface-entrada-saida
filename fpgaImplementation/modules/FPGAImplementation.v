@@ -22,16 +22,11 @@ UART RX/TX -> 50MHz
 
 */
 
-module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTransmissao, 
-									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line);
+module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
-	output 				bitsEstaoRecebidos;
-	output 				indicaTransmissao;
 	output 				bitSerialAtualTX;
-	output 				bitsEstaoEnviados;
-	output	[6:0]		display;
 	inout  				transmission_line; //Fio de entrada e saida do DHT11 (Tri-state) 
 	
 	wire [7:0] 	segundoByteCompleto;
@@ -41,7 +36,8 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	
 	wire [7:0]	request_command, request_address, response_command, response_value;
 	
-
+	wire bitsEstaoEnviados, indicaTransmissao, bitsEstaoRecebidos;
+	
 	//bitSerialAtualRX: bit a bit que chega do PC por UART.
 	//bitsEstaoRecebidos: bit que confirma todo o recebimento dos bits.
 	//byteCompleto: vetor com todos os bits que chegaram atraves do UART.
@@ -56,8 +52,6 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	assign request_address = 8'b00000001; //Deve ligar o DHT11.
 	
 	conexao_sensor SE_CONECTA_COM_SENSORES(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value);
-	
-	decoder EXIBE_DISPLAY(segundoByteCompleto, display, dadosPodemSerEnviados);
 	
 	uart_tx ENVIA_DADOS(clock, dadosPodemSerEnviados, response_command, response_value, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
 
