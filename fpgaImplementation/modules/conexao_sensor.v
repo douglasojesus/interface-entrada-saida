@@ -11,7 +11,7 @@ module conexao_sensor(
 	
 	reg [7:0] value_data, command_data;
 		
-	reg reset_sensor, dadosPodemSerEnviados_reg;
+	reg enable_sensor, dadosPodemSerEnviados_reg;
 	reg [7:0] response_command_reg, response_value_reg;
 	
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
@@ -25,7 +25,7 @@ module conexao_sensor(
 	/*************************************************** SENSORES ***************************************************/
 	
 	/*SENSOR 1*/
-	DHT11_Comunnication (clock, reset_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Comunnication (clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/
@@ -60,13 +60,14 @@ module conexao_sensor(
 								if (enable == 1'b0)
 									begin
 										current_state <= ESPERA;
-										reset_sensor  <= 1'b1;
+										enable_sensor  <= 1'b0;
 									end
 								else  //Quando o sensor parar de enviar os dados e o enable estiver ativado
 									begin
 										current_state <= LEITURA;
-										reset_sensor  <= 1'b0;
+										enable_sensor  <= 1'b1;
 									end
+								dadosPodemSerEnviados_reg <= 1'b0;
 							end
 						LEITURA:
 							begin
@@ -148,8 +149,7 @@ module conexao_sensor(
 						STOP:
 							begin
 								current_state <= ESPERA;
-								dadosPodemSerEnviados_reg <= 1'b0;
-								reset_sensor <= 1'b1;
+								enable_sensor <= 1'b0;
 							end
 						LOOP:
 							begin
@@ -184,6 +184,7 @@ module conexao_sensor(
 							begin
 								value_data <= 8'hAB;
 								command_data <= 8'hAB;
+								enable_sensor <= 1'b0;
 							end
 					endcase	
 				end				

@@ -6,7 +6,7 @@
 
 module DHT11_Comunnication (
 	input wire       	clock,
-	input wire	     	reset,
+	input wire	     	enable_sensor,
 	inout	          	dht11,
 	output reg [39:0]	dados_sensor,
 	output 				erro,
@@ -48,9 +48,9 @@ module DHT11_Comunnication (
 	
 	divisor_de_clock DIVISAO_CLOCK_50_TO_1(clock, clock_1M);
 	
-	always @ (posedge clock_1M, negedge reset) 
+	always @ (posedge clock_1M, negedge enable_sensor) 
 		begin
-			if (!reset) 
+			if (!enable_sensor) 
 				begin
 					start_f1 <= 1'b0;
 					start_f2 <= 1'b0;
@@ -59,16 +59,16 @@ module DHT11_Comunnication (
 		
 			else 
 				begin
-					start_f1 <= reset;
+					start_f1 <= enable_sensor;
 					start_f2 <= start_f1;
 					start_rising <= start_f1 & (~start_f2);
 				end
 		end
 
 	//FSM
-	always @ (posedge clock_1M, negedge reset) 
+	always @ (posedge clock_1M, negedge enable_sensor) 
 		begin
-			if (reset == 1'b0) 
+			if (enable_sensor == 1'b0) 
 				begin
 					direcao_dado <= 1'b1;
 					estado_atual <= ESTADO_ESPERA;
