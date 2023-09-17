@@ -73,7 +73,7 @@ module conexao_sensor(
 							begin
 								if(dadosOK == 1'b0)
 									begin
-										current_state <= LEITURA;
+										current_state <= LEITURA; //O processo de leitura vai acontecer até todos os dados serem recebidos pelo módulo do DHT11
 									end
 								else 
 									begin
@@ -85,7 +85,6 @@ module conexao_sensor(
 															value_data <= 8'h07; //Sensor funcionando normalmente
 															command_data <= 8'h07;
 														end
-													
 													else
 														begin
 															value_data <= 8'h1F; //Sensor com problema
@@ -125,11 +124,6 @@ module conexao_sensor(
 													command_data <= 8'hAA;
 													current_state <= ENVIO;
 												end 
-											//8'h10: //Envia solicitação para requisição (start)
-											//	begin
-											//		value_data <= 
-											//		command_data <=
-											//	end 
 											default:
 												begin
 													value_data <= 8'h45; //E

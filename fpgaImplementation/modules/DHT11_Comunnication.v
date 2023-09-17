@@ -21,6 +21,7 @@ module DHT11_Comunnication (
 	reg        	start_f1, start_f2, start_rising;
 	reg  [3:0] 	estado_atual;  
 	reg 			erro_na_maquina;
+	reg 			done_reg;
 
 	wire       	dado_do_sensor;   
 	wire       	clock_1M; //1 MHz
@@ -273,10 +274,12 @@ module DHT11_Comunnication (
 												estado_atual <= ESTADO_ESPERA;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
+												done_reg <= 1'b1;
 											end
 									end
 								else 
 									begin
+										done_reg <= 1'b1;
 										estado_atual <= ESTADO_ESPERA;
 										contador <= 16'd0;
 									end
