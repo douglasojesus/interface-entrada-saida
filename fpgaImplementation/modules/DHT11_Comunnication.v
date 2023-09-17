@@ -4,7 +4,7 @@
 * Adaptado por Douglas Oliveira de Jesus.
 */
 
-module DHT11_Other (
+module DHT11_Comunnication (
 	input wire       	clock,
 	input wire	     	reset,
 	inout	          	dht11,

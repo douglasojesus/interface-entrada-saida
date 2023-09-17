@@ -14,31 +14,25 @@ module conexao_sensor(
 	reg reset_sensor, dadosPodemSerEnviados_reg;
 	reg [7:0] response_command_reg, response_value_reg;
 	
-	wire [7:0] 	hum_int_dht11, hum_float_dht11, temp_int_dht11, temp_float_dht11, checksum_dht11;
+	wire [7:0] 	hum_int_dht11, temp_int_dht11;
 	wire 			error;
 	wire 			errorChecksum;
 	
 	wire [39:0] sensor_data;
 	
+	wire dadosOK;
+	
 	/*************************************************** SENSORES ***************************************************/
-	/*
-	* PRECISA TESTAR CADA UM COMO TOP LEVEL PARA DEPOIS ADAPTAR A MEF GERAL.
-	* OS FIOS, REGS E OUTROS DADOS NÃO SÃO VÁLIDOS AQUI COMO TESTES.
-	*/
 	
 	/*SENSOR 1*/
-	/*wire dadosOK;
-	wire [31:0] data_valid;
-	dht11_drive teste1(clock, reset_sensor, transmission_line, data_valid);*/
+	DHT11_Comunnication (clock, reset_sensor, transmission_line, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
-	/*
-	DHT11_Other teste2(clock, reset_sensor, transmission_line, sensor_data, error, dadosOK);
-	*/
-	
 	/*SENSOR 3*/
-	wire dadosOK;
-	dht11_control teste3(clock, reset_sensor, transmission_line, sensor_data);
+	/*SENSOR 4*/
+	/*SENSOR 5*/
+	/*SENSOR 6*/
+	/*...*/
 	
 	/*************************************************** SENSORES ***************************************************/
 	
