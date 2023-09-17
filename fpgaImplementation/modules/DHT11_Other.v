@@ -77,6 +77,7 @@ module DHT11_Other (
 					dados_sensor <= 40'd0;
 					contador <= 16'd0;
 					contador_dados <= 6'd0;
+					erro_na_maquina <= 0;
 				end
 			else 
 				begin
@@ -90,16 +91,18 @@ module DHT11_Other (
 										dados_enviados_sensor <= 1'b0;
 										contador <= 16'd0;
 										contador_dados <= 6'd0;
+										erro_na_maquina <= 0;
 									end
 								else 
 									begin
 										direcao_dado <= 1'b1;
 										dados_enviados_sensor <= 1'b1;
 										contador <= 16'd0;
+										erro_na_maquina <= 0;
 									end	
 							end
 
-						ESTADO_BIT_DE_INICIO : 
+						ESTADO_BIT_DE_INICIO :  //19Ms
 							begin      
 								if (contador >= 16'd19000) 
 									begin
@@ -137,9 +140,9 @@ module DHT11_Other (
 								else 
 									begin
 										contador <= contador + 1'b1;
-										if (contador >= 16'd65500) 
+										if (contador >= 16'd65500) //tempo limite de espera - sem respostas do sensor
 											begin
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESTADO_FINALIZA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -160,7 +163,7 @@ module DHT11_Other (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESTADO_FINALIZA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -182,7 +185,7 @@ module DHT11_Other (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESTADO_FINALIZA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -202,7 +205,7 @@ module DHT11_Other (
 										contador <= contador + 1'b1;
 										if ( contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESTADO_FINALIZA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -231,7 +234,7 @@ module DHT11_Other (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin       
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESTADO_FINALIZA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -259,10 +262,24 @@ module DHT11_Other (
 									end
 							end
 							
-						ESTADO_FINALIZA_PROCESSO: 
+						ESTADO_FINALIZA_PROCESSO:
 							begin
-								estado_atual <= ESTADO_ESPERA;
-								contador <= 16'd0;
+								if (erro_na_maquina == 1'b1)
+									begin
+										estado_atual <= ESTADO_FINALIZA_PROCESSO;
+										contador <= contador + 1'b1;
+										if (contador >= 16'd65500) //Período para aguardar normalização da máquina
+											begin
+												estado_atual <= ESTADO_ESPERA;
+												contador <= 16'd0;
+												direcao_dado <= 1'b1;
+											end
+									end
+								else 
+									begin
+										estado_atual <= ESTADO_ESPERA;
+										contador <= 16'd0;
+									end
 							end
 
 						default: 

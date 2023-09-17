@@ -37,8 +37,8 @@ module conexao_sensor(
 	*/
 	
 	/*SENSOR 3*/
-	/*wire dadosOK;
-	dht11_control teste3(clock, reset_sensor, transmission_line, sensor_data);*/
+	wire dadosOK;
+	dht11_control teste3(clock, reset_sensor, transmission_line, sensor_data);
 	
 	/*************************************************** SENSORES ***************************************************/
 	
