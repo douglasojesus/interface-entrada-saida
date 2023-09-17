@@ -21,7 +21,7 @@ module conexao_sensor(
 	reg 			enable_sensor;
 	
 	reg 			in_loop;	
-	reg [15:0] 	contador;
+	reg [26:0] 	contador;
 	
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
 	wire 			error;
@@ -155,19 +155,17 @@ module conexao_sensor(
 								current_state <= ESPERA;
 								enable_sensor <= 1'b0;
 							end
-
 /*
 O LOOP vai ter um atraso inicial, antes de enviar os dados. Esse atraso vai ser utilizado a partir da segunda chamada do LOOP.
 Quando passar o delay, o sensor vai ser ativado e o estado vai ficar aguardando os dados serem recebidos corretamente pelo módulo do DHT11.
 Quando os dados forem recebidos, aí os dados serão repassados pela UART_tx sendo liberados pelo dadosPodemSerEnviados.
 Depois disso, o estado atual continua sendo o LOOP, o contador é zerado para o atraso acontecer novamente e o sensor é desativado.
 Depois, esses passos voltam a acontecer novamente até o comando de requisição ser para desativar o sensoriamento contínuo.
-*/
-							
+*/							
 						LOOP:
 							begin
 								contador <= contador + 1'b1;
-								if (contador >= 16'd65500) //Quando passar o tempo de espera do sensor, os dados são solicitados.
+								if (contador >= 27'd100000000) //2 segundos
 									begin
 										dadosPodemSerEnviados_reg <= 1'b0;
 										enable_sensor  <= 1'b1;
