@@ -1,31 +1,37 @@
 module conexao_sensor(
-	input clock,
-	input enable,
-	input [7:0] request_command,
-	input [7:0] request_address,
-	inout transmission_line,
-	output dadosPodemSerEnviados,
-	output [7:0] response_command,
-	output [7:0] response_value
+	input 			clock,
+	input 			enable,
+	input [7:0] 	request_command,
+	input [7:0] 	request_address,
+	inout 			transmission_line,
+	output			dadosPodemSerEnviados,
+	output [7:0] 	response_command,
+	output [7:0] 	response_value
 );
+
+	/************VARIÁVEIS TEMPORÁRIAS************/
 	
-	reg [7:0] value_data, command_data;
+	reg [7:0] 	value_data, command_data;
+	reg [7:0] 	response_command_reg, response_value_reg;
+	reg 			dadosPodemSerEnviados_reg;
+	wire [39:0] sensor_data;
+	
+	/************VARIÁVEIS TEMPORÁRIAS************/
 		
-	reg enable_sensor, dadosPodemSerEnviados_reg;
-	reg [7:0] response_command_reg, response_value_reg;
+	reg 			enable_sensor;
 	
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
 	wire 			error;
 	wire 			errorChecksum;
 	
-	wire [39:0] sensor_data;
-	
-	wire dadosOK;
+	wire 			dadosOK;
 	
 	/*************************************************** SENSORES ***************************************************/
 	
+	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
+	
 	/*SENSOR 1*/
-	DHT11_Comunnication (clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Comunnication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/

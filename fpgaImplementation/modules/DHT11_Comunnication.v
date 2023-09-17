@@ -45,7 +45,7 @@ module DHT11_Comunnication (
 	
 	assign erro = erro_na_maquina;
 	
-	assign done = (estado_atual == ESTADO_FINALIZA_PROCESSO) ? 1'b1:1'b0;
+	assign done = done_reg;
 	
 	divisor_de_clock DIVISAO_CLOCK_50_TO_1(clock, clock_1M);
 	
@@ -79,6 +79,7 @@ module DHT11_Comunnication (
 					contador <= 16'd0;
 					contador_dados <= 6'd0;
 					erro_na_maquina <= 0;
+					done_reg <= 1'b0;
 				end
 			else 
 				begin
@@ -92,14 +93,12 @@ module DHT11_Comunnication (
 										dados_enviados_sensor <= 1'b0;
 										contador <= 16'd0;
 										contador_dados <= 6'd0;
-										erro_na_maquina <= 0;
 									end
 								else 
 									begin
 										direcao_dado <= 1'b1;
 										dados_enviados_sensor <= 1'b1;
 										contador <= 16'd0;
-										erro_na_maquina <= 0;
 									end	
 							end
 

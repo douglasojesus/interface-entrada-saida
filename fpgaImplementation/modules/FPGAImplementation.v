@@ -12,8 +12,18 @@
 *						MÓDULO PRINCIPAL
 */
 
+/*
+SICRONIZAÇÃO:
+MÓDULOS:
+
+DHT11 -> 1MHz
+CONEXAO_SENSOR -> 50MHz
+UART RX/TX -> 50MHz
+
+*/
+
 module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTransmissao, 
-									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line, error);
+									bitSerialAtualTX, bitsEstaoEnviados, display, transmission_line);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
@@ -23,7 +33,6 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitsEstaoRecebidos, indicaTr
 	output 				bitsEstaoEnviados;
 	output	[6:0]		display;
 	inout  				transmission_line; //Fio de entrada e saida do DHT11 (Tri-state) 
-	output 				error;
 	
 	wire [7:0] 	segundoByteCompleto;
 	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
