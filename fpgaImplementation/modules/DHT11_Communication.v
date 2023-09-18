@@ -4,7 +4,7 @@
 * Adaptado por Douglas Oliveira de Jesus.
 */
 
-module DHT11_Comunnication (
+module DHT11_Communication (
 	input wire       	clock,
 	input wire	     	enable_sensor,
 	inout	          	dht11,

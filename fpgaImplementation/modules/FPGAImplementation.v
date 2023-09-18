@@ -20,6 +20,10 @@ DHT11 -> 1MHz
 CONEXAO_SENSOR -> 50MHz
 UART RX/TX -> 50MHz
 
+Conexão sensor precisa ser mais rápido que o UART_RX por conta da flag?
+
+Qual seria a temporização ideal?
+
 */
 
 module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line);
@@ -50,6 +54,8 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmissi
 	
 	//Para teste:
 	assign request_address = 8'b00000001; //Deve ligar o DHT11.
+	
+	//Verificar se o conexao_sensor está sendo ativado pelo bitsEstaoRecebidos, que vem do uart_rx.
 	
 	conexao_sensor SE_CONECTA_COM_SENSORES(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value);
 	

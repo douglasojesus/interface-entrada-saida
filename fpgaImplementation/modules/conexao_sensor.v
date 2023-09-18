@@ -9,6 +9,7 @@ module conexao_sensor(
 	output [7:0] 	response_value
 );
 
+
 	/************VARIÁVEIS TEMPORÁRIAS************/
 	
 	reg [7:0] 	value_data, command_data;
@@ -20,7 +21,6 @@ module conexao_sensor(
 		
 	reg 			enable_sensor;
 	
-	reg 			in_loop;	
 	reg [26:0] 	contador;
 	
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
@@ -34,7 +34,7 @@ module conexao_sensor(
 	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
 	
 	/*SENSOR 1*/
-	DHT11_Comunnication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/
@@ -178,7 +178,6 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 												if (request_command == 8'h05 || request_command == 8'h06) //Desativar sensoriamento contínuo
 													begin
 														current_state <= STOP;
-														in_loop <= 1'b0;
 														contador <= 0;
 													end
 												else 
