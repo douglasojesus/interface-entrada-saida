@@ -70,7 +70,6 @@ int main() {
 			data.tam = tam;
 			data.parar = 0;
       
-			system("clear");
 			//Chamando a tabela de requisições
 			tabela();
 			//Recebendo a requisição
@@ -86,6 +85,9 @@ int main() {
 			//Requisições válidas
 			switch (requisicao)
 			{
+			case 0x00:
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+				break;
 			case 0x01:
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
@@ -102,9 +104,6 @@ int main() {
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x06:
-				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-				break;
-			case 0x07:
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x10:
@@ -124,7 +123,7 @@ int main() {
 					printf("\x1b[31mSensor com problema.\x1b[0m");
 					sleep(5);
 					break;
-				case 0xAC:
+				case 0x07:
 					printf("Sensor funcionando normalmente."); 
 					sleep(5);
 					break;
@@ -154,7 +153,8 @@ int main() {
 						fprintf(stderr, "Erro ao criar a thread.\n");
 						return 1;
 					}
-				
+
+					tabela();				
 					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
 					getchar(); // Aguarda a entrada do usuário
 
@@ -180,7 +180,8 @@ int main() {
 						fprintf(stderr, "Erro ao criar a thread.\n");
 						return 1;
 					}
-				
+					
+					tabela();
 					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
 					getchar(); // Aguarda a entrada do usuário
 				
@@ -194,7 +195,7 @@ int main() {
 					}
 				
 					printf("Sensoriamento Contínuo encerrado.");
-				
+
 					//Envia a requisição para sair do sensoriamento contínuo de umidade
 					sprintf(bufferRxTx, "%c%c", 0x41,0x06);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
@@ -222,6 +223,8 @@ int main() {
 					break;					
 			}
 
+			//Limpando a tela
+			system("clear");
 		}
 		
 		close(arquivoSerial);
@@ -234,13 +237,13 @@ void tabela(){
     printf("|                                   Tabela                                   |\n");
     printf("------------------------------------------------------------------------------\n");
     printf("|                                                                            |\n");
-    printf("| 0x01: Situação atual do sensor.                                            |\n");
-    printf("| 0x02: Medida de temperatura atual.                                         |\n");
-    printf("| 0x03: Medida de umidade atual.                                             |\n");
-    printf("| 0x04: Ativa sensoriamento contínuo de temperatura.                         |\n");
-    printf("| 0x05: Ativa sensoriamento contínuo de umidade.                             |\n");
-    printf("| 0x06: Desativa sensoriamento contínuo de temperatura.                      |\n");
-    printf("| 0x07: Desativa sensoriamento contínuo  de umidade.                         |\n");
+    printf("| 0x00: Situação atual do sensor.                                            |\n");
+    printf("| 0x01: Medida de temperatura atual.                                         |\n");
+    printf("| 0x02: Medida de umidade atual.                                             |\n");
+    printf("| 0x03: Ativa sensoriamento contínuo de temperatura.                         |\n");
+    printf("| 0x04: Ativa sensoriamento contínuo de umidade.                             |\n");
+    printf("| 0x05: Desativa sensoriamento contínuo de temperatura.                      |\n");
+    printf("| 0x06: Desativa sensoriamento contínuo  de umidade.                         |\n");
     printf("| 0x10: Envia solicitação para requisição (start).                           |\n");
     printf("------------------------------------------------------------------------------\n");
 
@@ -249,7 +252,12 @@ void tabela(){
 void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   tam = strlen(bufferRxTx);
   tam = write(arquivoSerial, bufferRxTx, tam);
-  printf("Escreveu %d bytes em UART\n", tam);
+  
+  if(bufferRxTx[1] == 0x00){
+	printf("Escreveu %d bytes em UART\n", tam + 1);
+  }else{
+	printf("Escreveu %d bytes em UART\n", tam);
+  }
 
   printf("Você tem 2s para me enviar alguns dados de entrada...\n");
   sleep(2);
