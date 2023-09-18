@@ -85,7 +85,7 @@ int main() {
 			//Requisições válidas
 			switch (requisicao)
 			{
-			case 0x00:
+			case 0xAC:
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x01:
@@ -229,13 +229,15 @@ int main() {
 	return 0;
 }
 
+	//////////////////LEMBRAR DE PEDIR O ENDEREÇO!!!!!!!!!!!!!!!!!!!!!!!!!!! SÃO 32 POSICOES -> A PARTIR DO 0X00!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 void tabela(){
 
 	 printf("\033[32m------------------------------------------------------------------------------\n");
     printf("|                                   Tabela                                   |\n");
     printf("------------------------------------------------------------------------------\n");
     printf("|                                                                            |\n");
-    printf("| 0x00: Situação atual do sensor.                                            |\n");
+    printf("| 0xAC: Situação atual do sensor.                                            |\n");
     printf("| 0x01: Medida de temperatura atual.                                         |\n");
     printf("| 0x02: Medida de umidade atual.                                             |\n");
     printf("| 0x03: Ativa sensoriamento contínuo de temperatura.                         |\n");
@@ -251,11 +253,7 @@ void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int ta
   tam = strlen(bufferRxTx);
   tam = write(arquivoSerial, bufferRxTx, tam);
   
-  if(bufferRxTx[0] == 0x00){
-	printf("Escreveu %d bytes em UART\n", tam + 1);
-  }else{
-	printf("Escreveu %d bytes em UART\n", tam);
-  }
+  printf("Escreveu %d bytes em UART\n", tam);
 
   printf("%X-%X\n", bufferRxTx[0], bufferRxTx[1]);
 

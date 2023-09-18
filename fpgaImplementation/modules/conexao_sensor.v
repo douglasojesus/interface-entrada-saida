@@ -88,7 +88,7 @@ module conexao_sensor(
 								else 
 									begin
 										case (request_command)
-											8'h00: //Solicita a situação atual do sensor
+											8'hAC: //Solicita a situação atual do sensor
 												begin
 													if (dadosOK == 1'b1 && errorChecksum == 1'b0 && error == 1'b0)
 														begin
@@ -165,7 +165,7 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 						LOOP:
 							begin
 								contador <= contador + 1'b1;
-								if (contador >= 27'd100000000) //2 segundos
+								if (contador >= 27'd125000000) //2,5 segundos
 									begin
 										dadosPodemSerEnviados_reg <= 1'b0;
 										enable_sensor  <= 1'b1;
@@ -177,7 +177,17 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 											begin
 												if (request_command == 8'h05 || request_command == 8'h06) //Desativar sensoriamento contínuo
 													begin
-														current_state <= STOP;
+														if (request_command == 8'h05)
+															begin
+																response_value_reg <= 8'h0A;
+																response_command_reg <= 8'h0A;
+															end
+														else
+															begin
+																response_value_reg <= 8'h0B;
+																response_command_reg <= 8'h0B;
+															end
+														current_state <= ENVIO;
 														contador <= 0;
 													end
 												else 
