@@ -51,7 +51,7 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 - 🔧 Git e Github
 
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
-![Diagrama de dependências para sicronização](MEF/dependencyTree.drawio.png)
+<img src="MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
