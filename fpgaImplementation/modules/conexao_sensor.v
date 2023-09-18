@@ -185,7 +185,7 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 														if (request_command == 8'h03) //Ativa sensoriamento contínuo de temperatura
 															begin
 																response_value_reg <= temp_int_dht11;
-																response_command_reg <= 8'h09; //Medida de temperatura
+																response_command_reg <= 8'h0D; //Medida de temperatura
 																dadosPodemSerEnviados_reg <= 1'b1;
 															end
 														else 
@@ -193,7 +193,7 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 																if (request_command == 8'h04) //Ativa sensoriamento contínuo de umidade
 																	begin
 																		response_value_reg <= hum_int_dht11;
-																		response_command_reg <= 8'h08;//Medida de umidade
+																		response_command_reg <= 8'h0E;//Medida de umidade
 																		dadosPodemSerEnviados_reg <= 1'b1;
 																	end
 																else 

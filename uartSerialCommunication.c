@@ -80,7 +80,7 @@ int main() {
 			
 			limparBufferEntrada();
 			//juntando e convertendo para string 
-			sprintf(bufferRxTx, "%c%c", 0x41, requisicao);
+			sprintf(bufferRxTx, "%c%c", requisicao, 0x41);
 
 			//Requisições válidas
 			switch (requisicao)
@@ -154,7 +154,6 @@ int main() {
 						return 1;
 					}
 
-					tabela();				
 					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
 					getchar(); // Aguarda a entrada do usuário
 
@@ -170,7 +169,7 @@ int main() {
 					printf("Sensoriamento Contínuo encerrado.");
 				
 					//Envia a requisição para sair do sensoriamento contínuo de temperatura      
-					sprintf(bufferRxTx, "%c%c", 0x41,0x05);
+					sprintf(bufferRxTx, "%c%c", 0x05,0x41);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(1);
 					break;
@@ -181,7 +180,6 @@ int main() {
 						return 1;
 					}
 					
-					tabela();
 					printf("Pressione Enter para parar sair do Sensoriamento Contínuo.\n");
 					getchar(); // Aguarda a entrada do usuário
 				
@@ -197,7 +195,7 @@ int main() {
 					printf("Sensoriamento Contínuo encerrado.");
 
 					//Envia a requisição para sair do sensoriamento contínuo de umidade
-					sprintf(bufferRxTx, "%c%c", 0x41,0x06);
+					sprintf(bufferRxTx, "%c%c", 0x06,0x41);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(1);
 					break;
@@ -218,13 +216,13 @@ int main() {
 					sleep(5);
 					break;	
 				default:
-					printf("\x1b[31mResposta desconhecida.\x1b[0m\033[0m\n"); 
+					printf("\x1b[31mResposta desconhecida. - %X\x1b[0m\033[0m\n", bufferRxTx[0]); 
 					sleep(5);
 					break;					
 			}
 
 			//Limpando a tela
-			system("clear");
+			//system("clear");
 		}
 		
 		close(arquivoSerial);
@@ -253,19 +251,22 @@ void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int ta
   tam = strlen(bufferRxTx);
   tam = write(arquivoSerial, bufferRxTx, tam);
   
-  if(bufferRxTx[1] == 0x00){
+  if(bufferRxTx[0] == 0x00){
 	printf("Escreveu %d bytes em UART\n", tam + 1);
   }else{
 	printf("Escreveu %d bytes em UART\n", tam);
   }
 
-  printf("Você tem 2s para me enviar alguns dados de entrada...\n");
-  sleep(2);
+  printf("%X-%X\n", bufferRxTx[0], bufferRxTx[1]);
+
+  printf("Você tem 3s para me enviar alguns dados de entrada...\n");
+  sleep(3);
 }
 
 void ler_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   memset(bufferRxTx, 0, 255);
-  tam = read(arquivoSerial, bufferRxTx, 255);
+  tam = read(arquivoSerial, bufferRxTx, 2);
+  printf("%X-%X\n", bufferRxTx[0], bufferRxTx[1]);
   printf("Recebeu %d bytes\n", tam);
   printf("Recebeu a string: %s\n", bufferRxTx);
 }
@@ -276,7 +277,7 @@ void *sensoriamento_Temp(void *arg){
 	system("clear");
     ler_Porta_Serial(data->arquivoSerial, data->bufferRxTx, data->tam);
     printf("Temperatura atual: %d °C\n", data->bufferRxTx[1]);
-    sleep(1); 
+    sleep(3); 
     }
     return NULL;
 }
@@ -287,7 +288,7 @@ void *sensoriamento_Umid(void *arg){
 	system("clear");
     ler_Porta_Serial(data->arquivoSerial, data->bufferRxTx, data->tam);
     printf("Umidade atual: %d %% RH\n", data->bufferRxTx[1]);
-    sleep(1); 
+    sleep(3); 
     }
     return NULL;
 }
