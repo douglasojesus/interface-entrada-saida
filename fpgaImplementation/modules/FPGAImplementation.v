@@ -47,6 +47,7 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmissi
 	//byteCompleto: vetor com todos os bits que chegaram atraves do UART.
 	
 	//Implementação da comunicação entre o PC e a FPGA
+	//bitsEstaoRecebidos em uart_rx: Em um estado vai para 1, mas nesse mesmo estado já atualiza para outro estado. Nesse outro estado, vai para 0. Com isso, a variação é de um clock.
 	uart_rx RECEBE_DADOS(clock, bitSerialAtualRX, bitsEstaoRecebidos, request_command, segundoByteCompleto);
 	
 	//haDadosParaTransmitir: bit que informa que os dados do byteASerTransmitido devem ser enviados.

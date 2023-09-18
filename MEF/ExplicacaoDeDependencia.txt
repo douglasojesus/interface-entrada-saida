@@ -1,0 +1,23 @@
+////////////////bitsEstaoRecebidos
+
+bitsEstaoRecebidos em uart_rx: Em um estado vai para 1, mas nesse mesmo estado já atualiza para outro estado. Nesse outro estado, vai para 0. Com isso, a variação é de um clock.
+
+bitsEstaoRecebidos em conexao_sensor: é chamado de enable dentro do módulo. Ele somente é verificado no estado de ESPERA. Se for 0, a máquina continua em espera. Quando ele for 1, ou seja, quando os dados forem recebidos por uart_rx, a máquina passa para o estado de leitura. O tempo de verificação é de um clock, período de entrada na máquina de estado e verificado sua atribuição.
+
+Dependência: conexao_sensor DEPENDE DE uart_rx.
+
+Afirmativa: O uart_rx, portanto, precisa ser um pouco mais lento que o conexao_sensor para garantirmos que o bitsEstaoRecebidos seja captado pelo conexao_sensor. Pois, caso seja o contrário, é possível que o uart_rx mude o valor do bitsEstaoRecebidos muito rápido e o conexao_sensor não consiga perceber a transição.
+
+////////////////enable_sensor
+
+enable_sensor em conexao_sensor: tem variação em um clock no estado de ESPERA, saindo de 0 para 1. Essa transição só ocorre quando bitsEstaoRecebidos é 1. Depois, no STOP, o enable_sensor volta para 0. Na ocasião de LOOP, o enable_sensor é ativado depois de 2 segundos de entrada do módulo e volta a ser 0 depois que toda a leitura dos dados é feita e repassada.
+
+enable_sensor em DHT11_Communication: serve como clock no módulo. É sensível na borda de descida. Se o enable_sensor for 0, a máquina fica presa no módulo de reset, limpando todos os dados. Quando é 1, entra para a máquina de estado. Na máquina de estado não é alterado.
+
+Dependência: DHT11_Communication DEPENDE DE conexao_sensor.
+
+Afirmativa: O DHT11_Communication funciona a 1MHz enquanto o conexao_sensor funciona a 50MHz. Como o DHT11_Communication precisa captar o enable, precisaria ser mais rápido que o conexao_sensor. Entretanto, como o enable_sensor funciona como um clock para o módulo DHT11_Communication, toda vez que o o enable_sensor for alterado em conexao_sensor, o módulo always em DHT11_Communication será chamado novamente. Portanto, acredito que não tenha problema nessa dependência.
+
+////////////////coisas a fazer
+
+COISAS A FAZER: garantir que o uart_rx seja um pouco mais lento que o bitsEstaoRecebidos ou que o bitsEstaoRecebidos fique ativo em um tempo suficiente para o conexao_sensor efetuar a leitura; 
