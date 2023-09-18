@@ -12,12 +12,32 @@ Afirmativa: O uart_rx, portanto, precisa ser um pouco mais lento que o conexao_s
 
 enable_sensor em conexao_sensor: tem variação em um clock no estado de ESPERA, saindo de 0 para 1. Essa transição só ocorre quando bitsEstaoRecebidos é 1. Depois, no STOP, o enable_sensor volta para 0. Na ocasião de LOOP, o enable_sensor é ativado depois de 2 segundos de entrada do módulo e volta a ser 0 depois que toda a leitura dos dados é feita e repassada.
 
-enable_sensor em DHT11_Communication: serve como clock no módulo. É sensível na borda de descida. Se o enable_sensor for 0, a máquina fica presa no módulo de reset, limpando todos os dados. Quando é 1, entra para a máquina de estado. Na máquina de estado não é alterado.
+enable_sensor em DHT11_Communication: serve como clock no módulo. É sensível na borda de descida. Se o enable_sensor for 0, a máquina fica presa no módulo de reset, limpando todos os dados. Quando é 1, entra para a máquina de estado. Na máquina de estado não é alterado. Portanto, toda alteração feita em enable_sensor dentro de conexao_sensor é percebida por DHT11_Communication, a nivel de voltar para o início do always e entrar ou não na máquina de estado. Se o enable estiver desativado, o DHT11 não funciona. Se ele for ativado em qualquer momento, o DHT11 funciona.
 
 Dependência: DHT11_Communication DEPENDE DE conexao_sensor.
 
 Afirmativa: O DHT11_Communication funciona a 1MHz enquanto o conexao_sensor funciona a 50MHz. Como o DHT11_Communication precisa captar o enable, precisaria ser mais rápido que o conexao_sensor. Entretanto, como o enable_sensor funciona como um clock para o módulo DHT11_Communication, toda vez que o o enable_sensor for alterado em conexao_sensor, o módulo always em DHT11_Communication será chamado novamente. Portanto, acredito que não tenha problema nessa dependência.
 
+////////////////dadosOK, error
+
+dadosOK em DHT11_Communication: chamado de done, permanece em 0 quando o enable_sensor estiver 0 no módulo e vira 1 apenas no estado de ESTADO_FINALIZA_PROCESSO. Como de ESTADO_FINALIZA_PROCESSO, o estado atual vai para ESPERA e em ESPERA não há alteração, o done vai ficar 1 durante todo o tempo a partir da segunda repetição do módulo. Com isso, ele só voltará a ser 0 quando o enable_sensor for 0. Ou seja, quando chegar o estado STOP em conexao_sensor, o done voltará a ser 0.
+
+dadosOK em conexao_sensor: funciona como uma flag para saber até quando o estado LEITURA vai ficar ativo. Quando dadosOK for 1, ou seja, quando o DHT11_Communication chegar no estado ESTADO_FINALIZA_PROCESSO, a máquina vai analisar as requisições. Caso seja de monitoriamento contínuo, dadosOK vai ter a mesma função do LEITURA.
+
+Dependência: conexao_sensor DEPENDE DE DHT11_Communication.
+
+Afirmativa: Como o DHT11_Communication opera sob um clock de 1MHz, dá tempo suficiente do conexao_sensor captar o sinal de dadosOK.
+
+Sobre o error: Como o DHT11_Communication opera sob um clock de 1MHz, dá tempo suficiente do conexao_sensor captar o sinal de erro.
+
+////////////////dadosPodemSerEnviados
+
+dadosPodemSerEnviados em conexao_sensor: quando no estado de ESPERA, fica 0 e é alterado quando chega no estado de ENVIO para 1. No LOOP, o comportamento começa com 0, depois da contagem de 2 segundos. Ainda dentro do módulo, fica aguardando os dados serem lidos (confirmação de dadosOK). Quando entra para o módulo, depois dos dadosOK, recebe 1. Depois do ENVIO, um clock encaminha o estado atual para STOP e depois para ESPERA, voltando a ser 0. Então tem uma variação de 2 clocks no pior caso.
+
+dadosPodemSerEnviados em uart_tx: chamado de haDadosParaTransmitir, só é usado uma vez, no estadoDeEspera. Quando for 1, entra para um bloco que altera o estado atual. Depende de um clock para fazer a leitura.
+
+Dependência: uart_tx DEPENDE DE conexao_sensor.
+
 ////////////////coisas a fazer
 
-COISAS A FAZER: garantir que o uart_rx seja um pouco mais lento que o bitsEstaoRecebidos ou que o bitsEstaoRecebidos fique ativo em um tempo suficiente para o conexao_sensor efetuar a leitura; 
+COISAS A FAZER: garantir que o uart_rx seja um pouco mais lento que o bitsEstaoRecebidos ou que o bitsEstaoRecebidos fique ativo em um tempo suficiente para o conexao_sensor efetuar a leitura; analisar poder do enable_sensor dentro do DHT11_Communication e se qualquer variação dele no módulo pode gerar consequências esperadas; verificar se há necessidade de atrasar um pouco o estado de STOP para garantir que o dadosPodemSerEnviados seja lido corretamente pelo uart_tx;
