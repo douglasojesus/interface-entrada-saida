@@ -169,6 +169,7 @@ int main() {
 					printf("Sensoriamento Contínuo encerrado.");
 				
 					//Envia a requisição para sair do sensoriamento contínuo de temperatura      
+					memset(bufferRxTx, 0, 255);
 					sprintf(bufferRxTx, "%c%c", 0x05,0x41);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(1);
@@ -195,7 +196,8 @@ int main() {
 					printf("Sensoriamento Contínuo encerrado.");
 
 					//Envia a requisição para sair do sensoriamento contínuo de umidade
-					sprintf(bufferRxTx, "%c%c", 0x06,0x41);
+					memset(bufferRxTx, 0, 255);
+					sprintf(bufferRxTx, "%c%c", 0x06, 0x41);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(1);
 					break;
@@ -232,8 +234,7 @@ int main() {
 	//////////////////LEMBRAR DE PEDIR O ENDEREÇO!!!!!!!!!!!!!!!!!!!!!!!!!!! SÃO 32 POSICOES -> A PARTIR DO 0X00!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void tabela(){
-
-	 printf("\033[32m------------------------------------------------------------------------------\n");
+	printf("\033[32m------------------------------------------------------------------------------\n");
     printf("|                                   Tabela                                   |\n");
     printf("------------------------------------------------------------------------------\n");
     printf("|                                                                            |\n");
@@ -246,7 +247,6 @@ void tabela(){
     printf("| 0x06: Desativa sensoriamento contínuo  de umidade.                         |\n");
     printf("| 0x10: Envia solicitação para requisição (start).                           |\n");
     printf("------------------------------------------------------------------------------\n");
-
 }
 
 void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
