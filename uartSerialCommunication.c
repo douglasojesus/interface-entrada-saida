@@ -192,6 +192,7 @@ int main() {
 					memset(bufferRxTx, 0, 255);
 					sprintf(bufferRxTx, "%c%c", 0x05,endereco_sensor);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+					limparBufferEntrada();
 					sleep(1);
 					break;
 				case 0x0E:
@@ -219,6 +220,7 @@ int main() {
 					memset(bufferRxTx, 0, 255);
 					sprintf(bufferRxTx, "%c%c", 0x06, endereco_sensor);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+					limparBufferEntrada();
 					sleep(1);
 					break;
 				case 0xFF:
@@ -239,8 +241,7 @@ int main() {
 					break;					
 			}
 
-			//Limpando a tela
-			//system("clear");
+			system("clear");
 		}
 		
 		close(arquivoSerial);
@@ -268,7 +269,7 @@ printf("\033[32m----------------------------------------------------------------
 void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   tam = strlen(bufferRxTx);
   tam = write(arquivoSerial, bufferRxTx, tam);
-  printf("Escreveu %d bytes em UART\n", tam);
+  //printf("Escreveu %d bytes em UART\n", tam);
   printf("Você tem 3s para me enviar alguns dados de entrada...\n");
   sleep(3);
 }
@@ -276,8 +277,8 @@ void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int ta
 void ler_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   memset(bufferRxTx, 0, 255);
   tam = read(arquivoSerial, bufferRxTx, 2);
-  printf("Recebeu %d bytes\n", tam);
-  printf("Recebeu a string: %s\n", bufferRxTx);
+  //printf("Recebeu %d bytes\n", tam);
+  //printf("Recebeu a string: %s\n", bufferRxTx);
 }
 
 void *sensoriamento_Temp(void *arg){
