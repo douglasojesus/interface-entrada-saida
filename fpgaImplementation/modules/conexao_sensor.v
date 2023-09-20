@@ -81,11 +81,7 @@ module conexao_sensor(
 							end
 						LEITURA:
 							begin
-								if(dadosOK == 1'b0)
-									begin
-										current_state <= LEITURA; //O processo de leitura vai acontecer até todos os dados serem recebidos pelo módulo do DHT11
-									end
-								else 
+								if(dadosOK == 1'b1)
 									begin
 										case (request_command)
 											8'hAC: //Solicita a situação atual do sensor
