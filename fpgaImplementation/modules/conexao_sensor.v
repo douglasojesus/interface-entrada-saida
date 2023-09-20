@@ -12,7 +12,6 @@ module conexao_sensor(
 
 	/************VARIÁVEIS TEMPORÁRIAS************/
 	
-	reg [7:0] 	response_value_reg, response_command_reg;
 	reg [7:0] 	response_command_reg, response_value_reg;
 	reg 			dadosPodemSerEnviados_reg;
 	wire [39:0] sensor_data;
@@ -179,14 +178,14 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 												dadosPodemSerEnviados_reg <= 1'b0;
 												enable_sensor  <= 1'b1;
 												if (dadosOK == 1'b1)
-													begin //Continua sensoriamente contínuo
-														if (request_command == 8'h03) //Ativa sensoriamento contínuo de temperatura
+													begin //Continua sensoriamento contínuo
+														if (request_command == 8'h03) //Exibe temperatura
 															begin
 																response_value_reg <= temp_int_dht11;
 																response_command_reg <= 8'h0D; //Medida de temperatura
 																dadosPodemSerEnviados_reg <= 1'b1;
 															end
-														else if (request_command == 8'h04) //Ativa sensoriamento contínuo de umidade
+														else if (request_command == 8'h04) //Exibe umidade
 															begin
 																response_value_reg <= hum_int_dht11;
 																response_command_reg <= 8'h0E;//Medida de umidade
@@ -197,10 +196,10 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 																response_value_reg <= 8'hFF;
 																response_command_reg <= 8'hFF;
 															end
+														current_state <= LOOP;
+														enable_sensor <= 1'b0;
+														contador <= 0;
 													end
-												current_state <= LOOP;
-												enable_sensor <= 1'b0;
-												contador <= 0;
 											end
 									end	
 							end

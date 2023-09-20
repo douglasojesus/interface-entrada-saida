@@ -26,6 +26,7 @@ module DHT11_Communication (
 	wire       	dado_do_sensor;   
 	wire       	clock_1M; //1 MHz
 	wire			erro_checksum;
+	wire			enable_address;
 	 
 	localparam 	ESTADO_ESPERA             		= 0,
 					ESTADO_BIT_DE_INICIO        	= 1,
