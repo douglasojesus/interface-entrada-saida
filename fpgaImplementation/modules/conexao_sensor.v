@@ -34,7 +34,7 @@ module conexao_sensor(
 	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
 	
 	/*SENSOR 1*/
-	//DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/
@@ -149,6 +149,7 @@ module conexao_sensor(
 								response_command_reg <= command_data;
 								dadosPodemSerEnviados_reg <= 1'b1;
 								current_state <= STOP;
+								contador <= 0;
 							end
 						STOP:
 							begin
@@ -164,33 +165,26 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 */							
 						LOOP:
 							begin
-								contador <= contador + 1'b1;
-								if (contador >= 27'd125000000) //2,5 segundos
+								if (request_command == 8'h05) //Desativa o sensoriamento contínuo
 									begin
-										dadosPodemSerEnviados_reg <= 1'b0;
-										enable_sensor  <= 1'b1;
-										if (dadosOK == 1'b0)
+										response_value_reg <= 8'h0A;
+										response_command_reg <= 8'h0A;
+										current_state <= ENVIO;
+									end
+								else if (request_command == 8'h06) //Desativa o sensoriamento contínuo
+									begin
+										response_value_reg <= 8'h0B;
+										response_command_reg <= 8'h0B;
+										current_state <= ENVIO;
+									end
+								else //Se não desativou
+									begin
+										contador <= contador + 1'b1;
+										if (contador >= 27'd125000000) //2,5 segundos
 											begin
-												current_state <= LOOP; //O processo de leitura vai acontecer até todos os dados serem recebidos pelo módulo do DHT11
-											end
-										else 
-											begin
-												if (request_command == 8'h05 || request_command == 8'h06) //Desativar sensoriamento contínuo
-													begin
-														if (request_command == 8'h05)
-															begin
-																response_value_reg <= 8'h0A;
-																response_command_reg <= 8'h0A;
-															end
-														else
-															begin
-																response_value_reg <= 8'h0B;
-																response_command_reg <= 8'h0B;
-															end
-														current_state <= ENVIO;
-														contador <= 0;
-													end
-												else 
+												dadosPodemSerEnviados_reg <= 1'b0;
+												enable_sensor  <= 1'b1;
+												if (dadosOK == 1'b1)
 													begin //Continua sensoriamente contínuo
 														if (request_command == 8'h03) //Ativa sensoriamento contínuo de temperatura
 															begin
@@ -198,24 +192,21 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 																response_command_reg <= 8'h0D; //Medida de temperatura
 																dadosPodemSerEnviados_reg <= 1'b1;
 															end
-														else 
+														else if (request_command == 8'h04) //Ativa sensoriamento contínuo de umidade
 															begin
-																if (request_command == 8'h04) //Ativa sensoriamento contínuo de umidade
-																	begin
-																		response_value_reg <= hum_int_dht11;
-																		response_command_reg <= 8'h0E;//Medida de umidade
-																		dadosPodemSerEnviados_reg <= 1'b1;
-																	end
-																else 
-																	begin //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
-																		response_value_reg <= 8'hFF;
-																		response_command_reg <= 8'hFF;
-																	end
+																response_value_reg <= hum_int_dht11;
+																response_command_reg <= 8'h0E;//Medida de umidade
+																dadosPodemSerEnviados_reg <= 1'b1;
 															end
-														current_state <= LOOP;
-														enable_sensor <= 1'b0;
-														contador <= 0;
+														else 
+															begin //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
+																response_value_reg <= 8'hFF;
+																response_command_reg <= 8'hFF;
+															end
 													end
+												current_state <= LOOP;
+												enable_sensor <= 1'b0;
+												contador <= 0;
 											end
 									end	
 							end
