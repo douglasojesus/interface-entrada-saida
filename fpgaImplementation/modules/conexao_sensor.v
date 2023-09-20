@@ -12,7 +12,7 @@ module conexao_sensor(
 
 	/************VARIÁVEIS TEMPORÁRIAS************/
 	
-	reg [7:0] 	value_data, command_data;
+	reg [7:0] 	response_value_reg, response_command_reg;
 	reg [7:0] 	response_command_reg, response_value_reg;
 	reg 			dadosPodemSerEnviados_reg;
 	wire [39:0] sensor_data;
@@ -58,8 +58,8 @@ module conexao_sensor(
 		begin
 			if (errorChecksum == 1'b1 || error == 1'b1)
 				begin //Sensor com problema
-					value_data <= 8'h45; //E
-					command_data <= 8'h45; //E
+					response_value_reg <= 8'h45; //E
+					response_command_reg <= 8'h45; //E
 				end
 			else //Se não tiver erro
 				begin
@@ -92,26 +92,26 @@ module conexao_sensor(
 												begin
 													if (dadosOK == 1'b1 && errorChecksum == 1'b0 && error == 1'b0)
 														begin
-															value_data <= 8'h07; //Sensor funcionando normalmente
-															command_data <= 8'h07;
+															response_value_reg <= 8'h07; //Sensor funcionando normalmente
+															response_command_reg <= 8'h07;
 														end
 													else
 														begin
-															value_data <= 8'h1F; //Sensor com problema
-															command_data <= 8'h1F;
+															response_value_reg <= 8'h1F; //Sensor com problema
+															response_command_reg <= 8'h1F;
 														end
 													current_state <= ENVIO;
 												end
 											8'h01: //Solicita a medida de temperatura atual
 												begin
-													value_data <= temp_int_dht11;
-													command_data <= 8'h09; //Medida de temperatura
+													response_value_reg <= temp_int_dht11;
+													response_command_reg <= 8'h09; //Medida de temperatura
 													current_state <= ENVIO;
 												end
 											8'h02: //Solicita a medida de umidade atual
 												begin
-													value_data <= hum_int_dht11;
-													command_data <= 8'h08;//Medida de umidade
+													response_value_reg <= hum_int_dht11;
+													response_command_reg <= 8'h08;//Medida de umidade
 													current_state <= ENVIO;
 												end
 											8'h03: //Ativa sensoriamento contínuo de temperatura
@@ -124,20 +124,20 @@ module conexao_sensor(
 												end 
 											8'h05: //Comando inválido pois o sensoriamento contínuo não foi ativado
 												begin
-													value_data <= 8'hAA;
-													command_data <= 8'hAA;
+													response_value_reg <= 8'hAA;
+													response_command_reg <= 8'hAA;
 													current_state <= ENVIO;
 												end 
 											8'h06: //Comando inválido pois o sensoriamento contínuo não foi ativado
 												begin
-													value_data <= 8'hAA;
-													command_data <= 8'hAA;
+													response_value_reg <= 8'hAA;
+													response_command_reg <= 8'hAA;
 													current_state <= ENVIO;
 												end 
 											default:
 												begin
-													value_data <= 8'h45; //E
-													command_data <= 8'h45; //E
+													response_value_reg <= 8'h45; //E
+													response_command_reg <= 8'h45; //E
 													current_state <= ENVIO;
 												end
 										endcase
@@ -145,8 +145,6 @@ module conexao_sensor(
 							end
 						ENVIO:
 							begin
-								response_value_reg <= value_data;
-								response_command_reg <= command_data;
 								dadosPodemSerEnviados_reg <= 1'b1;
 								current_state <= STOP;
 								contador <= 0;
@@ -212,8 +210,8 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 							end
 						default: //Algum erro na máquina de estados
 							begin
-								value_data <= 8'hAB;
-								command_data <= 8'hAB;
+								response_value_reg <= 8'hAB;
+								response_command_reg <= 8'hAB;
 								enable_sensor <= 1'b0;
 							end
 					endcase	
