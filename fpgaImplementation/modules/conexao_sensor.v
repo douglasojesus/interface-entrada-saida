@@ -1,6 +1,7 @@
 module conexao_sensor(
 	input 			clock,
 	input 			enable,
+	input				stop_button,
 	input [7:0] 	request_command,
 	input [7:0] 	request_address,
 	inout 			transmission_line,
@@ -158,16 +159,18 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 */							
 						LOOP:
 							begin
-								if (request_command == 8'h05) //Desativa o sensoriamento contínuo
+								if (stop_button == 1'b1) //Desativa o sensoriamento contínuo
 									begin
-										response_value_reg <= 8'h0A;
-										response_command_reg <= 8'h0A;
-										current_state <= ENVIO;
-									end
-								else if (request_command == 8'h06) //Desativa o sensoriamento contínuo
-									begin
-										response_value_reg <= 8'h0B;
-										response_command_reg <= 8'h0B;
+										if (request_command == 8'h03) 
+											begin
+												response_value_reg <= ;
+												response_command_reg <= ;
+											end
+										else 
+											begin
+												response_value_reg <= ;
+												response_command_reg <= ;
+											end
 										current_state <= ENVIO;
 									end
 								else //Se não desativou
