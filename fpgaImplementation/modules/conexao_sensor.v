@@ -1,15 +1,21 @@
+/*
+
+		Módulo principal de comunicação com os sensores.
+
+*/
+
+
 module conexao_sensor(
 	input 			clock,
 	input 			enable,
-	input				stop_button,
 	input [7:0] 	request_command,
 	input [7:0] 	request_address,
-	inout 			transmission_line,
+	inout 			transmission_line_sensor_01,
+	inout [30:0]	transmission_line_other_sensors,
 	output			dadosPodemSerEnviados,
 	output [7:0] 	response_command,
 	output [7:0] 	response_value
 );
-
 
 	/************VARIÁVEIS TEMPORÁRIAS************/
 	
@@ -19,31 +25,43 @@ module conexao_sensor(
 	
 	/************VARIÁVEIS TEMPORÁRIAS************/
 		
+
 	reg 			enable_sensor;
-	
 	reg [26:0] 	contador;
-	
+	reg 			in_loop;
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
 	wire 			error;
 	wire 			errorChecksum;
-	
-	wire 			dadosOK;
-	
-	reg 			in_loop;
-	
-	reg 			dht11_enable;
-	
-	wire dht11_address = 8'b00000001;
-	
-	/*Put here others addresses*/
+	wire 			dadosOK;	
+	wire 			clock_1M;
 
 		
 	/*************************************************** SENSORES ***************************************************/
 	
+	// Declaração de fios de enable de cada sensor disponível para ser utilizado
+	wire 	enable_sensor_01, enable_sensor_02, enable_sensor_03, enable_sensor_04,
+			enable_sensor_05, enable_sensor_06, enable_sensor_07, enable_sensor_08,
+			enable_sensor_09, enable_sensor_10, enable_sensor_11, enable_sensor_12,
+			enable_sensor_13, enable_sensor_14, enable_sensor_15, enable_sensor_16,
+			enable_sensor_17, enable_sensor_18, enable_sensor_19, enable_sensor_20,
+			enable_sensor_21, enable_sensor_22, enable_sensor_23, enable_sensor_24,
+			enable_sensor_25, enable_sensor_26, enable_sensor_27, enable_sensor_28,
+			enable_sensor_29, enable_sensor_30, enable_sensor_31, enable_sensor_32;
+	
+	/*	Cada sensor tem sua implementação. Todos são chamados nesse bloco "SENSORES". O enable_sensor_X enviado 
+		para cada um será de acordo com a seguinte regra de endereço: depois do último underline, o número identificado em
+		decimal será equivalente ao endereço representado em binário. Exemplo: enable_sensor_01 é o enable do sensor 
+		alocado no endereço 8'b00000001.
+	*/
+
+	divisor_de_clock DIVISAO_CLOCK_50_TO_1(clock, clock_1M);
+
 	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
+	//Todos os sensores devem ter como entrada o enable de acordo com seu endereço e o clock.
+	//A comunicação da FPGA com o anexo do sensor é bidirecional, portanto, deve haver um fio inout de comunicação.
 	
 	/*SENSOR 1*/
-	DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Communication SENSOR_DHT11(clock_1M, enable_sensor_01, transmission_line_sensor_01, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/
@@ -51,6 +69,15 @@ module conexao_sensor(
 	/*SENSOR 5*/
 	/*SENSOR 6*/
 	/*...*/
+	/*SENSOR 32*/
+	
+
+	//Seleciona qual sensor foi ativado de acordo com o endereço.
+	//Forma de testar: manda um endereço. Liga cada enable_sensor a um led. Verifica qual led liga de acordo com o endereço enviado.
+	assign enable_sensor_01 = (request_address == 8'b00000001) ? enable_sensor : 1'b0;
+	assign enable_sensor_02 = (request_address == 8'b00000010) ? enable_sensor : 1'b0;	
+	/*...*/
+	assign enable_sensor_32 = (request_address == 8'b00100000) ? enable_sensor : 1'b0;
 	
 	/*************************************************** SENSORES ***************************************************/
 	
@@ -199,5 +226,7 @@ module conexao_sensor(
 	assign dadosPodemSerEnviados = dadosPodemSerEnviados_reg;
 	assign response_command = response_command_reg;
 	assign response_value = response_value_reg;
+	
+	
 	
 endmodule

@@ -5,7 +5,7 @@
 */
 
 module DHT11_Communication (
-	input wire       	clock,
+	input wire       	clock_1M, //1 MHz
 	input wire	     	enable_sensor,
 	inout	          	dht11,
 	output reg [39:0]	dados_sensor,
@@ -24,7 +24,6 @@ module DHT11_Communication (
 	reg 			done_reg;
 
 	wire       	dado_do_sensor;   
-	wire       	clock_1M; //1 MHz
 	wire			erro_checksum;
 	wire			enable_address;
 	 
@@ -47,8 +46,6 @@ module DHT11_Communication (
 	assign erro = erro_na_maquina;
 	
 	assign done = done_reg;
-	
-	divisor_de_clock DIVISAO_CLOCK_50_TO_1(clock, clock_1M);
 	
 	always @ (posedge clock_1M, negedge enable_sensor) 
 		begin

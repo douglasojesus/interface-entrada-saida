@@ -26,16 +26,14 @@ Qual seria a temporização ideal?
 
 */
 
-module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line);
+module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line_sensor_01, transmission_line_other_sensors);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
 	output 				bitSerialAtualTX;
-	inout  				transmission_line; //Fio de entrada e saida do DHT11 (Tri-state) 
+	inout  				transmission_line_sensor_01; //Fio de entrada e saida do DHT11 (Tri-state) 
+	inout [30:0]		transmission_line_other_sensors; //Vetor de entrada e saida para implementação de outros sensores
 	
-	wire [7:0] 	segundoByteCompleto;
-	wire [7:0]  byteASerTransmitido; //Vai ser do DHT11
-	wire 			haDadosParaTransmitir;
 	wire 			dadosPodemSerEnviados;
 	
 	wire [7:0]	request_command, request_address, response_command, response_value;
@@ -44,21 +42,12 @@ module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmissi
 	
 	//bitSerialAtualRX: bit a bit que chega do PC por UART.
 	//bitsEstaoRecebidos: bit que confirma todo o recebimento dos bits.
-	//byteCompleto: vetor com todos os bits que chegaram atraves do UART.
 	
 	//Implementação da comunicação entre o PC e a FPGA
 	//bitsEstaoRecebidos em uart_rx: Em um estado vai para 1, mas nesse mesmo estado já atualiza para outro estado. Nesse outro estado, vai para 0. Com isso, a variação é de um clock.
-	uart_rx RECEBE_DADOS(clock, bitSerialAtualRX, bitsEstaoRecebidos, request_command, segundoByteCompleto);
+	uart_rx RECEBE_DADOS(clock, bitSerialAtualRX, bitsEstaoRecebidos, request_command, request_address);
 	
-	//haDadosParaTransmitir: bit que informa que os dados do byteASerTransmitido devem ser enviados.
-	//byteASerTransmitido: byte que serve de entrada para enviar bit a bit.
-	
-	//Para teste:
-	assign request_address = 8'b00000001; //Deve ligar o DHT11.
-	
-	//Verificar se o conexao_sensor está sendo ativado pelo bitsEstaoRecebidos, que vem do uart_rx.
-	
-	conexao_sensor SE_CONECTA_COM_SENSORES(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line, dadosPodemSerEnviados, response_command, response_value);
+	conexao_sensor SE_CONECTA_COM_SENSORES(clock, bitsEstaoRecebidos, request_command, request_address, transmission_line_sensor_01, transmission_line_other_sensors, dadosPodemSerEnviados, response_command, response_value);
 	
 	uart_tx ENVIA_DADOS(clock, dadosPodemSerEnviados, response_command, response_value, indicaTransmissao, bitSerialAtualTX, bitsEstaoEnviados);
 
