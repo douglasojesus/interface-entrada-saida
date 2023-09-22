@@ -71,15 +71,15 @@ module conexao_sensor(
 								if (in_loop == 1'b1)
 									begin
 										contador <= contador + 1'b1;
-										//if (contador >= 27'd100000000) //2 segundos
-										//	begin
+										if (contador >= 27'd100000000) //2 segundos
+											begin
 												current_state <= LEITURA;
 												contador <= 1'b0;
-										//	end
-										//else
-										///	begin
-										//		current_state <= ESPERA;
-										//	end
+											end
+										else
+											begin
+												current_state <= ESPERA;
+											end
 									end
 								else
 									begin
