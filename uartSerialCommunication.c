@@ -38,16 +38,10 @@ void *sensoriamento_Temp(void *arg);
 void *sensoriamento_Umid(void *arg);
 
 int main() {
-<<<<<<< HEAD
-	int arquivoSerial, tam;
-	unsigned char bufferRxTx[255]; 
-	struct termios options; /* Configuração das portas seriais */
-=======
 		int arquivoSerial, tam;
 		unsigned int requisicao;
 		unsigned char bufferRxTx[255]; 
 		struct termios options; /* Configuração das portas seriais */
->>>>>>> c36d39d270444d1bba1a8dd3531b29f726327d6b
 
 		arquivoSerial = open("/dev/ttyS0", O_RDWR | O_NDELAY | O_NOCTTY); //O endereço é por convenção a primeira porta serial disponível
 		
@@ -66,26 +60,6 @@ int main() {
 		tcflush(arquivoSerial, TCIFLUSH); //Limpa o buffer do arquivoSerial
 		tcsetattr(arquivoSerial, TCSANOW, &options); //Aplique agora, neste instante
 
-<<<<<<< HEAD
-	/* Escrevendo na porta serial */
-	strcpy(bufferRxTx, "1P");
-	tam = strlen(bufferRxTx);
-	tam = write(arquivoSerial, bufferRxTx, tam);
-	printf("Wrote %d bytes over UART\n", tam);
-
-	printf("You have 2s to send me some input data...\n");
-	sleep(2);
-
-	/* Lendo da porta serial */
-	memset(bufferRxTx, 0, 255);
-	tam = read(arquivoSerial, bufferRxTx, 255); 
-	printf("Received %d bytes\n", tam);
-	printf("Received string: %s\n", bufferRxTx);
-
-	close(arquivoSerial);
-	return 0;
-}
-=======
 		while(1){
 			//Criando a thread
 			pthread_t thread, thread1;
@@ -323,4 +297,3 @@ void  limparBufferEntrada(){
   }
 
 }
->>>>>>> c36d39d270444d1bba1a8dd3531b29f726327d6b
