@@ -144,7 +144,7 @@ module uart_rx #(parameter CLOCKS_POR_BIT = 5209)
 								estadoAtual     <= estadoStopBit;
 							end
 						else
-							begin
+							begin 
 								dadosOk       <= 1'b1;
 								contadorDeClock <= 0;
 								if (jaFoiOPrimeiro == 1'b1) //Avalia se o primeiro byte já foi preenchido.

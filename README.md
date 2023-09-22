@@ -45,7 +45,13 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 
 - 🔧 Quartus Prime 22.1
 - 🔧 Kit de desenvolvimento Mercúrio IV
+- 🔧 Cabo serial
 - 🔧 Visual Studio Code
+- 🔧 GNU Compiler Collection
+- 🔧 Git e Github
+
+<h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
+<img src="MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
@@ -57,7 +63,7 @@ Para clonar este repositório:
 
 3. Programe o código na placa FPGA Cyclone IV E EP4CE30F23C7;
 
-4. Conecte a porta serial do cmoputador com a porta serial da FPGA;
+4. Conecte a porta serial do computador com a porta serial da FPGA;
 
 5. Compile o código \interface-entrada-saida\uartSerialCommunication.c e o execute;
 
