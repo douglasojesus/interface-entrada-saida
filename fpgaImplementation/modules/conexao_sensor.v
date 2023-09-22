@@ -122,54 +122,47 @@ module conexao_sensor(
 																	response_value_reg <= 8'h1F; //Sensor com problema
 																	response_command_reg <= 8'h1F;
 																end
-															current_state <= ENVIO;
 														end
 													8'h01: //Solicita a medida de temperatura atual
 														begin
 															response_value_reg <= temp_int_dht11;
 															response_command_reg <= 8'h09; //Medida de temperatura
-															current_state <= ENVIO;
 														end
 													8'h02: //Solicita a medida de umidade atual
 														begin
 															response_value_reg <= hum_int_dht11;
 															response_command_reg <= 8'h08;//Medida de umidade
-															current_state <= ENVIO;
 														end
 													8'h03: //Ativa sensoriamento contínuo de temperatura
 														begin
 															response_value_reg <= temp_int_dht11;
 															response_command_reg <= 8'h0D;
-															current_state <= ENVIO;
 															in_loop <= 1'b1;
 														end
 													8'h04: //Ativa sensoriamento contínuo de umidade
 														begin
 															response_value_reg <= hum_int_dht11;
 															response_command_reg <= 8'h0E;
-															current_state <= ENVIO;
 															in_loop <= 1'b1;
 														end 
 													8'h05: //Desativa sensoriamento contínuo de temperatura
 														begin
 															response_value_reg <= 8'h0A;
 															response_command_reg <= 8'h0A;
-															current_state <= ENVIO;
 															in_loop <= 1'b0;
 														end 
 													8'h06: //Desativa sensoriamento contínuo de umidade
 														begin
 															response_value_reg <= 8'h0B;
 															response_command_reg <= 8'h0B;
-															current_state <= ENVIO;
 															in_loop <= 1'b0;
 														end 
 													default:
 														begin
 															response_value_reg <= 8'h45; //E
 															response_command_reg <= 8'h45; //E
-															current_state <= ENVIO;
 														end
+													current_state <= ENVIO;
 												endcase
 											end
 									end
