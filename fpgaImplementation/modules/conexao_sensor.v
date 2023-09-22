@@ -157,55 +157,8 @@ Quando os dados forem recebidos, aí os dados serão repassados pela UART_tx sen
 Depois disso, o estado atual continua sendo o LOOP, o contador é zerado para o atraso acontecer novamente e o sensor é desativado.
 Depois, esses passos voltam a acontecer novamente até o comando de requisição ser para desativar o sensoriamento contínuo.
 */							
-						LOOP:
-							begin
-								if (stop_button == 1'b1) //Desativa o sensoriamento contínuo
-									begin
-										if (request_command == 8'h03) 
-											begin
-												response_value_reg <= ;
-												response_command_reg <= ;
-											end
-										else 
-											begin
-												response_value_reg <= ;
-												response_command_reg <= ;
-											end
-										current_state <= ENVIO;
-									end
-								else //Se não desativou
-									begin
-										contador <= contador + 1'b1;
-										if (contador >= 27'd125000000) //2,5 segundos
-											begin
-												dadosPodemSerEnviados_reg <= 1'b0;
-												enable_sensor  <= 1'b1;
-												if (dadosOK == 1'b1)
-													begin //Continua sensoriamento contínuo
-														if (request_command == 8'h03) //Exibe temperatura
-															begin
-																response_value_reg <= temp_int_dht11;
-																response_command_reg <= 8'h0D; //Medida de temperatura
-																dadosPodemSerEnviados_reg <= 1'b1;
-															end
-														else if (request_command == 8'h04) //Exibe umidade
-															begin
-																response_value_reg <= hum_int_dht11;
-																response_command_reg <= 8'h0E;//Medida de umidade
-																dadosPodemSerEnviados_reg <= 1'b1;
-															end
-														else 
-															begin //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
-																response_value_reg <= 8'hFF;
-																response_command_reg <= 8'hFF;
-															end
-														current_state <= LOOP;
-														enable_sensor <= 1'b0;
-														contador <= 0;
-													end
-											end
-									end	
-							end
+						LOOP: ;
+						
 						default: //Algum erro na máquina de estados
 							begin
 								response_value_reg <= 8'hAB;
