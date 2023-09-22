@@ -40,6 +40,7 @@ void *sensoriamento_Umid(void *arg);
 int main() {
 		int arquivoSerial, tam;
 		unsigned int requisicao;
+		unsigned int endereco_sensor;
 		unsigned char bufferRxTx[255]; 
 		struct termios options; /* Configuração das portas seriais */
 
@@ -73,21 +74,50 @@ int main() {
 			//Chamando a tabela de requisições
 			tabela();
 			//Recebendo a requisição
-			int num = scanf("%x", &requisicao);
-			while(num != 1){
-				int num = scanf("%x", &requisicao);
+			scanf("%d %d", &requisicao, &endereco_sensor);
+			while(requisicao < 1 || requisicao > 5 || endereco_sensor < 1 || endereco_sensor > 32){
+				printf("Escolha uma requisição e sensor valido!");
+				scanf("%d %d", &requisicao, &endereco_sensor);
+				system("clear");
+			}
+
+			switch(requisicao){
+				case 1:
+					requisicao = 0xAC;
+				break;
+				case 2:
+					requisicao = 0x01;
+				break;
+				case 3:
+					requisicao = 0x02;
+				break;
+				case 4:
+					requisicao = 0x03;
+				break;
+				case 5:
+					requisicao = 0x04;
+				break;
+				default:
+				break;
+			}
+
+			switch (endereco_sensor)
+			{
+			case 1:
+				endereco_sensor = 0x01;
+				break;
+			default:
+				printf("Esse sensor não está em funcionamento!");
+				break;
 			}
 			
 			limparBufferEntrada();
 			//juntando e convertendo para string 
-			sprintf(bufferRxTx, "%c%c", requisicao, 0x41);
+			sprintf(bufferRxTx, "%c%c", requisicao, endereco_sensor);
 
 			//Requisições válidas
 			switch (requisicao)
 			{
-			case 0xAC:
-				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-				break;
 			case 0x01:
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
@@ -101,12 +131,6 @@ int main() {
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x05:
-				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-				break;
-			case 0x06:
-				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-				break;
-			case 0x10:
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			default:
@@ -142,10 +166,6 @@ int main() {
 				case 0x0B:
 					printf("Confirmação de desativação de sensoriamento contínuo  de umidade."); 
 					sleep(5);
-					break;
-				case 0x11:
-					printf("Confirmação de recebimento da requisição."); 
-					sleep(5);
 					break;				
 				case 0x0D:
 					// Cria a thread de sensoriamento de temperatura e passa os dados como argumento
@@ -166,11 +186,11 @@ int main() {
 						return 1;
 					}
 				
-					printf("Sensoriamento Contínuo encerrado.");
+					printf("Sensoriamento Contínuo encerrado.\n");
 				
 					//Envia a requisição para sair do sensoriamento contínuo de temperatura      
 					memset(bufferRxTx, 0, 255);
-					sprintf(bufferRxTx, "%c%c", 0x05,0x41);
+					sprintf(bufferRxTx, "%c%c", 0x05,endereco_sensor);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(1);
 					break;
@@ -193,17 +213,13 @@ int main() {
 						return 1;
 					}
 				
-					printf("Sensoriamento Contínuo encerrado.");
+					printf("Sensoriamento Contínuo encerrado.\n");
 
 					//Envia a requisição para sair do sensoriamento contínuo de umidade
 					memset(bufferRxTx, 0, 255);
-					sprintf(bufferRxTx, "%c%c", 0x06, 0x41);
+					sprintf(bufferRxTx, "%c%c", 0x06, endereco_sensor);
 					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 					sleep(1);
-					break;
-				case 0x0F:
-					printf("\x1b[31mComando inválido.\x1b[0m"); 
-					sleep(5);
 					break;
 				case 0xFF:
 					printf("\x1b[31mComando inválido devido a ativação do sensoriamento contínuo.\x1b[0m"); 
@@ -231,32 +247,28 @@ int main() {
 	return 0;
 }
 
-	//////////////////LEMBRAR DE PEDIR O ENDEREÇO!!!!!!!!!!!!!!!!!!!!!!!!!!! SÃO 32 POSICOES -> A PARTIR DO 0X00!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//////////////////LEMBRAR DE PEDIR O ENDEREÇO!!!!!!!!!!!!!!!!!!!!!!!!!!! SÃO 32 POSICOES -> A PARTIR DO 0X01!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void tabela(){
-	printf("\033[32m------------------------------------------------------------------------------\n");
-    printf("|                                   Tabela                                   |\n");
-    printf("------------------------------------------------------------------------------\n");
-    printf("|                                                                            |\n");
-    printf("| 0xAC: Situação atual do sensor.                                            |\n");
-    printf("| 0x01: Medida de temperatura atual.                                         |\n");
-    printf("| 0x02: Medida de umidade atual.                                             |\n");
-    printf("| 0x03: Ativa sensoriamento contínuo de temperatura.                         |\n");
-    printf("| 0x04: Ativa sensoriamento contínuo de umidade.                             |\n");
-    printf("| 0x05: Desativa sensoriamento contínuo de temperatura.                      |\n");
-    printf("| 0x06: Desativa sensoriamento contínuo  de umidade.                         |\n");
-    printf("| 0x10: Envia solicitação para requisição (start).                           |\n");
-    printf("------------------------------------------------------------------------------\n");
+printf("\033[32m------------------------------------------------------------------------------------------------------\n");
+    printf("|                Tabela Requisição                 |                Endereço Sensor                  |\n");
+    printf("------------------------------------------------------------------------------------------------------\n");
+    printf("|                                                  | DHT11 => 1: 0x01  9:  0x09  17: 0xAB  25: 0xBD  |\n");
+    printf("| 1: Situação atual do sensor.                     |          2: 0x02  10: 0x0A  18: 0xAC  26: 0xBE  |\n");
+    printf("| 2: Medida de temperatura atual.                  |          3: 0x03  11: 0x0B  19: 0xAD  27: 0xBF  |\n");
+    printf("| 3: Medida de umidade atual.                      |          4: 0x04  12: 0x0C  20: 0xAE  28: 0xCA  |\n");
+    printf("| 4: Ativa sensoriamento contínuo de temperatura.  |          5: 0x05  13: 0x0D  21: 0xAF  29: 0xCB  |\n");
+    printf("| 5: Ativa sensoriamento contínuo de umidade.      |          6: 0x06  14: 0x0E  22: 0xBA  30: 0xCC  |\n");
+    printf("|                                                  |          7: 0x07  15: 0x0F  23: 0xBB  31: 0xCD  |\n");
+    printf("|                                                  |          8: 0x08  16: 0xAA  24: 0xBC  32: 0xCE  |\n");
+    printf("|                                                  |                                                 |\n");
+    printf("------------------------------------------------------------------------------------------------------\n");
 }
 
 void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   tam = strlen(bufferRxTx);
   tam = write(arquivoSerial, bufferRxTx, tam);
-  
   printf("Escreveu %d bytes em UART\n", tam);
-
-  printf("%X-%X\n", bufferRxTx[0], bufferRxTx[1]);
-
   printf("Você tem 3s para me enviar alguns dados de entrada...\n");
   sleep(3);
 }
@@ -264,7 +276,6 @@ void escrever_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int ta
 void ler_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
   memset(bufferRxTx, 0, 255);
   tam = read(arquivoSerial, bufferRxTx, 2);
-  printf("%X-%X\n", bufferRxTx[0], bufferRxTx[1]);
   printf("Recebeu %d bytes\n", tam);
   printf("Recebeu a string: %s\n", bufferRxTx);
 }

@@ -31,6 +31,13 @@ module conexao_sensor(
 	
 	reg 			in_loop;
 	
+	reg 			dht11_enable;
+	
+	wire dht11_address = 8'b00000001;
+	
+	/*Put here others addresses*/
+
+		
 	/*************************************************** SENSORES ***************************************************/
 	
 	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
