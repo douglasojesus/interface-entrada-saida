@@ -36,7 +36,7 @@ module conexao_sensor(
 	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
 	
 	/*SENSOR 1*/
-	//DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/
