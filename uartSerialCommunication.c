@@ -128,31 +128,20 @@ int main() {
 				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x03:
-				//escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			case 0x04:
-				//escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+				escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 				break;
 			default:
 				printf("\x1b[31mRequisição inválida, por favor escolha uma requisição válida da próxima vez.\x1b[0m\n");
 				break;
 			}
-			if(requisicao != 0x03 && requisicao != 0x04){
-				ler_Porta_Serial(arquivoSerial, bufferRxTx, tam);
-			}
-			unsigned int resposta;
-			if(requisicao == 0x03){
-			resposta = 0x0D;
-                         }
-			else if(requisicao == 0x04){
-			resposta = 0x0E;
-			}
+				
+			ler_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 			
-			/*Fazendo casting da resposta para hexadecimal para usar no switch abaixo*/
-			else{
 			
-			resposta = (unsigned int) bufferRxTx[0];
-			}
+			unsigned int resposta = (unsigned int) bufferRxTx[0];
 			switch(resposta){
 				case 0x1F:
 					printf("\x1b[31mSensor com problema.\x1b[0m\n");
@@ -196,8 +185,20 @@ int main() {
 						fprintf(stderr, "Erro ao esperar pela thread.\n");
 						return 1;
 					}
-				
-					printf("Sensoriamento Contínuo encerrado.\n");
+
+					printf("Sensoriamento Contínuo de temperatura encerrado.\n");
+
+					for (int i=0; i<15; i++){
+						memset(bufferRxTx, 0, 255);
+						sprintf(bufferRxTx, "%c%c", 0x05, 0x01);
+						escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+						usleep(100000);
+					}
+
+					memset(bufferRxTx, 0, 255);
+					sprintf(bufferRxTx, "%c%c", 0x05, 0x01);
+					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+
 					break;
 				case 0x0E:
 					// Cria a thread de sensoriamento de umidade e passa os dados como argumento
@@ -218,7 +219,19 @@ int main() {
 						return 1;
 					}
 				
-					printf("Sensoriamento Contínuo encerrado.\n");
+					printf("Sensoriamento Contínuo de umidade encerrado.\n");
+
+					for (int i=0; i<15; i++){
+						memset(bufferRxTx, 0, 255);
+						sprintf(bufferRxTx, "%c%c", 0x06, 0x01);
+						escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+						usleep(100000);
+					}
+
+					/*memset(bufferRxTx, 0, 255);
+					sprintf(bufferRxTx, "%c%c", 0x06, 0x01);
+					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);*/
+
 					break;
 				case 0xFF:
 					printf("\x1b[31mComando inválido devido a ativação do sensoriamento contínuo.\x1b[0m\n"); 
@@ -233,7 +246,7 @@ int main() {
 					sleep(3);
 					break;	
 				default:
-					printf("\x1b[31mResposta desconhecida. - %X\x1b[0m\033[0m\n", bufferRxTx[0]); 
+					//printf("\x1b[31mResposta desconhecida. - %X\x1b[0m\033[0m\n", bufferRxTx[0]); 
 					sleep(3);
 					break;					
 			}
@@ -246,7 +259,6 @@ int main() {
 	return 0;
 }
 
-	//////////////////LEMBRAR DE PEDIR O ENDEREÇO!!!!!!!!!!!!!!!!!!!!!!!!!!! SÃO 32 POSICOES -> A PARTIR DO 0X01!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void tabela(){
 printf("\033[32m------------------------------------------------------------------------------------------------------\n");
@@ -280,33 +292,23 @@ void ler_Porta_Serial(int arquivoSerial, unsigned char bufferRxTx[], int tam){
 }
 
 void *sensoriamento_Temp(void *arg){
-  unsigned char bufferRxTxContinuo[255]; 
   struct ThreadData *data = (struct ThreadData *)arg;
   while (!data->parar) {
-system("clear");
-    sprintf(bufferRxTxContinuo, "%c%c", 0x01, 0x01);
-    escrever_Porta_Serial(data->arquivoSerial, bufferRxTxContinuo, data->tam);
-    ler_Porta_Serial(data->arquivoSerial, bufferRxTxContinuo, data->tam);
-    printf("Temperatura atual: %d °C\n", bufferRxTxContinuo[1]);
-    memset(bufferRxTxContinuo, 0, 255);
+	system("clear");
+    ler_Porta_Serial(data->arquivoSerial, data->bufferRxTx, data->tam);
+    printf("Temperatura atual: %d °C\n", data->bufferRxTx[1]);
     sleep(3); 
     }
     return NULL;
 }
 
 void *sensoriamento_Umid(void *arg){
-  unsigned char bufferRxTxContinuo[255]; 
   struct ThreadData *data = (struct ThreadData *)arg;
   while (!data->parar) {
-	//sleep(2);
 	system("clear");
-	sprintf(bufferRxTxContinuo, "%c%c", 0x02, 0x01);
-	escrever_Porta_Serial(data->arquivoSerial, bufferRxTxContinuo, data->tam);
-  	ler_Porta_Serial(data->arquivoSerial, bufferRxTxContinuo, data->tam);
-    printf("Umidade atual: %d %% RH\n", bufferRxTxContinuo[1]);
-	memset(bufferRxTxContinuo, 0, 255);
+    ler_Porta_Serial(data->arquivoSerial, data->bufferRxTx, data->tam);
+    printf("Umidade atual: %d %% RH\n", data->bufferRxTx[1]);
     sleep(3); 
-  // system("clear");
     }
     return NULL;
 }

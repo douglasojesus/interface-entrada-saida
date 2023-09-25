@@ -229,5 +229,4 @@ module conexao_sensor(
 	assign response_value = response_value_reg;
 	
 	
-	
 endmodule
