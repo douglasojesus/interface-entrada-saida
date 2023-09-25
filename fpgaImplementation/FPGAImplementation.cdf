@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE30F23) Path("/home/aluno/Downloads/interface-entrada-saida-main/fpgaImplementation/") File("FPGAImplementation.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE30F23) Path("/home/aluno/Downloads/interface-entrada-saida-tests/fpgaImplementation/") File("FPGAImplementation.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

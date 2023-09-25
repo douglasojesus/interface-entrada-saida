@@ -5,7 +5,7 @@
 */
 
 module DHT11_Communication (
-	input wire       	clock,
+	input wire       	clock_1M, //1 MHz
 	input wire	     	enable_sensor,
 	inout	          	dht11,
 	output reg [39:0]	dados_sensor,
@@ -24,20 +24,19 @@ module DHT11_Communication (
 	reg 			done_reg;
 
 	wire       	dado_do_sensor;   
-	wire       	clock_1M; //1 MHz
 	wire			erro_checksum;
 	wire			enable_address;
 	 
-	localparam 	ESTADO_ESPERA             		= 0,
-					ESTADO_BIT_DE_INICIO        	= 1,
-					ESTADO_ENVIA_SINAL_ALTO_20US  = 2,
-					ESTADO_AGUARDA_SINAL_BAIXO    = 3,
-					ESTADO_AGUARDA_SINAL_ALTO     = 4,
-					ESTADO_FINAL_SICRONIZACAO     = 5,
-					ESTADO_AGUARDA_UM_BIT_SENSOR  = 6,
-					ESTADO_LE_DADOS        			= 7,
-					ESTADO_COLETA_DADOS 				= 8,
-					ESTADO_FINALIZA_PROCESSO      = 9;
+	localparam 	ESPERA             		= 0,
+					BIT_DE_INICIO        	= 1,
+					ENVIA_SINAL_A_20US  		= 2, //ENVIA_SINAL_ALTO_20US
+					ESPERA_SINAL_B    		= 3, //Espera sinal baixo
+					ESPERA_SINAL_A     		= 4, //Espera sinal alto
+					FIM_SYNC     				= 5, //Fim da sicronização
+					WAIT_1_BIT_DHT11  		= 6, //Aguarda um bit do sensor
+					LE_DADOS        			= 7, //Lê os dados
+					COLETA_DADOS 				= 8, //Coleta os dados
+					ACABA_PROCESSO      		= 9; //Finaliza todo o processo
 	
 	// Tristate
 	assign dht11 = direcao_dado ? 1'bz : dados_enviados_sensor;
@@ -47,8 +46,6 @@ module DHT11_Communication (
 	assign erro = erro_na_maquina;
 	
 	assign done = done_reg;
-	
-	divisor_de_clock DIVISAO_CLOCK_50_TO_1(clock, clock_1M);
 	
 	always @ (posedge clock_1M, negedge enable_sensor) 
 		begin
@@ -73,7 +70,7 @@ module DHT11_Communication (
 			if (enable_sensor == 1'b0) 
 				begin
 					direcao_dado <= 1'b1;
-					estado_atual <= ESTADO_ESPERA;
+					estado_atual <= ESPERA;
 					dados_enviados_sensor <= 1'b1;
 					dados_bruto <= 40'd0;
 					dados_sensor <= 40'd0;
@@ -85,11 +82,11 @@ module DHT11_Communication (
 			else 
 				begin
 					case (estado_atual)
-						ESTADO_ESPERA: 
+						ESPERA: 
 							begin
 								if (start_rising && dado_do_sensor == 1'b1) 
 									begin
-										estado_atual <= ESTADO_BIT_DE_INICIO;
+										estado_atual <= BIT_DE_INICIO;
 										direcao_dado <= 1'b0;
 										dados_enviados_sensor <= 1'b0;
 										contador <= 16'd0;
@@ -103,11 +100,11 @@ module DHT11_Communication (
 									end	
 							end
 
-						ESTADO_BIT_DE_INICIO :  //19Ms
+						BIT_DE_INICIO :  //19Ms
 							begin      
 								if (contador >= 16'd19000) 
 									begin
-										estado_atual <= ESTADO_ENVIA_SINAL_ALTO_20US;
+										estado_atual <= ENVIA_SINAL_A_20US;
 										dados_enviados_sensor <= 1'b1;
 										contador <= 16'd0;
 									end
@@ -117,13 +114,13 @@ module DHT11_Communication (
 									end
 							end
 						
-						ESTADO_ENVIA_SINAL_ALTO_20US : 
+						ENVIA_SINAL_A_20US : 
 							begin           
 								if (contador >= 16'd20)
 									begin
 										contador <= 16'd0;
 										direcao_dado <= 1'b1;
-										estado_atual <= ESTADO_AGUARDA_SINAL_BAIXO;
+										estado_atual <= ESPERA_SINAL_B;
 									end
 								else 
 									begin
@@ -131,11 +128,11 @@ module DHT11_Communication (
 									end
 							end
 						
-						ESTADO_AGUARDA_SINAL_BAIXO:
+						ESPERA_SINAL_B:
 							begin            
 								if (dado_do_sensor == 1'b0) 
 									begin
-										estado_atual <= ESTADO_AGUARDA_SINAL_ALTO;
+										estado_atual <= ESPERA_SINAL_A;
 										contador <= 16'd0;
 									end
 								else 
@@ -143,7 +140,7 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) //tempo limite de espera - sem respostas do sensor
 											begin
-												estado_atual <= ESTADO_FINALIZA_PROCESSO;
+												estado_atual <= ACABA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -151,11 +148,11 @@ module DHT11_Communication (
 									end
 							end
 						
-						ESTADO_AGUARDA_SINAL_ALTO: 
+						ESPERA_SINAL_A: 
 							begin           
 								if (dado_do_sensor == 1'b1) 
 									begin
-										estado_atual <= ESTADO_FINAL_SICRONIZACAO;
+										estado_atual <= FIM_SYNC;
 										contador <= 16'd0;
 										contador_dados <= 6'd0;
 									end
@@ -164,7 +161,7 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_FINALIZA_PROCESSO;
+												estado_atual <= ACABA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -174,11 +171,11 @@ module DHT11_Communication (
 								
 							end
 						
-						ESTADO_FINAL_SICRONIZACAO : 
+						FIM_SYNC : 
 							begin 
 								if (dado_do_sensor == 1'b0) 
 									begin           
-										estado_atual <= ESTADO_AGUARDA_UM_BIT_SENSOR;
+										estado_atual <= WAIT_1_BIT_DHT11;
 										contador <= contador + 1'b1;
 									end
 								else 
@@ -186,7 +183,7 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_FINALIZA_PROCESSO;
+												estado_atual <= ACABA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -194,11 +191,11 @@ module DHT11_Communication (
 									end
 							end
 
-						ESTADO_AGUARDA_UM_BIT_SENSOR:
+						WAIT_1_BIT_DHT11:
 							begin            
 								if ( dado_do_sensor == 1'b1) 
 									begin
-										estado_atual <= ESTADO_LE_DADOS;
+										estado_atual <= LE_DADOS;
 										contador <= 16'd0;
 									end
 								else 
@@ -206,7 +203,7 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 										if ( contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_FINALIZA_PROCESSO;
+												estado_atual <= ACABA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -214,12 +211,12 @@ module DHT11_Communication (
 									end	
 							end
 
-						ESTADO_LE_DADOS: 
+						LE_DADOS: 
 							begin
 								if (dado_do_sensor == 1'b0) 
 									begin     
 										contador_dados <= contador_dados + 1'b1; 
-										estado_atual <= (contador_dados >= 6'd39) ? ESTADO_COLETA_DADOS : ESTADO_AGUARDA_UM_BIT_SENSOR;
+										estado_atual <= (contador_dados >= 6'd39) ? COLETA_DADOS : WAIT_1_BIT_DHT11;
 										contador <= 16'd0;
 										if (contador >= 16'd60) 
 											begin     
@@ -235,7 +232,7 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin       
-												estado_atual <= ESTADO_FINALIZA_PROCESSO;
+												estado_atual <= ACABA_PROCESSO;
 												erro_na_maquina <= 1'b1;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
@@ -243,12 +240,12 @@ module DHT11_Communication (
 									end
 							end
 						
-						ESTADO_COLETA_DADOS: 
+						COLETA_DADOS: 
 							begin
 								dados_sensor <= dados_bruto;
 								if (dado_do_sensor == 1'b1) 
 									begin
-										estado_atual <= ESTADO_FINALIZA_PROCESSO;
+										estado_atual <= ACABA_PROCESSO;
 										contador <= 16'd0;
 									end
 								else 
@@ -256,22 +253,22 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 										if (contador >= 16'd65500) 
 											begin
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESPERA;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
 											end
 									end
 							end
 							
-						ESTADO_FINALIZA_PROCESSO:
+						ACABA_PROCESSO:
 							begin
 								if (erro_na_maquina == 1'b1)
 									begin
-										estado_atual <= ESTADO_FINALIZA_PROCESSO;
+										estado_atual <= ACABA_PROCESSO;
 										contador <= contador + 1'b1;
-										if (contador >= 16'd65500) //Período para aguardar normalização da máquina
+										if (contador >= 16'd65500) //Período para WAITr normalização da máquina
 											begin
-												estado_atual <= ESTADO_ESPERA;
+												estado_atual <= ESPERA;
 												contador <= 16'd0;
 												direcao_dado <= 1'b1;
 												done_reg <= 1'b1;
@@ -280,14 +277,14 @@ module DHT11_Communication (
 								else 
 									begin
 										done_reg <= 1'b1;
-										estado_atual <= ESTADO_ESPERA;
+										estado_atual <= ESPERA;
 										contador <= 16'd0;
 									end
 							end
 
 						default: 
 							begin
-								estado_atual <= ESTADO_ESPERA;
+								estado_atual <= ESPERA;
 								contador <= 16'd0;
 							end	
 							

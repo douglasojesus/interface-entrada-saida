@@ -1,14 +1,21 @@
+/*
+
+		Módulo principal de comunicação com os sensores.
+
+*/
+
+
 module conexao_sensor(
 	input 			clock,
 	input 			enable,
 	input [7:0] 	request_command,
 	input [7:0] 	request_address,
-	inout 			transmission_line,
+	inout 			transmission_line_sensor_01,
+	inout [30:0]	transmission_line_other_sensors,
 	output			dadosPodemSerEnviados,
 	output [7:0] 	response_command,
 	output [7:0] 	response_value
 );
-
 
 	/************VARIÁVEIS TEMPORÁRIAS************/
 	
@@ -18,22 +25,43 @@ module conexao_sensor(
 	
 	/************VARIÁVEIS TEMPORÁRIAS************/
 		
+
 	reg 			enable_sensor;
-	
 	reg [26:0] 	contador;
-	
+	reg 			in_loop;
 	wire [7:0] 	hum_int_dht11, temp_int_dht11;
 	wire 			error;
 	wire 			errorChecksum;
-	
-	wire 			dadosOK;
-	
+	wire 			dadosOK;	
+	wire 			clock_1M;
+
+		
 	/*************************************************** SENSORES ***************************************************/
 	
+	// Declaração de fios de enable de cada sensor disponível para ser utilizado
+	wire 	enable_sensor_01, enable_sensor_02, enable_sensor_03, enable_sensor_04,
+			enable_sensor_05, enable_sensor_06, enable_sensor_07, enable_sensor_08,
+			enable_sensor_09, enable_sensor_10, enable_sensor_11, enable_sensor_12,
+			enable_sensor_13, enable_sensor_14, enable_sensor_15, enable_sensor_16,
+			enable_sensor_17, enable_sensor_18, enable_sensor_19, enable_sensor_20,
+			enable_sensor_21, enable_sensor_22, enable_sensor_23, enable_sensor_24,
+			enable_sensor_25, enable_sensor_26, enable_sensor_27, enable_sensor_28,
+			enable_sensor_29, enable_sensor_30, enable_sensor_31, enable_sensor_32;
+	
+	/*	Cada sensor tem sua implementação. Todos são chamados nesse bloco "SENSORES". O enable_sensor_X enviado 
+		para cada um será de acordo com a seguinte regra de endereço: depois do último underline, o número identificado em
+		decimal será equivalente ao endereço representado em binário. Exemplo: enable_sensor_01 é o enable do sensor 
+		alocado no endereço 8'b00000001.
+	*/
+
+	divisor_de_clock DIVISAO_CLOCK_50_TO_1(clock, clock_1M);
+
 	//Todos os sensores devem ter como saída 40 bits de dados, um bit de erro e um bit que informe que os dados foram recebidos.
+	//Todos os sensores devem ter como entrada o enable de acordo com seu endereço e o clock.
+	//A comunicação da FPGA com o anexo do sensor é bidirecional, portanto, deve haver um fio inout de comunicação.
 	
 	/*SENSOR 1*/
-	DHT11_Communication SENSOR_DHT11(clock, enable_sensor, transmission_line, sensor_data, error, dadosOK);
+	DHT11_Communication SENSOR_DHT11(clock_1M, enable_sensor_01, transmission_line_sensor_01, sensor_data, error, dadosOK);
 	
 	/*SENSOR 2*/
 	/*SENSOR 3*/
@@ -41,6 +69,15 @@ module conexao_sensor(
 	/*SENSOR 5*/
 	/*SENSOR 6*/
 	/*...*/
+	/*SENSOR 32*/
+	
+
+	//Seleciona qual sensor foi ativado de acordo com o endereço.
+	//Forma de testar: manda um endereço. Liga cada enable_sensor a um led. Verifica qual led liga de acordo com o endereço enviado.
+	assign enable_sensor_01 = (request_address == 8'b00000001) ? enable_sensor : 1'b0;
+	assign enable_sensor_02 = (request_address == 8'b00000010) ? enable_sensor : 1'b0;	
+	/*...*/
+	assign enable_sensor_32 = (request_address == 8'b00100000) ? enable_sensor : 1'b0;
 	
 	/*************************************************** SENSORES ***************************************************/
 	
@@ -49,7 +86,7 @@ module conexao_sensor(
 	
 	assign errorChecksum = (sensor_data[7:0] == sensor_data[15:8] + sensor_data[23:16] + sensor_data[31:24] + sensor_data[39:32]) ? 1'b0 : 1'b1;	
 
-	localparam [2:0] ESPERA = 3'b000, LEITURA = 3'b001, ENVIO = 3'b010, STOP = 3'b011, LOOP = 3'b100;
+	localparam [1:0] ESPERA = 2'b00, LEITURA = 2'b01, ENVIO = 2'b10, STOP = 2'b11;
 	
 	reg [2:0] current_state = ESPERA;
 	
@@ -60,82 +97,109 @@ module conexao_sensor(
 					response_value_reg <= 8'h45; //E
 					response_command_reg <= 8'h45; //E
 				end
-			else //Se não tiver erro
+			else
+				//Se não tiver erro
 				begin
 					case (current_state)
 						ESPERA:
 							begin
-								if (enable == 1'b0)
+								if (in_loop == 1'b1)
 									begin
-										current_state <= ESPERA;
-										enable_sensor  <= 1'b0;
+										contador <= contador + 1'b1;
+										if (contador >= 27'd100000000) //2 segundos
+											begin
+												current_state <= LEITURA;
+												contador <= 1'b0;
+											end
+										else
+											begin
+												current_state <= ESPERA;
+											end
 									end
-								else  //Quando o sensor parar de enviar os dados e o enable estiver ativado
+								else
 									begin
-										current_state <= LEITURA;
-										enable_sensor  <= 1'b1;
+										if (enable == 1'b0)
+											begin
+												current_state <= ESPERA;
+												enable_sensor  <= 1'b0;
+											end
+										else  //Quando o sensor parar de enviar os dados e o enable estiver ativado
+											begin
+												current_state <= LEITURA;
+												enable_sensor  <= 1'b1;
+											end
+										dadosPodemSerEnviados_reg <= 1'b0;
 									end
-								dadosPodemSerEnviados_reg <= 1'b0;
-								contador <= 1'b0;
 							end
 						LEITURA:
 							begin
 								if(dadosOK == 1'b1)
 									begin
-										case (request_command)
-											8'hAC: //Solicita a situação atual do sensor
-												begin
-													if (dadosOK == 1'b1 && errorChecksum == 1'b0 && error == 1'b0)
+									//Verifica se depois que iniciou o loop, o comando é algum diferente do sensoriamento contínuo (ativação ou desativação)
+										if (in_loop == 1'b1 && (request_command != 8'h03 && request_command != 8'h04 && response_command != 8'h05 && response_command != 8'h06))
+											begin
+												response_value_reg <= 8'hFF; //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
+												response_command_reg <= 8'hFF;
+												current_state <= ENVIO;
+											end
+										else
+											begin
+												case (request_command)
+													8'hAC: //Solicita a situação atual do sensor
 														begin
-															response_value_reg <= 8'h07; //Sensor funcionando normalmente
-															response_command_reg <= 8'h07;
+															if (dadosOK == 1'b1 && errorChecksum == 1'b0 && error == 1'b0)
+																begin
+																	response_value_reg <= 8'h07; //Sensor funcionando normalmente
+																	response_command_reg <= 8'h07;
+																end
+															else
+																begin
+																	response_value_reg <= 8'h1F; //Sensor com problema
+																	response_command_reg <= 8'h1F;
+																end
 														end
-													else
+													8'h01: //Solicita a medida de temperatura atual
 														begin
-															response_value_reg <= 8'h1F; //Sensor com problema
-															response_command_reg <= 8'h1F;
+															response_value_reg <= temp_int_dht11;
+															response_command_reg <= 8'h09; //Medida de temperatura
 														end
-													current_state <= ENVIO;
-												end
-											8'h01: //Solicita a medida de temperatura atual
-												begin
-													response_value_reg <= temp_int_dht11;
-													response_command_reg <= 8'h09; //Medida de temperatura
-													current_state <= ENVIO;
-												end
-											8'h02: //Solicita a medida de umidade atual
-												begin
-													response_value_reg <= hum_int_dht11;
-													response_command_reg <= 8'h08;//Medida de umidade
-													current_state <= ENVIO;
-												end
-											8'h03: //Ativa sensoriamento contínuo de temperatura
-												begin
-													current_state <= LOOP;
-												end
-											8'h04: //Ativa sensoriamento contínuo de umidade
-												begin
-													current_state <= LOOP;
-												end 
-											8'h05: //Comando inválido pois o sensoriamento contínuo não foi ativado
-												begin
-													response_value_reg <= 8'hAA;
-													response_command_reg <= 8'hAA;
-													current_state <= ENVIO;
-												end 
-											8'h06: //Comando inválido pois o sensoriamento contínuo não foi ativado
-												begin
-													response_value_reg <= 8'hAA;
-													response_command_reg <= 8'hAA;
-													current_state <= ENVIO;
-												end 
-											default:
-												begin
-													response_value_reg <= 8'h45; //E
-													response_command_reg <= 8'h45; //E
-													current_state <= ENVIO;
-												end
-										endcase
+													8'h02: //Solicita a medida de umidade atual
+														begin
+															response_value_reg <= hum_int_dht11;
+															response_command_reg <= 8'h08;//Medida de umidade
+														end
+													8'h03: //Ativa sensoriamento contínuo de temperatura
+														begin
+															response_value_reg <= temp_int_dht11;
+															response_command_reg <= 8'h0D;
+															in_loop <= 1'b1;
+														end
+													8'h04: //Ativa sensoriamento contínuo de umidade
+														begin
+															response_value_reg <= hum_int_dht11;
+															response_command_reg <= 8'h0E;
+															in_loop <= 1'b1;
+														end 
+													8'h05: //Desativa sensoriamento contínuo de temperatura
+														begin
+															response_value_reg <= 8'h0A;
+															response_command_reg <= 8'h0A;
+															in_loop <= 1'b0;
+														end 
+													8'h06: //Desativa sensoriamento contínuo de umidade
+														begin
+															response_value_reg <= 8'h0B;
+															response_command_reg <= 8'h0B;
+															in_loop <= 1'b0;
+														end 
+													default:
+														begin
+															response_value_reg <= 8'h45; //E
+															response_command_reg <= 8'h45; //E
+														end
+												endcase
+												current_state <= ENVIO;
+											end
 									end
 							end
 						ENVIO:
@@ -148,61 +212,8 @@ module conexao_sensor(
 							begin
 								current_state <= ESPERA;
 								enable_sensor <= 1'b0;
-							end
-/*
-O LOOP vai ter um atraso inicial, antes de enviar os dados. Esse atraso vai ser utilizado a partir da segunda chamada do LOOP.
-Quando passar o delay, o sensor vai ser ativado e o estado vai ficar aguardando os dados serem recebidos corretamente pelo módulo do DHT11.
-Quando os dados forem recebidos, aí os dados serão repassados pela UART_tx sendo liberados pelo dadosPodemSerEnviados.
-Depois disso, o estado atual continua sendo o LOOP, o contador é zerado para o atraso acontecer novamente e o sensor é desativado.
-Depois, esses passos voltam a acontecer novamente até o comando de requisição ser para desativar o sensoriamento contínuo.
-*/							
-						LOOP:
-							begin
-								if (request_command == 8'h05) //Desativa o sensoriamento contínuo
-									begin
-										response_value_reg <= 8'h0A;
-										response_command_reg <= 8'h0A;
-										current_state <= ENVIO;
-									end
-								else if (request_command == 8'h06) //Desativa o sensoriamento contínuo
-									begin
-										response_value_reg <= 8'h0B;
-										response_command_reg <= 8'h0B;
-										current_state <= ENVIO;
-									end
-								else //Se não desativou
-									begin
-										contador <= contador + 1'b1;
-										if (contador >= 27'd125000000) //2,5 segundos
-											begin
-												dadosPodemSerEnviados_reg <= 1'b0;
-												enable_sensor  <= 1'b1;
-												if (dadosOK == 1'b1)
-													begin //Continua sensoriamento contínuo
-														if (request_command == 8'h03) //Exibe temperatura
-															begin
-																response_value_reg <= temp_int_dht11;
-																response_command_reg <= 8'h0D; //Medida de temperatura
-																dadosPodemSerEnviados_reg <= 1'b1;
-															end
-														else if (request_command == 8'h04) //Exibe umidade
-															begin
-																response_value_reg <= hum_int_dht11;
-																response_command_reg <= 8'h0E;//Medida de umidade
-																dadosPodemSerEnviados_reg <= 1'b1;
-															end
-														else 
-															begin //Comando inválido devido a ativação do sensoriamento contínuo. Precisa desativar.
-																response_value_reg <= 8'hFF;
-																response_command_reg <= 8'hFF;
-															end
-														current_state <= LOOP;
-														enable_sensor <= 1'b0;
-														contador <= 0;
-													end
-											end
-									end	
-							end
+							end				
+
 						default: //Algum erro na máquina de estados
 							begin
 								response_value_reg <= 8'hAB;
@@ -216,5 +227,7 @@ Depois, esses passos voltam a acontecer novamente até o comando de requisição
 	assign dadosPodemSerEnviados = dadosPodemSerEnviados_reg;
 	assign response_command = response_command_reg;
 	assign response_value = response_value_reg;
+	
+	
 	
 endmodule
