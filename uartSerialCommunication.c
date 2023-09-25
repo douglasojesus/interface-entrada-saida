@@ -188,16 +188,16 @@ int main() {
 
 					printf("Sensoriamento Contínuo de temperatura encerrado.\n");
 
-					for (int i=0; i<15; i++){
+					for (int i=0; i<15; i++){ //1.5 segundos
 						memset(bufferRxTx, 0, 255);
 						sprintf(bufferRxTx, "%c%c", 0x05, 0x01);
 						escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
 						usleep(100000);
 					}
 
-					memset(bufferRxTx, 0, 255);
+					/*memset(bufferRxTx, 0, 255);
 					sprintf(bufferRxTx, "%c%c", 0x05, 0x01);
-					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
+					escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);*/
 
 					break;
 				case 0x0E:
@@ -221,7 +221,7 @@ int main() {
 				
 					printf("Sensoriamento Contínuo de umidade encerrado.\n");
 
-					for (int i=0; i<15; i++){
+					for (int i=0; i<15; i++){ //1.5 segundos
 						memset(bufferRxTx, 0, 255);
 						sprintf(bufferRxTx, "%c%c", 0x06, 0x01);
 						escrever_Porta_Serial(arquivoSerial, bufferRxTx, tam);
