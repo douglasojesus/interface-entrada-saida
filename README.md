@@ -367,10 +367,42 @@ Os sinais de saída são atribuídos com base nos estados da máquina de estados
 
 <h2>Divisor de clock</h2>
 
-<p align="center">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
+<p align="justify">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
 	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
 	</p>
 
+<h2>Módulo principal FPGA implementation</h2>
+
+<p align="justify">O “FPGAImplementation” é o módulo principal responsável por conectar todos os outros módulos.
+
+
+input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
+
+input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
+
+output bitSerialAtualTX: Sinal serial de saída que será transmitido para o PC.
+
+inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comunicar com o sensor DHT11.
+
+inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
+
+	Ademais foram criados alguns fios utilizados para a transmissão de dados:
+
+dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
+
+request_command e request_address: Sinais wire que representam comandos e endereços recebidos do computador, respectivamente.
+
+response_command e response_value: Sinais wire que representam comandos e valores a serem transmitidos de volta ao computador.
+
+bitsEstaoEnviados: variável que informa quando os bits foram enviados para o computador. Essa variável é saída do módulo de comunicação UART TX. 
+
+indicaTransmissao: variável que informa que os dados estão sendo transmitidos para o computador.  
+
+bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
+</p>
+
+<h2>Módulo uart_rx</h2>
+<p align="justify">Esse módulo possui como primeiro parâmetro o clock de 50Mhz. é responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
 
 
 
