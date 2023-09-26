@@ -168,6 +168,46 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 	<img src="anexos/diagrama_projeto.png" alt=Diagrama em blocos do sistema>
 </p>
 
+<p align="justify">A FPGA conterá o circuito lógico responsável por receber o byte do código do comando e do byte do endereço do sensor do computador (através do módulo de recebimento “rx”), decodificar os códigos e devolver o dado correspondente que será lido pelo sensor (através do módulo de transmissão “tx”). No circuito implementado na placa também é necessário o uso da máquina de estados geral (MEF) que transita entre os estados e controla o tempo de cada ação, além de um módulo específico para o sensor DHT11, responsável por receber, decodificar e devolver os dados lidos do ambiente de acordo com a solicitação do usuário. Como possuem 32 endereços para alocação de anexo do sensor, o módulo da MEF poderá chamar os 32 módulos, contanto que cada um tenha , como saída, 40 bits de dados, um bit de erro e um bit que informa que os dados foram recebidos. Além disso, todos os módulos chamados devem ter como entrada o “enable” de acordo com seu endereço e o clock. A comunicação da FPGA com o anexo do sensor é bidirecional, portanto, deve haver um fio “inout” de comunicação.
+
+O sensor é um elemento externo que ficará conectado à placa através dos pinos da interface PMOD (VCC 3.3V, GND e algum pino compatível com o PMOD) presentes na placa, e é o responsável pela leitura da temperatura e umidade ambiente.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 
 <p align="center">
