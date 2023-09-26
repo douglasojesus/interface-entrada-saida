@@ -160,7 +160,7 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 
 </p>
 
-<h1 id="desenvolvimento" align="center">Desenvolvimento</h1>
+<h1 id="desenvolvimento" align="center">Desenvolvimento e Descrição em Alto Nível</h1>
 
 <p align="justify">Inicialmente foi proposto durante as sessões a criação de um diagrama inicial geral de como funcionaria o circuito. Dessa forma, foi possível identificar os três principais agentes do sistema. Sendo eles: o computador, a FPGA e o anexo do sensor DHT11.</p>
 
@@ -247,7 +247,7 @@ O sensor é um elemento externo que ficará conectado à placa através dos pino
 
 <h2>Programação em alto nível (linguagem C)</h2>
 
-<p align="center">
+<p align="justify">
 A comunicação inicial para o usuário solicitar uma requisição e posteriormente visualizar os dados retornados foi feita através de um programa, em linguagem C, no computador.
 A etapa para o desenvolvimento do código referente a programação em alto nível  foi composta pela configuração da porta serial baseado na comunicação UART, uso de threads para a configuração do monitoramento contínuo e uma interface para solicitação e impressão de dados.
 	
@@ -367,14 +367,87 @@ Os sinais de saída são atribuídos com base nos estados da máquina de estados
 
 <h2>Divisor de clock</h2>
 
-<p align="center">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
+<p align="justify">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
 	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
 	</p>
 
+<h2>Módulo principal FPGA implementation</h2>
+
+<p align="justify">O “FPGAImplementation” é o módulo principal responsável por conectar todos os outros módulos.
 
 
+input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
 
+input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
 
+output bitSerialAtualTX: Sinal serial de saída que será transmitido para o PC.
+
+inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comunicar com o sensor DHT11.
+
+inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
+
+	Ademais foram criados alguns fios utilizados para a transmissão de dados:
+
+dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
+
+request_command e request_address: Sinais wire que representam comandos e endereços recebidos do computador, respectivamente.
+
+response_command e response_value: Sinais wire que representam comandos e valores a serem transmitidos de volta ao computador.
+
+bitsEstaoEnviados: variável que informa quando os bits foram enviados para o computador. Essa variável é saída do módulo de comunicação UART TX. 
+
+indicaTransmissao: variável que informa que os dados estão sendo transmitidos para o computador.  
+
+bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
+</p>
+
+<h2>Módulo uart_rx</h2>
+<p align="justify">Esse módulo possui como primeiro parâmetro o clock de 50Mhz. é responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
+
+<h2>Módulo conexao_sensor</h2>
+<p align="justify">
+	O módulo emprega uma MEF para controlar a sequência de operações. A MEF possui quatro estados principais: ESPERA, LEITURA, ENVIO e STOP. No estado ESPERA, o módulo aguarda comandos ou dados do sensor. No estado LEITURA, ele processa os comandos recebidos, lê os dados do sensor e prepara uma resposta. No estado ENVIO, os dados e comandos de resposta são sinalizados como prontos para envio. Finalmente, no estado STOP, o sensor é desativado e a MEF retorna ao estado ESPERA.
+
+Ademais, os blocos de instruções geram respostas com base nos comandos recebidos. Essas respostas incluem valores lidos do sensor, comandos de confirmação e sinalização de erros, conforme necessário. Isso permite que o módulo forneça informações precisas aos dispositivos externos que o acessam por meio da interface UART.
+
+Como este módulo funciona como uma máquina de estados geral, ela controla variáveis dentro do projeto. Para acionamento e saída do estado de ESPERA, “bitsEstaoRecebidos” entra como “enable” no módulo, possibilitando que a comunicação inicialize após o recebimento de dois bytes através do módulo “uart_rx”. Além disso, ao atribuir “dadosPodemSerEnviados”, cria um gatilho para que o módulo “uart_tx” envie os dados através da porta serial para o computador. Os bytes de requisição entram para serem analisados e os bytes de respostas são retornados para serem transmitidos.
+
+Além disso, o módulo suporta o sensoriamento contínuo de temperatura e umidade. Ele verifica se o sensoriamento contínuo está ativado e responde aos comandos apropriados para ativar ou desativar essa funcionalidade. Isso é útil em aplicações que requerem monitoramento constante das condições ambientais.
+
+O módulo realiza verificações de erros, incluindo a detecção de erros de paridade (errorChecksum) e outros erros relacionados aos sensores. Se um erro for detectado, o módulo gera uma resposta apropriada, informando sobre o problema. Isso é crucial para garantir a confiabilidade das leituras dos sensores.
+
+Portanto, o módulo conexao_sensor é uma implementação versátil de comunicação com sensores em Verilog. Ele oferece suporte a múltiplos sensores, controle flexível por endereço, sensoriamento contínuo e detecção de erros, tornando-o adequado para uma ampla gama de aplicações em sistemas embarcados.
+
+</p>
+
+<h2>Módulo uart_tx</h2>
+
+<p align="justify">Este módulo é responsável por transmitir os dados serializados de volta ao PC.
+Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa.
+O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
+Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
+
+<h1 id="descricao-e-analise-dos-testes">Descrição e análise dos testes e simuações</h1>
+<p align="justify">
+	O projeto proposto, em sua fase final, apresentou ótimos resultados conforme o solicitado, lendo e entregando os dados solicitados corretamente. A interação do usuário com o  sistema é feita inteiramente através do terminal, onde, através de uma tabela de opções, deve ser selecionado o requerimento desejado e o endereço no qual se encontra o sensor.
+	
+Porém, destaca-se um problema quando o sensoriamento contínuo é ligado. Individualmente, o caso consegue atingir o requisito e lê os dados de maneira constante. Mas, após encerrar a leitura do sensoriamento e solicitar qualquer outra requisição, o programa cai no caso do sensoriamento contínuo aberto anteriormente. Uma alternativa possível para contornar esse caso foi criar um código em C que solicitasse a requisição de temperatura/umidade atual continuamente. Com isso, nenhum problema é observável. Outra solução é re-programar a placa depois de pedir uma ativação do sensoriamento contínuo.
+
+</p>
+
+<h1 id="conclusao" align="center">Conclusão</h1>
+
+<p align="justify">
+	O sistema de entrada e saída para monitoramento de temperatura e umidade, com relação aos resultados, demonstrou um excelente funcionamento, uma vez que cumpre com a maioria dos requisitos propostos no projeto. O único problema encontrado, foi com relação ao monitoramento contínuo, que embora faça a leitura e exibição de maneira correta, possui um problema após o encerramento e solicitação de outro comando em seguida. 
+	
+Ademais, nota-se, durante a etapa de elaboração do projeto, a abordagem de diversos aspectos importantes da área de sistemas digitais que culminaram em uma solução completa e funcional e no desenvolvimento pessoal dos membros envolvidos. Dentre eles, têm-se a comunicação serial, protocolo de comunicação UART,  integração das linguagens de descrição de hardware (Verilog) e programação de alto nível (C), utilização da FPGA mercúrio IV, uso do sensor DHT11, etc. 
+
+Além disso, esse projeto tem potencial para se expandir e evoluir ainda mais. Novas funcionalidades, como o envio de dados para nuvem ou a adição de sensores adicionais, podem ser incorporadas para aumentar a utilidade do sistema.
+Porém, ressalta-se alguns tópicos sensíveis, tais como: a complexidade devido à capacidade de gerenciar até 32 sensores diferentes (o que aumenta o consumo de recursos em termos de lógica e memória em uma FPGA, o que pode ser uma preocupação em sistemas com recursos limitados), dificuldade de sincronização do clock (uma vez que ele recebe uma alta frequência (50 MHz) e realiza uma divisão desse sinal para operações internas) e gerenciamento da comunicação com um grande número de sensores.
+
+Em resumo, o sistema representa uma implementação versátil e funcional para a comunicação com sensores em sistemas embarcados. Sua capacidade de gerenciar múltiplos sensores, detectar erros e oferecer suporte ao sensoriamento contínuo o torna uma escolha adequada para uma variedade de aplicações. No entanto, considerações de complexidade, escalabilidade e requisitos de clock devem ser cuidadosamente avaliadas ao adotar esse módulo em um projeto específico
+
+</p>
 
 
 
