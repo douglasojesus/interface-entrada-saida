@@ -316,8 +316,60 @@ O sinal transmissaoEmAndamento é usado para indicar quando a transmissão está
 
 Este módulo descreve a lógica necessária para transmitir dados UART de forma assíncrona, seguindo o protocolo de comunicação UART padrão. A temporização é crítica na comunicação UART, e este código aborda a transmissão de bits de dados serializados e os bits de início e parada.
 
- 
 </p>
+
+<h2>Módulo de recepção (Rx)</h2>
+
+<p align="justify">
+	O módulo uart_rx é um módulo do protocolo UART responsável pela transmissão de dados de maneira serial. Nesse projeto, o modulo transmissor foi configurado para transmitir 8 bits de dados seriais, um bit de start e um bit de stop. Logo no início do módulo são declaradas algumas portas de entrada e saída. Dentre elas, tem-se:
+
+input clock: Sinal de clock de entrada para sincronização.
+
+input bitSerialAtual: Sinal serial de entrada que carrega os dados a serem recebidos.
+
+output bitsEstaoRecebidos:  Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
+
+output [7:0] primeiroByteCompleto:  Saída de 8 bits que contém os dados do primeiro byte (de comando) recebido.
+
+output [7:0] segundoByteCompleto:  Saída de 8 bits que contém os dados do segundo byte (de endereço) recebido.
+
+
+Em seguida, define-se uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para identificar e coletar os bits dos dados recebidos e serializados.Sendo eles:
+
+estadoDeEspera:  Estado de espera inicial. Aguardando a detecção de um bit de início.
+
+estadoVerificaBitInicio:  Estado que verifica se o bit de início ainda está baixo. 
+
+estadoDeEsperaBits:  Estado que espera para mostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
+
+estadoStopBit:	 Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
+
+estadoDeLimpeza:  Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
+
+
+O código também usará registros (reg) para armazenar informações importantes, incluindo o valor do bit de start (serialDeEntrada), um contador de ciclos de clock (contadorDeClock) usado para temporização, um índice de bit atual (indiceDoBit) que rastreia a posição do bit atual dentro do byte recebido, um registro para armazenar os bits de dados recebidos (armazenaBits), e outros sinais de controle.
+
+A máquina de estados é implementada em um bloco always sensível à borda de subida do sinal de clock. Cada estado realiza operações específicas de acordo com o protocolo de comunicação UART:
+
+estadoDeEspera: Aguarda a detecção de um bit de início (start bit). Se um bit de início for detectado, a máquina de estados transita para o estado estadoVerificaBitInicio. Caso contrário, ele se mantém nesse estado.
+
+estadoVerificaBitInicio: Verifica se o bit de início ainda está baixo (indicando a primeira metade do bit de início). Se a primeira metade do bit de início for detectada, a máquina de estados verifica se o bit de início ainda está baixo. Se sim, transita para o estado estadoDeEsperaBits.
+
+estadoDeEsperaBits: Aguarda para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. Quando os 8 bits de dados são amostrados, transita para o estado estadoStopBit.
+
+estadoStopBit: Aguarda a conclusão do bit de parada (stop bit), que é logicamente alto. Após a espera, os dados são considerados recebidos, e a máquina de estados transita para o estado estadoDeLimpeza.
+
+estadoDeLimpeza: Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas. Os dados são considerados prontos para leitura (dadosOk   <= 1'b0), e a máquina de estados retorna ao estado “estadoDeEspera”.
+
+Os sinais de saída são atribuídos com base nos estados da máquina de estados. bitsEstaoRecebidos recebe o sinal de dadosOk indicando que os dados foram lidos corretamente, e primeiroByteCompleto e segundoByteCompleto contêm os bytes de dados recebidos.
+
+</p>
+
+<h2>Divisor de clock</h2>
+
+<p align="center">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
+	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
+	</p>
 
 
 
