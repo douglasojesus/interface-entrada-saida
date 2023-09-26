@@ -13,14 +13,14 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 <ul>
   <li><a href="#membros"><b>Equipe de Desenvolvimento;</b></li>
   <li><a href="#introducao"> <b>Introdução;</b></li>
-	  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
-	      <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
-		      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
-	<li><a href="#desenvolvimento"> <b>Desenvolvimento;</b> </a> </li>
-	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
-	      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
-		      <li><a href="#resultados"> <b>Resultados e Discussões</b> </a></li>
-		      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
+  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
+  <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
+	      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
+<li><a href="#desenvolvimento"> <b>Desenvolvimento;</b> </a> </li>
+<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
+      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
+	      <li><a href="#resultados"> <b>Resultados e Discussões</b> </a></li>
+	      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
   <li><a href="#referencias"> <b>Referências</b> </a></li>
 </ul>
 
@@ -144,7 +144,7 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 <p align="justify">Inicialmente foi proposto durante as sessões a criação de um diagrama inicial geral de como funcionaria o circuito. Dessa forma, foi possível identificar os três principais agentes do sistema. Sendo eles: o computador, a FPGA e o anexo do sensor DHT11.</p>
 
 <p align="center">
-	<img src="anexos/diagrama_projeto.png" alt=Diagrama em blocos do sistema>
+	<img src="anexos/MEF/diagrama_geral.png" alt=Diagrama em blocos do sistema>
 </p>
 
 <p align="justify">A FPGA conterá o circuito lógico responsável por receber o byte do código do comando e do byte do endereço do sensor do computador (através do módulo de recebimento “rx”), decodificar os códigos e devolver o dado correspondente que será lido pelo sensor (através do módulo de transmissão “tx”). No circuito implementado na placa também é necessário o uso da máquina de estados geral (MEF) que transita entre os estados e controla o tempo de cada ação, além de um módulo específico para o sensor DHT11, responsável por receber, decodificar e devolver os dados lidos do ambiente de acordo com a solicitação do usuário. Como possuem 32 endereços para alocação de anexo do sensor, o módulo da MEF poderá chamar os 32 módulos, contanto que cada um tenha , como saída, 40 bits de dados, um bit de erro e um bit que informa que os dados foram recebidos. Além disso, todos os módulos chamados devem ter como entrada o “enable” de acordo com seu endereço e o clock. A comunicação da FPGA com o anexo do sensor é bidirecional, portanto, deve haver um fio “inout” de comunicação.
