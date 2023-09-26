@@ -164,7 +164,9 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 
 <p align="justify">Inicialmente foi proposto durante as sessões a criação de um diagrama inicial geral de como funcionaria o circuito. Dessa forma, foi possível identificar os três principais agentes do sistema. Sendo eles: o computador, a FPGA e o anexo do sensor DHT11.</p>
 
-<img src="anexos/diagrama_projeto.png" alt=Diagrama em blocos do sistema>
+<p align="center">
+	<img src="anexos/diagrama_projeto.png" alt=Diagrama em blocos do sistema>
+</p>
 
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 
