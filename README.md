@@ -492,6 +492,9 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 	<img src="anexos/testes/testes-em-execucao/teste_sens_continuo_umi.png" alt=Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade>
 </p>
 
+<div align="center">
+[Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk,  "Vídeo do Youtube")
+</div>
 
 
 
@@ -539,12 +542,6 @@ Em resumo, o sistema representa uma implementação versátil e funcional para a
 
 
 
-
-
-
-
-
-
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 
 <p align="center">
@@ -555,7 +552,7 @@ Em resumo, o sistema representa uma implementação versátil e funcional para a
 
 <h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes</h1>
 
-[Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk,  "Vídeo do Youtube")
+
 
 Para clonar este repositório:
 
