@@ -15,6 +15,7 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
   <li><a href="#introducao"> <b>Introdução;</b></li>
 	  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
 	      <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
+		      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
 	<li><a href="#metodologia-e-tecnicas-aplicadas"> <b>Metodologia e técnicas aplicadas no projeto;</b> </a> </li>
 	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
   <li><a href="#descricao-do-protocolo-de-comunicacao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
@@ -61,6 +62,39 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 - 🔧 Visual Studio Code
 - 🔧 GNU Compiler Collection
 - 🔧 Git e Github
+
+<h1 id="fundamentacao-teorica" align="center">Fundamentação Teórica</h1>
+
+<p align="justify">Durante a criação e elaboração do projeto foram utilizados os conceitos e materiais apresentados a seguir. Portanto, torna-se indispensável a sua compreensão para o entendimento da criação e funcionamento do protótipo solicitado.</p>
+
+<h2>Comunicação Serial</h2>
+
+<p align="justify">Comunicação serial é um modo de transmissão de dados onde os bits são enviados, um por vez, em sequência e, portanto, necessita-se de apenas um canal transmissor (podendo ser um pino ou um fio) ao invés de n canais de transmissão que seria o caso da transmissão em paralelo.
+
+Para que alguns dispositivos funcionem e passem a receber e enviar os dados, é preciso, na maioria dos casos, de portas seriais. Elas são consideradas conexões externas que estão presentes nos equipamentos e servem para que alguns aparelhos básicos sejam conectados. Embora a maioria dos equipamentos da atualidade tenham substituído essas portas pelo USB, elas ainda são utilizadas em modems, impressoras, PDAs e até câmeras digitais.</p>
+
+<h2>Protocolo de comunicação UART</h2>
+
+<p align="center">
+UART (Universal Asynchronous Receiver-Transmitter) é um protocolo de comunicação assíncrono amplamente utilizado em dispositivos eletrônicos para transferência de dados, capaz de trabalhar com vários tipos de protocolos seriais para transmissão e recepção de dados. 
+Um dos principais objetivos deste protocolo é fornecer uma maneira simples e eficiente de transmitir informações serialmente (bit a bit) entre um módulo transmissor (TX) e um receptor (RX) sem depender de um clock que coordenaria as ações entre os dispositivos. Em vez disso, a comunicação é baseada em uma combinação de bits de dados e de controle, incluindo bits de início e parada, que marcam o início e o fim de cada byte de dados.
+
+<img src="" align="center" alt=Representação da comunicação via UART>
+
+Principais características da UART:
+
+Comunicação Bidirecional: A UART permite a comunicação bidirecional, o que significa que os dispositivos podem tanto transmitir quanto receber dados. Isso é especialmente útil em sistemas onde informações precisam ser enviadas e recebidas.
+
+Assincronia: Como mencionado, a comunicação UART é assíncrona, o que significa que os dispositivos não compartilham um relógio de sincronização central. Em vez disso, os dispositivos concordam com uma taxa de baud para determinar quando cada bit de dados deve ser transmitido ou recebido.
+
+Start e Stop Bits: Para sincronizar a transmissão e recepção de dados, a UART utiliza bits de início (start bits) e bits de parada (stop bits) antes e depois de cada byte de dados. Isso ajuda os dispositivos a identificar o início e o fim de cada byte.
+
+Configuração Flexível: A UART permite configurações flexíveis, incluindo a escolha do número de bits de dados por byte, o número de bits de parada e a taxa de baud. Essa flexibilidade torna a UART adequada para uma variedade de aplicações.
+
+Em resumo, a UART é um componente fundamental para a comunicação de dados em sistemas eletrônicos e é particularmente valiosa em situações em que a comunicação assíncrona é necessária ou desejada. Ela desempenha um papel importante em muitas tecnologias e dispositivos que dependem da troca de informações digitais.
+</p>
+
+<h2></h2>
 
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 <img src="MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
