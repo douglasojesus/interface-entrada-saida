@@ -292,43 +292,41 @@ Este módulo descreve a lógica necessária para transmitir dados UART de forma 
 <p align="justify">
 	O módulo uart_rx é um módulo do protocolo UART responsável pela transmissão de dados de maneira serial. Nesse projeto, o modulo transmissor foi configurado para transmitir 8 bits de dados seriais, um bit de start e um bit de stop. Logo no início do módulo são declaradas algumas portas de entrada e saída. Dentre elas, tem-se:
 
-input clock: Sinal de clock de entrada para sincronização.
+- input clock: Sinal de clock de entrada para sincronização.
 
-input bitSerialAtual: Sinal serial de entrada que carrega os dados a serem recebidos.
+- input bitSerialAtual: Sinal serial de entrada que carrega os dados a serem recebidos.
 
-output bitsEstaoRecebidos:  Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
+- output bitsEstaoRecebidos:  Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
 
-output [7:0] primeiroByteCompleto:  Saída de 8 bits que contém os dados do primeiro byte (de comando) recebido.
+- output [7:0] primeiroByteCompleto:  Saída de 8 bits que contém os dados do primeiro byte (de comando) recebido.
 
-output [7:0] segundoByteCompleto:  Saída de 8 bits que contém os dados do segundo byte (de endereço) recebido.
-
+- output [7:0] segundoByteCompleto:  Saída de 8 bits que contém os dados do segundo byte (de endereço) recebido.
 
 Em seguida, define-se uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para identificar e coletar os bits dos dados recebidos e serializados.Sendo eles:
 
-estadoDeEspera:  Estado de espera inicial. Aguardando a detecção de um bit de início.
+- estadoDeEspera:  Estado de espera inicial. Aguardando a detecção de um bit de início.
 
-estadoVerificaBitInicio:  Estado que verifica se o bit de início ainda está baixo. 
+- estadoVerificaBitInicio:  Estado que verifica se o bit de início ainda está baixo. 
 
-estadoDeEsperaBits:  Estado que espera para mostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
+- estadoDeEsperaBits:  Estado que espera para mostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
 
-estadoStopBit:	 Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
+- estadoStopBit:	 Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
 
-estadoDeLimpeza:  Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
-
+- estadoDeLimpeza:  Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
 
 O código também usará registros (reg) para armazenar informações importantes, incluindo o valor do bit de start (serialDeEntrada), um contador de ciclos de clock (contadorDeClock) usado para temporização, um índice de bit atual (indiceDoBit) que rastreia a posição do bit atual dentro do byte recebido, um registro para armazenar os bits de dados recebidos (armazenaBits), e outros sinais de controle.
 
 A máquina de estados é implementada em um bloco always sensível à borda de subida do sinal de clock. Cada estado realiza operações específicas de acordo com o protocolo de comunicação UART:
 
-estadoDeEspera: Aguarda a detecção de um bit de início (start bit). Se um bit de início for detectado, a máquina de estados transita para o estado estadoVerificaBitInicio. Caso contrário, ele se mantém nesse estado.
+- estadoDeEspera: Aguarda a detecção de um bit de início (start bit). Se um bit de início for detectado, a máquina de estados transita para o estado estadoVerificaBitInicio. Caso contrário, ele se mantém nesse estado.
 
-estadoVerificaBitInicio: Verifica se o bit de início ainda está baixo (indicando a primeira metade do bit de início). Se a primeira metade do bit de início for detectada, a máquina de estados verifica se o bit de início ainda está baixo. Se sim, transita para o estado estadoDeEsperaBits.
+- estadoVerificaBitInicio: Verifica se o bit de início ainda está baixo (indicando a primeira metade do bit de início). Se a primeira metade do bit de início for detectada, a máquina de estados verifica se o bit de início ainda está baixo. Se sim, transita para o estado estadoDeEsperaBits.
 
-estadoDeEsperaBits: Aguarda para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. Quando os 8 bits de dados são amostrados, transita para o estado estadoStopBit.
+- estadoDeEsperaBits: Aguarda para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. Quando os 8 bits de dados são amostrados, transita para o estado estadoStopBit.
 
-estadoStopBit: Aguarda a conclusão do bit de parada (stop bit), que é logicamente alto. Após a espera, os dados são considerados recebidos, e a máquina de estados transita para o estado estadoDeLimpeza.
+- estadoStopBit: Aguarda a conclusão do bit de parada (stop bit), que é logicamente alto. Após a espera, os dados são considerados recebidos, e a máquina de estados transita para o estado estadoDeLimpeza.
 
-estadoDeLimpeza: Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas. Os dados são considerados prontos para leitura (dadosOk   <= 1'b0), e a máquina de estados retorna ao estado “estadoDeEspera”.
+- estadoDeLimpeza: Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas. Os dados são considerados prontos para leitura (dadosOk   <= 1'b0), e a máquina de estados retorna ao estado “estadoDeEspera”.
 
 Os sinais de saída são atribuídos com base nos estados da máquina de estados. bitsEstaoRecebidos recebe o sinal de dadosOk indicando que os dados foram lidos corretamente, e primeiroByteCompleto e segundoByteCompleto contêm os bytes de dados recebidos.
 
@@ -340,34 +338,34 @@ Os sinais de saída são atribuídos com base nos estados da máquina de estados
 	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
 	</p>
 
-<h2>Módulo principal FPGA implementation</h2>
+<h2>Módulo principal</h2>
 
 <p align="justify">O “FPGAImplementation” é o módulo principal responsável por conectar todos os outros módulos.
 
 
-input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
+- input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
 
-input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
+- input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
 
-output bitSerialAtualTX: Sinal serial de saída que será transmitido para o PC.
+- output bitSerialAtualTX: Sinal serial de saída que será transmitido para o PC.
 
-inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comunicar com o sensor DHT11.
+- inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comunicar com o sensor DHT11.
 
-inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
+- inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
 
 Ademais foram criados alguns fios utilizados para a transmissão de dados:
 
-dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
+- dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
 
-request_command e request_address: Sinais wire que representam comandos e endereços recebidos do computador, respectivamente.
+- request_command e request_address: Sinais wire que representam comandos e endereços recebidos do computador, respectivamente.
 
-response_command e response_value: Sinais wire que representam comandos e valores a serem transmitidos de volta ao computador.
+- response_command e response_value: Sinais wire que representam comandos e valores a serem transmitidos de volta ao computador.
 
-bitsEstaoEnviados: variável que informa quando os bits foram enviados para o computador. Essa variável é saída do módulo de comunicação UART TX. 
+- bitsEstaoEnviados: variável que informa quando os bits foram enviados para o computador. Essa variável é saída do módulo de comunicação UART TX. 
 
-indicaTransmissao: variável que informa que os dados estão sendo transmitidos para o computador.  
+- indicaTransmissao: variável que informa que os dados estão sendo transmitidos para o computador.  
 
-bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
+- bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
 </p>
 
 <h2>Módulo uart_rx</h2>
