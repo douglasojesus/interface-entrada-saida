@@ -62,7 +62,7 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 - 🔧 GNU Compiler Collection
 - 🔧 Git e Github
 
-<h2>Kit de desenvolvimento Mercury IV</h2>
+<h2>Kit de Desenvolvimento Mercury IV</h2>
 
 <p align="justify">O FPGA utilizado como plataforma para portar o protótipo disposto e que equipa a placa Mercurio® IV é uma Cyclone® IV E EP4CE30F23C7, a qual possui quase 30 mil elementos lógicos (LEs), um clock de entrada de 50MHz e diversas interfaces/funcionalidades que auxiliam no desenvolvimento de circuitos lógicos.</p>
 
@@ -115,7 +115,7 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 
 Para que alguns dispositivos funcionem e passem a receber e enviar os dados, é preciso, na maioria dos casos, de portas seriais. Elas são consideradas conexões externas que estão presentes nos equipamentos e servem para que alguns aparelhos básicos sejam conectados. Embora a maioria dos equipamentos da atualidade tenham substituído essas portas pelo USB, elas ainda são utilizadas em modems, impressoras, PDAs e até câmeras digitais.</p>
 
-<h2>Protocolo de comunicação UART</h2>
+<h2>Protocolo de Comunicação UART</h2>
 
 <p align="justify">
 UART (Universal Asynchronous Receiver-Transmitter) é um protocolo de comunicação assíncrono amplamente utilizado em dispositivos eletrônicos para transferência de dados, capaz de trabalhar com vários tipos de protocolos seriais para transmissão e recepção de dados. 
@@ -139,8 +139,6 @@ Um dos principais objetivos deste protocolo é fornecer uma maneira simples e ef
 Em resumo, a UART é um componente fundamental para a comunicação de dados em sistemas eletrônicos e é particularmente valiosa em situações em que a comunicação assíncrona é necessária ou desejada. Ela desempenha um papel importante em muitas tecnologias e dispositivos que dependem da troca de informações digitais.
 </p>
 
-
-
 <h1 id="desenvolvimento" align="center">Desenvolvimento e Descrição em Alto Nível</h1>
 
 <p align="justify">Inicialmente foi proposto durante as sessões a criação de um diagrama inicial geral de como funcionaria o circuito. Dessa forma, foi possível identificar os três principais agentes do sistema. Sendo eles: o computador, a FPGA e o anexo do sensor DHT11.</p>
@@ -154,7 +152,7 @@ Em resumo, a UART é um componente fundamental para a comunicação de dados em 
 O sensor é um elemento externo que ficará conectado à placa através dos pinos da interface PMOD (VCC 3.3V, GND e algum pino compatível com o PMOD) presentes na placa, e é o responsável pela leitura da temperatura e umidade ambiente.
 </p>
 
-<h2>Protocolo de envio e recebimento de dados</h2>
+<h2>Protocolo de Envio e Recebimento de Dados</h2>
 
 <p align="justify">
 	O primeiro passo para o desenvolvimento do projeto foi a criação de um protocolo para envio e recebimento de dados. A importância de um protocolo adequado e bem definido se dá pela estrutura, eficiência, confiabilidade e integridade de dados, além de otimizar recursos fornecidos para o projeto. 
@@ -226,7 +224,7 @@ O sensor é um elemento externo que ficará conectado à placa através dos pino
 
 <p align="center">Tabela do protocolo de respostas</p>
 
-<h2>Programação em alto nível (linguagem C)</h2>
+<h2>Programação em Alto Nível (Linguagem C)</h2>
 
 <p align="justify">
 A comunicação inicial para o usuário solicitar uma requisição e posteriormente visualizar os dados retornados foi feita através de um programa, em linguagem C, no computador.
@@ -236,10 +234,9 @@ Dentro do módulo “main()” é inicializado algumas variáveis que auxiliarã
 Caso a resposta do usuário esteja dentro das oferecidas, o programa segue para dois switch case. O primeiro converterá a opção do usuário para um hexadecimal correspondente ao código de requerimento definido no protocolo. O segundo converterá a opção do usuário em relação ao endereço do sensor para um hexadecimal correspondente, dentre os 32 possíveis.
 </p>
 
-<h2>Módulo principal</h2>
+<h2>Módulo Principal</h2>
 
 <p align="justify">O “FPGAImplementation” é o módulo principal responsável por conectar todos os outros módulos.
-
 
 - input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
 - input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
@@ -265,7 +262,7 @@ Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa
 O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
 Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
 
-<h2>Módulo de recepção (Rx)</h2>
+<h2>Módulo de Recepção (Rx)</h2>
 
 <p align="justify">
 	O módulo uart_rx é um módulo do protocolo UART responsável pela transmissão de dados de maneira serial. Nesse projeto, o modulo transmissor foi configurado para transmitir 8 bits de dados seriais, um bit de start e um bit de stop. Logo no início do módulo são declaradas algumas portas de entrada e saída. Dentre elas, tem-se:
@@ -316,7 +313,7 @@ Portanto, o módulo conexao_sensor é uma implementação versátil de comunica�
 	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
 	</p>
 
-<h2>Módulo de comunicação DHT11</h2>
+<h2>Módulo de Comunicação DHT11</h2>
 
 <p align="justify">
 
@@ -371,7 +368,7 @@ Em resumo, o código implementa uma máquina de estados para se comunicar com um
 
 </p>
 
-<h2>Módulo de transmissão (Tx)</h2>
+<h2>Módulo de Transmissão (Tx)</h2>
 
 <p align="justify">
 
@@ -406,7 +403,7 @@ Este módulo descreve a lógica necessária para transmitir dados UART de forma 
 
 </p>
 
-<h1 id="descricao-e-analise-dos-testes">Descrição e análise dos testes e simuações</h1>
+<h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes e Simulações</h1>
 <p align="justify">
 	O projeto proposto, em sua fase final, apresentou ótimos resultados conforme o solicitado, lendo e entregando os dados solicitados corretamente. A interação do usuário com o  sistema é feita inteiramente através do terminal, onde, através de uma tabela de opções, deve ser selecionado o requerimento desejado e o endereço no qual se encontra o sensor.
 	
