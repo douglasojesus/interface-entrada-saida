@@ -467,31 +467,37 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_1_1.png" alt=Teste para situação atual de funcionamento do sensor indicado no endereço 0x01>
 </p>
+<p align="center">Teste para situação atual de funcionamento do sensor indicado no endereço 0x01</p>
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_2_1.png" alt=Teste para solicitação da temperatura atual do ambiente pelo sensor indicado no endereço 0x01>
 </p>
+<p align="center">Teste para solicitação da temperatura atual do ambiente pelo sensor indicado no endereço 0x01</p>
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_3_1.png" alt=Teste para solicitação da umidade atual do ambiente pelo sensor indicado no endereço 0x01>
 </p>
+<p align="center">Teste para solicitação da umidade atual do ambiente pelo sensor indicado no endereço 0x01</p>
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_4_1.png" alt=Teste para solicitação da ativação do sensoriamento contínuo de temperatura do ambiente pelo sensor indicado no endereço 0x01>
 </p>
+<p align="center">Teste para solicitação da ativação do sensoriamento contínuo de temperatura do ambiente pelo sensor indicado no endereço 0x01</p>
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_sens_continuo_temp.png" alt=Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de temperatura>
 </p>
+<p align="center">Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de temperatura</p>
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_5_1.png" alt=Teste para solicitação da ativação do sensoriamento contínuo de umidade do ambiente pelo sensor indicado no endereço 0x01>
 </p>
+<p align="center">Teste para solicitação da ativação do sensoriamento contínuo de umidade do ambiente pelo sensor indicado no endereço 0x01</p>
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_sens_continuo_umi.png" alt=Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade>
-	*Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade*
 </p>
+<p align="center">Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade</p>
 
 
 [Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk,  "Vídeo do Youtube")
