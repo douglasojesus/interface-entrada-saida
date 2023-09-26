@@ -11,21 +11,20 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 
 <h1 id="sumario" align="center">Sumário</h1>
 <ul>
-  <li><a href="#membros"><b>Membros;</b></li>
+  <li><a href="#membros"><b>Equipe de Desenvolvimento;</b></li>
   <li><a href="#introducao"> <b>Introdução;</b></li>
 	  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
 	      <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
 		      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
 	<li><a href="#desenvolvimento"> <b>Desenvolvimento;</b> </a> </li>
 	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
-  <li><a href="#descricao-do-protocolo-de-comunicacao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
 	      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
 		      <li><a href="#resultados"> <b>Resultados e Discussões</b> </a></li>
 		      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
   <li><a href="#referencias"> <b>Referências</b> </a></li>
 </ul>
 
-<h1 id="membros" align="center">Equipe de Desenvolvimeno</h1>
+<h1 id="membros" align="center">Equipe de Desenvolvimento</h1>
 
   <ul>
 		<li><a href="https://github.com/douglasojesus"> Douglas Oliveira de Jesus </li>
@@ -69,7 +68,7 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 
 <h2>Comunicação Serial</h2>
 
-<p align="justify">Comunicação serial é um modo de transmissão de dados onde os bits são enviados, um por vez, em sequência e, portanto, necessita-se de apenas um canal transmissor (podendo ser um pino ou um fio) ao invés de n canais de transmissão que seria o caso da transmissão em paralelo.
+<p align="justify">Comunicação serial é um modo de transmissão de dados onde os bits são enviados, um por vez, em sequência e, portanto, necessita-se de apenas um canal transmissor (podendo ser um pino ou um fio) ao invés de "n" canais de transmissão que seria o caso da transmissão em paralelo.
 
 Para que alguns dispositivos funcionem e passem a receber e enviar os dados, é preciso, na maioria dos casos, de portas seriais. Elas são consideradas conexões externas que estão presentes nos equipamentos e servem para que alguns aparelhos básicos sejam conectados. Embora a maioria dos equipamentos da atualidade tenham substituído essas portas pelo USB, elas ainda são utilizadas em modems, impressoras, PDAs e até câmeras digitais.</p>
 
@@ -86,34 +85,24 @@ Um dos principais objetivos deste protocolo é fornecer uma maneira simples e ef
 
 <p align="justify">Principais características da UART:
 
-Comunicação Bidirecional: A UART permite a comunicação bidirecional, o que significa que os dispositivos podem tanto transmitir quanto receber dados. Isso é especialmente útil em sistemas onde informações precisam ser enviadas e recebidas.
+- Comunicação Bidirecional: A UART permite a comunicação bidirecional, o que significa que os dispositivos podem tanto transmitir quanto receber dados. Isso é especialmente útil em sistemas onde informações precisam ser enviadas e recebidas.
 
-Assincronia: Como mencionado, a comunicação UART é assíncrona, o que significa que os dispositivos não compartilham um relógio de sincronização central. Em vez disso, os dispositivos concordam com uma taxa de baud para determinar quando cada bit de dados deve ser transmitido ou recebido.
+- Assincronia: Como mencionado, a comunicação UART é assíncrona, o que significa que os dispositivos não compartilham um relógio de sincronização central. Em vez disso, os dispositivos concordam com uma taxa de baud para determinar quando cada bit de dados deve ser transmitido ou recebido.
 
-Start e Stop Bits: Para sincronizar a transmissão e recepção de dados, a UART utiliza bits de início (start bits) e bits de parada (stop bits) antes e depois de cada byte de dados. Isso ajuda os dispositivos a identificar o início e o fim de cada byte.
+- Start e Stop Bits: Para sincronizar a transmissão e recepção de dados, a UART utiliza bits de início (start bits) e bits de parada (stop bits) antes e depois de cada byte de dados. Isso ajuda os dispositivos a identificar o início e o fim de cada byte.
 
-Configuração Flexível: A UART permite configurações flexíveis, incluindo a escolha do número de bits de dados por byte, o número de bits de parada e a taxa de baud. Essa flexibilidade torna a UART adequada para uma variedade de aplicações.
+- Configuração Flexível: A UART permite configurações flexíveis, incluindo a escolha do número de bits de dados por byte, o número de bits de parada e a taxa de baud. Essa flexibilidade torna a UART adequada para uma variedade de aplicações.
 
 Em resumo, a UART é um componente fundamental para a comunicação de dados em sistemas eletrônicos e é particularmente valiosa em situações em que a comunicação assíncrona é necessária ou desejada. Ela desempenha um papel importante em muitas tecnologias e dispositivos que dependem da troca de informações digitais.
 </p>
 
 <h2>Kit de desenvolvimento Mercury IV</h2>
 
-<p align="justify">O FPGA utilizado como plataforma para portar o protótipo disposto e que equipa a placa Mercurio® IV é uma Cyclone® IV EP4CE30F23, a qual possui 30 mil elementos lógicos (LEs), um clock de entrada de 50MHz e diversas interfaces/funcionalidades que auxiliam no desenvolvimento de circuitos lógicos.</p>
+<p align="justify">O FPGA utilizado como plataforma para portar o protótipo disposto e que equipa a placa Mercurio® IV é uma Cyclone® IV E EP4CE30F23C7, a qual possui quase 30 mil elementos lógicos (LEs), um clock de entrada de 50MHz e diversas interfaces/funcionalidades que auxiliam no desenvolvimento de circuitos lógicos.</p>
 
 <h2>Sensor DHT11</h2>
 
-<p align="justify">O sensor DHT11 é um dispositivo digital utilizado para efetuar medições de temperatura e umidade no ambiente. Suas características técnicas incluem:
-
-Faixa de medição de temperatura: 0°C a 50°C, com precisão de ±2°C.
-
-Faixa de medição de umidade do ar: 20% a 90%, com precisão de 5%.
-
-Taxa de atualização das leituras: uma leitura a cada 2 segundos.
-
-Tensão de operação: De 3,5 VDC a 5,5 VDC.
-
-Corrente de operação: 0,3 mA.
+<p align="justify">O sensor DHT11 é um dispositivo digital utilizado para efetuar medições de temperatura e umidade no ambiente. Das suas principais características técnicas, ele permite um faixa de medição de 0°C até 50°C para temperatura e 20% até 90% para umidade; faz faz leitura a cada 2 segundos; tem uma tensão de operação de 3,5 VDC (suportando até 5,5 VDC) e uma corrente de 0,3 mA. 
 
 Instruções de Uso:
 
@@ -128,23 +117,13 @@ Pino 4 (GND): Conectar ao GND (terra).</p>
   <img src="anexos/dth11.png" alt=Identificação dos pinos do DHT11 width="300" height="300">
 </p>
 
-<p align="justify">Os dados lidos pelo sensor são enviados em formato binário, seguindo esta sequência de bytes:
-
-Primeiro byte (sequência de 8 bits): Dados de alta umidade (parte inteira).
-
-Segundo byte (sequência de 8 bits): Dados de baixa umidade (casas decimais).
-
-Terceiro byte (sequência de 8 bits): Dados de alta temperatura (parte inteira).
-
-Quarto byte (sequência de 8 bits): Dados de baixa temperatura (casas decimais).
-
-Quinto byte (sequência de 8 bits): Bit de paridade (funciona como um "checksum" para verificar a soma de todos os outros dados lidos).
+<p align="justify">Os dados lidos pelo sensor são enviados em formato binário, seguindo a sequência: dados da parte inteira de umidade, dados da parte decimal da umidade, dados da parte inteira da temperatura, dados da parte decimal da temperatura e byte de paridade que funciona como um checksum para verificar a soma dos outros dados lidos. Todos os dados obtém um tamanho de 8 bits (1 byte). Portanto, o DHT11 retorna 40 bits de dados bruto.
 
 Exemplo de leitura final:
 
-0011 0101 | 0000 0000 | 0001 1000 | 0000 0000 | 0100 1101
+0011 0101	 |	 0000 0000 |	0001 1000 	| 	0000 0000 | 	0100 1101
 
-Umidade alta | Umidade baixa | Temperatura alta | Temperatura baixa | Bit de paridade
+Umidade inteira	 | Umidade decimal |	Temperatura inteira | 	Temperatura decimal | 	Bit de paridade
 
 Calculando a soma dos valores e verificando se está de acordo com o bit de paridade:
 
@@ -156,7 +135,7 @@ Umidade: 0011 0101 = 35H = 53% de umidade relativa.
 
 Temperatura: 0001 1000 = 18H = 24°C.
 
-Portanto, ao receber os dados é necessário, primeiramente, separar as sequências de bytes, segundamente, verificar, através da sequência do “parity bit”, se não houve nenhum erro durante a leitura e, por fim, faz-se uma decodificação para obter o real valor da umidade e temperatura, respectivamente.
+Portanto, ao receber os dados é necessário, primeiramente, separar as sequências de bytes e depois verificar, através da sequência do “parity bit”, se não há nenhum erro durante a leitura e, por fim, faz-se uma decodificação para obter o real valor da umidade e temperatura, respectivamente.
 
 </p>
 
