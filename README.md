@@ -355,7 +355,7 @@ inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comuni
 
 inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
 
-	Ademais foram criados alguns fios utilizados para a transmissão de dados:
+Ademais foram criados alguns fios utilizados para a transmissão de dados:
 
 dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
 
