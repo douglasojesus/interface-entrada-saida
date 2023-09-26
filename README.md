@@ -160,7 +160,7 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 
 </p>
 
-<h1 id="desenvolvimento" align="center">Desenvolvimento</h1>
+<h1 id="desenvolvimento" align="center">Desenvolvimento e Descrição em Alto Nível</h1>
 
 <p align="justify">Inicialmente foi proposto durante as sessões a criação de um diagrama inicial geral de como funcionaria o circuito. Dessa forma, foi possível identificar os três principais agentes do sistema. Sendo eles: o computador, a FPGA e o anexo do sensor DHT11.</p>
 
@@ -370,6 +370,7 @@ Os sinais de saída são atribuídos com base nos estados da máquina de estados
 <p align="center">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
 	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
 	</p>
+
 
 
 
