@@ -10,6 +10,7 @@ module conexao_sensor(
 	input 			enable,
 	input [7:0] 	request_command,
 	input [7:0] 	request_address,
+	input				cancel_monitoring,
 	inout 			transmission_line_sensor_01,
 	inout [30:0]	transmission_line_other_sensors,
 	output			dadosPodemSerEnviados,
@@ -97,6 +98,10 @@ module conexao_sensor(
 					response_value_reg <= 8'h45; //E
 					response_command_reg <= 8'h45; //E
 				end
+			else if (cancel_monitoring == 1'b1)
+				begin
+					in_loop <= 0;
+				end
 			else
 				//Se não tiver erro
 				begin
@@ -110,10 +115,12 @@ module conexao_sensor(
 											begin
 												current_state <= LEITURA;
 												contador <= 1'b0;
+												enable_sensor  <= 1'b1;
 											end
 										else
 											begin
 												current_state <= ESPERA;
+												enable_sensor  <= 1'b0;
 											end
 									end
 								else
