@@ -163,7 +163,7 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 
 <p align="center">
-  <img src="anexo/MEF/dependencyTree.drawio.png" align="center" alt=Diagrama de dependências para sicronização>
+  <img src="anexos/MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
 </p>
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
