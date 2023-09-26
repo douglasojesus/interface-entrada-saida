@@ -490,11 +490,12 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_sens_continuo_umi.png" alt=Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade>
+	*Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade*
 </p>
 
-<div align="center">
+<p align="center">
 	[Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk,  "Vídeo do Youtube")
-</div>
+</p>
 
 
 
