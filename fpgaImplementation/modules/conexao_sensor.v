@@ -4,17 +4,16 @@
 
 */
 
-
 module conexao_sensor(
-	input 			clock,
-	input 			enable,
-	input [7:0] 	request_command,
-	input [7:0] 	request_address,
-	inout 			transmission_line_sensor_01,
-	inout [30:0]	transmission_line_other_sensors,
-	output			dadosPodemSerEnviados,
-	output [7:0] 	response_command,
-	output [7:0] 	response_value
+	input 			clock, //50MHz
+	input 			enable, //Variável que acompanha o recebimento total de bytes por uart_rx
+	input [7:0] 	request_command, //Requisição de comando: primeiro byte recebido da uart_rx
+	input [7:0] 	request_address, //Requisição de endereço: segundo byte recebido da uart_rx
+	inout 			transmission_line_sensor_01, //Fio de comunicação com o DHT11 especificado (para facilidade de manutenção durante produção)
+	inout [30:0]	transmission_line_other_sensors, //Fios para implementação de outros anexos de sensores
+	output			dadosPodemSerEnviados, //Variável que informa que os dados podem ser enviados através da uart_tx
+	output [7:0] 	response_command, //Byte de resposta do comando para ser enviado por uart_tx
+	output [7:0] 	response_value //Byte de resposta do valor para ser enviado por uart_tx
 );
 
 	/************VARIÁVEIS TEMPORÁRIAS************/
@@ -81,14 +80,16 @@ module conexao_sensor(
 	
 	/*************************************************** SENSORES ***************************************************/
 	
-	assign hum_int_dht11   	= sensor_data[39:32];
-	assign temp_int_dht11   = sensor_data[23:16];
+	assign hum_int_dht11   	= sensor_data[39:32]; //Separação do byte da parte inteira da umidade
+	assign temp_int_dht11   = sensor_data[23:16]; ////Separação do byte da parte inteira da temperatura
 	
+	//Verificação do byte de paridade
 	assign errorChecksum = (sensor_data[7:0] == sensor_data[15:8] + sensor_data[23:16] + sensor_data[31:24] + sensor_data[39:32]) ? 1'b0 : 1'b1;	
 
+	//Definição dos estados da MEF
 	localparam [1:0] ESPERA = 2'b00, LEITURA = 2'b01, ENVIO = 2'b10, STOP = 2'b11;
 	
-	reg [2:0] current_state = ESPERA;
+	reg [1:0] current_state = ESPERA;
 	
 	always @(posedge clock)
 		begin
@@ -98,39 +99,35 @@ module conexao_sensor(
 					response_command_reg <= 8'h45; //E
 				end
 			else
-				//Se não tiver erro
 				begin
 					case (current_state)
 						ESPERA:
 							begin
-								if (in_loop == 1'b1)
+								if (enable == 1'b1) //Caso esteja em Loop, Vai para LEITURA sem aguardar os 2s pois foram recebidos bytes de requisição
+									begin
+										current_state <= LEITURA;
+										enable_sensor  <= 1'b1;
+									end
+								else if (in_loop == 1'b1)
 									begin
 										contador <= contador + 1'b1;
 										if (contador >= 27'd100000000) //2 segundos
 											begin
 												current_state <= LEITURA;
 												contador <= 1'b0;
-											end
-										else
-											begin
-												current_state <= ESPERA;
-											end
-									end
-								else
-									begin
-										if (enable == 1'b0)
-											begin
-												current_state <= ESPERA;
-												enable_sensor  <= 1'b0;
-											end
-										else  //Quando o sensor parar de enviar os dados e o enable estiver ativado
-											begin
-												current_state <= LEITURA;
 												enable_sensor  <= 1'b1;
 											end
-										dadosPodemSerEnviados_reg <= 1'b0;
 									end
+								else //in_loop == 0 && enable == 0
+									begin
+										current_state <= ESPERA;
+										enable_sensor  <= 1'b0;
+									end
+								dadosPodemSerEnviados_reg <= 1'b0;
 							end
+						/*
+						Em LEITURA, o estado verifica a requisição e retorna os valores de acordo com o protocolo.
+						*/
 						LEITURA:
 							begin
 								if(dadosOK == 1'b1)
@@ -202,12 +199,18 @@ module conexao_sensor(
 											end
 									end
 							end
+						/*
+						Em ENVIO, com os valores e comandos já carregados, os dados são liberados para envio.
+						*/
 						ENVIO:
 							begin
 								dadosPodemSerEnviados_reg <= 1'b1;
 								current_state <= STOP;
 								contador <= 0;
 							end
+						/*
+						Em STOP, o sensor é desativado e a MEF volta para o estado de ESPERA.
+						*/
 						STOP:
 							begin
 								current_state <= ESPERA;

@@ -5,7 +5,7 @@ module divisor_de_clock(clock_SYS, clock_1MHZ);
 	
 	reg [5:0] contador_clock;
 	
-	//clock 5MHz to 1MHz
+	//Divisão de clock de 50MHz para 1MHz
 	always @ (posedge clock_SYS) 
 		begin
 			if (contador_clock < 6'd50)

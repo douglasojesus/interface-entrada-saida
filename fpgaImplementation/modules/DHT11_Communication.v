@@ -6,12 +6,13 @@
 
 module DHT11_Communication (
 	input wire       	clock_1M, //1 MHz
-	input wire	     	enable_sensor,
-	inout	          	dht11,
-	output reg [39:0]	dados_sensor,
-	output 				erro,
-	output 				done
+	input wire	     	enable_sensor, //Sinal de controle que ativa ou desativa a comunicação com o sensor.
+	inout	          	dht11, //Sinal inout que liga ao sensor DHT11.
+	output reg [39:0]	dados_sensor, //Sinal de saída que contém os dados lidos do sensor.
+	output 				erro, //Sinal de saída que indica se ocorreu algum erro na máquina.
+	output 				done //Sinal de saída que indica quando a máquina terminou sua operação.
 );
+
 
 	reg        	direcao_dado;     // Direção do sinal do inout
 	reg        	dados_enviados_sensor;	
@@ -82,6 +83,12 @@ module DHT11_Communication (
 			else 
 				begin
 					case (estado_atual)
+					/*
+					Este é o estado inicial da máquina.
+					Ele aguarda um sinal de início do sensor DHT11 (uma borda de subida seguida de um sinal alto).
+					Se o sinal de início for detectado, a máquina transita para o estado BIT_DE_INICIO.
+					Caso contrário, ele mantém a máquina no estado ESPERA.
+					*/
 						ESPERA: 
 							begin
 								if (start_rising && dado_do_sensor == 1'b1) 
@@ -99,7 +106,11 @@ module DHT11_Communication (
 										contador <= 16'd0;
 									end	
 							end
-
+					/*
+					Neste estado, a máquina aguarda um período de tempo específico (19 ms) para sincronizar com o sensor.
+					O contador é usado para medir esse tempo.
+					Quando o tempo de sincronização é atingido, a máquina transita para o estado ENVIA_SINAL_A_20US.
+					*/
 						BIT_DE_INICIO :  //19Ms
 							begin      
 								if (contador >= 16'd19000) 
@@ -114,6 +125,11 @@ module DHT11_Communication (
 									end
 							end
 						
+					/*
+					Neste estado, a máquina envia um sinal de 20 microssegundos para o sensor.
+					Isso é feito usando o contador para medir o tempo.
+					Após o envio do sinal, a máquina transita para o estado ESPERA_SINAL_B.
+					*/
 						ENVIA_SINAL_A_20US : 
 							begin           
 								if (contador >= 16'd20)
@@ -127,7 +143,12 @@ module DHT11_Communication (
 										contador <= contador + 1'b1;
 									end
 							end
-						
+					/*
+					Este estado espera que o sensor DHT11 responda com um sinal baixo.
+					Ele monitora o sinal do sensor.
+					Se o sensor enviar um sinal baixo, a máquina transita para o estado ESPERA_SINAL_A.
+					Se o sensor não responder dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+					*/
 						ESPERA_SINAL_B:
 							begin            
 								if (dado_do_sensor == 1'b0) 
@@ -147,7 +168,12 @@ module DHT11_Communication (
 											end	
 									end
 							end
-						
+						/*
+						Neste estado, a máquina espera que o sensor DHT11 envie um sinal alto.
+						Ele monitora o sinal do sensor.
+						Se o sensor enviar um sinal alto, a máquina transita para o estado FIM_SYNC.
+						Se o sensor não responder dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+						*/
 						ESPERA_SINAL_A: 
 							begin           
 								if (dado_do_sensor == 1'b1) 
@@ -170,7 +196,12 @@ module DHT11_Communication (
 									end
 								
 							end
-						
+						/*
+						Este estado indica o fim da sincronização com o sensor DHT11.
+						A máquina aguarda o sensor enviar um sinal baixo.
+						Se o sensor enviar um sinal baixo, a máquina transita para o estado WAIT_1_BIT_DHT11.
+						Se o sensor não responder dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+						*/
 						FIM_SYNC : 
 							begin 
 								if (dado_do_sensor == 1'b0) 
@@ -191,6 +222,11 @@ module DHT11_Communication (
 									end
 							end
 
+						/*
+						Neste estado, a máquina aguarda a transmissão de um bit de dados pelo sensor DHT11.
+						Se o bit for lido como 1, a máquina transita para o estado LE_DADOS.
+						Se o bit não for lido dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+						*/
 						WAIT_1_BIT_DHT11:
 							begin            
 								if ( dado_do_sensor == 1'b1) 
@@ -211,6 +247,13 @@ module DHT11_Communication (
 									end	
 							end
 
+						/*
+						Neste estado, a máquina lê os dados enviados pelo sensor DHT11.
+						Ela conta os bits recebidos e os armazena em dados_bruto.
+						Dependendo do valor lido (0 ou 1), ela atualiza dados_bruto.
+						Se todos os 40 bits foram lidos, a máquina transita para o estado COLETA_DADOS.
+						Se um erro ocorrer durante a leitura, ela volta para WAIT_1_BIT_DHT11.
+						*/	
 						LE_DADOS: 
 							begin
 								if (dado_do_sensor == 1'b0) 
@@ -240,6 +283,12 @@ module DHT11_Communication (
 									end
 							end
 						
+						/*
+						Neste estado, a máquina transfere os dados brutos armazenados em dados_bruto para dados_sensor, 
+						representando os dados de temperatura e umidade lidos.
+						Ela também verifica se o último bit recebido é 1; se não for, sinaliza um erro.
+						Após a coleta dos dados, a máquina transita para o estado ACABA_PROCESSO.
+						*/
 						COLETA_DADOS: 
 							begin
 								dados_sensor <= dados_bruto;
@@ -259,7 +308,13 @@ module DHT11_Communication (
 											end
 									end
 							end
-							
+						
+						/*
+						Este estado é alcançado após a conclusão bem-sucedida ou com erro da comunicação com o sensor DHT11.
+						Se ocorrer um erro na máquina, ele mantém a máquina neste estado e sinaliza o erro.
+						Se não houver erro, ele conclui o processo e sinaliza que a operação foi concluída.
+						Após um período de normalização, a máquina volta ao estado ESPERA para aguardar a próxima comunicação.
+						*/
 						ACABA_PROCESSO:
 							begin
 								if (erro_na_maquina == 1'b1)
