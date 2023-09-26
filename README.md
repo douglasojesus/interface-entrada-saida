@@ -75,13 +75,13 @@ Para que alguns dispositivos funcionem e passem a receber e enviar os dados, é 
 
 <h2>Protocolo de comunicação UART</h2>
 
-<p align="center">
+<p align="justify">
 UART (Universal Asynchronous Receiver-Transmitter) é um protocolo de comunicação assíncrono amplamente utilizado em dispositivos eletrônicos para transferência de dados, capaz de trabalhar com vários tipos de protocolos seriais para transmissão e recepção de dados. 
-Um dos principais objetivos deste protocolo é fornecer uma maneira simples e eficiente de transmitir informações serialmente (bit a bit) entre um módulo transmissor (TX) e um receptor (RX) sem depender de um clock que coordenaria as ações entre os dispositivos. Em vez disso, a comunicação é baseada em uma combinação de bits de dados e de controle, incluindo bits de início e parada, que marcam o início e o fim de cada byte de dados.
+Um dos principais objetivos deste protocolo é fornecer uma maneira simples e eficiente de transmitir informações serialmente (bit a bit) entre um módulo transmissor (TX) e um receptor (RX) sem depender de um clock que coordenaria as ações entre os dispositivos. Em vez disso, a comunicação é baseada em uma combinação de bits de dados e de controle, incluindo bits de início e parada, que marcam o início e o fim de cada byte de dados.</p>
 
-<img src="" align="center" alt=Representação da comunicação via UART>
+<img src="anexo/uart_tx__uart_rx.png" align="center" alt=Representação da comunicação via UART>
 
-Principais características da UART:
+<p align="justify">Principais características da UART:
 
 Comunicação Bidirecional: A UART permite a comunicação bidirecional, o que significa que os dispositivos podem tanto transmitir quanto receber dados. Isso é especialmente útil em sistemas onde informações precisam ser enviadas e recebidas.
 
@@ -97,7 +97,7 @@ Em resumo, a UART é um componente fundamental para a comunicação de dados em 
 <h2></h2>
 
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
-<img src="MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
+<img src="anexo/MEF/dependencyTree.drawio.png" align="center" alt=Diagrama de dependências para sicronização>
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
