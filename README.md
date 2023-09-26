@@ -16,12 +16,12 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
   <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
   <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
 	      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
-<li><a href="#desenvolvimento"> <b>Desenvolvimento;</b> </a> </li>
-<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
+<li><a href="#desenvolvimento"> <b>Desenvolvimento e Descrição em Alto Nível;</b> </a> </li>
       <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
 	      <li><a href="#resultados"> <b>Resultados e Discussões</b> </a></li>
 	      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
   <li><a href="#referencias"> <b>Referências</b> </a></li>
+  <li><a href="#script-de-compilacao"> <b>Como executar</b> </a></li>
 </ul>
 
 <h1 id="membros" align="center">Equipe de Desenvolvimento</h1>
@@ -408,7 +408,7 @@ Este módulo descreve a lógica necessária para transmitir dados UART de forma 
 
 </p>
 
-<h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes e Simulações</h1>
+<h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes e Simulações, Resultados e Discussões</h1>
 <p align="justify">
 	O projeto proposto, em sua fase final, apresentou ótimos resultados conforme o solicitado, lendo e entregando os dados solicitados corretamente. A interação do usuário com o  sistema é feita inteiramente através do terminal, onde, através de uma tabela de opções, deve ser selecionado o requerimento desejado e o endereço no qual se encontra o sensor.
 	
@@ -474,6 +474,11 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 
 [Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk "Vídeo do Youtube")
 
+<p align="justify">Além disso, esse projeto tem potencial para se expandir e evoluir ainda mais. Novas funcionalidades, como o envio de dados para nuvem ou a adição de sensores adicionais, podem ser incorporadas para aumentar a utilidade do sistema.
+Porém, ressalta-se alguns tópicos sensíveis, tais como: a complexidade devido à capacidade de gerenciar até 32 sensores diferentes (o que aumenta o consumo de recursos em termos de lógica e memória em uma FPGA, o que pode ser uma preocupação em sistemas com recursos limitados), dificuldade de sincronização do clock (uma vez que ele recebe uma alta frequência (50 MHz) e realiza uma divisão desse sinal para operações internas) e gerenciamento da comunicação com um grande número de sensores.
+
+Em resumo, o sistema representa uma implementação versátil e funcional para a comunicação com sensores em sistemas embarcados. Sua capacidade de gerenciar múltiplos sensores, detectar erros e oferecer suporte ao sensoriamento contínuo o torna uma escolha adequada para uma variedade de aplicações. No entanto, considerações de complexidade, escalabilidade e requisitos de clock devem ser cuidadosamente avaliadas ao adotar esse módulo em um projeto específico.
+</p>
 
 <h1 id="conclusao" align="center">Conclusão</h1>
 
@@ -482,41 +487,20 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 	
 Ademais, nota-se, durante a etapa de elaboração do projeto, a abordagem de diversos aspectos importantes da área de sistemas digitais que culminaram em uma solução completa e funcional e no desenvolvimento pessoal dos membros envolvidos. Dentre eles, têm-se a comunicação serial, protocolo de comunicação UART,  integração das linguagens de descrição de hardware (Verilog) e programação de alto nível (C), utilização da FPGA mercúrio IV, uso do sensor DHT11, etc. 
 
-Além disso, esse projeto tem potencial para se expandir e evoluir ainda mais. Novas funcionalidades, como o envio de dados para nuvem ou a adição de sensores adicionais, podem ser incorporadas para aumentar a utilidade do sistema.
-Porém, ressalta-se alguns tópicos sensíveis, tais como: a complexidade devido à capacidade de gerenciar até 32 sensores diferentes (o que aumenta o consumo de recursos em termos de lógica e memória em uma FPGA, o que pode ser uma preocupação em sistemas com recursos limitados), dificuldade de sincronização do clock (uma vez que ele recebe uma alta frequência (50 MHz) e realiza uma divisão desse sinal para operações internas) e gerenciamento da comunicação com um grande número de sensores.
-
-Em resumo, o sistema representa uma implementação versátil e funcional para a comunicação com sensores em sistemas embarcados. Sua capacidade de gerenciar múltiplos sensores, detectar erros e oferecer suporte ao sensoriamento contínuo o torna uma escolha adequada para uma variedade de aplicações. No entanto, considerações de complexidade, escalabilidade e requisitos de clock devem ser cuidadosamente avaliadas ao adotar esse módulo em um projeto específico
-
 </p>
 
 <h1 id="referencias" align="center">Referências</h1>
 
 <p align="justify">
-DATASHEET; Sensor de Umidade e Temperatura - DHT 11. Disponível em: https://datasheetspdf.com/pdf/785590/D-Robotics/DHT11/1 Acessado em 26 de setembro de 2023.
+DATASHEET; Sensor de Umidade e Temperatura - DHT 11. Disponível em: https://datasheetspdf.com/pdf/785590/D-Robotics/DHT11/1 Acessado em 17 de setembro de 2023.
 
-BARUSSO, Carolina et al. Medição de Temperatura e Umidade utilizando Arduino Uno e Sensor DHT11 para Aplicações Residenciais. Publicação 2022. Disponível em: https://intranet.cbt.ifsp.edu.br/qualif/volume11/artigo1.pdf. Acessado em 26 de setembro de 2023.
+BARUSSO, Carolina et al. Medição de Temperatura e Umidade utilizando Arduino Uno e Sensor DHT11 para Aplicações Residenciais. Publicação 2022. Disponível em: https://intranet.cbt.ifsp.edu.br/qualif/volume11/artigo1.pdf. Acessado em 14 de setembro de 2023.
+
+TRINDADE, Derick Horrana de Souza da. Monitoramento de Sistemas de Transporte com Arduino e Shield-GSM, GPS, GPRS. Trabalho de Conclusão de Curso (Engenharia Eletrônica) - Universidade de Brasília, Faculdade UnB Gama, Brasília. Disponível em: https://fga.unb.br/articles/0001/0413/TCC_Derick_Horrana_CERTO.pdf Acessado em 20 de setembro de 2023.
+
+PEREIRA, Fábio. UART Autobaud em VHDL. Disponível em: https://embarcados.com.br/uart-autobaud-em-vhdl/. Acessado em 20 de setembro de 2023.
+
 </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -526,11 +510,12 @@ BARUSSO, Carolina et al. Medição de Temperatura e Umidade utilizando Arduino U
   <img src="anexos/MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
 </p>
 
-<h1 id="script-de-compilacao" align="center">Como executar</h1> 
+
 
 <h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes</h1>
 
 
+<h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
 Para clonar este repositório:
 
