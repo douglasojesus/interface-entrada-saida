@@ -63,6 +63,10 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
+<h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes</h1>
+
+[Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk,  "Vídeo do Youtube")
+
 Para clonar este repositório:
 
 1. ```$ git clone https://github.com/douglasojesus/interface-entrada-saida;```
