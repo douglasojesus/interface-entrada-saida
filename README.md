@@ -499,13 +499,7 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 </p>
 <p align="center">Exibição do resultado de maneira individual da ativação do sensoriamento contínuo de umidade</p>
 
-
 [Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk,  "Vídeo do Youtube")
-
-
-
-
-
 
 
 
