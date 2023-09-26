@@ -254,13 +254,18 @@ Ademais foram criados alguns fios utilizados para a transmissão de dados:
 - bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
 
 <h3>Módulo uart_rx</h3>
-<p align="justify">No módulo principal, este módulo possui como primeiro parâmetro o clock de 50Mhz. É responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
+<p align="justify">No módulo principal, uart_rx possui como primeiro parâmetro o clock de 50Mhz. É responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
 
 <h3>Módulo uart_tx</h3>
-<p align="justify">No módulo principal, este módulo é responsável por transmitir os dados serializados de volta ao PC.
+<p align="justify">No módulo principal, uart_tx é responsável por transmitir os dados serializados de volta ao PC.
 Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa.
 O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
 Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
+
+<h3>Módulo conexao_sensor</h3>
+<p align="justify">
+No módulo principal, conexao_sensor emprega uma MEF para controlar a sequência de operações, sendo assim o módulo principal do sistema. O primeiro parâmetro é referente ao clock de 50MHz do sistema. O segundo parâmetro (bitsEstaoRecebidos) é usado para determinar quando todos os bytes foram recebidos e o processamento pode começar. O terceiro e o quarto parâmetros são referentes ao comando enviado e o endereço do sensor, respectivamente. O quinto parâmetro (transmission_line_sensor_01) é um sinal bidirecional que representa o fio de comunicação com o sensor 01, especificamente um sensor DHT11. O sexto parâmetro (transmission_line_other_sensors) é uma linha de sinal para os outros 31 sensores que o sistema pode suportar. O sétimo parâmetro (dadosPodemSerEnviados) é um sinal que indica que os dados estão prontos para serem transmitidos.Os dois últimos parâmetros são referentes ao código da resposta e o valor da resposta. 
+</p>
 
 <h2>Módulo de Recepção (Rx)</h2>
 
