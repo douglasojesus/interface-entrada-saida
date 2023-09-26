@@ -17,8 +17,7 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
   <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
 	      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
 <li><a href="#desenvolvimento"> <b>Desenvolvimento e Descrição em Alto Nível;</b> </a> </li>
-      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
-	      <li><a href="#resultados"> <b>Resultados e Discussões</b> </a></li>
+      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e Análise dos Testes e Simulações, Resultados e Discussões</b> </a></li>
 	      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
   <li><a href="#referencias"> <b>Referências</b> </a></li>
   <li><a href="#script-de-compilacao"> <b>Como executar</b> </a></li>
@@ -81,6 +80,7 @@ Pino 4 (GND): Conectar ao GND (terra).</p>
 
 <p align="center">
   <img src="anexos/dth11.png" alt=Identificação dos pinos do DHT11 width="300" height="300">
+  Pinagem do sensor de temperatura e umidade DHT11.
 </p>
 
 <p align="justify">Os dados lidos pelo sensor são enviados em formato binário, seguindo a sequência: dados da parte inteira de umidade, dados da parte decimal da umidade, dados da parte inteira da temperatura, dados da parte decimal da temperatura e byte de paridade que funciona como um checksum para verificar a soma dos outros dados lidos. Todos os dados obtém um tamanho de 8 bits (1 byte). Portanto, o DHT11 retorna 40 bits de dados bruto.
@@ -310,6 +310,19 @@ O módulo realiza verificações de erros, incluindo a detecção de erros de pa
 
 Portanto, o módulo conexao_sensor é uma implementação versátil de comunicação com sensores em Verilog. Ele oferece suporte a múltiplos sensores, controle flexível por endereço, sensoriamento contínuo e detecção de erros, tornando-o adequado para uma ampla gama de aplicações em sistemas embarcados.
 
+<h3>Relação de Dependência</h3>
+
+<p align="justify">
+  Como o módulo conexao_sensor se comunica com outros módulos através de variáveis, é necessário pontuar como funciona a dependência entre esses módulos. No primeiro instante é possível analisar que, como os módulos funcionam com uma frequência de clock igual (com exceção do DHT11), pode haver troca de valores em variáveis dependentes que sejam perdidos por outros módulos devido ao atraso de comunicação ou problema em sicronização de estados. Para resolver esse problema, as variáveis dependentes, no projeto, são analisadas sem interferência de outras variáveis. Então, quando o módulo conexao_sensor precisa analisar a variável bitsEstaoRecebidos, por exemplo, que vem do módulo uart_rx, essa variável é analisada constantemente até sua variação. Isso ocorre para todas outras variáveis dependentes. Com isso, evitamos que valores sejam perdidos por atraso ou sicronização de máquinas de estados diferentes.
+
+  Na figura a seguir, o diagrama apresenta a relação de dependência de módulos e variáveis. 
+</p>
+
+<p align="center">
+  <img src="anexos/MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
+  Relação de dependência entre os módulos.
+</p>
+
 </p>
 
 <h2>Divisor de clock</h2>
@@ -501,18 +514,6 @@ TRINDADE, Derick Horrana de Souza da. Monitoramento de Sistemas de Transporte co
 PEREIRA, Fábio. UART Autobaud em VHDL. Disponível em: https://embarcados.com.br/uart-autobaud-em-vhdl/. Acessado em 20 de setembro de 2023.
 
 </p>
-
-
-
-<h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
-
-<p align="center">
-  <img src="anexos/MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
-</p>
-
-
-
-<h1 id="descricao-e-analise-dos-testes" align="center">Descrição e Análise dos Testes</h1>
 
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
