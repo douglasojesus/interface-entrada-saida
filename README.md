@@ -404,6 +404,28 @@ bitsEstaoRecebidos: variável que informa quando os dados foram recebidos comple
 <h2>Módulo uart_rx</h2>
 <p align="justify">Esse módulo possui como primeiro parâmetro o clock de 50Mhz. é responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
 
+<h2>Módulo conexao_sensor</h2>
+<p align="justify">
+	O módulo emprega uma MEF para controlar a sequência de operações. A MEF possui quatro estados principais: ESPERA, LEITURA, ENVIO e STOP. No estado ESPERA, o módulo aguarda comandos ou dados do sensor. No estado LEITURA, ele processa os comandos recebidos, lê os dados do sensor e prepara uma resposta. No estado ENVIO, os dados e comandos de resposta são sinalizados como prontos para envio. Finalmente, no estado STOP, o sensor é desativado e a MEF retorna ao estado ESPERA.
+
+Ademais, os blocos de instruções geram respostas com base nos comandos recebidos. Essas respostas incluem valores lidos do sensor, comandos de confirmação e sinalização de erros, conforme necessário. Isso permite que o módulo forneça informações precisas aos dispositivos externos que o acessam por meio da interface UART.
+
+Como este módulo funciona como uma máquina de estados geral, ela controla variáveis dentro do projeto. Para acionamento e saída do estado de ESPERA, “bitsEstaoRecebidos” entra como “enable” no módulo, possibilitando que a comunicação inicialize após o recebimento de dois bytes através do módulo “uart_rx”. Além disso, ao atribuir “dadosPodemSerEnviados”, cria um gatilho para que o módulo “uart_tx” envie os dados através da porta serial para o computador. Os bytes de requisição entram para serem analisados e os bytes de respostas são retornados para serem transmitidos.
+
+Além disso, o módulo suporta o sensoriamento contínuo de temperatura e umidade. Ele verifica se o sensoriamento contínuo está ativado e responde aos comandos apropriados para ativar ou desativar essa funcionalidade. Isso é útil em aplicações que requerem monitoramento constante das condições ambientais.
+
+O módulo realiza verificações de erros, incluindo a detecção de erros de paridade (errorChecksum) e outros erros relacionados aos sensores. Se um erro for detectado, o módulo gera uma resposta apropriada, informando sobre o problema. Isso é crucial para garantir a confiabilidade das leituras dos sensores.
+
+Portanto, o módulo conexao_sensor é uma implementação versátil de comunicação com sensores em Verilog. Ele oferece suporte a múltiplos sensores, controle flexível por endereço, sensoriamento contínuo e detecção de erros, tornando-o adequado para uma ampla gama de aplicações em sistemas embarcados.
+
+</p>
+
+<h2>Módulo uart_tx</h2>
+
+<p align="justify">Este módulo é responsável por transmitir os dados serializados de volta ao PC.
+Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa.
+O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
+Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
 
 
 
