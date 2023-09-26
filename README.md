@@ -19,6 +19,8 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
   <li><a href="#descricao-do-protocolo-de-comunicacao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
 	      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
+		      <li><a href="#resultados"> <b>Resultados e Discussões</b> </a></li>
+		      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
   <li><a href="#referencias"> <b>Referências</b> </a></li>
 </ul>
 
