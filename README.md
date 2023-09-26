@@ -427,13 +427,72 @@ Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa
 O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
 Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
 
+
+
+
+
+
+
+
+
 <h1 id="descricao-e-analise-dos-testes">Descrição e análise dos testes e simuações</h1>
 <p align="justify">
 	O projeto proposto, em sua fase final, apresentou ótimos resultados conforme o solicitado, lendo e entregando os dados solicitados corretamente. A interação do usuário com o  sistema é feita inteiramente através do terminal, onde, através de uma tabela de opções, deve ser selecionado o requerimento desejado e o endereço no qual se encontra o sensor.
 	
 Porém, destaca-se um problema quando o sensoriamento contínuo é ligado. Individualmente, o caso consegue atingir o requisito e lê os dados de maneira constante. Mas, após encerrar a leitura do sensoriamento e solicitar qualquer outra requisição, o programa cai no caso do sensoriamento contínuo aberto anteriormente. Uma alternativa possível para contornar esse caso foi criar um código em C que solicitasse a requisição de temperatura/umidade atual continuamente. Com isso, nenhum problema é observável. Outra solução é re-programar a placa depois de pedir uma ativação do sensoriamento contínuo.
 
+Em relação ao funcionamento do programa e interação direta com o usuário, como dito anteriormente, foi desenvolvido uma tabela com as seguintes opções possíveis de requisição:
+
+1.Solicita a situação atual do sensor 
+
+2.Solicita a medida de temperatura atual 
+
+3.Solicita a medida de umidade atual 
+
+4.Ativa sensoriamento contínuo de temperatura 
+
+5.Ativa sensoriamento contínuo de umidade
+
 </p>
+
+<p align="center">
+	<img src="anexos/testes/testes-em-execucao/teste_tabela_requisicao.png" alt=Tabela de requisições>
+</p>
+
+<p align="justify">Nesse caso, a seleção da solicitação do dado que deseja ler e o endereço do sensor é feita através de números inteiros referentes a cada opção, que devem ser escritos e enviados pelo terminal. E, para desativar o sensoriamento contínuo de temperatura ou umidade basta apertar a tecla enter.
+
+ Abaixo estão os testes referentes aos possíveis cenários de solicitação e exibição de dados para o usuário:
+</p>
+
+<p align="center">
+	<img src="" alt=>
+</p>
+
+<p align="center">
+	<img src="" alt=>
+</p>
+
+<p align="center">
+	<img src="" alt=>
+</p>
+
+<p align="center">
+	<img src="" alt=>
+</p>
+
+<p align="center">
+	<img src="" alt=>
+</p>
+
+
+
+
+
+
+
+
+
+
 
 <h1 id="conclusao" align="center">Conclusão</h1>
 
