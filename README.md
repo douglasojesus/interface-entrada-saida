@@ -80,7 +80,9 @@ UART (Universal Asynchronous Receiver-Transmitter) é um protocolo de comunicaç
 Um dos principais objetivos deste protocolo é fornecer uma maneira simples e eficiente de transmitir informações serialmente (bit a bit) entre um módulo transmissor (TX) e um receptor (RX) sem depender de um clock que coordenaria as ações entre os dispositivos. Em vez disso, a comunicação é baseada em uma combinação de bits de dados e de controle, incluindo bits de início e parada, que marcam o início e o fim de cada byte de dados.
 </p>
 
-<img src="anexos/uart_tx__ uart_rx.png" align="center" alt=Representação da comunicação via UART>
+<p align="center">
+  <img src="anexos/uart_tx__ uart_rx.png" align="center" alt=Representação da comunicação via UART>
+</p>
 
 <p align="justify">Principais características da UART:
 
@@ -122,7 +124,9 @@ Pino 2 (DATA ou SINAL): Utilizado para a transferência de dados lidos.
 Pino 3 (NC): Não utilizado no projeto.
 Pino 4 (GND): Conectar ao GND (terra).
 
-<img src="anexos/dth11.png" align="center" alt=Identificação dos pinos do DHT11>
+<p align="center">
+  <img src="anexos/dth11.png" alt=Identificação dos pinos do DHT11>
+</p>
 
 Os dados lidos pelo sensor são enviados em formato binário, seguindo esta sequência de bytes:
 
@@ -158,7 +162,9 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 
-<img src="anexo/MEF/dependencyTree.drawio.png" align="center" alt=Diagrama de dependências para sicronização>
+<p align="center">
+  <img src="anexo/MEF/dependencyTree.drawio.png" align="center" alt=Diagrama de dependências para sicronização>
+</p>
 
 <h1 id="script-de-compilacao" align="center">Como executar</h1> 
 
