@@ -255,8 +255,69 @@ Dentro do módulo “main()” é inicializado algumas variáveis que auxiliarã
 Caso a resposta do usuário esteja dentro das oferecidas, o programa segue para dois switch case. O primeiro converterá a opção do usuário para um hexadecimal correspondente ao código de requerimento definido no protocolo. O segundo converterá a opção do usuário em relação ao endereço do sensor para um hexadecimal correspondente, dentre os 32 possíveis.
 </p>
 
+<h2>Módulo de transmissão (Tx)</h2>
+
+<p align="justify">
+
+O módulo uart_tx é um módulo de protocolo UART, utilizado para a transmissão de dados de maneira serial. Nesse projeto, esse módulo foi configurado para ser capaz de transmitir 8 bits.
+Primeiramente, define-se as entradas e saídas do módulo:
+
+input clock: Sinal de clock de 50MHz para sincronização.
+
+input haDadosParaTransmitir: Um sinal de dados válido que indica quando há dados para serem transmitidos.
+
+input [7:0] primeiroByteASerTransmitido: Sinal de 8 bits que contém os dados totais recebidos do 1° byte a ser enviado por TX.
+
+input [7:0] segundoByteASerTransmitido: Sinal de 8 bits que contém os dados totais recebidos do 2° byte a ser enviado por TX.
+
+output indicaTransmissao: Indica se a transmissão está ativa.
+
+output reg  bitSerialAtual: O bit do sinal serial atual que será transmitido.
+
+output bitsEstaoEnviados: Sinal de saída que confirma o envio dos dados.
 
 
+O módulo define uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para controlar o processo de transmissão UART.
+	
+estadoDeEspera: Estado inicial, onde a máquina está aguardando os bits a serem transmitidos.
+
+estadoEnviaBitInicio: Estado para enviar o bit de início e posteriormente iniciar a transmissão dados.
+
+estadoEnviaBits: Estado responsável por enviar os bits do sinal que desejam ser transmitidos.
+
+estadoEnviaBitFinal: Estado para enviar o bit de finalização, indicando que o processo de transmissão foi concluído.
+
+estadoDeLimpeza: 
+
+
+Diversos registradores (reg) são definidos para armazenar informações importantes durante a transmissão, como o estado atual da máquina de estados, um contador de ciclos de clock, um índice do bit atual a ser transmitido, os dados a serem transmitidos, e outros sinais de controle.
+
+A máquina de estados é implementada em um bloco always sensível à borda de subida do sinal de clock. Cada estado realiza operações específicas de acordo com o protocolo de comunicação UART:
+
+estadoDeEspera: O transmissor fica ocioso, com o bit serial em nível alto. Se houver dados válidos para transmitir, ele passa para o estado estadoEnviaBitInicio.
+
+estadoEnviaBitInicio: Este estado envia o bit de início da transmissão (0) e aguarda um número de ciclos de clock determinado.
+
+estadoEnviaBits: Neste estado, os bits de dados são enviados um por um e avança para o próximo bit até que todos os 8 bits tenham sido transmitidos. Aguarda um número específico de ciclos de clock para finalizar.
+
+estadoEnviaBitFinal: Envio do bit de parada da transmissão (1) e aguarda um número de ciclos de clock determinado.
+
+estadoDeLimpeza: Estado intermediário de finalização da transmissão.
+
+Os valores dos sinais de saída (bitSerialAtual, indicaTransmissao e bitsEstaoEnviados) são atribuídos com base nos estados da máquina de estados.
+
+No estado estadoDeEspera, o código verifica se há dados válidos para transmitir e seleciona qual byte deve ser transmitido primeiro.
+
+Após a transmissão do primeiro byte, o código entra em um estado intermediário estadoDeLimpeza antes de voltar ao estadoDeEspera.
+
+O sinal transmissaoConcluida é usado para indicar quando a transmissão foi concluída.
+
+O sinal transmissaoEmAndamento é usado para indicar quando a transmissão está ativa.
+
+Este módulo descreve a lógica necessária para transmitir dados UART de forma assíncrona, seguindo o protocolo de comunicação UART padrão. A temporização é crítica na comunicação UART, e este código aborda a transmissão de bits de dados serializados e os bits de início e parada.
+
+ 
+</p>
 
 
 
