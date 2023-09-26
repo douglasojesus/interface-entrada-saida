@@ -429,7 +429,19 @@ Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits fora
 
 
 
+<h1 id="conclusao" align="center">Conclusão</h1>
 
+<p align="justify">
+	O sistema de entrada e saída para monitoramento de temperatura e umidade, com relação aos resultados, demonstrou um excelente funcionamento, uma vez que cumpre com a maioria dos requisitos propostos no projeto. O único problema encontrado, foi com relação ao monitoramento contínuo, que embora faça a leitura e exibição de maneira correta, possui um problema após o encerramento e solicitação de outro comando em seguida. 
+	
+Ademais, nota-se, durante a etapa de elaboração do projeto, a abordagem de diversos aspectos importantes da área de sistemas digitais que culminaram em uma solução completa e funcional e no desenvolvimento pessoal dos membros envolvidos. Dentre eles, têm-se a comunicação serial, protocolo de comunicação UART,  integração das linguagens de descrição de hardware (Verilog) e programação de alto nível (C), utilização da FPGA mercúrio IV, uso do sensor DHT11, etc. 
+
+Além disso, esse projeto tem potencial para se expandir e evoluir ainda mais. Novas funcionalidades, como o envio de dados para nuvem ou a adição de sensores adicionais, podem ser incorporadas para aumentar a utilidade do sistema.
+Porém, ressalta-se alguns tópicos sensíveis, tais como: a complexidade devido à capacidade de gerenciar até 32 sensores diferentes (o que aumenta o consumo de recursos em termos de lógica e memória em uma FPGA, o que pode ser uma preocupação em sistemas com recursos limitados), dificuldade de sincronização do clock (uma vez que ele recebe uma alta frequência (50 MHz) e realiza uma divisão desse sinal para operações internas) e gerenciamento da comunicação com um grande número de sensores.
+
+Em resumo, o sistema representa uma implementação versátil e funcional para a comunicação com sensores em sistemas embarcados. Sua capacidade de gerenciar múltiplos sensores, detectar erros e oferecer suporte ao sensoriamento contínuo o torna uma escolha adequada para uma variedade de aplicações. No entanto, considerações de complexidade, escalabilidade e requisitos de clock devem ser cuidadosamente avaliadas ao adotar esse módulo em um projeto específico
+
+</p>
 
 
 
