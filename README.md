@@ -484,6 +484,14 @@ Em resumo, o sistema representa uma implementação versátil e funcional para a
 
 </p>
 
+<h1 id="referencias" align="center">Referências</h1>
+
+<p align="justify">
+DATASHEET; Sensor de Umidade e Temperatura - DHT 11. Disponível em: https://datasheetspdf.com/pdf/785590/D-Robotics/DHT11/1 Acessado em 26 de setembro de 2023.
+
+BARUSSO, Carolina et al. Medição de Temperatura e Umidade utilizando Arduino Uno e Sensor DHT11 para Aplicações Residenciais. Publicação 2022. Disponível em: https://intranet.cbt.ifsp.edu.br/qualif/volume11/artigo1.pdf. Acessado em 26 de setembro de 2023.
+</p>
+
 
 
 
