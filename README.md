@@ -236,6 +236,161 @@ Dentro do módulo “main()” é inicializado algumas variáveis que auxiliarã
 Caso a resposta do usuário esteja dentro das oferecidas, o programa segue para dois switch case. O primeiro converterá a opção do usuário para um hexadecimal correspondente ao código de requerimento definido no protocolo. O segundo converterá a opção do usuário em relação ao endereço do sensor para um hexadecimal correspondente, dentre os 32 possíveis.
 </p>
 
+<h2>Módulo principal</h2>
+
+<p align="justify">O “FPGAImplementation” é o módulo principal responsável por conectar todos os outros módulos.
+
+
+- input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
+
+- input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
+
+- output bitSerialAtualTX: Sinal serial de saída que será transmitido para o PC.
+
+- inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comunicar com o sensor DHT11.
+
+- inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
+
+Ademais foram criados alguns fios utilizados para a transmissão de dados:
+
+- dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
+
+- request_command e request_address: Sinais wire que representam comandos e endereços recebidos do computador, respectivamente.
+
+- response_command e response_value: Sinais wire que representam comandos e valores a serem transmitidos de volta ao computador.
+
+- bitsEstaoEnviados: variável que informa quando os bits foram enviados para o computador. Essa variável é saída do módulo de comunicação UART TX. 
+
+- indicaTransmissao: variável que informa que os dados estão sendo transmitidos para o computador.  
+
+- bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
+
+<h3>Módulo uart_rx</h3>
+<p align="justify">No módulo principal, este módulo possui como primeiro parâmetro o clock de 50Mhz. é responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
+
+<h3>Módulo uart_tx</h3>
+
+<p align="justify">No módulo principal, este módulo é responsável por transmitir os dados serializados de volta ao PC.
+Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa.
+O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
+Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
+
+<h2>Módulo de recepção (Rx)</h2>
+
+<p align="justify">
+	O módulo uart_rx é um módulo do protocolo UART responsável pela transmissão de dados de maneira serial. Nesse projeto, o modulo transmissor foi configurado para transmitir 8 bits de dados seriais, um bit de start e um bit de stop. Logo no início do módulo são declaradas algumas portas de entrada e saída. Dentre elas, tem-se:
+
+- input clock: Sinal de clock de entrada para sincronização.
+
+- input bitSerialAtual: Sinal serial de entrada que carrega os dados a serem recebidos.
+
+- output bitsEstaoRecebidos:  Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
+
+- output [7:0] primeiroByteCompleto:  Saída de 8 bits que contém os dados do primeiro byte (de comando) recebido.
+
+- output [7:0] segundoByteCompleto:  Saída de 8 bits que contém os dados do segundo byte (de endereço) recebido.
+
+Em seguida, define-se uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para identificar e coletar os bits dos dados recebidos e serializados.Sendo eles:
+
+- estadoDeEspera:  Estado de espera inicial. Aguardando a detecção de um bit de início.
+
+- estadoVerificaBitInicio:  Estado que verifica se o bit de início ainda está baixo. 
+
+- estadoDeEsperaBits:  Estado que espera para mostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
+
+- estadoStopBit:	 Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
+
+- estadoDeLimpeza:  Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
+
+O código também usará registros (reg) para armazenar informações importantes, incluindo o valor do bit de start (serialDeEntrada), um contador de ciclos de clock (contadorDeClock) usado para temporização, um índice de bit atual (indiceDoBit) que rastreia a posição do bit atual dentro do byte recebido, um registro para armazenar os bits de dados recebidos (armazenaBits), e outros sinais de controle.
+
+A máquina de estados é implementada em um bloco always sensível à borda de subida do sinal de clock. Cada estado realiza operações específicas de acordo com o protocolo de comunicação UART:
+
+- estadoDeEspera: Aguarda a detecção de um bit de início (start bit). Se um bit de início for detectado, a máquina de estados transita para o estado estadoVerificaBitInicio. Caso contrário, ele se mantém nesse estado.
+
+- estadoVerificaBitInicio: Verifica se o bit de início ainda está baixo (indicando a primeira metade do bit de início). Se a primeira metade do bit de início for detectada, a máquina de estados verifica se o bit de início ainda está baixo. Se sim, transita para o estado estadoDeEsperaBits.
+
+- estadoDeEsperaBits: Aguarda para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. Quando os 8 bits de dados são amostrados, transita para o estado estadoStopBit.
+
+- estadoStopBit: Aguarda a conclusão do bit de parada (stop bit), que é logicamente alto. Após a espera, os dados são considerados recebidos, e a máquina de estados transita para o estado estadoDeLimpeza.
+
+- estadoDeLimpeza: Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas. Os dados são considerados prontos para leitura (dadosOk   <= 1'b0), e a máquina de estados retorna ao estado “estadoDeEspera”.
+
+Os sinais de saída são atribuídos com base nos estados da máquina de estados. bitsEstaoRecebidos recebe o sinal de dadosOk indicando que os dados foram lidos corretamente, e primeiroByteCompleto e segundoByteCompleto contêm os bytes de dados recebidos.
+
+</p>
+
+<h2>Módulo conexao_sensor</h2>
+<p align="justify">
+	O módulo emprega uma MEF para controlar a sequência de operações. A MEF possui quatro estados principais: ESPERA, LEITURA, ENVIO e STOP. No estado ESPERA, o módulo aguarda comandos ou dados do sensor. No estado LEITURA, ele processa os comandos recebidos, lê os dados do sensor e prepara uma resposta. No estado ENVIO, os dados e comandos de resposta são sinalizados como prontos para envio. Finalmente, no estado STOP, o sensor é desativado e a MEF retorna ao estado ESPERA.
+
+Ademais, os blocos de instruções geram respostas com base nos comandos recebidos. Essas respostas incluem valores lidos do sensor, comandos de confirmação e sinalização de erros, conforme necessário. Isso permite que o módulo forneça informações precisas aos dispositivos externos que o acessam por meio da interface UART.
+
+Como este módulo funciona como uma máquina de estados geral, ela controla variáveis dentro do projeto. Para acionamento e saída do estado de ESPERA, “bitsEstaoRecebidos” entra como “enable” no módulo, possibilitando que a comunicação inicialize após o recebimento de dois bytes através do módulo “uart_rx”. Além disso, ao atribuir “dadosPodemSerEnviados”, cria um gatilho para que o módulo “uart_tx” envie os dados através da porta serial para o computador. Os bytes de requisição entram para serem analisados e os bytes de respostas são retornados para serem transmitidos.
+
+Além disso, o módulo suporta o sensoriamento contínuo de temperatura e umidade. Ele verifica se o sensoriamento contínuo está ativado e responde aos comandos apropriados para ativar ou desativar essa funcionalidade. Isso é útil em aplicações que requerem monitoramento constante das condições ambientais.
+
+O módulo realiza verificações de erros, incluindo a detecção de erros de paridade (errorChecksum) e outros erros relacionados aos sensores. Se um erro for detectado, o módulo gera uma resposta apropriada, informando sobre o problema. Isso é crucial para garantir a confiabilidade das leituras dos sensores.
+
+Portanto, o módulo conexao_sensor é uma implementação versátil de comunicação com sensores em Verilog. Ele oferece suporte a múltiplos sensores, controle flexível por endereço, sensoriamento contínuo e detecção de erros, tornando-o adequado para uma ampla gama de aplicações em sistemas embarcados.
+
+</p>
+
+<h2>Módulo de comunicação DHT11</h2>
+
+<p align="justify">
+
+O código apresentado é a descrição de um módulo de comunicação para interagir com um sensor DHT11, tendo destaque os principais componentes e estados da máquina de estados finitos (FSM) implementada. Este módulo teve sua base de implementação retirada do site [KanCloud](https://www.kancloud.cn/dlover/fpga/1637659). Entretanto, todas suas alterações foram realizadas pela equipe de desenvolvimento.
+
+O módulo possui as seguintes entradas e saídas:
+
+- clock_1M: Um sinal de relógio com frequência de 1 MHz.
+- enable_sensor: Um sinal de controle que ativa ou desativa a comunicação com o sensor.
+- dht11: Um sinal inout que se conecta ao sensor DHT11.
+- dados_sensor: Um sinal de saída que contém os dados lidos do sensor.
+- erro: Um sinal de saída que indica se ocorreu algum erro na máquina.
+- done: Um sinal de saída que indica quando a máquina terminou sua operação.
+
+O código também define várias variáveis e parâmetros que são usados durante a operação da máquina. Alguns deles são:
+
+- direcao_dado: Indica a direção do sinal do dht11 (entrada ou saída).
+- dados_enviados_sensor: Armazena o valor a ser enviado para o sensor.
+- contador_dados: Conta os bits de dados recebidos do sensor.
+- dados_bruto: Armazena os dados brutos recebidos do sensor antes de serem processados.
+- contador: Contador de tempo usado para medir intervalos de tempo.
+- start_f1, start_f2, start_rising: Sinais auxiliares para detectar bordas de subida no sinal de ativação.
+- estado_atual: Variável que representa o estado atual da máquina de estados.
+- erro_na_maquina: Indica se ocorreu algum erro durante a operação da máquina.
+- done_reg: Sinal auxiliar para indicar o término da operação.
+
+A principal parte do código é a máquina de estados finitos (FSM) que controla a comunicação com o sensor DHT11. Ela consiste em vários estados, cada um com sua própria lógica de funcionamento:
+
+- ESPERA: Este é o estado inicial da máquina. Ela aguarda um sinal de início do sensor DHT11 (uma borda de subida seguida de um sinal alto). Se o sinal de início for detectado, a máquina transita para o estado BIT_DE_INICIO.
+
+- BIT_DE_INICIO: Neste estado, a máquina aguarda um período de tempo específico para sincronizar com o sensor. Quando o tempo de sincronização é atingido, a máquina transita para o estado ENVIA_SINAL_A_20US.
+
+- ENVIA_SINAL_A_20US: Neste estado, a máquina envia um sinal de 20 microssegundos para o sensor. Após o envio do sinal, a máquina transita para o estado ESPERA_SINAL_B.
+
+- ESPERA_SINAL_B: A máquina espera que o sensor DHT11 responda com um sinal baixo. Se o sensor enviar um sinal baixo, a máquina transita para o estado ESPERA_SINAL_A. Se o sensor não responder dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+
+- ESPERA_SINAL_A: Neste estado, a máquina espera que o sensor DHT11 envie um sinal alto. Se o sensor enviar um sinal alto, a máquina transita para o estado FIM_SYNC. Se o sensor não responder dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+
+- FIM_SYNC: Indica o fim da sincronização com o sensor DHT11. A máquina aguarda o sensor enviar um sinal baixo. Se o sensor enviar um sinal baixo, a máquina transita para o estado WAIT_1_BIT_DHT11. Se o sensor não responder dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+
+- WAIT_1_BIT_DHT11: Neste estado, a máquina aguarda a transmissão de um bit de dados pelo sensor DHT11. Se o bit for lido como 1, a máquina transita para o estado LE_DADOS. Se o bit não for lido dentro de um tempo limite, a máquina transita para o estado ACABA_PROCESSO e sinaliza um erro.
+
+- LE_DADOS: A máquina lê os dados enviados pelo sensor DHT11. Ela conta os bits recebidos e os armazena em dados_bruto. Dependendo do valor lido (0 ou 1), ela atualiza dados_bruto. Se todos os 40 bits foram lidos, a máquina transita para o estado COLETA_DADOS. Se um erro ocorrer durante a leitura, ela volta para WAIT_1_BIT_DHT11.
+
+- COLETA_DADOS: Neste estado, a máquina transfere os dados brutos armazenados em dados_bruto para dados_sensor, representando os dados de temperatura e umidade lidos. Ela também verifica se o último bit recebido é 1; se não for, sinaliza um erro. Após a coleta dos dados, a máquina transita para o estado ACABA_PROCESSO.
+
+- ACABA_PROCESSO: Este estado é alcançado após a conclusão bem-sucedida ou com erro da comunicação com o sensor DHT11. Se ocorrer um erro na máquina, ele mantém a máquina neste estado e sinaliza o erro. Se não houver erro, ele conclui o processo e sinaliza que a operação foi concluída. Após um período de normalização, a máquina volta ao estado ESPERA para aguardar a próxima comunicação.
+
+O código utiliza contadores de tempo e sinais auxiliares para controlar o tempo e detectar eventos relevantes, como bordas de subida e descida nos sinais. A máquina de estados coordena a interação com o sensor DHT11 de acordo com o protocolo de comunicação especificado.
+
+Em resumo, o código implementa uma máquina de estados para se comunicar com um sensor DHT11, lendo dados de temperatura e umidade do sensor e sinalizando erros, se necessário.
+
+</p>
+
 <h2>Módulo de transmissão (Tx)</h2>
 
 <p align="justify">
@@ -289,119 +444,11 @@ Este módulo descreve a lógica necessária para transmitir dados UART de forma 
 
 </p>
 
-<h2>Módulo de recepção (Rx)</h2>
-
-<p align="justify">
-	O módulo uart_rx é um módulo do protocolo UART responsável pela transmissão de dados de maneira serial. Nesse projeto, o modulo transmissor foi configurado para transmitir 8 bits de dados seriais, um bit de start e um bit de stop. Logo no início do módulo são declaradas algumas portas de entrada e saída. Dentre elas, tem-se:
-
-- input clock: Sinal de clock de entrada para sincronização.
-
-- input bitSerialAtual: Sinal serial de entrada que carrega os dados a serem recebidos.
-
-- output bitsEstaoRecebidos:  Sinal de saída que indica que os dados foram recebidos e estão disponíveis.
-
-- output [7:0] primeiroByteCompleto:  Saída de 8 bits que contém os dados do primeiro byte (de comando) recebido.
-
-- output [7:0] segundoByteCompleto:  Saída de 8 bits que contém os dados do segundo byte (de endereço) recebido.
-
-Em seguida, define-se uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para identificar e coletar os bits dos dados recebidos e serializados.Sendo eles:
-
-- estadoDeEspera:  Estado de espera inicial. Aguardando a detecção de um bit de início.
-
-- estadoVerificaBitInicio:  Estado que verifica se o bit de início ainda está baixo. 
-
-- estadoDeEsperaBits:  Estado que espera para mostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. 
-
-- estadoStopBit:	 Estado que espera a conclusão do bit de parada (stop bit), que é logicamente alto. 
-
-- estadoDeLimpeza:  Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas
-
-O código também usará registros (reg) para armazenar informações importantes, incluindo o valor do bit de start (serialDeEntrada), um contador de ciclos de clock (contadorDeClock) usado para temporização, um índice de bit atual (indiceDoBit) que rastreia a posição do bit atual dentro do byte recebido, um registro para armazenar os bits de dados recebidos (armazenaBits), e outros sinais de controle.
-
-A máquina de estados é implementada em um bloco always sensível à borda de subida do sinal de clock. Cada estado realiza operações específicas de acordo com o protocolo de comunicação UART:
-
-- estadoDeEspera: Aguarda a detecção de um bit de início (start bit). Se um bit de início for detectado, a máquina de estados transita para o estado estadoVerificaBitInicio. Caso contrário, ele se mantém nesse estado.
-
-- estadoVerificaBitInicio: Verifica se o bit de início ainda está baixo (indicando a primeira metade do bit de início). Se a primeira metade do bit de início for detectada, a máquina de estados verifica se o bit de início ainda está baixo. Se sim, transita para o estado estadoDeEsperaBits.
-
-- estadoDeEsperaBits: Aguarda para amostrar os bits de dados durante os próximos CLOCKS_POR_BIT - 1 ciclos de clock. Quando os 8 bits de dados são amostrados, transita para o estado estadoStopBit.
-
-- estadoStopBit: Aguarda a conclusão do bit de parada (stop bit), que é logicamente alto. Após a espera, os dados são considerados recebidos, e a máquina de estados transita para o estado estadoDeLimpeza.
-
-- estadoDeLimpeza: Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas. Os dados são considerados prontos para leitura (dadosOk   <= 1'b0), e a máquina de estados retorna ao estado “estadoDeEspera”.
-
-Os sinais de saída são atribuídos com base nos estados da máquina de estados. bitsEstaoRecebidos recebe o sinal de dadosOk indicando que os dados foram lidos corretamente, e primeiroByteCompleto e segundoByteCompleto contêm os bytes de dados recebidos.
-
-</p>
-
 <h2>Divisor de clock</h2>
 
 <p align="justify">O projeto conta com um divisor de clock para a frequência oferecida na placa de 50MHz. Nesse caso, o clock será dividido em 1MHz. Isso ocorre, devido a necessidade de abaixar a frequência para realizar a leitura no sensor DHT11 pelo módulo DHT11_Communication de maneira eficiente.
 	O programa entra em um bloco always sensível à borda de subida de “clock_SYS”. Ou seja, toda vez que houver uma borda de subida ele executará esse bloco que faz uma verficiação através de um registrador que serve como um contador (contador_clock). Caso esse registrador esteja abaixo de 50 ele entra em um bloco de verificação onde seu valor é acrescido em 1 ( contador_clock <= contador_clock + 1'b1) e a saída “clock_1MHz” é forçada a ser 0. Quando o contador exceder o valor de 50, o código entra no bloco “else” onde será resetado o valor do contador e a saída de “clock_1MHz” será forçada a ser 1. Assim, obtém-se o valor de 1MHz para o clock. 
 	</p>
-
-<h2>Módulo principal</h2>
-
-<p align="justify">O “FPGAImplementation” é o módulo principal responsável por conectar todos os outros módulos.
-
-
-- input clock: O sinal de clock (50Mhz) usado para sincronizar todas as operações na FPGA.
-
-- input bitSerialAtualRX: Sinal serial de entrada que carrega os bits recebidos da transmissão UART do PC.
-
-- output bitSerialAtualTX: Sinal serial de saída que será transmitido para o PC.
-
-- inout transmission_line_sensor_01: Fio bidirecional (inout) usado para se comunicar com o sensor DHT11.
-
-- inout [30:0] transmission_line_other_sensors: Um vetor bidirecional  (inout) de 31 bits usado para se comunicar com outros sensores ou dispositivos que podem ser conectados à FPGA.
-
-Ademais foram criados alguns fios utilizados para a transmissão de dados:
-
-- dadosPodemSerEnviados: Um sinal wire que indica se os dados podem ser enviados da FPGA para outros dispositivos.
-
-- request_command e request_address: Sinais wire que representam comandos e endereços recebidos do computador, respectivamente.
-
-- response_command e response_value: Sinais wire que representam comandos e valores a serem transmitidos de volta ao computador.
-
-- bitsEstaoEnviados: variável que informa quando os bits foram enviados para o computador. Essa variável é saída do módulo de comunicação UART TX. 
-
-- indicaTransmissao: variável que informa que os dados estão sendo transmitidos para o computador.  
-
-- bitsEstaoRecebidos: variável que informa quando os dados foram recebidos completamente pelo módulo de comunicação UART RX. Quando é atribuído valor lógico alto, significa que dois bytes foram recebidos pelo transmissor (computador). Esse fio direciona o início do processo de comunicação com o módulo da máquina de estados geral, tornando a MEF capaz de controlar o byte de requisição e endereço do sensor.
-</p>
-
-<h2>Módulo uart_rx</h2>
-<p align="justify">Esse módulo possui como primeiro parâmetro o clock de 50Mhz. é responsável por receber os dados serializados através do sinal bitSerialAtualRX. Ele usa o sinal bitsEstaoRecebidos para indicar quando todos os bits foram recebidos com sucesso.Também lê os comandos e endereços recebidos e os coloca nos sinais request_command e request_address. </p>
-
-<h2>Módulo conexao_sensor</h2>
-<p align="justify">
-	O módulo emprega uma MEF para controlar a sequência de operações. A MEF possui quatro estados principais: ESPERA, LEITURA, ENVIO e STOP. No estado ESPERA, o módulo aguarda comandos ou dados do sensor. No estado LEITURA, ele processa os comandos recebidos, lê os dados do sensor e prepara uma resposta. No estado ENVIO, os dados e comandos de resposta são sinalizados como prontos para envio. Finalmente, no estado STOP, o sensor é desativado e a MEF retorna ao estado ESPERA.
-
-Ademais, os blocos de instruções geram respostas com base nos comandos recebidos. Essas respostas incluem valores lidos do sensor, comandos de confirmação e sinalização de erros, conforme necessário. Isso permite que o módulo forneça informações precisas aos dispositivos externos que o acessam por meio da interface UART.
-
-Como este módulo funciona como uma máquina de estados geral, ela controla variáveis dentro do projeto. Para acionamento e saída do estado de ESPERA, “bitsEstaoRecebidos” entra como “enable” no módulo, possibilitando que a comunicação inicialize após o recebimento de dois bytes através do módulo “uart_rx”. Além disso, ao atribuir “dadosPodemSerEnviados”, cria um gatilho para que o módulo “uart_tx” envie os dados através da porta serial para o computador. Os bytes de requisição entram para serem analisados e os bytes de respostas são retornados para serem transmitidos.
-
-Além disso, o módulo suporta o sensoriamento contínuo de temperatura e umidade. Ele verifica se o sensoriamento contínuo está ativado e responde aos comandos apropriados para ativar ou desativar essa funcionalidade. Isso é útil em aplicações que requerem monitoramento constante das condições ambientais.
-
-O módulo realiza verificações de erros, incluindo a detecção de erros de paridade (errorChecksum) e outros erros relacionados aos sensores. Se um erro for detectado, o módulo gera uma resposta apropriada, informando sobre o problema. Isso é crucial para garantir a confiabilidade das leituras dos sensores.
-
-Portanto, o módulo conexao_sensor é uma implementação versátil de comunicação com sensores em Verilog. Ele oferece suporte a múltiplos sensores, controle flexível por endereço, sensoriamento contínuo e detecção de erros, tornando-o adequado para uma ampla gama de aplicações em sistemas embarcados.
-
-</p>
-
-<h2>Módulo uart_tx</h2>
-
-<p align="justify">Este módulo é responsável por transmitir os dados serializados de volta ao PC.
-Ele usa o sinal indicaTransmissao para indicar quando a transmissão está ativa.
-O sinal bitSerialAtualTX contém os bits que serão transmitidos serialmente.
-Ele também usa o sinal bitsEstaoEnviados para indicar quando todos os bits foram transmitidos com sucesso.</p>
-
-
-
-
-
-
-
 
 
 <h1 id="descricao-e-analise-dos-testes">Descrição e análise dos testes e simuações</h1>
