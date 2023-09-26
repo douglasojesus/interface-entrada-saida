@@ -8,22 +8,19 @@ Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Uni
 Implementação de um protótipo de sensor para medição de temperatura e umidade.
 </h2>
 
-Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerson Rodrigo Lima Pereira e Gabriel Sousa Sampaio.
 
-<div id="sumario">
-    <h1>Sumário</h1>
-	<ul>
-          <li><a href="#membros"><b>Membros;</b></li>
-          <li><a href="#introducao"> <b>Introdução;</b></li>
-		      <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
-		      <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
-        	<li><a href="#metodologia-e-tecnicas-aplicadas"> <b>Metodologia e técnicas aplicadas no projeto;</b> </a> </li>
-        	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
-          <li><a href="#descricao-do-protocolo-de-comunicacao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
-		      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
-          <li><a href="#referencias"> <b>Referências</b> </a></li>
-	</ul>	
-</div>
+<h1 id="sumario" align="center">Sumário</h1>
+<ul>
+  <li><a href="#membros"><b>Membros;</b></li>
+  <li><a href="#introducao"> <b>Introdução;</b></li>
+	  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
+	      <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
+	<li><a href="#metodologia-e-tecnicas-aplicadas"> <b>Metodologia e técnicas aplicadas no projeto;</b> </a> </li>
+	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
+  <li><a href="#descricao-do-protocolo-de-comunicacao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
+	      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
+  <li><a href="#referencias"> <b>Referências</b> </a></li>
+</ul>
 
 <h1 id="membros" align="center">Equipe de Desenvolvimeno</h1>
 
