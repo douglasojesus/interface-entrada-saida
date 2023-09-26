@@ -240,7 +240,7 @@ Caso a resposta do usuário esteja dentro das oferecidas, o programa segue para 
 
 O módulo uart_tx é um módulo de protocolo UART, utilizado para a transmissão de dados de maneira serial. Nesse projeto, esse módulo foi configurado para ser capaz de transmitir 8 bits.
 Primeiramente, define-se as entradas e saídas do módulo:
-ˋˋˋ
+´´´
 input clock: Sinal de clock de 50MHz para sincronização.
 
 input haDadosParaTransmitir: Um sinal de dados válido que indica quando há dados para serem transmitidos.
@@ -254,7 +254,7 @@ output indicaTransmissao: Indica se a transmissão está ativa.
 output reg  bitSerialAtual: O bit do sinal serial atual que será transmitido.
 
 output bitsEstaoEnviados: Sinal de saída que confirma o envio dos dados.
-ˋˋˋ
+´´´
 
 O módulo define uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para controlar o processo de transmissão UART.
 	
