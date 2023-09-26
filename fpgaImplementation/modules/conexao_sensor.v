@@ -86,7 +86,7 @@ module conexao_sensor(
 	
 	assign errorChecksum = (sensor_data[7:0] == sensor_data[15:8] + sensor_data[23:16] + sensor_data[31:24] + sensor_data[39:32]) ? 1'b0 : 1'b1;	
 
-	localparam [2:0] ESPERA = 3'b000, LEITURA = 3'b001, ENVIO = 3'b010, STOP = 3'b011, LOOP = 3'b100;
+	localparam [1:0] ESPERA = 2'b00, LEITURA = 2'b01, ENVIO = 2'b10, STOP = 2'b11;
 	
 	reg [2:0] current_state = ESPERA;
 	
@@ -97,7 +97,8 @@ module conexao_sensor(
 					response_value_reg <= 8'h45; //E
 					response_command_reg <= 8'h45; //E
 				end
-			else //Se não tiver erro
+			else
+				//Se não tiver erro
 				begin
 					case (current_state)
 						ESPERA:
@@ -132,7 +133,7 @@ module conexao_sensor(
 							end
 						LEITURA:
 							begin
-								if(dadosOK == 1'b0)
+								if(dadosOK == 1'b1)
 									begin
 									//Verifica se depois que iniciou o loop, o comando é algum diferente do sensoriamento contínuo (ativação ou desativação)
 										if (in_loop == 1'b1 && (request_command != 8'h03 && request_command != 8'h04 && response_command != 8'h05 && response_command != 8'h06))
@@ -226,7 +227,6 @@ module conexao_sensor(
 	assign dadosPodemSerEnviados = dadosPodemSerEnviados_reg;
 	assign response_command = response_command_reg;
 	assign response_value = response_value_reg;
-	
 	
 	
 endmodule

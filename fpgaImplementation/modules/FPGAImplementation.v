@@ -26,13 +26,14 @@ Qual seria a temporização ideal?
 
 */
 
-module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line_sensor_01, transmission_line_other_sensors);
+module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line_sensor_01, transmission_line_other_sensors, debug_led);
 
 	input 				clock;
 	input 				bitSerialAtualRX;
 	output 				bitSerialAtualTX;
 	inout  				transmission_line_sensor_01; //Fio de entrada e saida do DHT11 (Tri-state) 
 	inout [30:0]		transmission_line_other_sensors; //Vetor de entrada e saida para implementação de outros sensores
+	output				debug_led;
 	
 	wire 			dadosPodemSerEnviados;
 	
