@@ -99,11 +99,11 @@ Em resumo, a UART é um componente fundamental para a comunicação de dados em 
 
 <h2>Kit de desenvolvimento Mercury IV</h2>
 
-<p align="center">O FPGA utilizado como plataforma para portar o protótipo disposto e que equipa a placa Mercurio® IV é uma Cyclone® IV EP4CE30F23, a qual possui 30 mil elementos lógicos (LEs), um clock de entrada de 50MHz e diversas interfaces/funcionalidades que auxiliam no desenvolvimento de circuitos lógicos.</p>
+<p align="justify">O FPGA utilizado como plataforma para portar o protótipo disposto e que equipa a placa Mercurio® IV é uma Cyclone® IV EP4CE30F23, a qual possui 30 mil elementos lógicos (LEs), um clock de entrada de 50MHz e diversas interfaces/funcionalidades que auxiliam no desenvolvimento de circuitos lógicos.</p>
 
 <h2>Sensor DHT11</h2>
 
-<p align="center">O sensor DHT11 é um dispositivo digital utilizado para efetuar medições de temperatura e umidade no ambiente. Suas características técnicas incluem:
+<p align="justify">O sensor DHT11 é um dispositivo digital utilizado para efetuar medições de temperatura e umidade no ambiente. Suas características técnicas incluem:
 
 Faixa de medição de temperatura: 0°C a 50°C, com precisão de ±2°C.
 
@@ -122,13 +122,13 @@ O sensor DHT11 possui quatro pinos, que devem ser conectados da seguinte maneira
 Pino 1 (VCC): Conectar à fonte de alimentação.
 Pino 2 (DATA ou SINAL): Utilizado para a transferência de dados lidos.
 Pino 3 (NC): Não utilizado no projeto.
-Pino 4 (GND): Conectar ao GND (terra).
+Pino 4 (GND): Conectar ao GND (terra).</p>
 
 <p align="center">
-  <img src="anexos/dth11.png" alt=Identificação dos pinos do DHT11>
+  <img src="anexos/dth11.png" alt=Identificação dos pinos do DHT11 width="300" height="300">
 </p>
 
-Os dados lidos pelo sensor são enviados em formato binário, seguindo esta sequência de bytes:
+<p align="justify">Os dados lidos pelo sensor são enviados em formato binário, seguindo esta sequência de bytes:
 
 Primeiro byte (sequência de 8 bits): Dados de alta umidade (parte inteira).
 
