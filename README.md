@@ -242,7 +242,7 @@ O módulo uart_tx é um módulo de protocolo UART, utilizado para a transmissão
 Primeiramente, define-se as entradas e saídas do módulo:
 ´´´
 input clock: Sinal de clock de 50MHz para sincronização.
-
+´´´
 input haDadosParaTransmitir: Um sinal de dados válido que indica quando há dados para serem transmitidos.
 
 input [7:0] primeiroByteASerTransmitido: Sinal de 8 bits que contém os dados totais recebidos do 1° byte a ser enviado por TX.
