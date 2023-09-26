@@ -80,8 +80,8 @@ Pino 4 (GND): Conectar ao GND (terra).</p>
 
 <p align="center">
   <img src="anexos/dth11.png" alt=Identificação dos pinos do DHT11 width="300" height="300">
-  Pinagem do sensor de temperatura e umidade DHT11.
 </p>
+<p align="center">Pinagem do sensor de temperatura e umidade DHT11.</p>
 
 <p align="justify">Os dados lidos pelo sensor são enviados em formato binário, seguindo a sequência: dados da parte inteira de umidade, dados da parte decimal da umidade, dados da parte inteira da temperatura, dados da parte decimal da temperatura e byte de paridade que funciona como um checksum para verificar a soma dos outros dados lidos. Todos os dados obtém um tamanho de 8 bits (1 byte). Portanto, o DHT11 retorna 40 bits de dados bruto.
 
@@ -125,6 +125,7 @@ Um dos principais objetivos deste protocolo é fornecer uma maneira simples e ef
 <p align="center">
   <img src="anexos/uart_tx__ uart_rx.png" align="center" alt=Representação da comunicação via UART>
 </p>
+<p align="center">Representação da comunicação via UART.</p>
 
 <p align="justify">Principais características da UART:
 
@@ -146,6 +147,7 @@ Em resumo, a UART é um componente fundamental para a comunicação de dados em 
 <p align="center">
 	<img src="anexos/MEF/diagrama_geral.png" alt=Diagrama em blocos do sistema>
 </p>
+<p align="center">Diagrama em blocos do sistema.</p>
 
 <p align="justify">A FPGA conterá o circuito lógico responsável por receber o byte do código do comando e do byte do endereço do sensor do computador (através do módulo de recebimento “rx”), decodificar os códigos e devolver o dado correspondente que será lido pelo sensor (através do módulo de transmissão “tx”). No circuito implementado na placa também é necessário o uso da máquina de estados geral (MEF) que transita entre os estados e controla o tempo de cada ação, além de um módulo específico para o sensor DHT11, responsável por receber, decodificar e devolver os dados lidos do ambiente de acordo com a solicitação do usuário. Como possuem 32 endereços para alocação de anexo do sensor, o módulo da MEF poderá chamar os 32 módulos, contanto que cada um tenha , como saída, 40 bits de dados, um bit de erro e um bit que informa que os dados foram recebidos. Além disso, todos os módulos chamados devem ter como entrada o “enable” de acordo com seu endereço e o clock. A comunicação da FPGA com o anexo do sensor é bidirecional, portanto, deve haver um fio “inout” de comunicação.
 
@@ -320,8 +322,8 @@ Portanto, o módulo conexao_sensor é uma implementação versátil de comunica�
 
 <p align="center">
   <img src="anexos/MEF/dependencyTree.drawio.png" alt=Diagrama de dependências para sicronização>
-  Relação de dependência entre os módulos.
 </p>
+<p align="center">Relação de dependência entre os módulos.</p>
 
 </p>
 
@@ -444,6 +446,7 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 <p align="center">
 	<img src="anexos/testes/testes-em-execucao/teste_tabela_requisicao.png" alt=Tabela de requisições>
 </p>
+<p align="center">Demonstração de como a tabela de requisição é visualizada na interface.</p>
 
 <p align="justify">Nesse caso, a seleção da solicitação do dado que deseja ler e o endereço do sensor é feita através de números inteiros referentes a cada opção, que devem ser escritos e enviados pelo terminal. E, para desativar o sensoriamento contínuo de temperatura ou umidade basta apertar a tecla enter.
 
