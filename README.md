@@ -247,7 +247,7 @@ O sensor é um elemento externo que ficará conectado à placa através dos pino
 
 <h2>Programação em alto nível (linguagem C)</h2>
 
-<p align="center">
+<p align="justify">
 A comunicação inicial para o usuário solicitar uma requisição e posteriormente visualizar os dados retornados foi feita através de um programa, em linguagem C, no computador.
 A etapa para o desenvolvimento do código referente a programação em alto nível  foi composta pela configuração da porta serial baseado na comunicação UART, uso de threads para a configuração do monitoramento contínuo e uma interface para solicitação e impressão de dados.
 	
