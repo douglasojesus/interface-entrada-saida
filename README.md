@@ -36,6 +36,7 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
   Neste contexto, surge-se a proposta da criação de um sistema modular de entrada e saída voltado para o monitoramento de temperatura e umidade local, utilizando uma plataforma baseada em FPGAs para confecção dos sensores. Para atingir esse objetivo, utilizou-se o kit de desenvolvimento Mercúrio IV como plataforma base, explorando os conceitos do protocolo de comunicação UART e fazendo uso do sensor DHT11. Além disso, esse projeto integra as linguagens de descrição de hardware (Verilog), desenvolvida através da ferramenta Quartus Prime 22.1, e programação de alto nível (C), ambas utilizando o sistema operacional Linux, unindo assim o melhor de ambos os mundos para oferecer uma solução eficiente e versátil.
 
 <h1 id="requisitos" align="center">Requisitos do problema</h1> 
+
 - 📝 O código de comunicação com o usuário deve ser escrito em linguagem C;
 - 📝 A implementação da lógica deve ser feita utilizando Verilog programado na FPGA (Kit de desenvolvimento Mercurio IV - Cyclone IV);
 - 📝 A comunicação feita entre o computador e a placa FPGA deve ser feita através do UART;
@@ -50,6 +51,7 @@ Contribuidores: Douglas Oliveira de Jesus, Emanuel Antonio Lima Pereira, Émerso
 - 🔧 Quartus Prime 22.1
 - 🔧 Kit de desenvolvimento Mercúrio IV
 - 🔧 Cabo serial
+- 🔧 Sensor DHT11
 - 🔧 Visual Studio Code
 - 🔧 GNU Compiler Collection
 - 🔧 Git e Github
