@@ -173,6 +173,90 @@ Portanto, ao receber os dados é necessário, primeiramente, separar as sequênc
 O sensor é um elemento externo que ficará conectado à placa através dos pinos da interface PMOD (VCC 3.3V, GND e algum pino compatível com o PMOD) presentes na placa, e é o responsável pela leitura da temperatura e umidade ambiente.
 </p>
 
+<h2>Protocolo de envio e recebimento de dados</h2>
+
+<p align="justify">
+	O primeiro passo para o desenvolvimento do projeto foi a necessidade da criação de um protocolo para envio e recebimento de dados. A importância de um protocolo adequado e bem definido se dá pela estrutura, eficiência, confiabilidade e integridade de dados, além de otimizar recursos fornecidos para o projeto. 
+	A criação do protocolo para este projeto foi baseada nos requerimentos do problema, que demandava um sistema capaz de ler dados de temperatura e umidade, ativação de funções de monitoramento contínuo de cada um desses dados e o estado atual do sensor. Inicialmente, tinha-se também a informação de que as requisições e respostas deveriam ser compostas de 2 bytes, sendo o primeiro referente ao código do comando e o segundo, referente ao endereço do sensor. Dessa forma, criou-se os seguintes protocolos para requisições e respostas.
+</p>
+<!-- TABELAAAAA -->
+<div align="center">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descrição do Comando</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0xAC</td>
+        <td>Solicita a situação atual do sensor</td>
+      </tr>
+      <tr>
+        <td>0x01</td>
+        <td>Solicita a medida de temperatura atual</td>
+      </tr>
+      <tr>
+        <td>0x02</td>
+        <td>Solicita a medida de umidade atual</td>
+      </tr>
+      <tr>
+        <td>0x03</td>
+        <td>Ativa sensoriamento contínuo de temperatura</td>
+      </tr>
+      <tr>
+        <td>0x04</td>
+        <td>Ativa sensoriamento contínuo de umidade</td>
+      </tr>
+      <tr>
+        <td>0x05</td>
+        <td>Desativa sensoriamento contínuo de temperatura</td>
+      </tr>
+      <tr>
+        <td>0x06</td>
+        <td>Desativa sensoriamento contínuo de umidade</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p align="center">Tabela do protocolo de requisições</p>
+
+
+<div align="center">
+
+| Código | Descrição da Resposta                                     |
+| ------ | --------------------------------------------------------- |
+| 0x1F   | Sensor com problema                                       |
+| 0x07   | Sensor funcionando normalmente                            |
+| 0x08   | Medida de umidade                                         |
+| 0x09   | Medida de temperatura                                      |
+| 0x0A   | Confirmação de desativação de sensoriamento contínuo de temperatura |
+| 0x0B   | Confirmação de desativação de sensoriamento contínuo de umidade |
+| 0x0D   | Medida de temperatura contínua (Inteiro)                  |
+| 0x0E   | Medida de umidade contínua (Inteiro)                      |
+| 0x0F   | Comando inválido                                          |
+| 0xFF   | Comando inválido devido a ativação do sensoriamento contínuo |
+| 0xAA   | Comando inválido pois o sensoriamento contínuo não foi ativado |
+| 0xAB   | Erro na máquina de estados                                |
+
+</div>
+
+<p align="center">Tabela do protocolo de respostas</p>
+
+<h2>Programação em alto nível (linguagem C)</h2>
+
+<p align="center">
+A comunicação inicial para o usuário solicitar uma requisição e posteriormente visualizar os dados retornados foi feita através de um programa, em linguagem C, no computador.
+A etapa para o desenvolvimento do código referente a programação em alto nível  foi composta pela configuração da porta serial baseado na comunicação UART, uso de threads para a configuração do monitoramento contínuo e uma interface para solicitação e impressão de dados.
+	
+Dentro do módulo “main()” é inicializado algumas variáveis que auxiliarão no processo de criação da thread e na transferência/recebimento de dados. Em seguida o programa entra em um “while()” no qual ficará demonstrando ao usuário uma tabela com as funcionalidades do programa e exigindo a requisição de alguma das opções oferecidas dentro da validação de outro loop. 
+Caso a resposta do usuário esteja dentro das oferecidas, o programa segue para dois switch case. O primeiro converterá a opção do usuário para um hexadecimal correspondente ao código de requerimento definido no protocolo. O segundo converterá a opção do usuário em relação ao endereço do sensor para um hexadecimal correspondente, dentre os 32 possíveis.
+</p>
+
+
+
 
 
 
