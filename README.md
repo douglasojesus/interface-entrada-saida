@@ -16,7 +16,7 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 	  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
 	      <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
 		      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
-	<li><a href="#metodologia-e-tecnicas-aplicadas"> <b>Metodologia e técnicas aplicadas no projeto;</b> </a> </li>
+	<li><a href="#desenvolvimento"> <b>Desenvolvimento;</b> </a> </li>
 	<li><a href="#descricao-do-sistema"> <b>Descrição em alto nível do sistema proposto;</b> </a> </li>
   <li><a href="#descricao-do-protocolo-de-comunicacao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
 	      <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e análise dos testes e simuações</b> </a></li>
@@ -159,6 +159,12 @@ Temperatura: 0001 1000 = 18H = 24°C.
 Portanto, ao receber os dados é necessário, primeiramente, separar as sequências de bytes, segundamente, verificar, através da sequência do “parity bit”, se não houve nenhum erro durante a leitura e, por fim, faz-se uma decodificação para obter o real valor da umidade e temperatura, respectivamente.
 
 </p>
+
+<h1 id="desenvolvimento" align="center">Desenvolvimento</h1>
+
+<p align="justify">Inicialmente foi proposto durante as sessões a criação de um diagrama inicial geral de como funcionaria o circuito. Dessa forma, foi possível identificar os três principais agentes do sistema. Sendo eles: o computador, a FPGA e o anexo do sensor DHT11.</p>
+
+<img src="anexos/diagrama_projeto.png" alt=Diagrama em blocos do sistema>
 
 <h1 id="descricao-do-sistema" align="center">Descrição do sistema</h1>
 
