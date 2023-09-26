@@ -155,8 +155,8 @@ O sensor é um elemento externo que ficará conectado à placa através dos pino
 <h2>Protocolo de envio e recebimento de dados</h2>
 
 <p align="justify">
-	O primeiro passo para o desenvolvimento do projeto foi a necessidade da criação de um protocolo para envio e recebimento de dados. A importância de um protocolo adequado e bem definido se dá pela estrutura, eficiência, confiabilidade e integridade de dados, além de otimizar recursos fornecidos para o projeto. 
-	A criação do protocolo para este projeto foi baseada nos requerimentos do problema, que demandava um sistema capaz de ler dados de temperatura e umidade, ativação de funções de monitoramento contínuo de cada um desses dados e o estado atual do sensor. Inicialmente, tinha-se também a informação de que as requisições e respostas deveriam ser compostas de 2 bytes, sendo o primeiro referente ao código do comando e o segundo, referente ao endereço do sensor. Dessa forma, criou-se os seguintes protocolos para requisições e respostas.
+	O primeiro passo para o desenvolvimento do projeto foi a criação de um protocolo para envio e recebimento de dados. A importância de um protocolo adequado e bem definido se dá pela estrutura, eficiência, confiabilidade e integridade de dados, além de otimizar recursos fornecidos para o projeto. 
+	A criação do protocolo para este projeto foi baseada nos requerimentos do problema, que demandava um sistema capaz de ler dados de temperatura e umidade, ativação de funções de monitoramento contínuo de cada um desses dados e o estado atual do sensor. Inicialmente, tinha-se também a informação de que as requisições e respostas deveriam ser compostas de 2 bytes, sendo o primeiro referente ao código do comando e, o segundo, referente ao endereço do sensor. Dessa forma, criou-se os seguintes protocolos para requisições e respostas.
 </p>
 <!-- TABELAAAAA -->
 <div align="center">
@@ -240,7 +240,7 @@ Caso a resposta do usuário esteja dentro das oferecidas, o programa segue para 
 
 O módulo uart_tx é um módulo de protocolo UART, utilizado para a transmissão de dados de maneira serial. Nesse projeto, esse módulo foi configurado para ser capaz de transmitir 8 bits.
 Primeiramente, define-se as entradas e saídas do módulo:
-
+ˋˋˋ
 input clock: Sinal de clock de 50MHz para sincronização.
 
 input haDadosParaTransmitir: Um sinal de dados válido que indica quando há dados para serem transmitidos.
@@ -254,7 +254,7 @@ output indicaTransmissao: Indica se a transmissão está ativa.
 output reg  bitSerialAtual: O bit do sinal serial atual que será transmitido.
 
 output bitsEstaoEnviados: Sinal de saída que confirma o envio dos dados.
-
+ˋˋˋ
 
 O módulo define uma série de estados da máquina de estados usando parâmetros locais. A máquina de estados é usada para controlar o processo de transmissão UART.
 	
