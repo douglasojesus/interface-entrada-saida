@@ -122,6 +122,8 @@ Pino 2 (DATA ou SINAL): Utilizado para a transferência de dados lidos.
 Pino 3 (NC): Não utilizado no projeto.
 Pino 4 (GND): Conectar ao GND (terra).
 
+<img src="anexos/dth11.png" align="center" alt=Identificação dos pinos do DHT11>
+
 Os dados lidos pelo sensor são enviados em formato binário, seguindo esta sequência de bytes:
 
 Primeiro byte (sequência de 8 bits): Dados de alta umidade (parte inteira).
