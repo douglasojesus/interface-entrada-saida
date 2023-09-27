@@ -11,12 +11,12 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 
 <h1 id="sumario" align="center">Sumário</h1>
 <ul>
-  <li><a href="#membros"><b>Equipe de Desenvolvimento;</b></li>
-  <li><a href="#introducao"> <b>Introdução;</b></li>
-  <li><a href="#requisitos"> <b>Requisitos;</b> </a></li>
-  <li><a href="#recursos"> <b>Recursos Utilizados;</b></li>
+  <li><a href="#membros"><b>Equipe de Desenvolvimento</b></li>
+  <li><a href="#introducao"> <b>Introdução</b></li>
+  <li><a href="#requisitos"> <b>Requisitos</b> </a></li>
+  <li><a href="#recursos"> <b>Recursos Utilizados</b></li>
 	      <li><a href="#fundamentacao-teorica"> <b>Fundamentação Teórica</b> </a> </li>
-<li><a href="#desenvolvimento"> <b>Desenvolvimento e Descrição em Alto Nível;</b> </a> </li>
+<li><a href="#desenvolvimento"> <b>Desenvolvimento e Descrição em Alto Nível</b> </a> </li>
       <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e Análise dos Testes e Simulações, Resultados e Discussões</b> </a></li>
 	      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
   <li><a href="#referencias"> <b>Referências</b> </a></li>
