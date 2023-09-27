@@ -4,7 +4,7 @@
 </h1>
 
 <div align= "center" >
-	<img width="800px" height="200px" src="anexos/gif_to_read (1).gif">
+	<img width="800px" height="100px" src="anexos/gif_to_read (1).gif">
 </div>
 
 
