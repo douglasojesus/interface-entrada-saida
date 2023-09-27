@@ -4,9 +4,9 @@
 </h1>
 
 
-<div align="center">
->Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Universidade Estadual de Feira de Santana. 
-</div>
+<h4 align="center">
+Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Universidade Estadual de Feira de Santana. 
+</h4>
 
  
 <h2 align="center">
