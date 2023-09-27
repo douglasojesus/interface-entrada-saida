@@ -1,3 +1,7 @@
+<div align= "center" >
+	<img width="800px" height="200px" src="anexos/gif_to_read (1).gif">
+</div>
+
 <h1 align="center">
 📄<br>Projeto de Sensor Digital em FPGA utilizando Comunicação Serial.
 </h1>
@@ -8,9 +12,7 @@ Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Uni
 Implementação de um protótipo de sensor para medição de temperatura e umidade.
 </h2>
 
-<div align= "center" >
-	<img width="800px" src="anexos/gif_to_read (1).gif">
-</div>
+
 
 
 <h1 id="sumario" align="center">Sumário</h1>
