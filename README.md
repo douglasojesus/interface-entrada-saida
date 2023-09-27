@@ -3,9 +3,12 @@
 📄<br>Projeto de Sensor Digital em FPGA utilizando Comunicação Serial.
 </h1>
 
+<div>
 <h4 align="center">
 > Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Universidade Estadual de Feira de Santana. 
 </h4>
+	</div>
+ 
 <h2 align="center">
 🖥️ Implementação de um protótipo de sensor para medição de temperatura e umidade.
 </h2>
