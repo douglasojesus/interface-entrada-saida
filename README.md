@@ -9,7 +9,7 @@ Implementação de um protótipo de sensor para medição de temperatura e umida
 </h2>
 
 <div align= "center" >
-	<img width="800px" src="anexos/gif_to_read.gif">
+	<img width="800px" src="anexos/gif_to_read (1).gif">
 </div>
 
 
