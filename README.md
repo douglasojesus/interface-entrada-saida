@@ -518,7 +518,56 @@ Em relação ao funcionamento do programa e interação direta com o usuário, c
 
 [Vídeo - Apresentação de metodologia, testes e discussão de melhorias do protótipo de interface de E/S](https://www.youtube.com/watch?v=cKk95P4JJlk "Vídeo do Youtube")
 
-<p align="justify">Além disso, esse projeto tem potencial para se expandir e evoluir ainda mais. Novas funcionalidades, como o envio de dados para nuvem ou a adição de sensores adicionais, podem ser incorporadas para aumentar a utilidade do sistema.
+<h3>Discussão dos resultados de síntese</h3>
+<p align="justify">
+
+A análise dos resultados de síntese do dispositivo FPGA revela informações importantes sobre a alocação de recursos e o desempenho do design. Vamos discutir esses resultados em relação ao uso de elementos lógicos (LEs), LABs e pinos do FPGA:
+
+Total de Elementos Lógicos (Logic Elements):
+
+- Total logic elements: 431 / 28,848 (1%)
+- Combinational with no register: 176
+- Register only: 57
+- Combinational with a register: 198
+
+O design atual utiliza 431 elementos lógicos de um total de 28,848 disponíveis no FPGA. Isso representa aproximadamente 1% da capacidade total. A maioria desses elementos lógicos é usada em combinação com registradores para armazenar dados temporários.
+
+Uso de Elementos Lógicos por Número de Entradas LUT:
+
+- 4 input functions: 185
+- 3 input functions: 86
+- <=2 input functions: 103
+- Register only: 57
+
+Os elementos lógicos são usados para implementar funções com diferentes números de entradas em suas tabelas de consulta (LUTs). Essa distribuição equilibrada ajuda a otimizar o design.
+
+Total de LABs (Logic Array Blocks):
+
+- Total LABs: 32 / 1,803 (2%)
+
+Dos 1.803 LABs disponíveis no FPGA, 32 estão sendo utilizados. Isso representa cerca de 2% da capacidade total de LABs. Há uma margem significativa para expansão do design.
+
+Pinos do FPGA:
+
+- Virtual pins: 0
+- I/O pins: 35 / 329 (11%)
+- Clock pins: 1 / 7 (14%)
+- Dedicated input pins: 0 / 9 (0%)
+
+O design utiliza 35 pinos de entrada/saída do FPGA, com 1 deles sendo usado para sinal de clock. Cerca de 11% dos pinos I/O estão em uso, indicando que a maioria dos pinos ainda está disponível para conectividade.
+
+Interconexão:
+
+- Average interconnect usage (total/H/V): 0.3% / 0.3% / 0.3%
+- Peak interconnect usage (total/H/V): 3.9% / 3.9% / 4.1%
+
+A utilização da interconexão é baixa, com uma média de apenas 0.3%. Isso sugere que a capacidade de roteamento do FPGA ainda está amplamente disponível para futuras otimizações ou expansões do design.
+
+Em resumo, os resultados de síntese indicam que o design atual não utiliza uma grande quantidade de recursos disponíveis no FPGA. Há espaço para expansão e otimização do design, seja para adicionar mais funcionalidades, melhorar o uso de recursos ou reduzir custos, dependendo dos objetivos do projeto. A alocação de recursos de LABs, a utilização de pinos I/O e a capacidade de interconexão são áreas que podem ser revistas para melhorar a eficiência do design.
+
+</p>
+
+<p align="justify">Além disso, esse projeto tem potencial de evolução e expansão. Novas funcionalidades, como o envio de dados para nuvem ou a adição de sensores adicionais, podem ser incorporadas para aumentar a utilidade do sistema.
 Porém, ressalta-se alguns tópicos sensíveis, tais como: a complexidade devido à capacidade de gerenciar até 32 sensores diferentes (o que aumenta o consumo de recursos em termos de lógica e memória em uma FPGA, o que pode ser uma preocupação em sistemas com recursos limitados), dificuldade de sincronização do clock (uma vez que ele recebe uma alta frequência (50 MHz) e realiza uma divisão desse sinal para operações internas) e gerenciamento da comunicação com um grande número de sensores.
 
 Em resumo, o sistema representa uma implementação versátil e funcional para a comunicação com sensores em sistemas embarcados. Sua capacidade de gerenciar múltiplos sensores, detectar erros e oferecer suporte ao sensoriamento contínuo o torna uma escolha adequada para uma variedade de aplicações. No entanto, considerações de complexidade, escalabilidade e requisitos de clock devem ser cuidadosamente avaliadas ao adotar esse módulo em um projeto específico.
