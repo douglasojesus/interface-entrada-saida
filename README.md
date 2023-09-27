@@ -8,6 +8,10 @@ Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Uni
 Implementação de um protótipo de sensor para medição de temperatura e umidade.
 </h2>
 
+<div align= "center" >
+	<img width="800px" src="anexos/gif_to_read.gif">
+</div>
+
 
 <h1 id="sumario" align="center">Sumário</h1>
 <ul>
