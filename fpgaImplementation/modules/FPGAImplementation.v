@@ -11,11 +11,10 @@ CONEXAO_SENSOR -> 50MHz
 UART RX/TX -> 50MHz
 */
 
-module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line_sensor_01, transmission_line_other_sensors, cancel_monitoring);
+module FPGAImplementation	(clock, bitSerialAtualRX, bitSerialAtualTX, transmission_line_sensor_01, transmission_line_other_sensors);
 
 	input 				clock; //50MHz
 	input 				bitSerialAtualRX;
-	input					cancel_monitoring;
 	output 				bitSerialAtualTX;
 	inout  				transmission_line_sensor_01; //Fio de entrada e saida do DHT11 (Tri-state) 
 	inout [30:0]		transmission_line_other_sensors; //Vetor de entrada e saida para implementação de outros sensores
