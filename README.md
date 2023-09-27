@@ -299,6 +299,11 @@ A máquina de estados é implementada em um bloco always sensível à borda de s
 
 - estadoDeLimpeza: Após a recepção bem-sucedida de um byte completo, as ações de limpeza são realizadas. Os dados são considerados prontos para leitura (dadosOk   <= 1'b0), e a máquina de estados retorna ao estado “estadoDeEspera”.
 
+<p align="center">
+	<img src="anexos/MEF/uart_rx_mef.png" alt=Máquina de estados do módulo uart_rx>
+</p>
+<p align="center">Máquina de estados do módulo uart_rx</p>
+
 Os sinais de saída são atribuídos com base nos estados da máquina de estados. bitsEstaoRecebidos recebe o sinal de dadosOk indicando que os dados foram lidos corretamente, e primeiroByteCompleto e segundoByteCompleto contêm os bytes de dados recebidos.
 
 </p>
@@ -316,6 +321,11 @@ Além disso, o módulo suporta o sensoriamento contínuo de temperatura e umidad
 O módulo realiza verificações de erros, incluindo a detecção de erros de paridade (errorChecksum) e outros erros relacionados aos sensores. Se um erro for detectado, o módulo gera uma resposta apropriada, informando sobre o problema. Isso é crucial para garantir a confiabilidade das leituras dos sensores.
 
 Portanto, o módulo conexao_sensor é uma implementação versátil de comunicação com sensores em Verilog. Ele oferece suporte a múltiplos sensores, controle flexível por endereço, sensoriamento contínuo e detecção de erros, tornando-o adequado para uma ampla gama de aplicações em sistemas embarcados.
+
+<p align="center">
+	<img src="anexos/MEF/conexao_sensor_mef.png" alt=Máquina de estados do módulo conexao_sensor>
+</p>
+<p align="center">Máquina de estados do módulo conexao_sensor</p>
 
 <h3>Relação de Dependência</h3>
 
@@ -387,6 +397,11 @@ A principal parte do código é a máquina de estados finitos (FSM) que controla
 
 - ACABA_PROCESSO: Este estado é alcançado após a conclusão bem-sucedida ou com erro da comunicação com o sensor DHT11. Se ocorrer um erro na máquina, ele mantém a máquina neste estado e sinaliza o erro. Se não houver erro, ele conclui o processo e sinaliza que a operação foi concluída. Após um período de normalização, a máquina volta ao estado ESPERA para aguardar a próxima comunicação.
 
+<p align="center">
+	<img src="anexos/MEF/Dht11_mef.png" alt=Máquina de estados do módulo DHT11_Communication>
+</p>
+<p align="center">Máquina de estados do módulo DHT11_Communication</p>
+
 O código utiliza contadores de tempo e sinais auxiliares para controlar o tempo e detectar eventos relevantes, como bordas de subida e descida nos sinais. A máquina de estados coordena a interação com o sensor DHT11 de acordo com o protocolo de comunicação especificado.
 
 Em resumo, o código implementa uma máquina de estados para se comunicar com um sensor DHT11, lendo dados de temperatura e umidade do sensor e sinalizando erros, se necessário.
@@ -421,6 +436,11 @@ A máquina de estados é implementada em um bloco always sensível à borda de s
 - estadoEnviaBitFinal: Envio do bit de parada da transmissão (1) e aguarda um número de ciclos de clock determinado.
 
 - estadoDeLimpeza: Estado intermediário de finalização da transmissão.
+
+<p align="center">
+	<img src="anexos/MEF/uart_tx_mef.png" alt=Máquina de estados do módulo uart_tx>
+</p>
+<p align="center">Máquina de estados do módulo uart_tx</p>
 
 Os valores dos sinais de saída (bitSerialAtual, indicaTransmissao e bitsEstaoEnviados) são atribuídos com base nos estados da máquina de estados. No estado estadoDeEspera, o código verifica se há dados válidos para transmitir e seleciona qual byte deve ser transmitido primeiro. Após a transmissão do primeiro byte, o código entra em um estado intermediário estadoDeLimpeza antes de voltar ao estadoDeEspera. O sinal transmissaoConcluida é usado para indicar quando a transmissão foi concluída. O sinal transmissaoEmAndamento é usado para indicar quando a transmissão está ativa.
 
