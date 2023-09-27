@@ -1,10 +1,13 @@
-<div align= "center" >
-	<img width="800px" height="200px" src="anexos/gif_to_read (1).gif">
-</div>
 
 <h1 align="center">
 📄<br>Projeto de Sensor Digital em FPGA utilizando Comunicação Serial.
 </h1>
+
+<div align= "center" >
+	<img width="800px" height="200px" src="anexos/gif_to_read (1).gif">
+</div>
+
+
 <h4 align="center">
 Projeto produzido a ser avaliado pela disciplina de M.I Sistemas Digitais da Universidade Estadual de Feira de Santana. 
 </h4>
